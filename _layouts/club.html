@@ -84,6 +84,9 @@ layout: default
     <dt>Address</dt>
     <dd>{{ page.location.address }} {% if page.location.lat and page.location.lng %}<a href="https://www.google.com/maps/dir/?api=1&destination={{ page.location.lat }},{{ page.location.lng }}" target="_blank" rel="noopener" class="directions-link"><i data-lucide="navigation" style="width:13px;height:13px;"></i> Directions</a>{% endif %}</dd>
 
+    <dt>{% if page.days.size > 1 %}Days{% else %}Day{% endif %}</dt>
+    <dd>{{ page.days | join: ", " }}</dd>
+
     {% if page.time %}
     <dt>Time</dt>
     <dd>{{ page.time }}</dd>
