@@ -7,6 +7,17 @@
   z-index: 1010;
   border-bottom: 1px solid $color-border;
 
+  // Fix header in place on mobile home page so it doesn't scroll away
+  // when browser shifts viewport on input focus
+  body:has(.home-layout) & {
+    @media (max-width: $bp-lg - 1) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
   .header-inner {
     display: flex;
     align-items: center;
@@ -219,6 +230,7 @@
     height: calc(100vh - 55px);
     overflow: hidden;
     position: relative;
+    margin-top: 55px; // offset for fixed header
   }
 
   @media (min-width: $bp-lg) {
