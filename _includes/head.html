@@ -1,5 +1,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script>
+  (function() {
+    var t = localStorage.getItem('theme');
+    document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
+  })();
+</script>
 {% if page.layout == "club" %}
   <title>{{ page.name }} | Board Game Club | {{ site.title }}</title>
   <meta name="description" content="{{ page.description | strip_html | truncate: 160 }}">

@@ -1,21 +1,41 @@
 (function () {
   "use strict";
 
+  var LIGHT_OPTIONS = {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19,
+    subdomains: "abcd",
+  };
+  var DARK_OPTIONS = {
+    attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>',
+    maxZoom: 20,
+  };
+  var TILE = {
+    light: { url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", options: LIGHT_OPTIONS },
+    dark: { url: "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png", options: DARK_OPTIONS },
+  };
+
   var GameClubMap = {
     map: null,
     markers: null,
     markerMap: {},
     userMarker: null,
+    tileLayer: null,
 
     init: function () {
       this.map = L.map("map").setView([53.8, -1.58], 9);
 
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
-        maxZoom: 19,
-        subdomains: "abcd",
-      }).addTo(this.map);
+      var theme = document.documentElement.getAttribute("data-theme") || "dark";
+      var tile = TILE[theme] || TILE.dark;
+      this.tileLayer = L.tileLayer(tile.url, tile.options).addTo(this.map);
+
+      document.addEventListener("themechange", function (e) {
+        var t = (e.detail && e.detail.theme) || document.documentElement.getAttribute("data-theme") || "dark";
+        if (!GameClubMap.map || !GameClubMap.tileLayer) return;
+        var next = TILE[t] || TILE.dark;
+        GameClubMap.map.removeLayer(GameClubMap.tileLayer);
+        GameClubMap.tileLayer = L.tileLayer(next.url, next.options).addTo(GameClubMap.map);
+      });
 
       this.markers = L.markerClusterGroup({
         maxClusterRadius: 40,

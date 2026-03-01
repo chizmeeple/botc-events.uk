@@ -13,8 +13,8 @@ html {
 
 body {
   font-family: $font-body;
-  color: $color-text;
-  background: $color-bg;
+  color: var(--color-text);
+  background: var(--color-bg);
   line-height: 1.65;
   min-height: 100vh;
   display: flex;
@@ -40,12 +40,12 @@ body {
 }
 
 a {
-  color: $color-accent;
+  color: var(--color-accent);
   text-decoration: none;
   transition: color 0.2s ease;
 
   &:hover {
-    color: $color-accent-light;
+    color: var(--color-accent-light);
     text-decoration: none;
   }
 }
@@ -59,7 +59,7 @@ h1, h2, h3, h4 {
   font-family: $font-heading;
   line-height: 1.2;
   font-weight: 600;
-  color: $color-primary;
+  color: var(--color-primary);
 }
 
 h1 { font-size: 2rem; }

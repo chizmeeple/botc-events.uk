@@ -1,21 +1,5 @@
-// ─── Charcoal & Teal Palette ───
-// Near-black charcoal with clean teal accents — polished product feel
-
-// Colors
-$color-primary: #1e293b;        // slate 800 — headings, primary text accents
-$color-primary-dark: #ffffff;   // white — header bar, footer background
-$color-primary-light: #64748b;  // slate 500 — secondary text, hover states
-$color-accent: #ea580c;         // orange 600 — CTA buttons, key accents
-$color-accent-light: #f97316;   // orange 500 — hover states, warm highlights
-$color-bg: #fafafa;             // zinc 50 — page background
-$color-surface: #ffffff;        // white — cards, sidebar
-$color-text: #1e293b;           // slate 800 — primary body text
-$color-text-light: #a1a1aa;     // zinc 400 — secondary text, metadata
-$color-border: #e4e4e7;         // zinc 200 — borders, dividers
-$color-tag: #f4f4f5;            // zinc 100 — default tag background
-$color-tag-day: #334155;        // slate 700 — day tag background
-$color-tag-cost: #059669;       // emerald 600 — cost tag background
-$color-tag-cost-bg: #d1fae5;    // emerald 100 — cost tag background
+// ─── Theme colours are in _theme.scss (CSS custom properties) ───
+// Use var(--color-*) in styles. This file keeps layout/typography only.
 
 // Typography
 $font-body: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;

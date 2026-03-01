@@ -1,0 +1,59 @@
+// ─── Theme: CSS custom properties ───
+// Dark is default; [data-theme="light"] switches to light.
+
+:root {
+  // Dark theme (default)
+  --color-primary: #e2e8f0;
+  --color-primary-rgb: 226, 232, 240;
+  --color-primary-dark: #0f172a;
+  --color-primary-light: #94a3b8;
+  --color-accent: #f97316;
+  --color-accent-light: #fb923c;
+  --color-accent-rgb: 249, 115, 22;
+  --color-accent-hover: #ea580c;
+  --color-accent-cluster-mid: #ea580c;
+  --color-accent-cluster-large: #c2410c;
+  --color-bg: #0f172a;
+  --color-surface: #1e293b;
+  --color-text: #e2e8f0;
+  --color-text-light: #94a3b8;
+  --color-border: #334155;
+  --color-border-hover: #475569;
+  --color-tag: #334155;
+  --color-tag-day: #64748b;
+  --color-tag-cost: #34d399;
+  --color-tag-cost-bg: #064e3b;
+  --color-on-accent: #fff;
+  --color-pre-bg: #1e293b;
+  --color-pre-text: #e2e8f0;
+  --shadow-subtle: rgba(0, 0, 0, 0.2);
+  --shadow-card: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] {
+  --color-primary: #1e293b;
+  --color-primary-rgb: 30, 41, 59;
+  --color-primary-dark: #ffffff;
+  --color-primary-light: #64748b;
+  --color-accent: #ea580c;
+  --color-accent-light: #f97316;
+  --color-accent-rgb: 234, 88, 12;
+  --color-accent-hover: #f97316;
+  --color-accent-cluster-mid: #ea580c;
+  --color-accent-cluster-large: #c2410c;
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-text: #1e293b;
+  --color-text-light: #64748b;
+  --color-border: #e4e4e7;
+  --color-border-hover: #d4d4d8;
+  --color-tag: #f4f4f5;
+  --color-tag-day: #334155;
+  --color-tag-cost: #059669;
+  --color-tag-cost-bg: #d1fae5;
+  --color-on-accent: #fff;
+  --color-pre-bg: #1e293b;
+  --color-pre-text: #e2e8f0;
+  --shadow-subtle: rgba(0, 0, 0, 0.05);
+  --shadow-card: rgba(0, 0, 0, 0.08);
+}
