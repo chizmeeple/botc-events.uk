@@ -1,19 +1,22 @@
 ---
 name: "Farnborough Board Games"
-days: ["Various"]
-time: ""
+days: ["Thursday"]
+time: "7:00pm - 10:00pm"
 frequency: "Weekly"
 location:
-  name: "Monkey Puzzle (Brewers Fayre)"
-  address: "Monkey Puzzle (Brewers Fayre), Farnborough, GU14 0JP"
-  lat: 51.28889
-  lng: -0.77909
+  name: "Monkey Puzzle (Brewer's Fayre)"
+  address: "Monkey Puzzle (Brewer's Fayre), Farnborough, GU14 0LE"
+  lat: 51.2924771
+  lng: -0.7788702
 cost: "Free"
 image: ""
-website: ""
-facebook: ""
+website: "https://www.meetup.com/farnborough-board-games-club/"
+facebook: "https://www.facebook.com/groups/farnboroughboardgames/"
 discord: ""
 bgg: ""
 description: >-
-  What We Play Expect everything from light party games to strategic eurogames, social deduction, engine builders, co-ops, and the occasional chaotic wildcard. Members are welcome to bring games along; there's always a solid selection available and we're happy to teach. The Vibe We're sociable, inclusive, and here to have a good time.
+  We've been meeting in Farnborough since 2016 and have grown into a friendly,
+  welcoming group of regulars and newcomers alike. Whether you're completely new
+  to the hobby or you've got shelves full of cardboard at home, you'll fit in
+  just fine.
 ---
