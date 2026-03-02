@@ -13,7 +13,7 @@ A community-built directory powered by an interactive map.
 [![MIT License](https://img.shields.io/badge/License-MIT-green)](#license)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange)](https://boardgameclubs.uk/contribute/)
 
-[Live Site](https://boardgameclubs.uk) · [Add a Club](https://boardgameclubs.uk/contribute/) · [Report a Bug](https://github.com/BoardGameClubs/BoardGameClubs_Web/issues/new)
+[Live Site](https://botc-events.uk) · [Add a Club](https://botc-events.uk/contribute/) · [Report a Bug](https://github.com/chizmeeple/botc-events.uk/issues/new)
 
 </div>
 
@@ -34,7 +34,7 @@ botc-events.uk helps people find Blood on the Clocktower groups near them. Searc
 
 See the [contribute page](https://boardgameclubs.uk/contribute/) for a full guide on adding a new club or updating an existing listing.
 
-Not comfortable with GitHub? [Open an issue](https://github.com/BoardGameClubs/BoardGameClubs_Web/issues/new) with your club's details and we'll add it for you.
+Not comfortable with GitHub? [Open an issue](https://github.com/chizmeeple/botc-events.uk/issues/new) with your club's details and we'll add it for you.
 
 ## Running locally
 

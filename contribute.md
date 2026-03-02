@@ -16,8 +16,8 @@ Board Game Clubs UK is community-maintained and hosted on GitHub. Anyone can add
 The easiest way to add your group is to fill in our form on GitHub. No technical knowledge required - just fill in the details and we'll do the rest.
 
 <div class="contribute-actions">
-  <a href="https://github.com/BoardGameClubs/BoardGameClubs_Web/issues/new?template=add-club.yml" class="contribute-btn contribute-btn--primary">+ Add a Group</a>
-  <a href="https://github.com/BoardGameClubs/BoardGameClubs_Web/issues/new?template=edit-club.yml" class="contribute-btn contribute-btn--secondary">Edit a Group</a>
+  <a href="https://github.com/{{ site.repository }}/issues/new?template=add-club.yml" class="contribute-btn contribute-btn--primary">+ Add a Group</a>
+  <a href="https://github.com/{{ site.repository }}/issues/new?template=edit-club.yml" class="contribute-btn contribute-btn--secondary">Edit a Group</a>
 </div>
 
 ## Adding a Group via Pull Request
@@ -26,7 +26,7 @@ If you're comfortable with GitHub, you can add a group directly:
 
 ### 1. Create a new file
 
-[Create a new file](https://github.com/BoardGameClubs/BoardGameClubs_Web/new/main/_clubs) in the `_clubs/` folder on GitHub. Name it using the format `your-club-name.md` (lowercase, hyphens instead of spaces).
+[Create a new file](https://github.com/{{ site.repository }}/new/main/_clubs) in the `_clubs/` folder on GitHub. Name it using the format `your-club-name.md` (lowercase, hyphens instead of spaces).
 
 ### 2. Copy this template
 
@@ -91,10 +91,10 @@ Alternatively, you can use a direct URL to an image hosted elsewhere, e.g. `imag
 
 ### 6. Submit a pull request
 
-Commit your file and [open a pull request](https://github.com/BoardGameClubs/BoardGameClubs_Web/pulls). We'll review it and merge it in.
+Commit your file and [open a pull request](https://github.com/{{ site.repository }}/pulls). We'll review it and merge it in.
 
 ## Updating an Existing Group
 
-Find the group's file in the [`_clubs/` folder on GitHub](https://github.com/BoardGameClubs/BoardGameClubs_Web/tree/main/_clubs), make your changes, and submit a pull request. Or just **[open an edit request](https://github.com/BoardGameClubs/BoardGameClubs_Web/issues/new?template=edit-club.yml)** and we'll update it for you.
+Find the group's file in the [`_clubs/` folder on GitHub](https://github.com/{{ site.repository }}/tree/main/_clubs), make your changes, and submit a pull request. Or just **[open an edit request](https://github.com/{{ site.repository }}/issues/new?template=edit-club.yml)** and we'll update it for you.
 
 </div>

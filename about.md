@@ -20,7 +20,7 @@ Board Game Clubs UK is a free, community-maintained directory of board game grou
 
 ## Community Maintained
 
-All group data is stored as individual files in our [GitHub repository](https://github.com/BoardGameClubs/BoardGameClubs_Web). Anyone can submit a pull request to add a new group or update existing information. See our [contribution guide]({{ "/contribute" | relative_url }}) for details.
+All group data is stored as individual files in our [GitHub repository](https://github.com/{{ site.repository }}). Anyone can submit a pull request to add a new group or update existing information. See our [contribution guide]({{ "/contribute" | relative_url }}) for details.
 
 ## No Accounts, Privacy Friendly
 
