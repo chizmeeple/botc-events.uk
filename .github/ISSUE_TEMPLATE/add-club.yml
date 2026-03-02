@@ -70,6 +70,20 @@ body:
     validations:
       required: true
 
+  - type: input
+    id: latitude
+    attributes:
+      label: Latitude (optional)
+      placeholder: e.g. 53.7960
+      description: Decimal degrees, for map display
+
+  - type: input
+    id: longitude
+    attributes:
+      label: Longitude (optional)
+      placeholder: e.g. -1.5476
+      description: Decimal degrees, for map display
+
   - type: dropdown
     id: cost
     attributes:
