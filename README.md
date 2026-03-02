@@ -52,6 +52,12 @@ Then visit `http://localhost:4000`.
 - **GitHub Pages**: hosting and deployment
 - **Lucide**: icons
 
+## Original Project
+
+This project is a copy of the
+[BoardGameClubsUK](https://github.com/BoardGameClubs/BoardGameClubsUK) project.
+Almost all of the awesome features come from the original project.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE). You're free to use, modify, and distribute the code.
