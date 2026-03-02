@@ -1,5 +1,5 @@
-name: Edit a Club
-description: Update or correct information for an existing club
+name: Edit a Group
+description: Update or correct information for an existing group
 title: "Edit club: "
 labels: ["club update"]
 body:

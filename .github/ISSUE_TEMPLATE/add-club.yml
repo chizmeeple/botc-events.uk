@@ -1,12 +1,12 @@
 name: Add a Club
-description: Submit your board game club to be added to the directory
+description: Submit your Blood on the Clocktower group to be added to the directory
 title: "Add club: "
 labels: ["new club"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for submitting your club! Fill in as much as you can and we'll take care of the rest.
+        Thanks for submitting your group! Fill in as much as you can and we'll take care of the rest.
 
   - type: input
     id: name
