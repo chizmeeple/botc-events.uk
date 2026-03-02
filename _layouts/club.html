@@ -3,47 +3,47 @@ layout: default
 ---
 
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": {{ page.name | jsonify }},
-  {% if page.description %}"description": {{ page.description | jsonify }},{% endif %}
-  {% if page.website and page.website != "" %}"url": {{ page.website | jsonify }},{% endif %}
-  "sameAs": [{% if page.facebook and page.facebook != "" %}{{ page.facebook | jsonify }}{% endif %}{% if page.discord and page.discord != "" %}{% if page.facebook and page.facebook != "" %},{% endif %}{{ page.discord | jsonify }}{% endif %}{% if page.bgg and page.bgg != "" %}{% if page.facebook and page.facebook != "" or page.discord and page.discord != "" %},{% endif %}{{ page.bgg | jsonify }}{% endif %}{% if page.meetup and page.meetup != "" %}{% if page.facebook and page.facebook != "" or page.discord and page.discord != "" or page.bgg and page.bgg != "" %},{% endif %}{{ page.meetup | jsonify }}{% endif %}],
-  "location": {
-    "@type": "Place",
-    "name": {{ page.location.name | jsonify }},
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": {{ page.location.address | jsonify }},
-      "addressCountry": "GB"
-    }{% if page.location.lat and page.location.lng %},
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": {{ page.location.lat }},
-      "longitude": {{ page.location.lng }}
-    }{% endif %}
-  }{% if page.days.size > 0 %},
-  "event": {
-    "@type": "Event",
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
     "name": {{ page.name | jsonify }},
+    {% if page.description %}"description": {{ page.description | jsonify }},{% endif %}
+    {% if page.website and page.website != "" %}"url": {{ page.website | jsonify }},{% endif %}
+    "sameAs": [{% if page.facebook and page.facebook != "" %}{{ page.facebook | jsonify }}{% endif %}{% if page.discord and page.discord != "" %}{% if page.facebook and page.facebook != "" %},{% endif %}{{ page.discord | jsonify }}{% endif %}{% if page.bgg and page.bgg != "" %}{% if page.facebook and page.facebook != "" or page.discord and page.discord != "" %},{% endif %}{{ page.bgg | jsonify }}{% endif %}{% if page.meetup and page.meetup != "" %}{% if page.facebook and page.facebook != "" or page.discord and page.discord != "" or page.bgg and page.bgg != "" %},{% endif %}{{ page.meetup | jsonify }}{% endif %}],
     "location": {
       "@type": "Place",
       "name": {{ page.location.name | jsonify }},
-      "address": {{ page.location.address | jsonify }}
-    },
-    "eventSchedule": {
-      "@type": "Schedule",
-      "byDay": "https://schema.org/{{ page.days[0] }}",
-      "repeatFrequency": {% if page.frequency == "Weekly" %}"P1W"{% elsif page.frequency == "Fortnightly" %}"P2W"{% elsif page.frequency == "Monthly" %}"P1M"{% else %}{{ page.frequency | jsonify }}{% endif %}
-    }{% if page.cost and page.cost != "" %},
-    "offers": {
-      "@type": "Offer",
-      "price": {{ page.cost | jsonify }},
-      "priceCurrency": "GBP"
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": {{ page.location.address | jsonify }},
+        "addressCountry": "GB"
+      }{% if page.location.lat and page.location.lng %},
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": {{ page.location.lat }},
+        "longitude": {{ page.location.lng }}
+      }{% endif %}
+    }{% if page.days.size > 0 %},
+    "event": {
+      "@type": "Event",
+      "name": {{ page.name | jsonify }},
+      "location": {
+        "@type": "Place",
+        "name": {{ page.location.name | jsonify }},
+        "address": {{ page.location.address | jsonify }}
+      },
+      "eventSchedule": {
+        "@type": "Schedule",
+        "byDay": "https://schema.org/{{ page.days[0] }}",
+        "repeatFrequency": {% if page.frequency == "Weekly" %}"P1W"{% elsif page.frequency == "Fortnightly" %}"P2W"{% elsif page.frequency == "Monthly" %}"P1M"{% else %}{{ page.frequency | jsonify }}{% endif %}
+      }{% if page.cost and page.cost != "" %},
+      "offers": {
+        "@type": "Offer",
+        "price": {{ page.cost | jsonify }},
+        "priceCurrency": "GBP"
+      }{% endif %}
     }{% endif %}
-  }{% endif %}
-}
+  }
 </script>
 
 <div class="club-detail">
@@ -51,23 +51,56 @@ layout: default
     {% if page.image and page.image != "" %}
     <div class="club-detail-icon">
       {% if page.image contains "://" %}
-      <img src="{{ page.image }}" alt="{{ page.name }} logo" onload="try{var c=document.createElement('canvas');c.width=this.naturalWidth;c.height=this.naturalHeight;var x=c.getContext('2d');x.drawImage(this,0,0);var d=x.getImageData(0,0,1,1).data;this.style.backgroundColor='rgb('+d[0]+','+d[1]+','+d[2]+')'}catch(e){}">
+      <img
+        src="{{ page.image }}"
+        alt="{{ page.name }} logo"
+        onload="
+          try {
+            var c = document.createElement('canvas');
+            c.width = this.naturalWidth;
+            c.height = this.naturalHeight;
+            var x = c.getContext('2d');
+            x.drawImage(this, 0, 0);
+            var d = x.getImageData(0, 0, 1, 1).data;
+            this.style.backgroundColor =
+              'rgb(' + d[0] + ',' + d[1] + ',' + d[2] + ')';
+          } catch (e) {}
+        "
+      />
       {% else %}
-      <img src="{{ '/assets/images/clubs/' | append: page.image | relative_url }}" alt="{{ page.name }} logo" onload="try{var c=document.createElement('canvas');c.width=this.naturalWidth;c.height=this.naturalHeight;var x=c.getContext('2d');x.drawImage(this,0,0);var d=x.getImageData(0,0,1,1).data;this.style.backgroundColor='rgb('+d[0]+','+d[1]+','+d[2]+')'}catch(e){}">
+      <img
+        src="{{ '/assets/images/clubs/' | append: page.image | relative_url }}"
+        alt="{{ page.name }} logo"
+        onload="
+          try {
+            var c = document.createElement('canvas');
+            c.width = this.naturalWidth;
+            c.height = this.naturalHeight;
+            var x = c.getContext('2d');
+            x.drawImage(this, 0, 0);
+            var d = x.getImageData(0, 0, 1, 1).data;
+            this.style.backgroundColor =
+              'rgb(' + d[0] + ',' + d[1] + ',' + d[2] + ')';
+          } catch (e) {}
+        "
+      />
       {% endif %}
     </div>
     {% endif %}
     <div class="club-detail-heading-text">
-      <h1>{{ page.name }} <span class="club-location-subtitle">Board Game Group in {{ page.location.address }}</span></h1>
+      <h1>
+        {{ page.name }}
+        <span class="club-location-subtitle"
+          >Blood on the Clocktower Group in {{ page.location.address }}</span
+        >
+      </h1>
       <div class="club-detail-meta">
         {% for d in page.days %}
-          <span class="tag tag-day">{{ d }}</span>
-        {% endfor %}
-        {% if page.frequency and page.frequency != "Weekly" %}
-          <span class="tag">{{ page.frequency }}</span>
-        {% endif %}
-        {% if page.cost %}
-          <span class="tag tag-cost">{{ page.cost }}</span>
+        <span class="tag tag-day">{{ d }}</span>
+        {% endfor %} {% if page.frequency and page.frequency != "Weekly" %}
+        <span class="tag">{{ page.frequency }}</span>
+        {% endif %} {% if page.cost %}
+        <span class="tag tag-cost">{{ page.cost }}</span>
         {% endif %}
       </div>
     </div>
@@ -82,7 +115,17 @@ layout: default
     <dd>{{ page.location.name }}</dd>
 
     <dt>Address</dt>
-    <dd>{{ page.location.address }} {% if page.location.lat and page.location.lng %}<a href="https://www.google.com/maps/dir/?api=1&destination={{ page.location.lat }},{{ page.location.lng }}" target="_blank" rel="noopener" class="directions-link"><i data-lucide="navigation" style="width:13px;height:13px;"></i> Directions</a>{% endif %}</dd>
+    <dd>
+      {{ page.location.address }} {% if page.location.lat and page.location.lng
+      %}<a
+        href="https://www.google.com/maps/dir/?api=1&destination={{ page.location.lat }},{{ page.location.lng }}"
+        target="_blank"
+        rel="noopener"
+        class="directions-link"
+        ><i data-lucide="navigation" style="width: 13px; height: 13px"></i>
+        Directions</a
+      >{% endif %}
+    </dd>
 
     <dt>{% if page.days.size > 1 %}Days{% else %}Day{% endif %}</dt>
     <dd>{{ page.days | join: ", " }}</dd>
@@ -90,19 +133,13 @@ layout: default
     {% if page.time %}
     <dt>Time</dt>
     <dd>{{ page.time }}</dd>
-    {% endif %}
-
-    {% if page.frequency %}
+    {% endif %} {% if page.frequency %}
     <dt>Frequency</dt>
     <dd>{{ page.frequency }}</dd>
-    {% endif %}
-
-    {% if page.cost %}
+    {% endif %} {% if page.cost %}
     <dt>Cost</dt>
     <dd>{{ page.cost }}</dd>
-    {% endif %}
-
-    {% if page.age_restriction and page.age_restriction != "" %}
+    {% endif %} {% if page.age_restriction and page.age_restriction != "" %}
     <dt>Age Restriction</dt>
     <dd>{{ page.age_restriction }}</dd>
     {% endif %}
@@ -115,31 +152,48 @@ layout: default
 
   <div class="club-links">
     {% if page.website and page.website != "" %}
-      <a href="{{ page.website }}" target="_blank" rel="noopener"><i data-lucide="globe" style="width:16px;height:16px;"></i> Website</a>
-    {% endif %}
-    {% if page.meetup and page.meetup != "" %}
-      <a href="{{ page.meetup }}" target="_blank" rel="noopener"><i data-lucide="calendar" style="width:16px;height:16px;"></i> Meetup</a>
-    {% endif %}
-    {% if page.facebook and page.facebook != "" %}
-      <a href="{{ page.facebook }}" target="_blank" rel="noopener"><i data-lucide="facebook" style="width:16px;height:16px;"></i> Facebook</a>
-    {% endif %}
-    {% if page.discord and page.discord != "" %}
-      <a href="{{ page.discord }}" target="_blank" rel="noopener"><i data-lucide="message-circle" style="width:16px;height:16px;"></i> Discord</a>
-    {% endif %}
-    {% if page.bgg and page.bgg != "" %}
-      <a href="{{ page.bgg }}" target="_blank" rel="noopener"><i data-lucide="dice-5" style="width:16px;height:16px;"></i> BGG</a>
+    <a href="{{ page.website }}" target="_blank" rel="noopener"
+      ><i data-lucide="globe" style="width: 16px; height: 16px"></i> Website</a
+    >
+    {% endif %} {% if page.meetup and page.meetup != "" %}
+    <a href="{{ page.meetup }}" target="_blank" rel="noopener"
+      ><i data-lucide="calendar" style="width: 16px; height: 16px"></i>
+      Meetup</a
+    >
+    {% endif %} {% if page.facebook and page.facebook != "" %}
+    <a href="{{ page.facebook }}" target="_blank" rel="noopener"
+      ><i data-lucide="facebook" style="width: 16px; height: 16px"></i>
+      Facebook</a
+    >
+    {% endif %} {% if page.discord and page.discord != "" %}
+    <a href="{{ page.discord }}" target="_blank" rel="noopener"
+      ><i data-lucide="message-circle" style="width: 16px; height: 16px"></i>
+      Discord</a
+    >
+    {% endif %} {% if page.bgg and page.bgg != "" %}
+    <a href="{{ page.bgg }}" target="_blank" rel="noopener"
+      ><i data-lucide="dice-5" style="width: 16px; height: 16px"></i> BGG</a
+    >
     {% endif %}
   </div>
 
   <div class="club-suggest-edit">
-    <a href="https://github.com/{{ site.repository }}/issues/new?template=edit-club.yml&title=Edit:+{{ page.name | url_encode }}" target="_blank" rel="noopener"><i data-lucide="pencil" style="width:14px;height:14px;"></i> Suggest an edit</a>
+    <a
+      href="https://github.com/{{ site.repository }}/issues/new?template=edit-club.yml&title=Edit:+{{ page.name | url_encode }}"
+      target="_blank"
+      rel="noopener"
+      ><i data-lucide="pencil" style="width: 14px; height: 14px"></i> Suggest an
+      edit</a
+    >
   </div>
 </div>
 
 {% if page.location.lat and page.location.lng %}
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin=""></script>
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""
+></script>
 <script>
   (function() {
     var lightOpts = { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>', maxZoom: 19, subdomains: 'abcd' };

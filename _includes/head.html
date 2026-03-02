@@ -1,33 +1,67 @@
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=1"
+/>
 <script>
-  (function() {
-    var t = localStorage.getItem('theme');
-    document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
+  (function () {
+    var t = localStorage.getItem("theme");
+    document.documentElement.setAttribute(
+      "data-theme",
+      t === "light" ? "light" : "dark",
+    );
   })();
 </script>
 {% if page.layout == "club" %}
-  <title>{{ page.name }} | Board Game Group | {{ site.title }}</title>
-  <meta name="description" content="{{ page.description | strip_html | truncate: 160 }}">
+<title>{{ page.name }} | Clocktower Group | {{ site.title }}</title>
+<meta
+  name="description"
+  content="{{ page.description | strip_html | truncate: 160 }}"
+/>
 {% elsif page.title %}
-  <title>{{ page.title }} | {{ site.title }}</title>
+<title>{{ page.title }} | {{ site.title }}</title>
 {% else %}
-  <title>{{ site.title }} | Find Board Game Groups Near You</title>
-  <meta name="description" content="Find your nearest board game group across the UK. A free, community-maintained directory with an interactive map.">
+<title>{{ site.title }} | Find Clocktower Groups Near You</title>
+<meta
+  name="description"
+  content="Find your nearest Clocktower group across the UK. A free, community-maintained directory with an interactive map."
+/>
 {% endif %}
-<link rel="icon" type="image/png" href="{{ '/assets/favico.png' | relative_url }}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin="">
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
-{% seo title=false %}
-{% if page.layout == "club" and page.location.lat and page.location.lng %}
-<meta name="geo.position" content="{{ page.location.lat }};{{ page.location.lng }}">
-<meta name="geo.placename" content="{{ page.location.address }}">
-<meta name="ICBM" content="{{ page.location.lat }}, {{ page.location.lng }}">
+<link
+  rel="icon"
+  type="image/png"
+  href="{{ '/assets/favico.png' | relative_url }}"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}"
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
+/>
+{% seo title=false %} {% if page.layout == "club" and page.location.lat and
+page.location.lng %}
+<meta
+  name="geo.position"
+  content="{{ page.location.lat }};{{ page.location.lng }}"
+/>
+<meta name="geo.placename" content="{{ page.location.address }}" />
+<meta name="ICBM" content="{{ page.location.lat }}, {{ page.location.lng }}" />
 {% endif %}
