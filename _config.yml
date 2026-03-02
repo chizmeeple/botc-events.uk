@@ -1,11 +1,13 @@
-title: Board Game Clubs UK
+title: botc-events UK
 description: >-
-  Find your nearest board game club in the UK. A free, community-maintained
-  directory of board game clubs with an interactive map.
-url: "https://boardgameclubs.uk"
+  Find your nearest Blood on the Clocktower group in the UK. A free, community-maintained
+  directory of board game groups with an interactive map.
+url: "https://botc-events.uk"
 locale: "en_GB"
+# With a custom domain (botc-events.uk) the site is served at the root, so baseurl must be "".
+# If you remove the custom domain, set baseurl: "/botc-events.uk" so chizmeeple.github.io/botc-events.uk/ works.
 baseurl: ""
-repository: "BoardGameClubs/BoardGameClubs_Web"
+repository: "chizmeeple/botc-events.uk"
 og_image: /assets/og.png
 
 collections:
@@ -23,6 +25,9 @@ defaults:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-target-blank
+  - jekyll-last-modified-at
+  - jekyll-relative-links
 
 exclude:
   - Gemfile

@@ -1,0 +1,25 @@
+---
+name: "Reading Biscuit Factory"
+days: ["Saturday"]
+time: "5pm - 10pm"
+frequency: "Twice monthly (1st & 3rd Saturday)"
+location:
+  name: "Reading Biscuit Factory"
+  address: "1 Queens Walk, Reading RG1 7QE"
+  lat: 51.45512019494365
+  lng: -0.9774400357308308
+cost: "£3"
+image: ""
+website: "https://www.readingbiscuitfactory.co.uk/movie/rbf-board-game-night"
+meetup: ""
+facebook: ""
+discord: ""
+bgg: ""
+description: >-
+  Blood on the Clocktower is a game of murder and mystery, lies and logic,
+  deduction and deception for five-to-twenty courageous players and one devious
+  storyteller.
+
+  A social game played in person, seated in a circle, each player receives
+  either a ‘good’ or ‘evil’ token with their unique character on it.
+---

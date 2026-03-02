@@ -1,18 +1,18 @@
-name: Add a Club
-description: Submit your board game club to be added to the directory
-title: "Add club: "
-labels: ["new club"]
+name: Add a Group
+description: Submit your Blood on the Clocktower group to be added to the directory
+title: "Add group: REPLACE_WITH_GROUP_NAME"
+labels: ["new group"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for submitting your club! Fill in as much as you can and we'll take care of the rest.
+        Thanks for submitting your group! Fill in as much as you can and we'll take care of the rest.
 
   - type: input
     id: name
     attributes:
       label: Club name
-      placeholder: e.g. Wakefield Warriors
+      placeholder: e.g. Unlucky Villagers
     validations:
       required: true
 
@@ -69,6 +69,20 @@ body:
       placeholder: e.g. 12 High Street, Leeds, LS1 1AA
     validations:
       required: true
+
+  - type: input
+    id: latitude
+    attributes:
+      label: Latitude (optional)
+      placeholder: e.g. 53.7960
+      description: Decimal degrees, for map display
+
+  - type: input
+    id: longitude
+    attributes:
+      label: Longitude (optional)
+      placeholder: e.g. -1.5476
+      description: Decimal degrees, for map display
 
   - type: dropdown
     id: cost

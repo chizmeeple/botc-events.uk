@@ -100,7 +100,7 @@
 
     if (clubs.length === 0) {
       container.innerHTML =
-        '<p style="color:#555;text-align:center;padding:2rem 0;">No clubs match your search. Try a different filter or search term.</p>';
+        '<p style="color:#555;text-align:center;padding:2rem 0;">No groups match your search. Try a different filter or search term.</p>';
       return;
     }
 
@@ -177,9 +177,9 @@
 
     var text;
     if (shown === total) {
-      text = "Showing " + total + " clubs";
+      text = "Showing " + total + " groups";
     } else {
-      text = "Showing " + shown + " of " + total + " clubs";
+      text = "Showing " + shown + " of " + total + " groups";
     }
 
     var locationLabel = window.GameClubLocation && window.GameClubLocation.getActiveLabel

@@ -1,17 +1,43 @@
 <header class="site-header">
   <div class="header-inner">
     <a href="{{ '/' | relative_url }}" class="site-brand">
-      <img src="{{ '/assets/meeple-map-icon.svg' | relative_url }}" alt="" class="site-logo">
+      <img
+        src="{{ '/assets/meeple-map-icon.svg' | relative_url }}"
+        alt=""
+        class="site-logo"
+      />
       <div class="site-brand-text">
-        <span class="site-title">BoardGameClubs<span class="site-title-tld">.uk</span></span>
-        <span class="site-tagline">Community-built. Open source. Find your table.</span>
+        <span class="site-title"
+          >botc-events<span class="site-title-tld">.uk</span></span
+        >
+        <span class="site-tagline"
+          >Community-built. Open source. Find your village.</span
+        >
       </div>
     </a>
     <nav>
+      <button
+        type="button"
+        class="nav-theme-toggle"
+        id="theme-toggle"
+        aria-label="Switch to light theme"
+        title="Switch to light theme"
+      >
+        <i data-lucide="moon"></i>
+      </button>
       <a href="{{ '/' | relative_url }}">Map</a>
       <a href="{{ '/about' | relative_url }}">About</a>
-      <a href="{{ '/contribute' | relative_url }}" class="nav-cta">+ Add a Club</a>
-      <a href="https://github.com/BoardGameClubs/BoardGameClubs_Web" target="_blank" rel="noopener" class="nav-github" aria-label="GitHub"><i data-lucide="github"></i></a>
+      <a href="{{ '/contribute' | relative_url }}" class="nav-cta"
+        >+ Add a Group</a
+      >
+      <a
+        href="https://github.com/{{ site.repository }}"
+        target="_blank"
+        rel="noopener"
+        class="nav-github"
+        aria-label="GitHub"
+        ><i data-lucide="github"></i
+      ></a>
     </nav>
   </div>
 </header>

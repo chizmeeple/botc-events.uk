@@ -2,7 +2,7 @@
 .filter-bar {
   position: sticky;
   z-index: 10;
-  background: $color-surface;
+  background: var(--color-surface);
   padding-bottom: 0.75rem;
   margin-bottom: 0.75rem;
 
@@ -34,7 +34,7 @@
 
   @media (max-width: $bp-lg - 1) {
     top: 48px; // below drawer handle
-    border-bottom: 1px solid $color-border;
+    border-bottom: 1px solid var(--color-border);
   }
 }
 
@@ -58,7 +58,7 @@
   transform: translateY(-50%);
   width: 16px;
   height: 16px;
-  color: $color-text-light;
+  color: var(--color-text-light);
   pointer-events: none;
   z-index: 1;
 }
@@ -66,21 +66,21 @@
 .search-input {
   width: 100%;
   padding: 0.7rem 2.25rem 0.7rem 1rem;
-  border: 1.5px solid $color-border;
+  border: 1.5px solid var(--color-border);
   border-radius: $border-radius;
   font-size: 1rem;
   outline: none;
-  background: $color-surface;
-  color: $color-text;
+  background: var(--color-surface);
+  color: var(--color-text);
   transition: border-color 0.25s, box-shadow 0.25s;
 
   &:focus {
-    border-color: $color-accent;
-    box-shadow: 0 0 0 3px rgba($color-accent, 0.12);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.12);
   }
 
   &::placeholder {
-    color: $color-text-light;
+    color: var(--color-text-light);
   }
 }
 
@@ -124,8 +124,8 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: $color-surface;
-  border: 1.5px solid $color-border;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
   border-radius: $border-radius;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
   padding: 0.25rem 0;
@@ -142,13 +142,13 @@
   width: 100%;
   padding: 0.5rem 0.75rem;
   font-size: 0.82rem;
-  color: $color-text;
+  color: var(--color-text);
   cursor: pointer;
   transition: background 0.15s;
   user-select: none;
 
   &:hover {
-    background: $color-tag;
+    background: var(--color-tag);
   }
 
   input[type="checkbox"] {
@@ -164,21 +164,21 @@
   justify-content: center;
   width: 16px;
   height: 16px;
-  border: 1.5px solid $color-border;
+  border: 1.5px solid var(--color-border);
   border-radius: 3px;
   flex-shrink: 0;
   transition: background 0.15s, border-color 0.15s;
 
   input:checked + & {
-    background: $color-tag-day;
-    border-color: $color-tag-day;
+    background: var(--color-tag-day);
+    border-color: var(--color-tag-day);
 
     &::after {
       content: "";
       display: block;
       width: 4px;
       height: 7px;
-      border: solid #fff;
+      border: solid var(--color-on-accent);
       border-width: 0 1.5px 1.5px 0;
       transform: rotate(45deg) translate(-0.5px, -0.5px);
     }
@@ -187,11 +187,11 @@
 
 .filter-select {
   padding: 0.45rem 2rem 0.45rem 0.6rem;
-  border: 1.5px solid $color-border;
+  border: 1.5px solid var(--color-border);
   border-radius: $border-radius;
   font-size: 0.8rem;
-  color: $color-text;
-  background: $color-surface;
+  color: var(--color-text);
+  background: var(--color-surface);
   outline: none;
   cursor: pointer;
   transition: border-color 0.2s;
@@ -206,7 +206,7 @@
   background-size: 12px;
 
   &:focus {
-    border-color: $color-accent;
+    border-color: var(--color-accent);
   }
 
   &:disabled {
@@ -220,9 +220,9 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.45rem 0.7rem;
-  background: $color-surface;
-  color: $color-text;
-  border: 1.5px solid $color-border;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1.5px solid var(--color-border);
   border-radius: $border-radius;
   font-size: 0.8rem;
   white-space: nowrap;
@@ -231,13 +231,13 @@
   margin-left: auto;
 
   svg {
-    color: $color-accent;
+    color: var(--color-accent);
     flex-shrink: 0;
   }
 
   &:hover {
-    border-color: $color-accent;
-    box-shadow: 0 0 0 3px rgba($color-accent, 0.1);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.1);
     transform: translateY(-1px);
   }
 
@@ -278,8 +278,8 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: $color-surface;
-  border: 1.5px solid $color-border;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
   border-radius: $border-radius;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
   max-height: 240px;
@@ -302,16 +302,16 @@
   text-align: left;
   font-size: 0.9rem;
   cursor: pointer;
-  color: $color-text;
+  color: var(--color-text);
   transition: background 0.15s;
 
   svg {
-    color: $color-text-light;
+    color: var(--color-text-light);
     flex-shrink: 0;
   }
 
   &:hover {
-    background: $color-tag;
+    background: var(--color-tag);
   }
 }
 
@@ -321,22 +321,22 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.55rem 0.35rem 0.65rem;
-  background: $color-tag;
+  background: var(--color-tag);
   border-radius: 999px;
   font-size: 0.8rem;
-  color: $color-primary;
+  color: var(--color-primary);
   margin-bottom: 0.25rem;
-  border: 1px solid $color-border;
+  border: 1px solid var(--color-border);
 
   svg {
     flex-shrink: 0;
-    color: $color-accent;
+    color: var(--color-accent);
   }
 
   button {
     background: none;
     border: none;
-    color: $color-text-light;
+    color: var(--color-text-light);
     font-size: 1rem;
     line-height: 1;
     padding: 0 0.15rem;
@@ -344,7 +344,7 @@
     transition: color 0.15s;
 
     &:hover {
-      color: $color-text;
+      color: var(--color-text);
     }
   }
 }
@@ -361,9 +361,9 @@
   flex-direction: column;
   gap: 0.6rem;
   text-decoration: none;
-  color: $color-text;
-  background: $color-surface;
-  border: 1.5px solid $color-border;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
   border-radius: $border-radius;
   padding: 0.9rem 1rem;
   cursor: pointer;
@@ -379,13 +379,13 @@
 
   @media (min-width: $bp-lg) {
     &:hover {
-      border-color: darken($color-border, 12%);
+      border-color: var(--color-border-hover);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
       transform: translateY(-2px);
       text-decoration: none;
 
       .club-name {
-        color: $color-accent;
+        color: var(--color-accent);
       }
     }
   }
@@ -405,7 +405,7 @@
       border-radius: 8px;
       object-fit: contain;
       display: block;
-      border: 1px solid $color-border;
+      border: 1px solid var(--color-border);
     }
   }
 
@@ -427,15 +427,15 @@
   .club-name {
     font-size: 0.95rem;
     font-weight: 600;
-    color: $color-text;
+    color: var(--color-text);
     flex: 1;
     min-width: 0;
   }
 
   .club-distance {
     font-size: 0.72rem;
-    color: $color-accent;
-    background: rgba($color-accent, 0.08);
+    color: var(--color-accent);
+    background: rgba(var(--color-accent-rgb), 0.08);
     padding: 0.2rem 0.55rem;
     border-radius: 999px;
     white-space: nowrap;
@@ -445,7 +445,7 @@
 
   .club-meta {
     font-size: 0.82rem;
-    color: $color-text-light;
+    color: var(--color-text-light);
     margin-bottom: 0.5rem;
 
     span + span::before {
@@ -458,7 +458,7 @@
     flex-wrap: wrap;
     gap: 0.15rem 0.75rem;
     font-size: 0.78rem;
-    color: $color-text-light;
+    color: var(--color-text-light);
 
     svg {
       width: 12px;
@@ -488,19 +488,19 @@
   font-weight: 500;
   padding: 0.15rem 0.45rem;
   border-radius: 999px;
-  background: $color-tag;
-  color: $color-primary-light;
+  background: var(--color-tag);
+  color: var(--color-primary-light);
   letter-spacing: 0.015em;
 }
 
 .tag-day {
-  background: $color-tag-day;
-  color: #fff;
+  background: var(--color-tag-day);
+  color: var(--color-on-accent);
 }
 
 .tag-cost {
-  background: $color-tag-cost-bg;
-  color: $color-tag-cost;
+  background: var(--color-tag-cost-bg);
+  color: var(--color-tag-cost);
 }
 
 // ─── Club detail page ───
@@ -511,7 +511,7 @@
   animation: fadeSlideIn 0.5s ease both;
 
   h1 {
-    color: $color-primary;
+    color: var(--color-primary);
     margin-bottom: 0.5rem;
     font-size: 2.1rem;
   }
@@ -521,7 +521,7 @@
     font-family: $font-body;
     font-size: 0.45em;
     font-weight: 400;
-    color: $color-text-light;
+    color: var(--color-text-light);
     margin-top: 0.2rem;
     letter-spacing: 0.01em;
   }
@@ -548,7 +548,7 @@
       border-radius: $border-radius;
       object-fit: contain;
       display: block;
-      border: 2px solid $color-border;
+      border: 2px solid var(--color-border);
 
       @media (max-width: $bp-md - 1) {
         width: 140px;
@@ -584,21 +584,21 @@
     height: 280px;
     border-radius: $border-radius;
     margin-bottom: 2rem;
-    border: 2px solid $color-border;
+    border: 2px solid var(--color-border);
     overflow: hidden;
   }
 
   .detail-info {
     margin-bottom: 2rem;
-    background: $color-tag;
+    background: var(--color-tag);
     border-radius: $border-radius;
     padding: 1.25rem 1.5rem;
-    border: 1px solid $color-border;
+    border: 1px solid var(--color-border);
 
     dt {
       font-weight: 600;
       font-size: 0.75rem;
-      color: $color-text-light;
+      color: var(--color-text-light);
       text-transform: uppercase;
       letter-spacing: 0.06em;
       margin-top: 1.15rem;
@@ -610,13 +610,13 @@
 
     dd {
       margin: 0.25rem 0 0 0;
-      color: $color-text;
+      color: var(--color-text);
     }
   }
 
   .club-description {
     line-height: 1.75;
-    color: $color-text;
+    color: var(--color-text);
 
     p {
       margin-bottom: 1rem;
@@ -634,16 +634,16 @@
       align-items: center;
       gap: 0.4rem;
       padding: 0.6rem 1.15rem;
-      border: 1.5px solid $color-border;
+      border: 1.5px solid var(--color-border);
       border-radius: $border-radius;
       font-size: 0.88rem;
-      color: $color-text;
-      background: $color-surface;
+      color: var(--color-text);
+      background: var(--color-surface);
       transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
 
       &:hover {
-        border-color: $color-accent;
-        box-shadow: 0 0 0 3px rgba($color-accent, 0.1);
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.1);
         transform: translateY(-1px);
         text-decoration: none;
       }
@@ -658,10 +658,10 @@
       align-items: center;
       gap: 0.35rem;
       font-size: 0.82rem;
-      color: $color-text-light;
+      color: var(--color-text-light);
 
       &:hover {
-        color: $color-accent;
+        color: var(--color-accent);
         text-decoration: none;
       }
     }
@@ -673,12 +673,12 @@
   align-items: center;
   gap: 0.25rem;
   font-size: 0.82rem;
-  color: $color-accent;
+  color: var(--color-accent);
   margin-left: 0.5rem;
 
   &:hover {
     text-decoration: none;
-    color: $color-primary-light;
+    color: var(--color-primary-light);
   }
 }
 
@@ -707,25 +707,25 @@
   }
 
   &--primary {
-    background: $color-accent;
-    color: #fff;
-    box-shadow: 0 2px 8px rgba($color-accent, 0.25);
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    box-shadow: 0 2px 8px rgba(var(--color-accent-rgb), 0.25);
 
     &:hover {
-      background: $color-accent-light;
-      color: #fff;
-      box-shadow: 0 4px 16px rgba($color-accent, 0.3);
+      background: var(--color-accent-light);
+      color: var(--color-on-accent);
+      box-shadow: 0 4px 16px rgba(var(--color-accent-rgb), 0.3);
     }
   }
 
   &--secondary {
-    background: $color-surface;
-    color: $color-text;
-    border: 1.5px solid $color-border;
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1.5px solid var(--color-border);
 
     &:hover {
-      border-color: $color-accent;
-      color: $color-accent;
+      border-color: var(--color-accent);
+      color: var(--color-accent);
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     }
   }
@@ -734,7 +734,7 @@
 // ─── Result count ───
 .result-count {
   font-size: 0.82rem;
-  color: $color-text-light;
+  color: var(--color-text-light);
   margin-bottom: 0.85rem;
   font-style: italic;
 }
@@ -744,17 +744,34 @@ noscript .club-list {
   margin-top: 1rem;
 }
 
-// ─── Leaflet popup overrides ───
+// ─── Leaflet popup overrides (must override Leaflet CSS loaded after main.css) ───
 .leaflet-popup-content-wrapper {
+  background: var(--color-surface) !important;
+  color: var(--color-text) !important;
   border-radius: $border-radius !important;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08) !important;
-  border: 1.5px solid $color-border;
+  box-shadow: 0 6px 24px var(--shadow-card) !important;
+  border: 1.5px solid var(--color-border);
 }
 
 .leaflet-popup-content {
   margin: 0.75rem 1rem;
   min-width: 260px;
   font-family: $font-body;
+  color: inherit !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--color-surface) !important;
+  box-shadow: 0 3px 14px var(--shadow-card) !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: var(--color-text-light) !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover,
+.leaflet-container a.leaflet-popup-close-button:focus {
+  color: var(--color-text) !important;
 }
 
 .popup-card {
@@ -762,13 +779,13 @@ noscript .club-list {
   flex-direction: column;
   gap: 0.5rem;
   text-decoration: none;
-  color: $color-text;
+  color: var(--color-text);
 
   &:hover {
     text-decoration: none;
 
     .popup-name {
-      color: $color-accent;
+      color: var(--color-accent);
     }
   }
 
@@ -787,7 +804,7 @@ noscript .club-list {
       border-radius: 6px;
       object-fit: contain;
       display: block;
-      border: 1px solid $color-border;
+      border: 1px solid var(--color-border);
     }
   }
 
@@ -799,7 +816,7 @@ noscript .club-list {
   .popup-name {
     font-weight: 600;
     font-size: 0.92rem;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: 0.1rem;
     transition: color 0.15s;
   }
@@ -809,7 +826,7 @@ noscript .club-list {
     align-items: center;
     gap: 0.3rem;
     font-size: 0.78rem;
-    color: $color-text-light;
+    color: var(--color-text-light);
 
     svg {
       width: 12px;
@@ -830,24 +847,24 @@ noscript .club-list {
 .marker-cluster-small,
 .marker-cluster-medium,
 .marker-cluster-large {
-  background-color: rgba($color-accent, 0.2);
+  background-color: rgba(var(--color-accent-rgb), 0.2);
 
   div {
-    background-color: $color-accent;
-    color: #fff;
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
     font-weight: 600;
     font-family: $font-body;
   }
 }
 
 .marker-cluster-small div {
-  background-color: $color-accent;
+  background-color: var(--color-accent);
 }
 
 .marker-cluster-medium div {
-  background-color: darken($color-accent, 5%);
+  background-color: var(--color-accent-cluster-mid);
 }
 
 .marker-cluster-large div {
-  background-color: darken($color-accent, 10%);
+  background-color: var(--color-accent-cluster-large);
 }

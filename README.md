@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="assets/meeple-map-icon.svg" alt="BoardGameClubs.uk" width="120">
+<img src="assets/meeple-map-icon.svg" alt="botc-events.uk" width="120">
 
-# BoardGameClubs.uk
+# botc-events.uk
 
 **Find your nearest board game club in the UK.**
 
@@ -13,7 +13,7 @@ A community-built directory powered by an interactive map.
 [![MIT License](https://img.shields.io/badge/License-MIT-green)](#license)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange)](https://boardgameclubs.uk/contribute/)
 
-[Live Site](https://boardgameclubs.uk) · [Add a Club](https://boardgameclubs.uk/contribute/) · [Report a Bug](https://github.com/BoardGameClubs/BoardGameClubs_Web/issues/new)
+[Live Site](https://botc-events.uk) · [Add a Club](https://botc-events.uk/contribute/) · [Report a Bug](https://github.com/chizmeeple/botc-events.uk/issues/new)
 
 </div>
 
@@ -21,7 +21,7 @@ A community-built directory powered by an interactive map.
 
 ## What is this?
 
-BoardGameClubs.uk helps people find board game clubs near them. Search by postcode, browse the map, or filter by day and distance. Every club listing is maintained by the community through GitHub.
+botc-events.uk helps people find Blood on the Clocktower groups near them. Search by postcode, browse the map, or filter by day and distance. Every club listing is maintained by the community through GitHub.
 
 ## How it works
 
@@ -34,7 +34,7 @@ BoardGameClubs.uk helps people find board game clubs near them. Search by postco
 
 See the [contribute page](https://boardgameclubs.uk/contribute/) for a full guide on adding a new club or updating an existing listing.
 
-Not comfortable with GitHub? [Open an issue](https://github.com/BoardGameClubs/BoardGameClubs_Web/issues/new) with your club's details and we'll add it for you.
+Not comfortable with GitHub? [Open an issue](https://github.com/chizmeeple/botc-events.uk/issues/new) with your club's details and we'll add it for you.
 
 ## Running locally
 
@@ -51,6 +51,12 @@ Then visit `http://localhost:4000`.
 - **Leaflet**: interactive maps
 - **GitHub Pages**: hosting and deployment
 - **Lucide**: icons
+
+## Original Project
+
+This project is a copy of the
+[BoardGameClubsUK](https://github.com/BoardGameClubs/BoardGameClubsUK) project.
+Almost all of the awesome features come from the original project.
 
 ## License
 

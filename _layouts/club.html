@@ -58,7 +58,7 @@ layout: default
     </div>
     {% endif %}
     <div class="club-detail-heading-text">
-      <h1>{{ page.name }} <span class="club-location-subtitle">Board Game Club in {{ page.location.address }}</span></h1>
+      <h1>{{ page.name }} <span class="club-location-subtitle">Board Game Group in {{ page.location.address }}</span></h1>
       <div class="club-detail-meta">
         {% for d in page.days %}
           <span class="tag tag-day">{{ d }}</span>
@@ -132,7 +132,7 @@ layout: default
   </div>
 
   <div class="club-suggest-edit">
-    <a href="https://github.com/BoardGameClubs/BoardGameClubs_Web/issues/new?template=edit-club.yml&title=Edit:+{{ page.name | url_encode }}" target="_blank" rel="noopener"><i data-lucide="pencil" style="width:14px;height:14px;"></i> Suggest an edit</a>
+    <a href="https://github.com/{{ site.repository }}/issues/new?template=edit-club.yml&title=Edit:+{{ page.name | url_encode }}" target="_blank" rel="noopener"><i data-lucide="pencil" style="width:14px;height:14px;"></i> Suggest an edit</a>
   </div>
 </div>
 
@@ -142,12 +142,19 @@ layout: default
         crossorigin=""></script>
 <script>
   (function() {
+    var lightOpts = { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>', maxZoom: 19, subdomains: 'abcd' };
+    var darkOpts = { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>', maxZoom: 19, subdomains: 'abcd' };
+    var tiles = { light: { url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', opts: lightOpts }, dark: { url: 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png', opts: darkOpts } };
+    var theme = document.documentElement.getAttribute('data-theme') || 'dark';
     var map = L.map('detail-map').setView([{{ page.location.lat }}, {{ page.location.lng }}], 15);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
-      maxZoom: 19,
-      subdomains: 'abcd'
-    }).addTo(map);
+    var initial = tiles[theme] || tiles.dark;
+    var tileLayer = L.tileLayer(initial.url, initial.opts).addTo(map);
+    document.addEventListener('themechange', function(e) {
+      var t = (e.detail && e.detail.theme) || document.documentElement.getAttribute('data-theme') || 'dark';
+      map.removeLayer(tileLayer);
+      var next = tiles[t] || tiles.dark;
+      tileLayer = L.tileLayer(next.url, next.opts).addTo(map);
+    });
     L.marker([{{ page.location.lat }}, {{ page.location.lng }}]).addTo(map)
       .bindPopup('<strong>{{ page.location.name | escape }}</strong><br>{{ page.location.address | escape }}');
   })();
