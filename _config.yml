@@ -4,6 +4,8 @@ description: >-
   directory of board game groups with an interactive map.
 url: "https://botc-events.uk"
 locale: "en_GB"
+# With a custom domain (botc-events.uk) the site is served at the root, so baseurl must be "".
+# If you remove the custom domain, set baseurl: "/botc-events.uk" so chizmeeple.github.io/botc-events.uk/ works.
 baseurl: ""
 repository: "BoardGameClubs/BoardGameClubs_Web"
 og_image: /assets/og.png
