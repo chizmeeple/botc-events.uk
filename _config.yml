@@ -1,8 +1,8 @@
-title: Clocktower Groups UK
+title: botc-events UK
 description: >-
   Find your nearest Blood on the Clocktower group in the UK. A free, community-maintained
   directory of board game groups with an interactive map.
-url: "https://example.com"
+url: "https://botc-events.uk"
 locale: "en_GB"
 baseurl: ""
 repository: "BoardGameClubs/BoardGameClubs_Web"

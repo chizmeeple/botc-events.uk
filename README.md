@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="assets/meeple-map-icon.svg" alt="BoardGameClubs.uk" width="120">
+<img src="assets/meeple-map-icon.svg" alt="botc-events.uk" width="120">
 
-# BoardGameClubs.uk
+# botc-events.uk
 
 **Find your nearest board game club in the UK.**
 
@@ -21,7 +21,7 @@ A community-built directory powered by an interactive map.
 
 ## What is this?
 
-BoardGameClubs.uk helps people find board game clubs near them. Search by postcode, browse the map, or filter by day and distance. Every club listing is maintained by the community through GitHub.
+botc-events.uk helps people find Blood on the Clocktower groups near them. Search by postcode, browse the map, or filter by day and distance. Every club listing is maintained by the community through GitHub.
 
 ## How it works
 
