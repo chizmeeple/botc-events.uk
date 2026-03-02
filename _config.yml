@@ -25,6 +25,9 @@ defaults:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-target-blank
+  - jekyll-last-modified-at
+  - jekyll-relative-links
 
 exclude:
   - Gemfile

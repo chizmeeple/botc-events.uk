@@ -1,7 +1,7 @@
-name: Add a Club
+name: Add a Group
 description: Submit your Blood on the Clocktower group to be added to the directory
-title: "Add club: "
-labels: ["new club"]
+title: "Add group: REPLACE_WITH_GROUP_NAME"
+labels: ["new group"]
 body:
   - type: markdown
     attributes:
@@ -12,7 +12,7 @@ body:
     id: name
     attributes:
       label: Club name
-      placeholder: e.g. Wakefield Warriors
+      placeholder: e.g. Unlucky Villagers
     validations:
       required: true
 
