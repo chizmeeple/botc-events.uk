@@ -10,6 +10,8 @@ baseurl: ""
 repository: "chizmeeple/botc-events.uk"
 og_image: /assets/og.png
 
+goatcounter_domain: botc-events-uk
+
 collections:
   clubs:
     output: true
