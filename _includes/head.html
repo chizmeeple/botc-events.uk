@@ -7,13 +7,13 @@
   })();
 </script>
 {% if page.layout == "club" %}
-  <title>{{ page.name }} | Board Game Club | {{ site.title }}</title>
+  <title>{{ page.name }} | Board Game Group | {{ site.title }}</title>
   <meta name="description" content="{{ page.description | strip_html | truncate: 160 }}">
 {% elsif page.title %}
   <title>{{ page.title }} | {{ site.title }}</title>
 {% else %}
-  <title>{{ site.title }} | Find Board Game Clubs Near You</title>
-  <meta name="description" content="Find your nearest board game club across the UK. A free, community-maintained directory with an interactive map.">
+  <title>{{ site.title }} | Find Board Game Groups Near You</title>
+  <meta name="description" content="Find your nearest board game group across the UK. A free, community-maintained directory with an interactive map.">
 {% endif %}
 <link rel="icon" type="image/png" href="{{ '/assets/favico.png' | relative_url }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">

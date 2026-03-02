@@ -1,124 +1,232 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
-<head>
-  {% include head.html %}
-</head>
-<body>
-  <header class="site-header site-header--home">
-    <div class="header-inner">
-      <a href="{{ '/' | relative_url }}" class="site-brand">
-        <img src="{{ '/assets/meeple-map-icon.svg' | relative_url }}" alt="" class="site-logo">
-        <div class="site-brand-text">
-          <span class="site-title">BoardGameClubs<span class="site-title-tld">.uk</span></span>
-          <span class="site-tagline">Find your club from over {{ site.clubs.size }}+ clubs across the UK</span>
-        </div>
-      </a>
-      <div class="header-search">
-        <div class="search-bar">
-          <i data-lucide="search" class="search-icon"></i>
-          <input type="text" class="search-input" id="search-input" placeholder="Search by postcode, club name, or location..." autocomplete="off">
-          <div class="location-suggestions" id="location-suggestions"></div>
-        </div>
-        <button class="locate-btn locate-btn--header" id="locate-btn-header" type="button">
-          <i data-lucide="crosshair" style="width:14px;height:14px;"></i>
-          <span>Use my location</span>
-        </button>
-      </div>
-      <nav>
-        <button type="button" class="nav-theme-toggle" id="theme-toggle" aria-label="Switch to light theme" title="Switch to light theme"><i data-lucide="moon"></i></button>
-        <a href="{{ '/' | relative_url }}">Map</a>
-        <a href="{{ '/about' | relative_url }}">About</a>
-        <a href="{{ '/contribute' | relative_url }}" class="nav-cta">+ Add a Club</a>
-        <a href="https://github.com/BoardGameClubs/BoardGameClubs_Web" target="_blank" rel="noopener" class="nav-github" aria-label="GitHub"><i data-lucide="github"></i></a>
-      </nav>
-    </div>
-  </header>
-  <main class="page-content">
-    <div class="home-layout">
-      <div class="map-container">
-        <div id="map"></div>
-      </div>
-      <div class="sidebar" id="sidebar">
-        <div class="drawer-handle" id="drawer-handle"><i data-lucide="chevron-up" class="drawer-chevron"></i></div>
-        <div class="filter-bar">
-          <div class="search-bar sidebar-search">
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    <header class="site-header site-header--home">
+      <div class="header-inner">
+        <a href="{{ '/' | relative_url }}" class="site-brand">
+          <img
+            src="{{ '/assets/meeple-map-icon.svg' | relative_url }}"
+            alt=""
+            class="site-logo"
+          />
+          <div class="site-brand-text">
+            <span class="site-title"
+              >ClocktowerGroups<span class="site-title-tld">.uk</span></span
+            >
+            <span class="site-tagline"
+              >Find your village from groups across the UK</span
+            >
+          </div>
+        </a>
+        <div class="header-search">
+          <div class="search-bar">
             <i data-lucide="search" class="search-icon"></i>
-            <input type="text" class="search-input" id="search-input-mobile" placeholder="Search by postcode, club name, or location..." autocomplete="off">
-            <div class="location-suggestions" id="location-suggestions-mobile"></div>
+            <input
+              type="text"
+              class="search-input"
+              id="search-input"
+              placeholder="Search by postcode, group name, or location..."
+              autocomplete="off"
+            />
+            <div class="location-suggestions" id="location-suggestions"></div>
           </div>
-          <div class="filter-row">
-            <div class="multi-select" id="day-filter">
-              <button class="multi-select-toggle filter-select" type="button" aria-haspopup="listbox" aria-expanded="false">
-                <span class="multi-select-label">All days</span>
-              </button>
-              <div class="multi-select-dropdown" role="listbox" aria-label="Filter by day">
-                <label class="multi-select-option" data-day="Monday"><input type="checkbox" value="Monday"><span class="multi-select-check"></span>Monday</label>
-                <label class="multi-select-option" data-day="Tuesday"><input type="checkbox" value="Tuesday"><span class="multi-select-check"></span>Tuesday</label>
-                <label class="multi-select-option" data-day="Wednesday"><input type="checkbox" value="Wednesday"><span class="multi-select-check"></span>Wednesday</label>
-                <label class="multi-select-option" data-day="Thursday"><input type="checkbox" value="Thursday"><span class="multi-select-check"></span>Thursday</label>
-                <label class="multi-select-option" data-day="Friday"><input type="checkbox" value="Friday"><span class="multi-select-check"></span>Friday</label>
-                <label class="multi-select-option" data-day="Saturday"><input type="checkbox" value="Saturday"><span class="multi-select-check"></span>Saturday</label>
-                <label class="multi-select-option" data-day="Sunday"><input type="checkbox" value="Sunday"><span class="multi-select-check"></span>Sunday</label>
-                <label class="multi-select-option" data-day="Various"><input type="checkbox" value="Various"><span class="multi-select-check"></span>Various</label>
-              </div>
-            </div>
-            <select class="filter-select" id="distance-filter" disabled>
-              <option value="">Any distance</option>
-              <option value="5">Within 5 miles</option>
-              <option value="10">Within 10 miles</option>
-              <option value="25">Within 25 miles</option>
-              <option value="50">Within 50 miles</option>
-            </select>
-            <button class="locate-btn" id="locate-btn" type="button">
-              <i data-lucide="crosshair" style="width:14px;height:14px;"></i>
-              <span>Use my location</span>
-            </button>
-          </div>
-          <div class="location-pill" id="location-pill" style="display:none;">
-            <i data-lucide="map-pin" style="width:12px;height:12px;"></i>
-            <span id="location-pill-label"></span>
-            <button type="button" id="location-clear" aria-label="Clear location"><i data-lucide="x" style="width:12px;height:12px;"></i></button>
-          </div>
+          <button
+            class="locate-btn locate-btn--header"
+            id="locate-btn-header"
+            type="button"
+          >
+            <i data-lucide="crosshair" style="width: 14px; height: 14px"></i>
+            <span>Use my location</span>
+          </button>
         </div>
-        <div class="result-count" id="result-count"></div>
-        <div class="club-list" id="club-list"></div>
-
-        <noscript>
-          <div class="club-list">
-            {% for club in site.clubs %}
-              {% include club-card.html club=club %}
-            {% endfor %}
-          </div>
-        </noscript>
+        <nav>
+          <button
+            type="button"
+            class="nav-theme-toggle"
+            id="theme-toggle"
+            aria-label="Switch to light theme"
+            title="Switch to light theme"
+          >
+            <i data-lucide="moon"></i>
+          </button>
+          <a href="{{ '/' | relative_url }}">Map</a>
+          <a href="{{ '/about' | relative_url }}">About</a>
+          <a href="{{ '/contribute' | relative_url }}" class="nav-cta"
+            >+ Add a Group</a
+          >
+          <a
+            href="https://github.com/BoardGameClubs/BoardGameClubs_Web"
+            target="_blank"
+            rel="noopener"
+            class="nav-github"
+            aria-label="GitHub"
+            ><i data-lucide="github"></i
+          ></a>
+        </nav>
       </div>
-    </div>
-  </main>
+    </header>
+    <main class="page-content">
+      <div class="home-layout">
+        <div class="map-container">
+          <div id="map"></div>
+        </div>
+        <div class="sidebar" id="sidebar">
+          <div class="drawer-handle" id="drawer-handle">
+            <i data-lucide="chevron-up" class="drawer-chevron"></i>
+          </div>
+          <div class="filter-bar">
+            <div class="search-bar sidebar-search">
+              <i data-lucide="search" class="search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                id="search-input-mobile"
+                placeholder="Search by postcode, group name, or location..."
+                autocomplete="off"
+              />
+              <div
+                class="location-suggestions"
+                id="location-suggestions-mobile"
+              ></div>
+            </div>
+            <div class="filter-row">
+              <div class="multi-select" id="day-filter">
+                <button
+                  class="multi-select-toggle filter-select"
+                  type="button"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                >
+                  <span class="multi-select-label">All days</span>
+                </button>
+                <div
+                  class="multi-select-dropdown"
+                  role="listbox"
+                  aria-label="Filter by day"
+                >
+                  <label class="multi-select-option" data-day="Monday"
+                    ><input type="checkbox" value="Monday" /><span
+                      class="multi-select-check"
+                    ></span
+                    >Monday</label
+                  >
+                  <label class="multi-select-option" data-day="Tuesday"
+                    ><input type="checkbox" value="Tuesday" /><span
+                      class="multi-select-check"
+                    ></span
+                    >Tuesday</label
+                  >
+                  <label class="multi-select-option" data-day="Wednesday"
+                    ><input type="checkbox" value="Wednesday" /><span
+                      class="multi-select-check"
+                    ></span
+                    >Wednesday</label
+                  >
+                  <label class="multi-select-option" data-day="Thursday"
+                    ><input type="checkbox" value="Thursday" /><span
+                      class="multi-select-check"
+                    ></span
+                    >Thursday</label
+                  >
+                  <label class="multi-select-option" data-day="Friday"
+                    ><input type="checkbox" value="Friday" /><span
+                      class="multi-select-check"
+                    ></span
+                    >Friday</label
+                  >
+                  <label class="multi-select-option" data-day="Saturday"
+                    ><input type="checkbox" value="Saturday" /><span
+                      class="multi-select-check"
+                    ></span
+                    >Saturday</label
+                  >
+                  <label class="multi-select-option" data-day="Sunday"
+                    ><input type="checkbox" value="Sunday" /><span
+                      class="multi-select-check"
+                    ></span
+                    >Sunday</label
+                  >
+                  <label class="multi-select-option" data-day="Various"
+                    ><input type="checkbox" value="Various" /><span
+                      class="multi-select-check"
+                    ></span
+                    >Various</label
+                  >
+                </div>
+              </div>
+              <select class="filter-select" id="distance-filter" disabled>
+                <option value="">Any distance</option>
+                <option value="5">Within 5 miles</option>
+                <option value="10">Within 10 miles</option>
+                <option value="25">Within 25 miles</option>
+                <option value="50">Within 50 miles</option>
+              </select>
+              <button class="locate-btn" id="locate-btn" type="button">
+                <i
+                  data-lucide="crosshair"
+                  style="width: 14px; height: 14px"
+                ></i>
+                <span>Use my location</span>
+              </button>
+            </div>
+            <div class="location-pill" id="location-pill" style="display: none">
+              <i data-lucide="map-pin" style="width: 12px; height: 12px"></i>
+              <span id="location-pill-label"></span>
+              <button
+                type="button"
+                id="location-clear"
+                aria-label="Clear location"
+              >
+                <i data-lucide="x" style="width: 12px; height: 12px"></i>
+              </button>
+            </div>
+          </div>
+          <div class="result-count" id="result-count"></div>
+          <div class="club-list" id="club-list"></div>
 
-  <script>
-    window.GameClub = { baseurl: "{{ site.baseurl }}" };
-    window.GameClub.applyImgBg = function (img) {
-      try {
-        var c = document.createElement("canvas");
-        c.width = img.naturalWidth;
-        c.height = img.naturalHeight;
-        var ctx = c.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-        var d = ctx.getImageData(0, 0, 1, 1).data;
-        img.style.backgroundColor = "rgb(" + d[0] + "," + d[1] + "," + d[2] + ")";
-      } catch (e) {}
-    };
-  </script>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-          crossorigin=""></script>
-  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-  <script src="{{ '/assets/js/map.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
-  <script src="{{ '/assets/js/search.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
-  <script src="{{ '/assets/js/location.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
-  <script src="{{ '/assets/js/drawer.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
-  <script src="{{ '/assets/js/app.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>lucide.createIcons();</script>
-  {% include theme-toggle-script.html %}
-</body>
+          <noscript>
+            <div class="club-list">
+              {% for club in site.clubs %} {% include club-card.html club=club
+              %} {% endfor %}
+            </div>
+          </noscript>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      window.GameClub = { baseurl: "{{ site.baseurl }}" };
+      window.GameClub.applyImgBg = function (img) {
+        try {
+          var c = document.createElement("canvas");
+          c.width = img.naturalWidth;
+          c.height = img.naturalHeight;
+          var ctx = c.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+          var d = ctx.getImageData(0, 0, 1, 1).data;
+          img.style.backgroundColor =
+            "rgb(" + d[0] + "," + d[1] + "," + d[2] + ")";
+        } catch (e) {}
+      };
+    </script>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="{{ '/assets/js/map.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/assets/js/search.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/assets/js/location.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/assets/js/drawer.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/assets/js/app.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+    {% include theme-toggle-script.html %}
+  </body>
 </html>
