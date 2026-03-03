@@ -14,7 +14,7 @@ require "yaml"
 
 TZ = TZInfo::Timezone.get("Europe/London")
 LOOKAHEAD_DAYS = 180
-UPCOMING_PER_CLUB = 3
+UPCOMING_PER_CLUB = 4
 ALL_UPCOMING_LIMIT = 100
 
 WDAY_MAP = {
