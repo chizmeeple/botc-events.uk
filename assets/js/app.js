@@ -88,7 +88,26 @@
   function update() {
     var filtered = search.getFiltered();
     map.addClubs(filtered);
-    map.fitToMarkers();
+
+    if (
+      filtered.length === 1 &&
+      search.userLat === null &&
+      search.userLng === null
+    ) {
+      var club = filtered[0];
+      if (
+        club.location &&
+        club.location.lat &&
+        club.location.lng
+      ) {
+        map.focusOn(club.location.lat, club.location.lng);
+      } else {
+        map.fitToMarkers();
+      }
+    } else {
+      map.fitToMarkers();
+    }
+
     renderCards(filtered);
     updateResultCount(filtered.length, search.allClubs.length);
     writeUrlParams();
