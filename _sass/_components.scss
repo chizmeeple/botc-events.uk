@@ -607,6 +607,12 @@
     }
   }
 
+  .upcoming-events-empty {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+  }
+
   .upcoming-events-list {
     list-style: none;
     margin: 0;
