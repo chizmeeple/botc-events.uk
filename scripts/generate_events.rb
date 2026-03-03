@@ -111,14 +111,19 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil)
 
     occurrences = expand_recurrence(startdate, starttime, endtime, rrule, now, range_end)
 
+    signup = ev["signup"].to_s.strip
+    signup = nil if signup.empty?
+
     occurrences.each do |start_t, end_t|
       next if start_t < now
-      all << {
+      occ = {
         "eventname" => eventname,
         "start_time" => start_t.iso8601,
         "end_time" => end_t&.iso8601,
         "location" => location,
       }
+      occ["signup"] = signup if signup
+      all << occ
     end
   end
 

@@ -188,6 +188,12 @@ layout: default
         {% if occ.location.name %}
         <div class="upcoming-event-card__venue">{{ occ.location.name }}</div>
         {% endif %}
+        {% if occ.location.cost %}
+        <div class="upcoming-event-card__cost">{{ occ.location.cost }}</div>
+        {% endif %}
+        {% if occ.signup %}
+        <a href="{{ occ.signup }}" target="_blank" rel="noopener" class="upcoming-event-card__signup">Signup</a>
+        {% endif %}
       </li>
       {% endfor %}
     </ul>
