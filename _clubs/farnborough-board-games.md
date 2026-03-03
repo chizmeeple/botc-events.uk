@@ -20,4 +20,17 @@ description: >-
   welcoming group of regulars and newcomers alike. Whether you're completely new
   to the hobby or you've got shelves full of cardboard at home, you'll fit in
   just fine.
+events:
+  recurring:
+    - eventname: Farnborough Clocktower
+      startdate: 2026-02-10
+      starttime: 1850
+      endtime: 2200
+      rrule: "FREQ=MONTHLY;BYDAY=2TU,4TU"
+      location:
+        name: "Monkey Puzzle"
+        address: "Monkey Puzzle (Brewer's Fayre), Farnborough, GU14 0LE"
+        lat: 51.288782720425026
+        lng: -0.7786554104110263
+        cost: "Free"
 ---
