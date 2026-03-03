@@ -186,7 +186,19 @@ layout: default
           {{ occ.start_time | date: "%A, %d %B %Y" }}, {{ occ.start_time | date: "%H:%M" }}{% if occ.end_time %}–{{ occ.end_time | date: "%H:%M" }}{% endif %}
         </div>
         {% if occ.location.name %}
-        <div class="upcoming-event-card__venue">{{ occ.location.name }}</div>
+        <div class="upcoming-event-card__venue">
+          {{ occ.location.name }}
+          {% if occ.location.lat and occ.location.lng %}
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination={{ occ.location.lat }},{{ occ.location.lng }}"
+            target="_blank"
+            rel="noopener"
+            class="directions-link"
+            ><i data-lucide="navigation" style="width: 13px; height: 13px"></i>
+            Directions</a
+          >
+          {% endif %}
+        </div>
         {% endif %}
         {% if occ.location.cost or occ.signup %}
         <div class="upcoming-event-card__footer">
