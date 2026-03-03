@@ -647,15 +647,22 @@
     color: var(--color-text-light);
   }
 
+  .upcoming-event-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+
   .upcoming-event-card__cost {
     font-size: 0.85rem;
     color: var(--color-text-light);
-    margin-top: 0.25rem;
   }
 
   .upcoming-event-card__signup {
     display: inline-block;
-    margin-top: 0.6rem;
     padding: 0.35rem 0.7rem;
     font-size: 0.8rem;
     font-weight: 500;
