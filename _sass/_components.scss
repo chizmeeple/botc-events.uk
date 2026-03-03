@@ -72,7 +72,9 @@
   outline: none;
   background: var(--color-surface);
   color: var(--color-text);
-  transition: border-color 0.25s, box-shadow 0.25s;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s;
 
   &:focus {
     border-color: var(--color-accent);
@@ -167,7 +169,9 @@
   border: 1.5px solid var(--color-border);
   border-radius: 3px;
   flex-shrink: 0;
-  transition: background 0.15s, border-color 0.15s;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
 
   input:checked + & {
     background: var(--color-tag-day);
@@ -227,7 +231,11 @@
   font-size: 0.8rem;
   white-space: nowrap;
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.15s;
   margin-left: auto;
 
   svg {
@@ -367,7 +375,10 @@
   border-radius: $border-radius;
   padding: 0.9rem 1rem;
   cursor: pointer;
-  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+  transition:
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.2s ease;
   animation: fadeSlideIn 0.35s ease both;
 
   // Stagger entrance: JS-rendered cards won't get nth-child, but noscript ones will
@@ -578,7 +589,6 @@
     }
   }
 
-
   .detail-map {
     width: 100%;
     height: 280px;
@@ -615,11 +625,18 @@
   }
 
   .club-description {
-    line-height: 1.75;
+    line-height: 1.5;
     color: var(--color-text);
+
+    h2 {
+      font-size: 1.1rem;
+      margin: 0 0 0.6rem;
+    }
 
     p {
       margin-bottom: 1rem;
+      margin-left: 0.25rem;
+      white-space: pre-line;
     }
   }
 
@@ -639,7 +656,10 @@
       font-size: 0.88rem;
       color: var(--color-text);
       background: var(--color-surface);
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        transform 0.15s;
 
       &:hover {
         border-color: var(--color-accent);
@@ -699,7 +719,9 @@
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  transition: transform 0.15s, box-shadow 0.2s;
+  transition:
+    transform 0.15s,
+    box-shadow 0.2s;
 
   &:hover {
     transform: translateY(-2px);
