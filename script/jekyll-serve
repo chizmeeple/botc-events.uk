@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# do our best to source the correct chruby version
+if [[ -d "/opt/homebrew/opt/chruby/share/chruby/" ]]; then
+    # Ensure PROMPT_COMMAND is defined so chruby's hooks don't trip nounset
+    if [[ -z "${PROMPT_COMMAND+x}" ]]; then
+        PROMPT_COMMAND=""
+    fi
+
+    source "/opt/homebrew/opt/chruby/share/chruby/chruby.sh"
+    source "/opt/homebrew/opt/chruby/share/chruby/auto.sh"
+fi
+
+if [ -f .ruby-version ]; then
+    chruby "$(cat .ruby-version)"
+fi
+
+bundle exec jekyll serve
