@@ -186,7 +186,13 @@ layout: default
       <li class="upcoming-event-card">
         <div class="upcoming-event-card__name">{{ occ.eventname }}</div>
         <div class="upcoming-event-card__datetime">
-          {{ occ.start_time | date: "%A, %d %B %Y" }}, {{ occ.start_time | date: "%H:%M" }}{% if occ.end_time %}–{{ occ.end_time | date: "%H:%M" }}{% endif %}
+          {% assign start_time_str = occ.start_time | date: "%H:%M" %}
+          {% if occ.end_time %}
+          {% assign end_time_str = occ.end_time | date: "%H:%M" %}
+          {{ occ.start_time | date: "%A, %d %B %Y" }}, {{ start_time_str }}{% if start_time_str != end_time_str %}–{{ end_time_str }}{% else %} start{% endif %}
+          {% else %}
+          {{ occ.start_time | date: "%A, %d %B %Y" }}, {{ start_time_str }} start
+          {% endif %}
         </div>
         {% if occ.location.name %}
         <div class="upcoming-event-card__venue">
