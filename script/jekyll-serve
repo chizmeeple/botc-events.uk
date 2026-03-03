@@ -15,4 +15,6 @@ if [ -f .ruby-version ]; then
     chruby "$(cat .ruby-version)"
 fi
 
+# Generate events data so club pages show upcoming events (same as deploy workflow)
+ruby scripts/generate_events.rb 2>/dev/null || true
 bundle exec jekyll serve

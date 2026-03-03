@@ -12,3 +12,6 @@ CLAUDE.md
 .env
 scripts/geocode.rb
 scripts/import_clubs.py
+
+# Generated at build time by scripts/generate_events.rb (and in deploy workflow)
+_data/rendered_events.json

@@ -145,6 +145,27 @@ layout: default
     {% endif %}
   </dl>
 
+  {% if site.data.rendered_events %}
+    {% assign slug = page.slug | default: page.id | split: "/" | last %}
+    {% assign club_events = site.data.rendered_events.by_slug[slug] %}
+    {% if club_events and club_events.upcoming.size > 0 %}
+  <div class="club-upcoming-events">
+    <h2>Upcoming events</h2>
+    <ul class="upcoming-events-list">
+      {% for occ in club_events.upcoming %}
+      <li class="upcoming-event-item">
+        <strong>{{ occ.eventname }}</strong>
+        — {{ occ.start_time | date: "%A, %d %B %Y" }}, {{ occ.start_time | date: "%H:%M" }}{% if occ.end_time %}–{{ occ.end_time | date: "%H:%M" }}{% endif %}
+        {% if occ.location.name %}
+        <span class="upcoming-event-venue">at {{ occ.location.name }}</span>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+    {% endif %}
+  {% endif %}
+
   <div class="club-description">
     <h2>About this group</h2>
     <p>{{ page.description }}</p>
