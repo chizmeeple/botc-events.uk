@@ -145,6 +145,33 @@ layout: default
     {% endif %}
   </dl>
 
+  <div class="club-links">
+    {% if page.website and page.website != "" %}
+    <a href="{{ page.website }}" target="_blank" rel="noopener"
+      ><i data-lucide="globe" style="width: 16px; height: 16px"></i> Website</a
+    >
+    {% endif %} {% if page.meetup and page.meetup != "" %}
+    <a href="{{ page.meetup }}" target="_blank" rel="noopener"
+      ><i data-lucide="calendar" style="width: 16px; height: 16px"></i>
+      Meetup</a
+    >
+    {% endif %} {% if page.facebook and page.facebook != "" %}
+    <a href="{{ page.facebook }}" target="_blank" rel="noopener"
+      ><i data-lucide="facebook" style="width: 16px; height: 16px"></i>
+      Facebook</a
+    >
+    {% endif %} {% if page.discord and page.discord != "" %}
+    <a href="{{ page.discord }}" target="_blank" rel="noopener"
+      ><i data-lucide="message-circle" style="width: 16px; height: 16px"></i>
+      Discord</a
+    >
+    {% endif %} {% if page.bgg and page.bgg != "" %}
+    <a href="{{ page.bgg }}" target="_blank" rel="noopener"
+      ><i data-lucide="dice-5" style="width: 16px; height: 16px"></i> BGG</a
+    >
+    {% endif %}
+  </div>
+
   {% if site.data.rendered_events %}
     {% assign slug = page.slug | default: page.id | split: "/" | last %}
     {% assign club_events = site.data.rendered_events.by_slug[slug] %}
@@ -172,33 +199,6 @@ layout: default
     <h2>About this group</h2>
     <p>{{ page.description }}</p>
     {{ content }}
-  </div>
-
-  <div class="club-links">
-    {% if page.website and page.website != "" %}
-    <a href="{{ page.website }}" target="_blank" rel="noopener"
-      ><i data-lucide="globe" style="width: 16px; height: 16px"></i> Website</a
-    >
-    {% endif %} {% if page.meetup and page.meetup != "" %}
-    <a href="{{ page.meetup }}" target="_blank" rel="noopener"
-      ><i data-lucide="calendar" style="width: 16px; height: 16px"></i>
-      Meetup</a
-    >
-    {% endif %} {% if page.facebook and page.facebook != "" %}
-    <a href="{{ page.facebook }}" target="_blank" rel="noopener"
-      ><i data-lucide="facebook" style="width: 16px; height: 16px"></i>
-      Facebook</a
-    >
-    {% endif %} {% if page.discord and page.discord != "" %}
-    <a href="{{ page.discord }}" target="_blank" rel="noopener"
-      ><i data-lucide="message-circle" style="width: 16px; height: 16px"></i>
-      Discord</a
-    >
-    {% endif %} {% if page.bgg and page.bgg != "" %}
-    <a href="{{ page.bgg }}" target="_blank" rel="noopener"
-      ><i data-lucide="dice-5" style="width: 16px; height: 16px"></i> BGG</a
-    >
-    {% endif %}
   </div>
 
   <div class="club-suggest-edit">
