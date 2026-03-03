@@ -93,48 +93,13 @@ layout: default
         <span class="club-location-subtitle"
           >Blood on the Clocktower Group in {% if page.based_in and page.based_in != "" %}{{ page.based_in }}{% else %}{{ page.location.address }}{% endif %}</span
         >
-      </h1      >
+      </h1>
     </div>
   </div>
 
   {% if page.location.lat and page.location.lng %}
   <div class="detail-map" id="detail-map"></div>
   {% endif %}
-
-  <dl class="detail-info">
-    <dt>Venue</dt>
-    <dd>{{ page.location.name }}</dd>
-
-    <dt>Address</dt>
-    <dd>
-      {{ page.location.address }} {% if page.location.lat and page.location.lng
-      %}<a
-        href="https://www.google.com/maps/dir/?api=1&destination={{ page.location.lat }},{{ page.location.lng }}"
-        target="_blank"
-        rel="noopener"
-        class="directions-link"
-        ><i data-lucide="navigation" style="width: 13px; height: 13px"></i>
-        Directions</a
-      >{% endif %}
-    </dd>
-
-    <dt>{% if page.days.size > 1 %}Days{% else %}Day{% endif %}</dt>
-    <dd>{{ page.days | join: ", " }}</dd>
-
-    {% if page.time %}
-    <dt>Time</dt>
-    <dd>{{ page.time }}</dd>
-    {% endif %} {% if page.frequency %}
-    <dt>Frequency</dt>
-    <dd>{{ page.frequency }}</dd>
-    {% endif %} {% if page.cost %}
-    <dt>Cost</dt>
-    <dd>{{ page.cost }}</dd>
-    {% endif %} {% if page.age_restriction and page.age_restriction != "" %}
-    <dt>Age Restriction</dt>
-    <dd>{{ page.age_restriction }}</dd>
-    {% endif %}
-  </dl>
 
   <div class="club-links">
     {% if page.website and page.website != "" %}
