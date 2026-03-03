@@ -83,8 +83,9 @@
           popupIcon = '<div class="popup-icon-wrap"><img src="' + imgSrc + '" alt="" onload="window.GameClub.applyImgBg(this)"></div>';
         }
 
-        var venue = club.location && club.location.name
-          ? '<div class="popup-venue"><i data-lucide="map-pin"></i>' + self.escapeHtml(club.location.name) + '</div>'
+        var locationText = club.based_in || (club.location && club.location.name) || '';
+        var venue = locationText
+          ? '<div class="popup-venue"><i data-lucide="map-pin"></i>' + self.escapeHtml(locationText) + '</div>'
           : '';
 
         var popupContent =

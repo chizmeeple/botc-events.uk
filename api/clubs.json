@@ -16,6 +16,7 @@ layout: null
       "lat": {{ club.location.lat }},
       "lng": {{ club.location.lng }}
     },
+    "based_in": {{ club.based_in | jsonify }},
     "cost": {{ club.cost | jsonify }},
     "age_restriction": {{ club.age_restriction | jsonify }},
     "website": {{ club.website | jsonify }},

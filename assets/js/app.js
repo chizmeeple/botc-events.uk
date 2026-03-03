@@ -154,8 +154,9 @@
           icon = '<div class="club-icon-wrap"><img src="' + imgSrc + '" alt="" loading="lazy" onload="window.GameClub.applyImgBg(this)"></div>';
         }
 
-        var venue = club.location && club.location.name
-          ? '<div class="club-venue"><i data-lucide="map-pin"></i>' + escapeHtml(club.location.name) + "</div>"
+        var locationText = club.based_in || (club.location && club.location.name) || "";
+        var venue = locationText
+          ? '<div class="club-venue"><i data-lucide="map-pin"></i>' + escapeHtml(locationText) + "</div>"
           : "";
 
         var meta = venue
