@@ -10,9 +10,9 @@ location:
   lat: 56.1092877660701
   lng: -3.1609912317861353
 cost: "£8 / £3"
-image: ""
-website: ""
-meetup: "https://www.kirkcaldygamingsociety.co.uk/event-details/kgs-presents-blood-on-the-clocktower-with-ben-burns"
+image: "kirkcaldy-gaming-society.png"
+website: "https://www.kirkcaldygamingsociety.co.uk/event-details/kgs-presents-blood-on-the-clocktower-with-ben-burns"
+meetup: ""
 facebook: ""
 discord: ""
 bgg: ""

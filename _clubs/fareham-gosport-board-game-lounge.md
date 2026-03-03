@@ -10,7 +10,7 @@ location:
   lat: 50.8538472815163
   lng: -1.2218374796506306
 cost: "Free"
-image: ""
+image: "fareham.jpg"
 website: "https://farehamandgosportboardgamelounge.co.uk"
 meetup: ""
 facebook: "https://www.facebook.com/groups/988754058344754/"

@@ -10,7 +10,7 @@ location:
   lat: 51.26619757199509
   lng: -0.8625652146103345
 cost: "£1.50 (optional)"
-image: ""
+image: "diverse-demons.png"
 website: ""
 meetup: "https://www.meetup.com/diversedemons/"
 facebook: ""

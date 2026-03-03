@@ -10,7 +10,7 @@ location:
   lat: 52.052676
   lng: -2.699729
 cost: ""
-image: ""
+image: "herefordshire-board-gamers.jpg"
 website: "https://herefor.games/events/"
 meetup: ""
 facebook: "https://www.facebook.com/HerefordshireBoardGamers"

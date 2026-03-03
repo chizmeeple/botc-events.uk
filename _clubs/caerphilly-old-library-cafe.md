@@ -10,7 +10,7 @@ location:
   lat: 51.57802796027397
   lng: -3.224581076101536
 cost: "£2.50"
-image: ""
+image: "caerphilly-board-gamers-at-the-old-library.jpg"
 website: "https://www.theoldlibrarycaerphilly.co.uk/"
 meetup: ""
 facebook: ""
