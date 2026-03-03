@@ -209,16 +209,17 @@ layout: default
           {% endif %}
         </div>
         {% endif %}
-        {% if occ.cost or occ.signup %}
         <div class="upcoming-event-card__footer">
-          {% if occ.cost %}
-          <span class="upcoming-event-card__cost">{{ occ.cost }}</span>
-          {% endif %}
+          <span class="upcoming-event-card__footer-pills">
+            <span class="tag tag-day">{{ occ.start_time | date: "%A" }}</span>
+            {% if occ.cost %}
+            <span class="upcoming-event-card__cost">{{ occ.cost }}</span>
+            {% endif %}
+          </span>
           {% if occ.signup %}
           <a href="{{ occ.signup }}" target="_blank" rel="noopener" class="upcoming-event-card__signup">Signup</a>
           {% endif %}
         </div>
-        {% endif %}
       </li>
       {% endfor %}
     </ul>

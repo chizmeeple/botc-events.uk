@@ -662,6 +662,12 @@
     flex-wrap: wrap;
   }
 
+  .upcoming-event-card__footer-pills {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
   .upcoming-event-card__cost {
     display: inline-block;
     font-size: 0.72rem;
