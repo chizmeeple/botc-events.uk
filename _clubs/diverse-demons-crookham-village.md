@@ -35,4 +35,18 @@ description: >-
   games.
 
   New players welcome!
+events:
+  recurring:
+    - eventname: "Crookham Street Social Club"
+      signup: "https://www.meetup.com/diversedemons/"
+      cost: "£1.50 (optional)"
+      startdate: 2026-03-04
+      starttime: 1915
+      endtime: 2230
+      rrule: "FREQ=MONTHLY;BYDAY=1WE,3WE"
+      location:
+        name: "Crookham Street Social Club"
+        address: "The Street, Crookham Village, Fleet GU51 5SJ"
+        lat: 51.26619757199509
+        lng: -0.8625652146103345
 ---

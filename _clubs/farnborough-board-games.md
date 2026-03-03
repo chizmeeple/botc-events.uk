@@ -20,17 +20,28 @@ description: >-
   welcoming group of regulars and newcomers alike. Whether you're completely new
   to the hobby or you've got shelves full of cardboard at home, you'll fit in
   just fine.
+locations:
+  monkey-puzzle:
+    name: "Monkey Puzzle (Brewer's Fayre)"
+    address: "Monkey Puzzle (Brewer's Fayre), Farnborough, GU14 0LE"
+    lat: 51.288782720425026
+    lng: -0.7786554104110263
 events:
   recurring:
-    - eventname: Farnborough Clocktower
+    - eventname: Blood on the Clocktower (Beginner Friendly)
+      signup: "https://www.meetup.com/farnborough-board-games-club/"
+      cost: "Free"
       startdate: 2026-02-10
       starttime: 1850
       endtime: 2200
-      rrule: "FREQ=MONTHLY;BYDAY=2TU,4TU"
-      location:
-        name: "Monkey Puzzle"
-        address: "Monkey Puzzle (Brewer's Fayre), Farnborough, GU14 0LE"
-        lat: 51.288782720425026
-        lng: -0.7786554104110263
-        cost: "Free"
+      rrule: "FREQ=MONTHLY;BYDAY=2TU"
+      location: "monkey-puzzle"
+    - eventname: Blood on the Clocktower (Intermediate+)
+      signup: "https://www.meetup.com/farnborough-board-games-club/"
+      cost: "Free"
+      startdate: 2026-02-10
+      starttime: 1850
+      endtime: 2200
+      rrule: "FREQ=MONTHLY;BYDAY=2TU"
+      location: "monkey-puzzle"
 ---

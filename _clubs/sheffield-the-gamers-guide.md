@@ -8,7 +8,7 @@ location:
   address: "8 E Parade, Sheffield City Centre, Sheffield S1 2ET"
   lat: 53.38315240818034
   lng: -1.4684460215429047
-cost: ""
+cost: "£5"
 image: ""
 website: ""
 meetup: "https://www.meetup.com/the-gamers-guide-cafe-events/"
@@ -24,4 +24,18 @@ description: >-
   for a great evening.
 
   See you at The Gamers Guide!
+events:
+  recurring:
+    - eventname: "The Gamers Guide"
+      signup: "https://www.meetup.com/the-gamers-guide-cafe-events/"
+      cost: "£5"
+      startdate: 2026-03-01
+      starttime: 1800
+      endtime: 2200
+      rrule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=SU"
+      location:
+        name: "Gamer Guide Cafe"
+        address: "8 E Parade, Sheffield City Centre, Sheffield S1 2ET"
+        lat: 53.38315240818034
+        lng: -1.4684460215429047
 ---
