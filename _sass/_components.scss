@@ -663,8 +663,14 @@
   }
 
   .upcoming-event-card__cost {
-    font-size: 0.85rem;
-    color: var(--color-text-light);
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    background: var(--color-tag-cost);
+    color: var(--color-primary-dark);
+    letter-spacing: 0.04em;
   }
 
   .upcoming-event-card__signup {
@@ -787,6 +793,13 @@
   &:hover {
     text-decoration: none;
     color: var(--color-primary-light);
+  }
+}
+
+[data-theme="light"] {
+  .upcoming-event-card__cost {
+    background: var(--color-tag-cost-bg);
+    color: var(--color-tag-cost);
   }
 }
 
