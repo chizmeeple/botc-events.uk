@@ -169,6 +169,10 @@ layout: default
     <a href="{{ page.bgg }}" target="_blank" rel="noopener"
       ><i data-lucide="dice-5" style="width: 16px; height: 16px"></i> BGG</a
     >
+    {% endif %} {% if page.clocktracker and page.clocktracker != "" %}
+    <a href="https://clocktracker.app/community/{{ page.clocktracker }}" target="_blank" rel="noopener"
+      ><i data-lucide="clock" style="width: 16px; height: 16px"></i> Clocktracker</a
+    >
     {% endif %}
   </div>
 

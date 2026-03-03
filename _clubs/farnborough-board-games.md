@@ -16,6 +16,7 @@ meetup: "https://www.meetup.com/farnborough-board-games-club/"
 facebook: "https://www.facebook.com/groups/farnboroughboardgames/"
 discord: ""
 bgg: ""
+clocktracker: "farnborough-board-games"
 description: >-
   We've been meeting in Farnborough since 2016 and have grown into a friendly,
   welcoming group of regulars and newcomers alike. Whether you're completely new
