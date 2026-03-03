@@ -197,8 +197,8 @@ layout: default
 <script>
   (function() {
     var lightOpts = { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>', maxZoom: 19, subdomains: 'abcd' };
-    var darkOpts = { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>', maxZoom: 19, subdomains: 'abcd' };
-    var tiles = { light: { url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', opts: lightOpts }, dark: { url: 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png', opts: darkOpts } };
+    var darkOpts = { attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>', maxZoom: 20 };
+    var tiles = { light: { url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', opts: lightOpts }, dark: { url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', opts: darkOpts } };
     var theme = document.documentElement.getAttribute('data-theme') || 'dark';
     var map = L.map('detail-map').setView([{{ page.location.lat }}, {{ page.location.lng }}], 15);
     var initial = tiles[theme] || tiles.dark;
