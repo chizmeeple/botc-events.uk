@@ -112,6 +112,12 @@
       });
     },
 
+    focusOn: function (lat, lng, zoom) {
+      if (!this.map) return;
+      var targetZoom = typeof zoom === "number" ? zoom : Math.max(this.map.getZoom(), 11);
+      this.map.setView([lat, lng], targetZoom);
+    },
+
     fitToMarkers: function () {
       if (this.markers.getLayers().length > 0) {
         this.map.fitBounds(this.markers.getBounds(), { padding: [30, 30] });
