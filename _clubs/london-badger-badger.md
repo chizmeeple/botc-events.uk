@@ -1,5 +1,6 @@
 ---
 name: "Badger Badger"
+based_in: "Deptford (London)"
 days: ["Sunday"]
 time: "5pm - 9:30pm"
 frequency: "Weekly"

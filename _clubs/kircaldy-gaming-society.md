@@ -1,5 +1,6 @@
 ---
 name: "Kircaldy Gaming Society"
+based_in: "Kircaldy"
 days: ["Sunday"]
 time: "12pm - 6pm"
 frequency: "Ad Hoc"

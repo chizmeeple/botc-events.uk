@@ -1,5 +1,6 @@
 ---
 name: "Here For Games"
+based_in: "Hereford"
 days: ["Friday"]
 time: "6:30pm - 10pm"
 frequency: "Ad Hoc"

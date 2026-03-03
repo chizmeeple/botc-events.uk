@@ -1,5 +1,6 @@
 ---
 name: "Evesham Barons TGS"
+based_in: "Evesham"
 days: ["Sunday"]
 time: "10am - 4pm"
 frequency: "Ad Hoc"

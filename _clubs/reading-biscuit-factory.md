@@ -1,5 +1,6 @@
 ---
 name: "Reading Biscuit Factory"
+based_in: "Reading"
 days: ["Saturday"]
 time: "5pm - 10pm"
 frequency: "Twice monthly (1st & 3rd Saturday)"

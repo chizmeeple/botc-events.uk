@@ -1,5 +1,6 @@
 ---
 name: "Bake Battle and Roll"
+based_in: "Doncaster"
 days: ["Sunday"]
 time: "5pm - 10pm"
 frequency: "Weekly"

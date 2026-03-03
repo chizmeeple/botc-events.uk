@@ -1,5 +1,6 @@
 ---
 name: "Meeple People MCR"
+based_in: "Manchester"
 days: ["Tuesday"]
 time: "6:45pm - 10pm"
 frequency: "Twice Monthly"

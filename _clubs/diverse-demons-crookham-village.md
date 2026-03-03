@@ -1,5 +1,6 @@
 ---
 name: "Diverse Demons"
+based_in: "Crookham Village (Fleet)"
 days: ["Wednesday"]
 time: "7:15 - 10:30pm"
 frequency: "Twice monthly (1st & 3rd Wednesday)"

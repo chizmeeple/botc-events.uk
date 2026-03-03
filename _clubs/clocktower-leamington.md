@@ -1,5 +1,6 @@
 ---
 name: "Clocktower Leamington"
+based_in: "Leamington Spa"
 days: ["Tuesday", "Wednesday", "Thursday"]
 time: "7pm onwards"
 frequency: "Twice Monthly (First Thurday & Third Tuesday)"

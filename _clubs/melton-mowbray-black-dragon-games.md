@@ -1,5 +1,6 @@
 ---
 name: "Black Dragon Games"
+based_in: "Melton Mowbray"
 days: ["Sunday"]
 time: "10:30am - 5:30pm"
 frequency: "Ad Hoc"

@@ -1,5 +1,6 @@
 ---
 name: "Games Night At The Anchor"
+based_in: "Faversham"
 days: ["Sunday"]
 time: "5:30pm - 8:30pm"
 frequency: "Twice monthly (2nd & 4th Sunday)"

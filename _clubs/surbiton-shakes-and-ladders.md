@@ -1,5 +1,6 @@
 ---
 name: "Shakes and Ladders"
+based_in: "Surbiton (London)"
 days: ["Saturday"]
 time: "12pm - 5pm"
 frequency: "Monthly"

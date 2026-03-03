@@ -1,5 +1,6 @@
 ---
 name: "Geek Retreat Cardiff"
+based_in: "Cardiff"
 days: ["Tuesday"]
 time: "6pm - 10pm"
 frequency: "Monthly (2nd Tuesday)"

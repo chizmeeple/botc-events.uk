@@ -1,5 +1,6 @@
 ---
 name: "BOTChes"
+based_in: "Chester"
 days: ["Saturday"]
 time: "12pm - 6pm"
 frequency: "Ad Hoc"

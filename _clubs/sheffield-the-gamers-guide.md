@@ -1,5 +1,6 @@
 ---
 name: "The Gamers Guide"
+based_in: "Sheffield"
 days: ["Sunday"]
 time: "6pm - 10pm"
 frequency: "Weekly"

@@ -91,7 +91,7 @@ layout: default
       <h1>
         {{ page.name }}
         <span class="club-location-subtitle"
-          >Blood on the Clocktower Group in {{ page.location.address }}</span
+          >Blood on the Clocktower Group in {% if page.based_in and page.based_in != "" %}{{ page.based_in }}{% else %}{{ page.location.address }}{% endif %}</span
         >
       </h1>
       <div class="club-detail-meta">

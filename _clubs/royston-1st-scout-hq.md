@@ -1,5 +1,6 @@
 ---
 name: "Royston Clocktower Group"
+based_in: "Royston"
 days: ["Wednesday", "Friday"]
 time: "6:30pm - 10pm"
 frequency: "Ad Hoc"

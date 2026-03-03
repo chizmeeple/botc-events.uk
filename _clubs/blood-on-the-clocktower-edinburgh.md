@@ -1,5 +1,6 @@
 ---
 name: "Blood on the Clocktower - Edinburgh"
+based_in: "Edinburgh"
 days: ["Friday"]
 time: "6pm"
 frequency: "Fortnightly"

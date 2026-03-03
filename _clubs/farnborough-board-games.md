@@ -1,5 +1,6 @@
 ---
 name: "Farnborough Board Games"
+based_in: "Farnborough (Hampshire)"
 days: ["Thursday"]
 time: "7:00pm - 10:00pm"
 frequency: "Twice monthly (2nd & 4th Tuesday)"

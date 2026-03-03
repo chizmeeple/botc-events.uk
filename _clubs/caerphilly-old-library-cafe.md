@@ -1,5 +1,6 @@
 ---
 name: "Caerphilly - The Old Library Cafe"
+based_in: "Caerphilly"
 days: ["Wednesday"]
 time: "6pm - late"
 frequency: "Monthly (3rd Wednesday)"

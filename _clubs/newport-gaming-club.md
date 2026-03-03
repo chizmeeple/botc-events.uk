@@ -1,5 +1,6 @@
 ---
 name: "Newport Gaming Club"
+based_in: "Newport"
 days: ["Monday"]
 time: "6pm - 10:30pm"
 frequency: "Ad Hoc"

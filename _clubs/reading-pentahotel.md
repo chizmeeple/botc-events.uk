@@ -1,5 +1,6 @@
 ---
 name: "Reading Pentahotel"
+based_in: "Reading"
 days: ["Saturday"]
 time: "5pm - 11pm"
 frequency: "Twice monthly (2nd & 4th Saturday)"

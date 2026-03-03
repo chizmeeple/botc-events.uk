@@ -1,5 +1,6 @@
 ---
 name: "Socialdice"
+based_in: "Swansea"
 days: ["Thursday"]
 time: "6pm - 10pm"
 frequency: "Fortnightly"

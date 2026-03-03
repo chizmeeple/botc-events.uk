@@ -1,5 +1,6 @@
 ---
 name: "Red Mist"
+based_in: "Cleethorpes"
 days: ["Sunday"]
 time: "6:30pm - 9pm"
 frequency: "Ad Hoc"
