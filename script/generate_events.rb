@@ -143,6 +143,7 @@ rescue Psych::SyntaxError
 end
 
 def main
+  warn "Generating JSON file for events"
   root = File.expand_path("..", __dir__)
   clubs_dir = File.join(root, "_clubs")
   data_dir = File.join(root, "_data")
