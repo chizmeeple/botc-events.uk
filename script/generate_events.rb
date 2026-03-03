@@ -174,7 +174,23 @@ def main
 
     club_name = data["name"].to_s
 
-    upcoming = collect_upcoming(recurring, now, range_end, limit: UPCOMING_PER_CLUB)
+    locations_lookup = data["locations"].is_a?(Hash) ? data["locations"] : {}
+
+    normalised_recurring = recurring.map do |ev|
+      loc = ev["location"]
+      if loc.is_a?(String)
+        resolved = locations_lookup[loc]
+        unless resolved.is_a?(Hash)
+          warn "Unknown location '#{loc}' for #{slug} (#{club_name}) event '#{ev['eventname']}' – skipping"
+          next nil
+        end
+        ev.merge("location" => resolved)
+      else
+        ev
+      end
+    end.compact
+
+    upcoming = collect_upcoming(normalised_recurring, now, range_end, limit: UPCOMING_PER_CLUB)
     next if upcoming.empty?
 
     by_slug[slug] = {
