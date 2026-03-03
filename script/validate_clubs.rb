@@ -3,7 +3,7 @@
 
 # Validates all _clubs/*.md files for correct YAML frontmatter.
 # Requires only Ruby stdlib — no gems needed.
-# Usage: ruby scripts/validate_clubs.rb
+# Usage: ruby script/validate_clubs.rb
 
 require "yaml"
 require "date"

@@ -32,7 +32,7 @@ jobs:
           bundler-cache: true
 
       - name: Generate events data
-        run: ruby scripts/generate_events.rb
+        run: ruby script/generate_events.rb
 
       - name: Build with Jekyll
         run: bundle exec jekyll build

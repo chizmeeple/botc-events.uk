@@ -16,7 +16,7 @@ jobs:
           ruby-version: "3.3"
 
       - name: Validate club frontmatter
-        run: ruby scripts/validate_clubs.rb
+        run: ruby script/validate_clubs.rb
 
   build:
     name: Jekyll build & JSON check

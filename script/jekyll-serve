@@ -16,5 +16,5 @@ if [ -f .ruby-version ]; then
 fi
 
 # Generate events data so club pages show upcoming events (same as deploy workflow)
-ruby scripts/generate_events.rb 2>/dev/null || true
-bundle exec jekyll serve
+ruby script/generate_events.rb 2>/dev/null || true
+bundle exec jekyll serve --incremental
