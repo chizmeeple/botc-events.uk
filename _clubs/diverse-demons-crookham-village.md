@@ -16,6 +16,7 @@ meetup: "https://www.meetup.com/diversedemons/"
 facebook: ""
 discord: ""
 bgg: ""
+clocktracker: "diverse-demons"
 description: >-
   Join the ultimate social deduction experience with Blood on the Clocktower!
   In the Fleet area and online!
