@@ -114,6 +114,9 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil)
     signup = ev["signup"].to_s.strip
     signup = nil if signup.empty?
 
+    cost = ev["cost"].to_s.strip
+    cost = nil if cost.empty?
+
     occurrences.each do |start_t, end_t|
       next if start_t < now
       occ = {
@@ -123,6 +126,7 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil)
         "location" => location,
       }
       occ["signup"] = signup if signup
+      occ["cost"] = cost if cost
       all << occ
     end
   end
@@ -186,7 +190,9 @@ def main
         "start_time" => occ["start_time"],
         "end_time" => occ["end_time"],
         "location" => occ["location"],
-      }
+        "cost" => occ["cost"],
+        "signup" => occ["signup"],
+      }.compact
     end
   end
 

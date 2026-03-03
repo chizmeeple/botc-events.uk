@@ -203,10 +203,10 @@ layout: default
           {% endif %}
         </div>
         {% endif %}
-        {% if occ.location.cost or occ.signup %}
+        {% if occ.cost or occ.signup %}
         <div class="upcoming-event-card__footer">
-          {% if occ.location.cost %}
-          <span class="upcoming-event-card__cost">{{ occ.location.cost }}</span>
+          {% if occ.cost %}
+          <span class="upcoming-event-card__cost">{{ occ.cost }}</span>
           {% endif %}
           {% if occ.signup %}
           <a href="{{ occ.signup }}" target="_blank" rel="noopener" class="upcoming-event-card__signup">Signup</a>
