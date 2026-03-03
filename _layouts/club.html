@@ -93,16 +93,7 @@ layout: default
         <span class="club-location-subtitle"
           >Blood on the Clocktower Group in {% if page.based_in and page.based_in != "" %}{{ page.based_in }}{% else %}{{ page.location.address }}{% endif %}</span
         >
-      </h1>
-      <div class="club-detail-meta">
-        {% for d in page.days %}
-        <span class="tag tag-day">{{ d }}</span>
-        {% endfor %} {% if page.frequency and page.frequency != "Weekly" %}
-        <span class="tag">{{ page.frequency }}</span>
-        {% endif %} {% if page.cost %}
-        <span class="tag tag-cost">{{ page.cost }}</span>
-        {% endif %}
-      </div>
+      </h1      >
     </div>
   </div>
 
