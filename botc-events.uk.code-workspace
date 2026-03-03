@@ -1,0 +1,67 @@
+{
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Startup tasks",
+        "dependsOn": ["Open Regular Terminal", "Jekyll Serve"],
+        "dependsOrder": "parallel",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new",
+          "group": "develop",
+        },
+        "runOptions": {
+          "runOn": "folderOpen",
+        },
+        "problemMatcher": [],
+      },
+      {
+        "label": "Jekyll Serve",
+        "type": "shell",
+        "command": "script/jekyll-serve",
+        "isBackground": true,
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "panel": "new",
+          "group": "startup",
+        },
+        "group": {
+          "kind": "test",
+          "isDefault": true,
+        },
+      },
+      {
+        "label": "Open Regular Terminal",
+        "type": "shell",
+        "command": "/usr/bin/env zsh",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new",
+          "group": "startup",
+        },
+        "runOptions": {
+          "runOn": "folderOpen",
+        },
+        "isBackground": true,
+        "problemMatcher": [],
+      },
+    ],
+  },
+  "folders": [
+    {
+      "name": "project-root",
+      "path": "./",
+    },
+    {
+      "name": "groups",
+      "path": "./_clubs",
+    },
+  ],
+  "settings": {
+    "files.exclude": {
+      "./_site": true,
+    },
+  },
+}
