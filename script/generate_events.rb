@@ -9,6 +9,7 @@
 require "date"
 require "json"
 require "time"
+require "icalendar/recurrence"
 require "tzinfo"
 require "yaml"
 
@@ -52,47 +53,47 @@ def nth_wday_of_month(year, month, wday, n)
 end
 
 def expand_recurrence(startdate, starttime, endtime, rrule, now, range_end)
-  parts = parse_rrule(rrule)
-  freq = parts["FREQ"]
-  byday = (parts["BYDAY"] || "").split(",")
-  return [] unless freq == "MONTHLY" && !byday.empty?
+  expand_recurrence_with_icalendar(startdate, starttime, endtime, rrule, now, range_end)
+end
+
+def expand_recurrence_with_icalendar(startdate, starttime, endtime, rrule, now, range_end)
+  return [] unless rrule.is_a?(String) && !rrule.strip.empty?
 
   start_date = startdate.is_a?(Date) ? startdate : Date.parse(startdate.to_s)
   shour, smin = parse_hhmm(starttime)
   ehour, emin = parse_hhmm(endtime) if endtime
 
-  occurrences = []
-  current = [start_date, now.to_date].max
-  last_date = range_end.to_date
+  dtstart = TZ.local_time(start_date.year, start_date.month, start_date.day, shour, smin, 0)
+  dtend = if endtime
+            TZ.local_time(start_date.year, start_date.month, start_date.day, ehour, emin, 0)
+          end
 
-  while current <= last_date
-    year = current.year
-    month = current.month
+  ics_lines = []
+  ics_lines << "BEGIN:VCALENDAR"
+  ics_lines << "VERSION:2.0"
+  ics_lines << "BEGIN:VEVENT"
+  ics_lines << "DTSTART:#{dtstart.strftime('%Y%m%dT%H%M%S')}"
+  ics_lines << "DTEND:#{dtend.strftime('%Y%m%dT%H%M%S')}" if dtend
+  ics_lines << "RRULE:#{rrule}"
+  ics_lines << "END:VEVENT"
+  ics_lines << "END:VCALENDAR"
+  ics = ics_lines.join("\n")
 
-    byday.each do |token|
-      m = token.match(/\A(-?\d)?([A-Z]{2})\z/)
-      next unless m
-      n = (m[1] || "1").to_i
-      wday = WDAY_MAP[m[2]]
-      next unless wday
+  cal = Icalendar::Calendar.parse(ics).first
+  event = cal.events.first
+  return [] unless event
 
-      occ_date = nth_wday_of_month(year, month, wday, n)
-      next unless occ_date
-      next if occ_date < start_date || occ_date < now.to_date || occ_date > last_date
-
-      start_t = TZ.local_time(occ_date.year, occ_date.month, occ_date.day, shour, smin, 0)
-      end_t = if endtime
-                TZ.local_time(occ_date.year, occ_date.month, occ_date.day, ehour, emin, 0)
-              end
-
-      occurrences << [start_t, end_t]
-    end
-
-    current = Date.new(year, month, 1) >> 1
+  occs = event.occurrences_between(now, range_end)
+  occs.map do |occ|
+    s = occ.start_time
+    e = occ.end_time
+    start_t = TZ.local_time(s.year, s.month, s.day, s.hour, s.min, s.sec)
+    end_t = if e
+              TZ.local_time(e.year, e.month, e.day, e.hour, e.min, e.sec)
+            end
+    [start_t, end_t]
   end
-
-  occurrences.sort_by(&:first)
-rescue ArgumentError
+rescue StandardError
   []
 end
 
