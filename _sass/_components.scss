@@ -648,9 +648,20 @@
     margin-bottom: 0.2rem;
   }
 
+  .upcoming-event-card__venue-block {
+    margin-top: 0.2rem;
+  }
+
   .upcoming-event-card__venue {
     font-size: 0.85rem;
     color: var(--color-text-light);
+  }
+
+  .upcoming-event-card__address {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin-top: 0.15rem;
+    opacity: 0.9;
   }
 
   .upcoming-event-card__footer {
