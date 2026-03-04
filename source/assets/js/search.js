@@ -86,11 +86,12 @@
         }
 
         // Day filter (OR logic: club passes if it matches any selected day)
-        // Clubs without days data pass through when filter is active
-        if (self.dayFilters.length > 0 && club.days && club.days.length > 0) {
+        // Clubs without event_days data pass through when filter is active
+        var clubDays = club.event_days || club.days || [];
+        if (self.dayFilters.length > 0 && clubDays.length > 0) {
           var matchesDay = false;
           for (var i = 0; i < self.dayFilters.length; i++) {
-            if (club.days.indexOf(self.dayFilters[i]) !== -1) {
+            if (clubDays.indexOf(self.dayFilters[i]) !== -1) {
               matchesDay = true;
               break;
             }

@@ -8,6 +8,7 @@
 
 require "date"
 require "json"
+require "set"
 require "time"
 require "ice_cube"
 require "icalendar/recurrence"
@@ -18,6 +19,39 @@ TZ = TZInfo::Timezone.get("Europe/London")
 LOOKAHEAD_DAYS = 180
 UPCOMING_PER_CLUB = 4
 ALL_UPCOMING_LIMIT = 100
+
+DAY_ABBREV = { "MO" => "Monday", "TU" => "Tuesday", "WE" => "Wednesday",
+               "TH" => "Thursday", "FR" => "Friday", "SA" => "Saturday",
+               "SU" => "Sunday" }.freeze
+DAY_ORDER = %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday].freeze
+
+def days_from_rrule(rrule)
+  return [] unless rrule.is_a?(String) && !rrule.strip.empty?
+  match = rrule.match(/BYDAY=([A-Z0-9,-]+)/i)
+  return [] unless match
+  match[1].split(",").map do |part|
+    abbrev = part.gsub(/\A-?\d+/, "")
+    DAY_ABBREV[abbrev]
+  end.compact
+end
+
+def day_from_date(date)
+  return nil unless date
+  d = date.is_a?(Date) ? date : Date.parse(date.to_s)
+  d.strftime("%A")
+end
+
+def collect_event_days(recurring_list, adhoc_list)
+  days = Set.new
+  (recurring_list || []).each do |ev|
+    days_from_rrule(ev["rrule"]).each { |d| days << d }
+  end
+  (adhoc_list || []).each do |ev|
+    d = day_from_date(ev["startdate"])
+    days << d if d
+  end
+  days.to_a.sort_by { |d| DAY_ORDER.index(d) || 99 }
+end
 
 def rrule_to_frequency(rrule)
   return nil unless rrule.is_a?(String) && !rrule.strip.empty?
@@ -250,6 +284,7 @@ def main
     next if upcoming.empty?
 
     frequency_pills = upcoming.map { |o| o["frequency"] }.compact.uniq
+    event_days = collect_event_days(normalised_recurring, normalised_adhoc)
 
     unique_locations = upcoming
       .map { |o| o["location"] }
@@ -264,6 +299,7 @@ def main
         "frequency" => frequency_pills,
       },
       "locations" => unique_locations,
+      "event_days" => event_days,
     }
 
     upcoming.each do |occ|

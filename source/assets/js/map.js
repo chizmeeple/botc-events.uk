@@ -77,20 +77,12 @@
           : '';
 
         var pillsHtml = '';
-        if (club.pills) {
-          var pillValues = [];
-          for (var key in club.pills) {
-            if (club.pills.hasOwnProperty(key) && Array.isArray(club.pills[key])) {
-              pillValues = pillValues.concat(club.pills[key]);
-            }
-          }
-          if (pillValues.length > 0) {
-            pillsHtml = '<div class="popup-pills">' +
-              pillValues.map(function (v) {
-                return '<span class="tag tag--muted">' + self.escapeHtml(String(v)) + '</span>';
-              }).join('') +
-              '</div>';
-          }
+        if (club.event_days && club.event_days.length > 0) {
+          pillsHtml = '<div class="popup-pills">' +
+            club.event_days.map(function (day) {
+              return '<span class="tag tag--muted">' + self.escapeHtml(String(day)) + '</span>';
+            }).join('') +
+            '</div>';
         }
 
         var popupContent =

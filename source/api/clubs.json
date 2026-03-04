@@ -11,6 +11,7 @@ layout: null
     {% assign event_data = site.data.rendered_events.by_slug[club.slug] %}
     "pills": {% if event_data.pills %}{{ event_data.pills | jsonify }}{% else %}null{% endif %},
     "locations": {% if event_data.locations %}{{ event_data.locations | jsonify }}{% else %}[]{% endif %},
+    "event_days": {% if event_data.event_days %}{{ event_data.event_days | jsonify }}{% else %}[]{% endif %},
     "age_restriction": {{ club.age_restriction | jsonify }},
     "website": {{ club.website | jsonify }},
     "meetup": {{ club.meetup | jsonify }},

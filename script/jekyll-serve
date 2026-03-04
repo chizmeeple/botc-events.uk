@@ -2,6 +2,9 @@
 
 set -e
 
+# Run from project root (where _config.yml and script/ live)
+cd "$(dirname "$0")/.."
+
 # do our best to source the correct chruby version
 if [[ -d "/opt/homebrew/opt/chruby/share/chruby/" ]]; then
     # Ensure PROMPT_COMMAND is defined so chruby's hooks don't trip nounset
@@ -33,4 +36,5 @@ bundle exec jekyll build --quiet
 ruby script/validate_clubs_json.rb
 
 # run the server (--source source restricts watch to source/ only, so changes to script/, README, etc. don't trigger rebuilds)
-bundle exec jekyll serve --source source --livereload --livereload-min-delay 10 --strict_front_matter
+# --config _config.yml required: with --source, Jekyll looks for config in source/ by default; ours is at project root
+bundle exec jekyll serve --source source --config _config.yml --livereload --livereload-min-delay 10 --strict_front_matter
