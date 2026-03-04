@@ -187,7 +187,11 @@ layout: default
         {% endif %}
         <div class="upcoming-event-card__footer">
           <span class="upcoming-event-card__footer-pills">
+            {% if occ.frequency %}
+            <span class="tag tag-day">{{ occ.frequency }}</span>
+            {% else %}
             <span class="tag tag-day">{{ occ.start_time | date: "%A" }}</span>
+            {% endif %}
             {% if occ.cost %}
             <span class="upcoming-event-card__cost">{{ occ.cost }}</span>
             {% endif %}
