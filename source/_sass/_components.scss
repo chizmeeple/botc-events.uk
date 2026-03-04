@@ -491,6 +491,12 @@
     flex-wrap: wrap;
     gap: 0.2rem;
     margin-top: 0.35rem;
+
+    .tag {
+      opacity: 1;
+      background: var(--color-tag-day);
+      color: var(--color-on-accent);
+    }
   }
 
   .club-tags {
@@ -1012,6 +1018,9 @@ noscript .club-list {
     display: inline-block;
     margin-right: 0.2rem;
     margin-bottom: 0.2rem;
+    opacity: 1;
+    background: var(--color-tag-day);
+    color: var(--color-on-accent);
   }
 }
 
