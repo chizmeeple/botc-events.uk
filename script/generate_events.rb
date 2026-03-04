@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Generates _data/rendered_events.json from events.recurring in _clubs/*.md.
+# Generates _data/rendered_events.json from events.recurring and events.adhoc in _clubs/*.md.
 # Run before Jekyll build (e.g. in deploy workflow or locally before jekyll serve).
 # Uses Europe/London for all times. Output is used by the club layout and
 # future "all upcoming events" pages.
@@ -141,6 +141,51 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil)
   all
 end
 
+def collect_adhoc(adhoc_list, now, range_end, slug: nil)
+  return [] unless adhoc_list.is_a?(Array)
+
+  all = []
+  adhoc_list.each do |ev|
+    eventname = ev["eventname"]
+    next unless eventname.is_a?(String)
+
+    startdate = ev["startdate"]
+    starttime = ev["starttime"]
+    endtime = ev["endtime"]
+    location = ev["location"].is_a?(Hash) ? ev["location"] : {}
+
+    start_date = startdate.is_a?(Date) ? startdate : Date.parse(startdate.to_s)
+    shour, smin = parse_hhmm(starttime)
+    ehour, emin = parse_hhmm(endtime) if endtime
+
+    start_t = TZ.local_time(start_date.year, start_date.month, start_date.day, shour, smin, 0)
+    end_t = if endtime
+              TZ.local_time(start_date.year, start_date.month, start_date.day, ehour, emin, 0)
+            end
+
+    next if start_t < now || start_t > range_end
+
+    signup = ev["signup"].to_s.strip
+    signup = nil if signup.empty?
+
+    cost = ev["cost"].to_s.strip
+    cost = nil if cost.empty?
+
+    occ = {
+      "eventname" => eventname,
+      "start_time" => start_t.iso8601,
+      "end_time" => end_t&.iso8601,
+      "location" => location,
+    }
+    occ["signup"] = signup if signup
+    occ["cost"] = cost if cost
+    all << occ
+  end
+
+  all.sort_by! { |o| o["start_time"] }
+  all
+end
+
 def extract_frontmatter(path)
   content = File.read(path)
   return nil unless content.match?(/\A---\s*\n/)
@@ -175,27 +220,33 @@ def main
     next unless events.is_a?(Hash)
 
     recurring = events["recurring"]
-    next unless recurring.is_a?(Array) && recurring.any?
+    adhoc = events["adhoc"]
+    next unless (recurring.is_a?(Array) && recurring.any?) || (adhoc.is_a?(Array) && adhoc.any?)
 
     club_name = data["name"].to_s
 
     locations_lookup = data["locations"].is_a?(Hash) ? data["locations"] : {}
 
-    normalised_recurring = recurring.map do |ev|
+    normalise_location = lambda do |ev|
       loc = ev["location"]
       if loc.is_a?(String)
         resolved = locations_lookup[loc]
         unless resolved.is_a?(Hash)
           warn "Unknown location '#{loc}' for #{slug} (#{club_name}) event '#{ev['eventname']}' – skipping"
-          next nil
+          return nil
         end
         ev.merge("location" => resolved)
       else
         ev
       end
-    end.compact
+    end
 
-    upcoming = collect_upcoming(normalised_recurring, now, range_end, limit: UPCOMING_PER_CLUB, slug: slug)
+    normalised_recurring = (recurring || []).map { |ev| normalise_location.call(ev) }.compact
+    normalised_adhoc = (adhoc || []).map { |ev| normalise_location.call(ev) }.compact
+
+    upcoming_recurring = collect_upcoming(normalised_recurring, now, range_end, slug: slug)
+    upcoming_adhoc = collect_adhoc(normalised_adhoc, now, range_end, slug: slug)
+    upcoming = (upcoming_recurring + upcoming_adhoc).sort_by { |o| o["start_time"] }.take(UPCOMING_PER_CLUB)
     next if upcoming.empty?
 
     frequency_pills = upcoming.map { |o| o["frequency"] }.compact.uniq
