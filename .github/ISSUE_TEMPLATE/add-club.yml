@@ -8,6 +8,8 @@ body:
       value: |
         Thanks for submitting your group! Fill in as much as you can and we'll take care of the rest.
 
+        **Events:** Please provide at least one of: a **recurring event** (regular schedule) or **one ad-hoc event** (single dated event). Fill in whichever applies — you can add more later via an edit request.
+
   - type: input
     id: name
     attributes:
@@ -16,41 +18,11 @@ body:
     validations:
       required: true
 
-  - type: dropdown
-    id: days
-    attributes:
-      label: What day(s) do you meet?
-      multiple: true
-      options:
-        - Monday
-        - Tuesday
-        - Wednesday
-        - Thursday
-        - Friday
-        - Saturday
-        - Sunday
-        - Various
-    validations:
-      required: true
-
   - type: input
-    id: time
+    id: based_in
     attributes:
-      label: Time
-      placeholder: e.g. 7:00pm - 10:00pm
-    validations:
-      required: true
-
-  - type: dropdown
-    id: frequency
-    attributes:
-      label: How often do you meet?
-      options:
-        - Weekly
-        - Fortnightly
-        - Twice monthly
-        - Monthly
-        - Ad-hoc
+      label: Based in (town or city)
+      placeholder: e.g. Leeds, London, Nottingham
     validations:
       required: true
 
@@ -84,11 +56,30 @@ body:
       placeholder: e.g. -1.5476
       description: Decimal degrees, for map display
 
-  - type: dropdown
-    id: cost
+  - type: markdown
     attributes:
-      label: Cost
+      value: |
+        ## Recurring event (optional)
+        Fill this in if you have a regular schedule (e.g. every Tuesday, 2nd Saturday of month).
+
+  - type: input
+    id: recurring_eventname
+    attributes:
+      label: Recurring event name
+      placeholder: e.g. Blood on the Clocktower
+
+  - type: input
+    id: recurring_signup
+    attributes:
+      label: Recurring event sign-up link
+      placeholder: https://
+
+  - type: dropdown
+    id: recurring_cost
+    attributes:
+      label: Recurring event cost
       options:
+        - ""
         - Free
         - £1
         - £2
@@ -96,14 +87,124 @@ body:
         - £3
         - £5
         - Other (specify below)
-    validations:
-      required: true
 
   - type: input
-    id: cost_other
+    id: recurring_cost_other
     attributes:
-      label: Cost (if Other)
-      placeholder: e.g. £4, or £5 (First Session Free)
+      label: Recurring cost (if Other)
+      placeholder: e.g. £4
+
+  - type: input
+    id: recurring_startdate
+    attributes:
+      label: Recurring start date (first occurrence)
+      placeholder: YYYY-MM-DD (e.g. 2026-03-10)
+      description: The date of the first occurrence
+
+  - type: input
+    id: recurring_starttime
+    attributes:
+      label: Recurring start time
+      placeholder: 24hr format, e.g. 1800 for 6pm, 1930 for 7:30pm
+
+  - type: input
+    id: recurring_endtime
+    attributes:
+      label: Recurring end time
+      placeholder: 24hr format, e.g. 2200 for 10pm
+
+  - type: dropdown
+    id: recurring_frequency
+    attributes:
+      label: How often (recurring)
+      options:
+        - ""
+        - Weekly
+        - Fortnightly
+        - Twice monthly
+        - Monthly
+
+  - type: dropdown
+    id: recurring_day
+    attributes:
+      label: Which day (recurring)
+      options:
+        - ""
+        - Monday
+        - Tuesday
+        - Wednesday
+        - Thursday
+        - Friday
+        - Saturday
+        - Sunday
+
+  - type: input
+    id: recurring_schedule_notes
+    attributes:
+      label: Schedule notes (if complex)
+      placeholder: e.g. 2nd and 4th Saturday of month
+      description: For patterns like "2nd Tuesday" or "1st and 3rd Friday" — we'll convert this for you
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Ad-hoc event (optional)
+        Fill this in if you have a one-off or irregular event to list. Only one ad-hoc event per submission — add more via an edit request later.
+
+  - type: input
+    id: adhoc_eventname
+    attributes:
+      label: Ad-hoc event name
+      placeholder: e.g. Blood on the Clocktower
+
+  - type: input
+    id: adhoc_signup
+    attributes:
+      label: Ad-hoc event sign-up link
+      placeholder: https://
+
+  - type: dropdown
+    id: adhoc_cost
+    attributes:
+      label: Ad-hoc event cost
+      options:
+        - ""
+        - Free
+        - £1
+        - £2
+        - £2.50
+        - £3
+        - £5
+        - Other (specify below)
+
+  - type: input
+    id: adhoc_cost_other
+    attributes:
+      label: Ad-hoc cost (if Other)
+      placeholder: e.g. £4
+
+  - type: input
+    id: adhoc_startdate
+    attributes:
+      label: Ad-hoc event date
+      placeholder: YYYY-MM-DD (e.g. 2026-03-15)
+
+  - type: input
+    id: adhoc_starttime
+    attributes:
+      label: Ad-hoc start time
+      placeholder: 24hr format, e.g. 1815 for 6:15pm
+
+  - type: input
+    id: adhoc_endtime
+    attributes:
+      label: Ad-hoc end time (optional)
+      placeholder: 24hr format, e.g. 2200 for 10pm
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Club links and description
 
   - type: input
     id: website

@@ -5,6 +5,7 @@
   var map;
   var search;
   var debounceTimer;
+  var STORAGE_KEY = "gameclub_user_location";
 
   function init() {
     map = window.GameClubMap.init();
@@ -49,6 +50,30 @@
     if (params.distance) {
       search.setMaxDistance(params.distance);
       if (distanceFilter) distanceFilter.value = params.distance;
+    }
+  }
+
+  function restoreFromStorage() {
+    try {
+      var stored = sessionStorage.getItem(STORAGE_KEY);
+      if (!stored) return;
+      var data = JSON.parse(stored);
+      if (!data || typeof data.lat !== "number" || typeof data.lng !== "number") return;
+
+      var distanceFilter = document.getElementById("distance-filter");
+      search.setUserLocation(data.lat, data.lng);
+      map.showUserLocation(data.lat, data.lng);
+      window.GameClubLocation.setActive("My location");
+      if (distanceFilter) {
+        distanceFilter.disabled = false;
+        if (data.distance) {
+          distanceFilter.value = data.distance;
+          search.setMaxDistance(data.distance);
+        }
+      }
+      update();
+    } catch (e) {
+      sessionStorage.removeItem(STORAGE_KEY);
     }
   }
 
@@ -145,23 +170,15 @@
           : "";
 
         var pillsHtml = "";
-        if (club.pills) {
-          var pillValues = [];
-          for (var key in club.pills) {
-            if (club.pills.hasOwnProperty(key) && Array.isArray(club.pills[key])) {
-              pillValues = pillValues.concat(club.pills[key]);
-            }
-          }
-          if (pillValues.length > 0) {
-            pillsHtml =
-              '<div class="club-pills">' +
-              pillValues
-                .map(function (v) {
-                  return '<span class="tag tag--muted">' + escapeHtml(String(v)) + "</span>";
-                })
-                .join("") +
-              "</div>";
-          }
+        if (club.event_days && club.event_days.length > 0) {
+          pillsHtml =
+            '<div class="club-pills">' +
+            club.event_days
+              .map(function (day) {
+                return '<span class="tag tag--muted">' + escapeHtml(String(day)) + "</span>";
+              })
+              .join("") +
+            "</div>";
         }
 
         var meta = venue || pillsHtml
@@ -286,6 +303,16 @@
     if (distanceFilter) {
       distanceFilter.addEventListener("change", function () {
         search.setMaxDistance(distanceFilter.value);
+        if (search.userLat !== null && search.userLng !== null) {
+          try {
+            var stored = sessionStorage.getItem(STORAGE_KEY);
+            if (stored) {
+              var data = JSON.parse(stored);
+              data.distance = distanceFilter.value;
+              sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            }
+          } catch (e) {}
+        }
         update();
       });
     }
@@ -301,6 +328,15 @@
         map.showUserLocation(lat, lng);
         // Enable distance filter
         if (distanceFilter) distanceFilter.disabled = false;
+        if (label === "My location") {
+          try {
+            sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
+              lat: lat,
+              lng: lng,
+              distance: distanceFilter ? distanceFilter.value : ""
+            }));
+          } catch (e) {}
+        }
         update();
       },
       function () {
@@ -312,9 +348,14 @@
           distanceFilter.value = "";
           distanceFilter.disabled = true;
         }
+        try {
+          sessionStorage.removeItem(STORAGE_KEY);
+        } catch (e) {}
         update();
       }
     );
+
+    restoreFromStorage();
   }
 
   function escapeHtml(text) {
