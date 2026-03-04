@@ -8,7 +8,7 @@
 require "yaml"
 require "date"
 
-clubs_dir = File.expand_path("../_clubs", __dir__)
+clubs_dir = File.expand_path("../source/_clubs", __dir__)
 
 unless Dir.exist?(clubs_dir)
   puts "ERROR: _clubs/ directory not found at #{clubs_dir}"

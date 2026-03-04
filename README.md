@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/meeple-map-icon.svg" alt="botc-events.uk" width="120">
+<img src="source/assets/meeple-map-icon.svg" alt="botc-events.uk" width="120">
 
 # botc-events.uk
 
@@ -26,7 +26,7 @@ botc-events.uk helps people find Blood on the Clocktower groups near them. Searc
 ## How it works
 
 - The site is built with [Jekyll](https://jekyllrb.com/) and hosted on [GitHub Pages](https://pages.github.com/)
-- Each club is a Markdown file in the `_clubs/` directory
+- Each club is a Markdown file in the `source/_clubs/` directory
 - Club data is served as JSON and rendered on an interactive [Leaflet](https://leafletjs.com/) map
 - Anyone can add or update a club by submitting a pull request
 
