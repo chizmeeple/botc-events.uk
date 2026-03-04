@@ -9,6 +9,7 @@
 require "date"
 require "json"
 require "time"
+require "ice_cube"
 require "icalendar/recurrence"
 require "tzinfo"
 require "yaml"
@@ -18,16 +19,12 @@ LOOKAHEAD_DAYS = 180
 UPCOMING_PER_CLUB = 4
 ALL_UPCOMING_LIMIT = 100
 
-WDAY_MAP = {
-  "MO" => 1, "TU" => 2, "WE" => 3, "TH" => 4,
-  "FR" => 5, "SA" => 6, "SU" => 0,
-}.freeze
+def rrule_to_frequency(rrule)
+  return nil unless rrule.is_a?(String) && !rrule.strip.empty?
 
-def parse_rrule(rrule)
-  (rrule || "").split(";").each_with_object({}) do |part, h|
-    k, v = part.split("=", 2)
-    h[k] = v if k && v
-  end
+  IceCube::Rule.from_ical(rrule).to_s
+rescue ArgumentError, StandardError
+  nil
 end
 
 def parse_hhmm(val)
@@ -97,13 +94,19 @@ rescue StandardError
   []
 end
 
-def collect_upcoming(recurring_list, now, range_end, limit: nil)
+def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil)
   all = []
 
   recurring_list.each do |ev|
     eventname = ev["eventname"]
     rrule = ev["rrule"]
     next unless eventname.is_a?(String) && rrule.is_a?(String) && !rrule.strip.empty?
+
+    frequency = rrule_to_frequency(rrule)
+    if frequency.nil?
+      context = slug ? " (#{slug}, event: #{eventname})" : " (event: #{eventname})"
+      warn "Could not generate user-friendly frequency for RRULE#{context}: #{rrule}"
+    end
 
     startdate = ev["startdate"]
     starttime = ev["starttime"]
@@ -126,6 +129,7 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil)
         "end_time" => end_t&.iso8601,
         "location" => location,
       }
+      occ["frequency"] = frequency if frequency
       occ["signup"] = signup if signup
       occ["cost"] = cost if cost
       all << occ
@@ -191,7 +195,7 @@ def main
       end
     end.compact
 
-    upcoming = collect_upcoming(normalised_recurring, now, range_end, limit: UPCOMING_PER_CLUB)
+    upcoming = collect_upcoming(normalised_recurring, now, range_end, limit: UPCOMING_PER_CLUB, slug: slug)
     next if upcoming.empty?
 
     by_slug[slug] = {
@@ -207,6 +211,7 @@ def main
         "start_time" => occ["start_time"],
         "end_time" => occ["end_time"],
         "location" => occ["location"],
+        "frequency" => occ["frequency"],
         "cost" => occ["cost"],
         "signup" => occ["signup"],
       }.compact
