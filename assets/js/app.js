@@ -146,8 +146,28 @@
           ? '<div class="club-venue"><i data-lucide="map-pin"></i>' + escapeHtml(locationText) + "</div>"
           : "";
 
-        var meta = venue
-          ? '<div class="club-card-meta">' + venue + "</div>"
+        var pillsHtml = "";
+        if (club.pills) {
+          var pillValues = [];
+          for (var key in club.pills) {
+            if (club.pills.hasOwnProperty(key) && Array.isArray(club.pills[key])) {
+              pillValues = pillValues.concat(club.pills[key]);
+            }
+          }
+          if (pillValues.length > 0) {
+            pillsHtml =
+              '<div class="club-pills">' +
+              pillValues
+                .map(function (v) {
+                  return '<span class="tag tag--muted">' + escapeHtml(String(v)) + "</span>";
+                })
+                .join("") +
+              "</div>";
+          }
+        }
+
+        var meta = venue || pillsHtml
+          ? '<div class="club-card-meta">' + venue + pillsHtml + "</div>"
           : "";
 
         return (

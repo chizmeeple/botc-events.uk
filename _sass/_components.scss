@@ -485,6 +485,14 @@
     gap: 0.3rem;
   }
 
+  .club-pills {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    margin-top: 0.35rem;
+  }
+
   .club-tags {
     display: flex;
     flex-wrap: wrap;
@@ -512,6 +520,12 @@
 .tag-cost {
   background: var(--color-tag-cost-bg);
   color: var(--color-tag-cost);
+}
+
+.tag--muted {
+  font-size: 0.65rem;
+  opacity: 0.85;
+  font-weight: 400;
 }
 
 // ─── Club detail page ───
@@ -980,6 +994,17 @@ noscript .club-list {
     display: flex;
     flex-wrap: wrap;
     gap: 0.2rem;
+  }
+
+  .popup-pills {
+    display: block;
+    margin-top: 0.35rem;
+  }
+
+  .popup-pills .tag {
+    display: inline-block;
+    margin-right: 0.2rem;
+    margin-bottom: 0.2rem;
   }
 }
 

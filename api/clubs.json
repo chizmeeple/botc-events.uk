@@ -17,6 +17,8 @@ layout: null
       "lng": {{ club.location.lng }}
     },
     "based_in": {{ club.based_in | jsonify }},
+    {% assign event_data = site.data.rendered_events.by_slug[club.slug] %}
+    "pills": {% if event_data.pills %}{{ event_data.pills | jsonify }}{% else %}null{% endif %},
     "cost": {{ club.cost | jsonify }},
     "age_restriction": {{ club.age_restriction | jsonify }},
     "website": {{ club.website | jsonify }},

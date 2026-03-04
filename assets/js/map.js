@@ -75,6 +75,23 @@
           ? '<div class="popup-venue"><i data-lucide="map-pin"></i>' + self.escapeHtml(locationText) + '</div>'
           : '';
 
+        var pillsHtml = '';
+        if (club.pills) {
+          var pillValues = [];
+          for (var key in club.pills) {
+            if (club.pills.hasOwnProperty(key) && Array.isArray(club.pills[key])) {
+              pillValues = pillValues.concat(club.pills[key]);
+            }
+          }
+          if (pillValues.length > 0) {
+            pillsHtml = '<div class="popup-pills">' +
+              pillValues.map(function (v) {
+                return '<span class="tag tag--muted">' + self.escapeHtml(String(v)) + '</span>';
+              }).join('') +
+              '</div>';
+          }
+        }
+
         var popupContent =
           '<a class="popup-card" href="' + club.url + '">' +
           '<div class="popup-body">' +
@@ -84,6 +101,7 @@
           self.escapeHtml(club.name) +
           "</div>" +
           venue +
+          pillsHtml +
           "</div>" +
           "</div>" +
           "</a>";
