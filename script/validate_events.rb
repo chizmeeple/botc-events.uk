@@ -8,7 +8,7 @@
 
 require "json"
 
-path = ARGV[0] || File.expand_path("../_data/rendered_events.json", __dir__)
+path = ARGV[0] || File.expand_path("../source/_data/rendered_events.json", __dir__)
 
 unless File.exist?(path)
   puts "ERROR: #{path} not found (run script/generate_events.rb first)"

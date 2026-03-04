@@ -199,8 +199,8 @@ end
 def main
   warn "Generating JSON file for events"
   root = File.expand_path("..", __dir__)
-  clubs_dir = File.join(root, "_clubs")
-  data_dir = File.join(root, "_data")
+  clubs_dir = File.join(root, "source", "_clubs")
+  data_dir = File.join(root, "source", "_data")
   out_path = File.join(data_dir, "rendered_events.json")
 
   Dir.mkdir(data_dir) unless Dir.exist?(data_dir)
