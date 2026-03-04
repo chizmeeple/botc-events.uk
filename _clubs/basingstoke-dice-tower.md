@@ -1,5 +1,6 @@
 ---
 name: "Dice Tower Basingstoke"
+based_in: "Basingstoke"
 days: ["Tuesday"]
 time: "6pm - 10pm"
 frequency: "Weekly"

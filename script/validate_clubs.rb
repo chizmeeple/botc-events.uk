@@ -8,10 +8,6 @@
 require "yaml"
 require "date"
 
-VALID_DAYS = %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday Various].freeze
-LAT_RANGE = (49.0..61.0)
-LNG_RANGE = (-9.0..3.0)
-
 clubs_dir = File.expand_path("../_clubs", __dir__)
 
 unless Dir.exist?(clubs_dir)
@@ -76,51 +72,21 @@ files.each do |file|
     file_errors << "name: must be a non-empty string"
   end
 
-  # days: non-empty array of valid day names
-  if !data["days"].is_a?(Array) || data["days"].empty?
-    file_errors << "days: must be a non-empty array of day names (got #{data['days'].inspect})"
-  elsif data["days"].is_a?(Array)
-    data["days"].each_with_index do |d, i|
-      unless d.is_a?(String) && VALID_DAYS.include?(d)
-        file_errors << "days[#{i}]: must be one of #{VALID_DAYS.join(', ')} (got #{d.inspect})"
-      end
-    end
+  # events: required (top-level event data has moved into events)
+  if !data.key?("events")
+    file_errors << "events: must be present"
   end
 
-  # frequency: non-empty string
-  if !data["frequency"].is_a?(String) || data["frequency"].strip.empty?
-    file_errors << "frequency: must be a non-empty string"
+  # Reject deprecated top-level keys (event data belongs under events)
+  %w[days time frequency location cost].each do |key|
+    if data.key?(key)
+      file_errors << "#{key}: must not exist at top level (event data belongs under events)"
+    end
   end
 
   # description: non-empty string
   if !data["description"].is_a?(String) || data["description"].strip.empty?
     file_errors << "description: must be a non-empty string"
-  end
-
-  # location: hash with required fields
-  loc = data["location"]
-  if !loc.is_a?(Hash)
-    file_errors << "location: must be a mapping with name, address, lat, lng"
-  else
-    if !loc["name"].is_a?(String) || loc["name"].strip.empty?
-      file_errors << "location.name: must be a non-empty string"
-    end
-
-    if !loc["address"].is_a?(String) || loc["address"].strip.empty?
-      file_errors << "location.address: must be a non-empty string"
-    end
-
-    if !loc["lat"].is_a?(Numeric)
-      file_errors << "location.lat: must be a number (got #{loc['lat'].inspect})"
-    elsif !LAT_RANGE.cover?(loc["lat"])
-      file_errors << "location.lat: must be between #{LAT_RANGE.min} and #{LAT_RANGE.max} (got #{loc['lat']})"
-    end
-
-    if !loc["lng"].is_a?(Numeric)
-      file_errors << "location.lng: must be a number (got #{loc['lng'].inspect})"
-    elsif !LNG_RANGE.cover?(loc["lng"])
-      file_errors << "location.lng: must be between #{LNG_RANGE.min} and #{LNG_RANGE.max} (got #{loc['lng']})"
-    end
   end
 
   errors[basename] = file_errors unless file_errors.empty?
