@@ -10,7 +10,7 @@ location:
   lat: 51.288782720425026
   lng: -0.7786554104110263
 cost: "Free"
-image: ""
+image: "farnborough-board-games.png"
 website: ""
 meetup: "https://www.meetup.com/farnborough-board-games-club/"
 facebook: "https://www.facebook.com/groups/farnboroughboardgames/"
