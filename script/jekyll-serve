@@ -32,5 +32,5 @@ bundle exec jekyll build --quiet
 # validate built clubs.json
 ruby script/validate_clubs_json.rb
 
-# run the server
-bundle exec jekyll serve --livereload --livereload-min-delay 10 --strict_front_matter
+# run the server (--source source restricts watch to source/ only, so changes to script/, README, etc. don't trigger rebuilds)
+bundle exec jekyll serve --source source --livereload --livereload-min-delay 10 --strict_front_matter
