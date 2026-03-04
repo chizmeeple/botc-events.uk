@@ -16,4 +16,19 @@ facebook: ""
 discord: ""
 bgg: ""
 description: >-
+events:
+  recurring:
+    - eventname: ""
+      signup: ""
+      cost: ""
+      startdate: 2026-02-10
+      starttime: 1800
+      endtime: 2200
+      rrule: "FREQ=MONTHLY;BYDAY=2TU"
+      location:
+        name: ""
+        address: ""
+        lat:
+        lng:
+  adhoc:
 ---
