@@ -15,6 +15,10 @@ if [ -f .ruby-version ]; then
     chruby "$(cat .ruby-version)"
 fi
 
+# make sure data is valid
+ruby script/validate_clubs.rb
+
 # Generate events data so club pages show upcoming events (same as deploy workflow)
 ruby script/generate_events.rb || true
+
 bundle exec jekyll serve --livereload
