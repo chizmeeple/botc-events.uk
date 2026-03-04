@@ -198,9 +198,14 @@ def main
     upcoming = collect_upcoming(normalised_recurring, now, range_end, limit: UPCOMING_PER_CLUB, slug: slug)
     next if upcoming.empty?
 
+    frequency_pills = upcoming.map { |o| o["frequency"] }.compact.uniq
+
     by_slug[slug] = {
       "club_name" => club_name,
       "upcoming" => upcoming,
+      "pills" => {
+        "frequency" => frequency_pills,
+      },
     }
 
     upcoming.each do |occ|

@@ -44,6 +44,6 @@ events:
       startdate: 2026-02-10
       starttime: 1850
       endtime: 2200
-      rrule: "FREQ=MONTHLY;BYDAY=2TU"
+      rrule: "FREQ=MONTHLY;BYDAY=4TU"
       location: "monkey-puzzle"
 ---
