@@ -1,0 +1,23 @@
+name: Validate events
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-events:
+    name: Generate & validate events data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Generate events data
+        run: bundle exec ruby script/generate_events.rb
+
+      - name: Validate rendered_events.json
+        run: ruby script/validate_events.rb

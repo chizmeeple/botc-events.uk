@@ -64,7 +64,7 @@ Edit the relevant file in `_clubs/` and submit a pull request with a brief descr
 Before submitting a PR, you can validate your club file:
 
 ```bash
-ruby scripts/validate_clubs.rb
+ruby script/validate_clubs.rb
 ```
 
 This checks all `_clubs/*.md` files for correct frontmatter (required fields, valid day names, coordinate ranges, etc.). The same check runs automatically on every pull request.

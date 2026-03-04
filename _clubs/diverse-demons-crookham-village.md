@@ -1,20 +1,13 @@
 ---
 name: "Diverse Demons"
-days: ["Wednesday"]
-time: "7:15 - 10:30pm"
-frequency: "Twice monthly (1st & 3rd Wednesday)"
-location:
-  name: "Crookham Street Social Club"
-  address: "The Street, Crookham Village, Fleet GU51 5SJ"
-  lat: 51.26619757199509
-  lng: -0.8625652146103345
-cost: "£1.50 (optional)"
-image: ""
+based_in: "Crookham Village (Fleet)"
+image: "diverse-demons.png"
 website: ""
 meetup: "https://www.meetup.com/diversedemons/"
 facebook: ""
 discord: ""
 bgg: ""
+clocktracker: "diverse-demons"
 description: >-
   Join the ultimate social deduction experience with Blood on the Clocktower!
   In the Fleet area and online!
@@ -35,4 +28,18 @@ description: >-
   games.
 
   New players welcome!
+events:
+  recurring:
+    - eventname: "Crookham Street Social Club"
+      signup: "https://www.meetup.com/diversedemons/"
+      cost: "£1.50 (optional)"
+      startdate: 2026-03-04
+      starttime: 1915
+      endtime: 2230
+      rrule: "FREQ=MONTHLY;BYDAY=1WE,3WE"
+      location:
+        name: "Crookham Street Social Club"
+        address: "The Street, Crookham Village, Fleet GU51 5SJ"
+        lat: 51.26619757199509
+        lng: -0.8625652146103345
 ---

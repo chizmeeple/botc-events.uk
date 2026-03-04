@@ -1,14 +1,6 @@
 ---
 name: "Reading Pentahotel"
-days: ["Saturday"]
-time: "5pm - 11pm"
-frequency: "Twice monthly (2nd & 4th Saturday)"
-location:
-  name: "Pentahotel Reading"
-  address: "Oxford Rd, Reading RG1 7RH"
-  lat: 51.45486166562228
-  lng: -0.9781043795507257
-cost: "£3"
+based_in: "Reading"
 image: ""
 website: ""
 meetup: "https://www.meetup.com/reading-blood-on-the-clocktower-alternate-weekends/"
@@ -25,4 +17,18 @@ description: >-
   on simultaneously, one of which is a simpler scenario and everyone is happy
   to explain the rules.either a ‘good’ or ‘evil’ token with their unique
   character on it.
+events:
+  recurring:
+    - eventname: "Reading Pentahotel"
+      signup: "https://www.readingbiscuitfactory.co.uk/movie/rbf-board-game-night"
+      cost: "Free"
+      startdate: 2026-02-21
+      starttime: 1700
+      endtime: 2200
+      rrule: "FREQ=MONTHLY;BYDAY=2SA,4SA"
+      location:
+        name: "Pentahotel Reading"
+        address: "Oxford Rd, Reading RG1 7RH"
+        lat: 51.45486166562228
+        lng: -0.9781043795507257
 ---

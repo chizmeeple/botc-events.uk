@@ -1,14 +1,6 @@
 ---
 name: "Badger Badger"
-days: ["Sunday"]
-time: "5pm - 9:30pm"
-frequency: "Weekly"
-location:
-  name: "Badger Badger"
-  address: "139-145 Deptford High Street, London, United Kingdom"
-  lat: 51.479040020158536
-  lng: -0.026196995055674823
-cost: "£16"
+based_in: "Deptford (London)"
 image: ""
 website: "https://www.badgerbadger.org/botc/"
 meetup: ""
@@ -27,4 +19,18 @@ description: >-
   players that are new to Blood on the Clocktower before the game starts. The
   game officially starts at 5:30 p.m., and there will be a food break at
   7:00-7:30 p.m.
+events:
+  recurring:
+    - eventname: "Badger Badger"
+      signup: "https://www.badgerbadger.org/botc/"
+      cost: "£16"
+      startdate: 2026-03-01
+      starttime: 1700
+      endtime: 2130
+      rrule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=SU"
+      location:
+        name: "Badger Badger"
+        address: "139-145 Deptford High Street, London, United Kingdom"
+        lat: 51.479040020158536
+        lng: -0.026196995055674823
 ---

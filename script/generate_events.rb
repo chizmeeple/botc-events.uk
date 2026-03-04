@@ -1,0 +1,297 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Generates _data/rendered_events.json from events.recurring and events.adhoc in _clubs/*.md.
+# Run before Jekyll build (e.g. in deploy workflow or locally before jekyll serve).
+# Uses Europe/London for all times. Output is used by the club layout and
+# future "all upcoming events" pages.
+
+require "date"
+require "json"
+require "time"
+require "ice_cube"
+require "icalendar/recurrence"
+require "tzinfo"
+require "yaml"
+
+TZ = TZInfo::Timezone.get("Europe/London")
+LOOKAHEAD_DAYS = 180
+UPCOMING_PER_CLUB = 4
+ALL_UPCOMING_LIMIT = 100
+
+def rrule_to_frequency(rrule)
+  return nil unless rrule.is_a?(String) && !rrule.strip.empty?
+
+  IceCube::Rule.from_ical(rrule).to_s
+rescue ArgumentError, StandardError
+  nil
+end
+
+def parse_hhmm(val)
+  str = val.to_s
+  return [0, 0] if str.empty?
+  hour = str.length >= 2 ? str[0..1].to_i : 0
+  min  = str.length >= 4 ? str[-2..].to_i : 0
+  [hour, min]
+end
+
+def nth_wday_of_month(year, month, wday, n)
+  if n > 0
+    first = Date.new(year, month, 1)
+    delta = (wday - first.wday) % 7
+    date = first + delta + 7 * (n - 1)
+    date.month == month ? date : nil
+  else
+    last = Date.new(year, month, -1)
+    delta = (last.wday - wday) % 7
+    date = last - delta - 7 * (n.abs - 1)
+    date.month == month ? date : nil
+  end
+end
+
+def expand_recurrence(startdate, starttime, endtime, rrule, now, range_end)
+  expand_recurrence_with_icalendar(startdate, starttime, endtime, rrule, now, range_end)
+end
+
+def expand_recurrence_with_icalendar(startdate, starttime, endtime, rrule, now, range_end)
+  return [] unless rrule.is_a?(String) && !rrule.strip.empty?
+
+  start_date = startdate.is_a?(Date) ? startdate : Date.parse(startdate.to_s)
+  shour, smin = parse_hhmm(starttime)
+  ehour, emin = parse_hhmm(endtime) if endtime
+
+  dtstart = TZ.local_time(start_date.year, start_date.month, start_date.day, shour, smin, 0)
+  dtend = if endtime
+            TZ.local_time(start_date.year, start_date.month, start_date.day, ehour, emin, 0)
+          end
+
+  ics_lines = []
+  ics_lines << "BEGIN:VCALENDAR"
+  ics_lines << "VERSION:2.0"
+  ics_lines << "BEGIN:VEVENT"
+  ics_lines << "DTSTART:#{dtstart.strftime('%Y%m%dT%H%M%S')}"
+  ics_lines << "DTEND:#{dtend.strftime('%Y%m%dT%H%M%S')}" if dtend
+  ics_lines << "RRULE:#{rrule}"
+  ics_lines << "END:VEVENT"
+  ics_lines << "END:VCALENDAR"
+  ics = ics_lines.join("\n")
+
+  cal = Icalendar::Calendar.parse(ics).first
+  event = cal.events.first
+  return [] unless event
+
+  occs = event.occurrences_between(now, range_end)
+  occs.map do |occ|
+    s = occ.start_time
+    e = occ.end_time
+    start_t = TZ.local_time(s.year, s.month, s.day, s.hour, s.min, s.sec)
+    end_t = if e
+              TZ.local_time(e.year, e.month, e.day, e.hour, e.min, e.sec)
+            end
+    [start_t, end_t]
+  end
+rescue StandardError
+  []
+end
+
+def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil)
+  all = []
+
+  recurring_list.each do |ev|
+    eventname = ev["eventname"]
+    rrule = ev["rrule"]
+    next unless eventname.is_a?(String) && rrule.is_a?(String) && !rrule.strip.empty?
+
+    frequency = rrule_to_frequency(rrule)
+    if frequency.nil?
+      context = slug ? " (#{slug}, event: #{eventname})" : " (event: #{eventname})"
+      warn "Could not generate user-friendly frequency for RRULE#{context}: #{rrule}"
+    end
+
+    startdate = ev["startdate"]
+    starttime = ev["starttime"]
+    endtime = ev["endtime"]
+    location = ev["location"].is_a?(Hash) ? ev["location"] : {}
+
+    occurrences = expand_recurrence(startdate, starttime, endtime, rrule, now, range_end)
+
+    signup = ev["signup"].to_s.strip
+    signup = nil if signup.empty?
+
+    cost = ev["cost"].to_s.strip
+    cost = nil if cost.empty?
+
+    occurrences.each do |start_t, end_t|
+      next if start_t < now
+      occ = {
+        "eventname" => eventname,
+        "start_time" => start_t.iso8601,
+        "end_time" => end_t&.iso8601,
+        "location" => location,
+      }
+      occ["frequency"] = frequency if frequency
+      occ["signup"] = signup if signup
+      occ["cost"] = cost if cost
+      all << occ
+    end
+  end
+
+  all.sort_by! { |o| o["start_time"] }
+  all = all.take(limit) if limit
+  all
+end
+
+def collect_adhoc(adhoc_list, now, range_end, slug: nil)
+  return [] unless adhoc_list.is_a?(Array)
+
+  all = []
+  adhoc_list.each do |ev|
+    eventname = ev["eventname"]
+    next unless eventname.is_a?(String)
+
+    startdate = ev["startdate"]
+    starttime = ev["starttime"]
+    endtime = ev["endtime"]
+    location = ev["location"].is_a?(Hash) ? ev["location"] : {}
+
+    start_date = startdate.is_a?(Date) ? startdate : Date.parse(startdate.to_s)
+    shour, smin = parse_hhmm(starttime)
+    ehour, emin = parse_hhmm(endtime) if endtime
+
+    start_t = TZ.local_time(start_date.year, start_date.month, start_date.day, shour, smin, 0)
+    end_t = if endtime
+              TZ.local_time(start_date.year, start_date.month, start_date.day, ehour, emin, 0)
+            end
+
+    next if start_t < now || start_t > range_end
+
+    signup = ev["signup"].to_s.strip
+    signup = nil if signup.empty?
+
+    cost = ev["cost"].to_s.strip
+    cost = nil if cost.empty?
+
+    occ = {
+      "eventname" => eventname,
+      "start_time" => start_t.iso8601,
+      "end_time" => end_t&.iso8601,
+      "location" => location,
+    }
+    occ["signup"] = signup if signup
+    occ["cost"] = cost if cost
+    all << occ
+  end
+
+  all.sort_by! { |o| o["start_time"] }
+  all
+end
+
+def extract_frontmatter(path)
+  content = File.read(path)
+  return nil unless content.match?(/\A---\s*\n/)
+  parts = content.split(/^---\s*$/, 3)
+  return nil if parts.length < 3
+  YAML.safe_load(parts[1], permitted_classes: [Date])
+rescue Psych::SyntaxError
+  nil
+end
+
+def main
+  warn "Generating JSON file for events"
+  root = File.expand_path("..", __dir__)
+  clubs_dir = File.join(root, "_clubs")
+  data_dir = File.join(root, "_data")
+  out_path = File.join(data_dir, "rendered_events.json")
+
+  Dir.mkdir(data_dir) unless Dir.exist?(data_dir)
+
+  now = TZ.now
+  range_end = now + (LOOKAHEAD_DAYS * 24 * 60 * 60)
+
+  by_slug = {}
+  all_upcoming = []
+
+  Dir.glob(File.join(clubs_dir, "*.md")).sort.each do |path|
+    slug = File.basename(path, ".md")
+    data = extract_frontmatter(path)
+    next unless data.is_a?(Hash)
+
+    events = data["events"]
+    next unless events.is_a?(Hash)
+
+    recurring = events["recurring"]
+    adhoc = events["adhoc"]
+    next unless (recurring.is_a?(Array) && recurring.any?) || (adhoc.is_a?(Array) && adhoc.any?)
+
+    club_name = data["name"].to_s
+
+    locations_lookup = data["locations"].is_a?(Hash) ? data["locations"] : {}
+
+    normalise_location = lambda do |ev|
+      loc = ev["location"]
+      if loc.is_a?(String)
+        resolved = locations_lookup[loc]
+        unless resolved.is_a?(Hash)
+          warn "Unknown location '#{loc}' for #{slug} (#{club_name}) event '#{ev['eventname']}' – skipping"
+          return nil
+        end
+        ev.merge("location" => resolved)
+      else
+        ev
+      end
+    end
+
+    normalised_recurring = (recurring || []).map { |ev| normalise_location.call(ev) }.compact
+    normalised_adhoc = (adhoc || []).map { |ev| normalise_location.call(ev) }.compact
+
+    upcoming_recurring = collect_upcoming(normalised_recurring, now, range_end, slug: slug)
+    upcoming_adhoc = collect_adhoc(normalised_adhoc, now, range_end, slug: slug)
+    upcoming = (upcoming_recurring + upcoming_adhoc).sort_by { |o| o["start_time"] }.take(UPCOMING_PER_CLUB)
+    next if upcoming.empty?
+
+    frequency_pills = upcoming.map { |o| o["frequency"] }.compact.uniq
+
+    unique_locations = upcoming
+      .map { |o| o["location"] }
+      .select { |loc| loc.is_a?(Hash) && loc["lat"] && loc["lng"] }
+      .uniq { |loc| [loc["lat"], loc["lng"]] }
+      .map { |loc| { "name" => loc["name"], "lat" => loc["lat"], "lng" => loc["lng"] } }
+
+    by_slug[slug] = {
+      "club_name" => club_name,
+      "upcoming" => upcoming,
+      "pills" => {
+        "frequency" => frequency_pills,
+      },
+      "locations" => unique_locations,
+    }
+
+    upcoming.each do |occ|
+      all_upcoming << {
+        "slug" => slug,
+        "club_name" => club_name,
+        "eventname" => occ["eventname"],
+        "start_time" => occ["start_time"],
+        "end_time" => occ["end_time"],
+        "location" => occ["location"],
+        "frequency" => occ["frequency"],
+        "cost" => occ["cost"],
+        "signup" => occ["signup"],
+      }.compact
+    end
+  end
+
+  all_upcoming.sort_by! { |o| o["start_time"] }
+  all_upcoming = all_upcoming.take(ALL_UPCOMING_LIMIT)
+
+  payload = {
+    "generated_at" => now.utc.iso8601,
+    "by_slug" => by_slug,
+    "all_upcoming" => all_upcoming,
+  }
+
+  File.write(out_path, JSON.pretty_generate(payload))
+  warn "Wrote #{out_path} (#{by_slug.size} clubs, #{all_upcoming.size} events in all_upcoming)"
+end
+
+main if __FILE__ == $PROGRAM_NAME

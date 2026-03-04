@@ -95,12 +95,9 @@
       search.userLng === null
     ) {
       var club = filtered[0];
-      if (
-        club.location &&
-        club.location.lat &&
-        club.location.lng
-      ) {
-        map.focusOn(club.location.lat, club.location.lng);
+      var firstLoc = club.locations && club.locations[0];
+      if (firstLoc && firstLoc.lat && firstLoc.lng) {
+        map.focusOn(firstLoc.lat, firstLoc.lng);
       } else {
         map.fitToMarkers();
       }
@@ -125,19 +122,6 @@
 
     var html = clubs
       .map(function (club) {
-        var tags = "";
-        club.days.forEach(function (d) {
-          tags += '<span class="tag tag-day">' + escapeHtml(d) + "</span>";
-        });
-
-        if (club.frequency && club.frequency !== "Weekly") {
-          tags += '<span class="tag">' + escapeHtml(club.frequency) + "</span>";
-        }
-
-        if (club.cost) {
-          tags += '<span class="tag tag-cost">' + escapeHtml(club.cost) + "</span>";
-        }
-
         var distanceBadge = "";
         if (club._distance !== undefined) {
           distanceBadge =
@@ -154,12 +138,34 @@
           icon = '<div class="club-icon-wrap"><img src="' + imgSrc + '" alt="" loading="lazy" onload="window.GameClub.applyImgBg(this)"></div>';
         }
 
-        var venue = club.location && club.location.name
-          ? '<div class="club-venue"><i data-lucide="map-pin"></i>' + escapeHtml(club.location.name) + "</div>"
+        var firstLoc = club.locations && club.locations[0];
+        var locationText = club.based_in || (firstLoc && firstLoc.name) || "";
+        var venue = locationText
+          ? '<div class="club-venue"><i data-lucide="map-pin"></i>' + escapeHtml(locationText) + "</div>"
           : "";
 
-        var meta = venue
-          ? '<div class="club-card-meta">' + venue + "</div>"
+        var pillsHtml = "";
+        if (club.pills) {
+          var pillValues = [];
+          for (var key in club.pills) {
+            if (club.pills.hasOwnProperty(key) && Array.isArray(club.pills[key])) {
+              pillValues = pillValues.concat(club.pills[key]);
+            }
+          }
+          if (pillValues.length > 0) {
+            pillsHtml =
+              '<div class="club-pills">' +
+              pillValues
+                .map(function (v) {
+                  return '<span class="tag tag--muted">' + escapeHtml(String(v)) + "</span>";
+                })
+                .join("") +
+              "</div>";
+          }
+        }
+
+        var meta = venue || pillsHtml
+          ? '<div class="club-card-meta">' + venue + pillsHtml + "</div>"
           : "";
 
         return (
@@ -177,9 +183,6 @@
           "</div>" +
           meta +
           "</div>" +
-          "</div>" +
-          '<div class="club-tags">' +
-          tags +
           "</div>" +
           "</a>"
         );

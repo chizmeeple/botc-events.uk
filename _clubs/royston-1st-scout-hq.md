@@ -1,16 +1,8 @@
 ---
 name: "Royston Clocktower Group"
-days: ["Wednesday", "Friday"]
-time: "6:30pm - 10pm"
-frequency: "Ad Hoc"
-location:
-  name: "1st Royston Scout HQ"
-  address: "Barkway St, Royston SG8 9EW"
-  lat: 52.04568346828212
-  lng: 0.020637718243564997
-cost: "£2-£3"
+based_in: "Royston"
 image: ""
-website: ""
+website: "https://www.facebook.com/groups/659214939540003/events"
 meetup: ""
 facebook: ""
 discord: ""
@@ -18,4 +10,19 @@ bgg: ""
 description: >-
   A Royston based Clocktower group; gathering from 6:30pm, first game starts
   7pm, finishing 10pm
+locations:
+  scout-hq:
+    name: "1st Royston Scout HQ"
+    address: "Barkway St, Royston SG8 9EW"
+    lat: 52.04568346828212
+    lng: 0.020637718243564997
+events:
+  adhoc:
+    - eventname: "Blood on the Clocktower"
+      signup: "https://www.facebook.com/events/908047181762199/"
+      cost: "£2"
+      startdate: 2026-03-13
+      starttime: 1830
+      endtime: 2200
+      location: "scout-hq"
 ---

@@ -485,6 +485,14 @@
     gap: 0.3rem;
   }
 
+  .club-pills {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    margin-top: 0.35rem;
+  }
+
   .club-tags {
     display: flex;
     flex-wrap: wrap;
@@ -512,6 +520,12 @@
 .tag-cost {
   background: var(--color-tag-cost-bg);
   color: var(--color-tag-cost);
+}
+
+.tag--muted {
+  font-size: 0.65rem;
+  opacity: 0.85;
+  font-weight: 400;
 }
 
 // ─── Club detail page ───
@@ -577,6 +591,13 @@
     }
   }
 
+  .club-detail-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    margin-top: 0.5rem;
+  }
+
   .club-detail-meta {
     display: flex;
     flex-wrap: wrap;
@@ -596,6 +617,116 @@
     margin-bottom: 2rem;
     border: 2px solid var(--color-border);
     overflow: hidden;
+  }
+
+  .club-upcoming-events {
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.1rem;
+      margin: 0 0 1rem;
+    }
+  }
+
+  .upcoming-events-empty {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+  }
+
+  .upcoming-events-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .upcoming-event-card {
+    background: var(--color-tag);
+    border: 1px solid var(--color-border);
+    border-radius: $border-radius;
+    padding: 1rem 1.25rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 2px rgba(var(--color-accent-rgb), 0.08);
+    }
+  }
+
+  .upcoming-event-card__name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .upcoming-event-card__datetime {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    margin-bottom: 0.2rem;
+  }
+
+  .upcoming-event-card__venue-block {
+    margin-top: 0.2rem;
+  }
+
+  .upcoming-event-card__venue {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+
+  .upcoming-event-card__address {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin-top: 0.15rem;
+    opacity: 0.9;
+  }
+
+  .upcoming-event-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .upcoming-event-card__footer-pills {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .upcoming-event-card__cost {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    background: var(--color-tag-cost);
+    color: var(--color-primary-dark);
+    letter-spacing: 0.04em;
+  }
+
+  .upcoming-event-card__signup {
+    display: inline-block;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: $border-radius-sm;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover {
+      background: var(--color-accent);
+      color: var(--color-on-accent);
+      text-decoration: none;
+    }
   }
 
   .detail-info {
@@ -644,7 +775,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-    margin-top: 2rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
 
     a {
       display: inline-flex;
@@ -699,6 +831,13 @@
   &:hover {
     text-decoration: none;
     color: var(--color-primary-light);
+  }
+}
+
+[data-theme="light"] {
+  .upcoming-event-card__cost {
+    background: var(--color-tag-cost-bg);
+    color: var(--color-tag-cost);
   }
 }
 
@@ -862,6 +1001,17 @@ noscript .club-list {
     display: flex;
     flex-wrap: wrap;
     gap: 0.2rem;
+  }
+
+  .popup-pills {
+    display: block;
+    margin-top: 0.35rem;
+  }
+
+  .popup-pills .tag {
+    display: inline-block;
+    margin-right: 0.2rem;
+    margin-bottom: 0.2rem;
   }
 }
 

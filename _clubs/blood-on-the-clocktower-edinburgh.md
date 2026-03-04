@@ -1,14 +1,6 @@
 ---
 name: "Blood on the Clocktower - Edinburgh"
-days: ["Friday"]
-time: "6pm"
-frequency: "Fortnightly"
-location:
-  name: "Lister Learning and Teaching Centre"
-  address: "5 Roxburgh Place, Edinburgh EH8 9SU"
-  lat: 55.94694034227274
-  lng: -3.184204743771832
-cost: "Free"
+based_in: "Edinburgh"
 image: ""
 website: "https://www.eventbrite.com/e/blood-on-the-clocktower-edinburgh-tickets-1981485514514"
 meetup: ""
@@ -22,4 +14,18 @@ description: >-
   new to the game, all are welcome to participate.
 
   Please book a ticket if you intend to come along. We look forward to seeing you there!
+events:
+  recurring:
+    - eventname: "Blood on the Clocktower - Edinburgh"
+      signup: "https://www.eventbrite.com/e/blood-on-the-clocktower-edinburgh-tickets-1981485514514"
+      cost: "Free"
+      startdate: 2026-03-13
+      starttime: 1800
+      endtime: 2055
+      rrule: "FREQ=WEEKLY;INTERVAL=2;BYDAY=FR"
+      location:
+        name: "Lister Learning and Teaching Centre"
+        address: "5 Roxburgh Place, Edinburgh EH8 9SU"
+        lat: 55.94694034227274
+        lng: -3.184204743771832
 ---

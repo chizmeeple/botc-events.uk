@@ -2,15 +2,4 @@
   <div class="club-card-header">
     <div class="club-name">{{ club.name }}</div>
   </div>
-  <div class="club-tags">
-    {% for d in club.days %}
-      <span class="tag tag-day">{{ d }}</span>
-    {% endfor %}
-    {% if club.frequency and club.frequency != "Weekly" %}
-      <span class="tag">{{ club.frequency }}</span>
-    {% endif %}
-    {% if club.cost %}
-      <span class="tag tag-cost">{{ club.cost }}</span>
-    {% endif %}
-  </div>
 </a>

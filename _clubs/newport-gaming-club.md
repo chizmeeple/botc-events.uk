@@ -1,14 +1,6 @@
 ---
 name: "Newport Gaming Club"
-days: ["Monday"]
-time: "6pm - 10:30pm"
-frequency: "Ad Hoc"
-location:
-  name: "Pen & Wig"
-  address: "Stow Hill, Newport NP20 1JD"
-  lat: 51.587235910645454
-  lng: -2.9970351262480732
-cost: "£3"
+based_in: "Newport"
 image: ""
 website: ""
 meetup: ""
@@ -25,4 +17,17 @@ description: >-
   gamers!
 
   Newport Gaming Club Cover Charge: £3 payable to the Club
+events:
+  adhoc:
+    - eventname: "Blood on the Clocktower"
+      signup: "https://www.eventbrite.co.uk/e/blood-on-the-clocktower-newport-gaming-club-tickets-1983192676682"
+      cost: "£3"
+      startdate: 2026-03-30
+      starttime: 1730
+      endtime: 2200
+      location:
+        name: "Pen & Wig"
+        address: "Stow Hill, Newport NP20 1JD"
+        lat: 51.587235910645454
+        lng: -2.9970351262480732
 ---

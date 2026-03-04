@@ -7,16 +7,10 @@ layout: null
     "name": {{ club.name | jsonify }},
     "slug": {{ club.slug | jsonify }},
     "url": {{ club.url | relative_url | jsonify }},
-    "days": {{ club.days | jsonify }},
-    "time": {{ club.time | jsonify }},
-    "frequency": {{ club.frequency | jsonify }},
-    "location": {
-      "name": {{ club.location.name | jsonify }},
-      "address": {{ club.location.address | jsonify }},
-      "lat": {{ club.location.lat }},
-      "lng": {{ club.location.lng }}
-    },
-    "cost": {{ club.cost | jsonify }},
+    "based_in": {{ club.based_in | jsonify }},
+    {% assign event_data = site.data.rendered_events.by_slug[club.slug] %}
+    "pills": {% if event_data.pills %}{{ event_data.pills | jsonify }}{% else %}null{% endif %},
+    "locations": {% if event_data.locations %}{{ event_data.locations | jsonify }}{% else %}[]{% endif %},
     "age_restriction": {{ club.age_restriction | jsonify }},
     "website": {{ club.website | jsonify }},
     "meetup": {{ club.meetup | jsonify }},
