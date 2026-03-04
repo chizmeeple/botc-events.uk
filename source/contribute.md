@@ -26,7 +26,7 @@ If you're comfortable with GitHub, you can add a group directly:
 
 ### 1. Create a new file
 
-[Create a new file](https://github.com/{{ site.repository }}/new/main/_clubs) in the `_clubs/` folder on GitHub. Name it using the format `your-club-name.md` (lowercase, hyphens instead of spaces).
+[Create a new file](https://github.com/{{ site.repository }}/new/main/source/_clubs) in the `source/_clubs/` folder on GitHub. Name it using the format `your-club-name.md` (lowercase, hyphens instead of spaces).
 
 ### 2. Copy this template
 
@@ -65,7 +65,7 @@ description: >-
 | `frequency` | "Weekly", "Fortnightly", "Monthly", or "Ad-hoc" |
 | `location` | Venue name, full address, and coordinates |
 | `cost` | "Free" or a money amount, e.g. "£2", "£5 (First Session Free)" |
-| `image` | A URL or filename in `assets/images/clubs/` (see [step 5](#5-adding-a-logo) below) |
+| `image` | A URL or filename in `source/assets/images/clubs/` (see [step 5](#5-adding-a-logo) below) |
 | `website` | Link to your group's website |
 | `facebook` | Link to your club's Facebook page or group |
 | `discord` | Discord invite link |
@@ -84,7 +84,7 @@ To get the latitude and longitude for your venue:
 
 You can add a logo or image for your group:
 
-1. Upload your image to the `assets/images/clubs/` folder in the repository (PNG or JPG, ideally square and under 200KB)
+1. Upload your image to the `source/assets/images/clubs/` folder in the repository (PNG or JPG, ideally square and under 200KB)
 2. Set the `image` field in your group file to the filename, e.g. `image: "your-group-logo.png"`
 
 Alternatively, you can use a direct URL to an image hosted elsewhere, e.g. `image: "https://example.com/logo.png"`
@@ -95,6 +95,6 @@ Commit your file and [open a pull request](https://github.com/{{ site.repository
 
 ## Updating an Existing Group
 
-Find the group's file in the [`_clubs/` folder on GitHub](https://github.com/{{ site.repository }}/tree/main/_clubs), make your changes, and submit a pull request. Or just **[open an edit request](https://github.com/{{ site.repository }}/issues/new?template=edit-club.yml)** and we'll update it for you.
+Find the group's file in the [`source/_clubs/` folder on GitHub](https://github.com/{{ site.repository }}/tree/main/source/_clubs), make your changes, and submit a pull request. Or just **[open an edit request](https://github.com/{{ site.repository }}/issues/new?template=edit-club.yml)** and we'll update it for you.
 
 </div>

@@ -14,4 +14,4 @@ script/geocode.rb
 script/import_clubs.py
 
 # Generated at build time by script/generate_events.rb (and in deploy workflow)
-_data/rendered_events.json
+source/_data/rendered_events.json

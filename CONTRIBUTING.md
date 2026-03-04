@@ -5,7 +5,7 @@ Thanks for helping grow the GameClub directory! Here's how to contribute.
 ## Adding a New Club
 
 1. Fork this repository
-2. Create a new file in `_clubs/` named `your-club-name.md`
+2. Create a new file in `source/_clubs/` named `your-club-name.md`
 3. Use the frontmatter template below
 4. Submit a pull request
 
@@ -44,7 +44,7 @@ description: >-
 | `location.lat` | Yes | Latitude (decimal degrees) |
 | `location.lng` | Yes | Longitude (decimal degrees) |
 | `cost` | No | Currency value (e.g. "£2") or "Free" |
-| `image` | No | Photo URL or filename in `assets/images/clubs/` |
+| `image` | No | Photo URL or filename in `source/assets/images/clubs/` |
 | `website` | No | Full URL or empty string |
 | `facebook` | No | Full URL or empty string |
 | `description` | Yes | 1-3 sentence description |
@@ -57,7 +57,7 @@ description: >-
 
 ## Updating a Club
 
-Edit the relevant file in `_clubs/` and submit a pull request with a brief description of what changed.
+Edit the relevant file in `source/_clubs/` and submit a pull request with a brief description of what changed.
 
 ## Validating Locally
 
@@ -67,7 +67,7 @@ Before submitting a PR, you can validate your club file:
 ruby script/validate_clubs.rb
 ```
 
-This checks all `_clubs/*.md` files for correct frontmatter (required fields, valid day names, coordinate ranges, etc.). The same check runs automatically on every pull request.
+This checks all `source/_clubs/*.md` files for correct frontmatter (required fields, valid day names, coordinate ranges, etc.). The same check runs automatically on every pull request.
 
 ## Local Development
 

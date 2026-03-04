@@ -51,17 +51,28 @@
   },
   "folders": [
     {
-      "name": "project-root",
-      "path": "./",
+      "name": "source",
+      "path": "./source",
     },
     {
       "name": "groups",
-      "path": "./_clubs",
+      "path": "./source/_clubs",
+    },
+    {
+      "name": "github",
+      "path": "./.github",
+    },
+    {
+      "name": "project-root",
+      "path": "./",
     },
   ],
   "settings": {
     "files.exclude": {
-      "./_site": true,
+      "**/_site": true,
+      "**/.github": true,
+      "source": true,
+      "Gemfile.lock": true,
     },
   },
 }
