@@ -56,12 +56,17 @@
   rel="stylesheet"
   href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
 />
-{% seo title=false %} {% if page.layout == "club" and page.location.lat and
-page.location.lng %}
+{% seo title=false %} {% if page.layout == "club" %}
+{% assign slug = page.slug | default: page.id | split: "/" | last %}
+{% assign club_event_data = site.data.rendered_events.by_slug[slug] %}
+{% assign first_loc = nil %}
+{% if club_event_data and club_event_data.locations and club_event_data.locations.size > 0 %}{% assign first_loc = club_event_data.locations[0] %}{% endif %}
+{% if first_loc and first_loc.lat and first_loc.lng %}
 <meta
   name="geo.position"
-  content="{{ page.location.lat }};{{ page.location.lng }}"
+  content="{{ first_loc.lat }};{{ first_loc.lng }}"
 />
-<meta name="geo.placename" content="{{ page.location.address }}" />
-<meta name="ICBM" content="{{ page.location.lat }}, {{ page.location.lng }}" />
+<meta name="geo.placename" content="{{ first_loc.name }}" />
+<meta name="ICBM" content="{{ first_loc.lat }}, {{ first_loc.lng }}" />
+{% endif %}
 {% endif %}

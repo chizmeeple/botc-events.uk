@@ -2,6 +2,10 @@
 layout: default
 ---
 
+{% assign slug = page.slug | default: page.id | split: "/" | last %}
+{% assign event_data = site.data.rendered_events.by_slug[slug] %}
+{% assign first_loc = nil %}
+{% if event_data and event_data.locations and event_data.locations.size > 0 %}{% assign first_loc = event_data.locations[0] %}{% endif %}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -9,39 +13,16 @@ layout: default
     "name": {{ page.name | jsonify }},
     {% if page.description %}"description": {{ page.description | jsonify }},{% endif %}
     {% if page.website and page.website != "" %}"url": {{ page.website | jsonify }},{% endif %}
-    "sameAs": [{% if page.facebook and page.facebook != "" %}{{ page.facebook | jsonify }}{% endif %}{% if page.discord and page.discord != "" %}{% if page.facebook and page.facebook != "" %},{% endif %}{{ page.discord | jsonify }}{% endif %}{% if page.bgg and page.bgg != "" %}{% if page.facebook and page.facebook != "" or page.discord and page.discord != "" %},{% endif %}{{ page.bgg | jsonify }}{% endif %}{% if page.meetup and page.meetup != "" %}{% if page.facebook and page.facebook != "" or page.discord and page.discord != "" or page.bgg and page.bgg != "" %},{% endif %}{{ page.meetup | jsonify }}{% endif %}],
+    "sameAs": [{% if page.facebook and page.facebook != "" %}{{ page.facebook | jsonify }}{% endif %}{% if page.discord and page.discord != "" %}{% if page.facebook and page.facebook != "" %},{% endif %}{{ page.discord | jsonify }}{% endif %}{% if page.bgg and page.bgg != "" %}{% if page.facebook and page.facebook != "" or page.discord and page.discord != "" %},{% endif %}{{ page.bgg | jsonify }}{% endif %}{% if page.meetup and page.meetup != "" %}{% if page.facebook and page.facebook != "" or page.discord and page.discord != "" or page.bgg and page.bgg != "" %},{% endif %}{{ page.meetup | jsonify }}{% endif %}]
+    {% if first_loc and first_loc.lat and first_loc.lng %},
     "location": {
       "@type": "Place",
-      "name": {{ page.location.name | jsonify }},
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": {{ page.location.address | jsonify }},
-        "addressCountry": "GB"
-      }{% if page.location.lat and page.location.lng %},
+      "name": {{ first_loc.name | jsonify }},
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": {{ page.location.lat }},
-        "longitude": {{ page.location.lng }}
-      }{% endif %}
-    }{% if page.days.size > 0 %},
-    "event": {
-      "@type": "Event",
-      "name": {{ page.name | jsonify }},
-      "location": {
-        "@type": "Place",
-        "name": {{ page.location.name | jsonify }},
-        "address": {{ page.location.address | jsonify }}
-      },
-      "eventSchedule": {
-        "@type": "Schedule",
-        "byDay": "https://schema.org/{{ page.days[0] }}",
-        "repeatFrequency": {% if page.frequency == "Weekly" %}"P1W"{% elsif page.frequency == "Fortnightly" %}"P2W"{% elsif page.frequency == "Monthly" %}"P1M"{% else %}{{ page.frequency | jsonify }}{% endif %}
-      }{% if page.cost and page.cost != "" %},
-      "offers": {
-        "@type": "Offer",
-        "price": {{ page.cost | jsonify }},
-        "priceCurrency": "GBP"
-      }{% endif %}
+        "latitude": {{ first_loc.lat }},
+        "longitude": {{ first_loc.lng }}
+      }
     }{% endif %}
   }
 </script>
@@ -91,12 +72,10 @@ layout: default
       <h1>
         {{ page.name }}
         <span class="club-location-subtitle"
-          >Blood on the Clocktower Group in {% if page.based_in and page.based_in != "" %}{{ page.based_in }}{% else %}{{ page.location.address }}{% endif %}</span
+          >Blood on the Clocktower Group in {% if page.based_in and page.based_in != "" %}{{ page.based_in }}{% elsif first_loc and first_loc.name %}{{ first_loc.name }}{% endif %}</span
         >
       </h1>
-      {% assign slug = page.slug | default: page.id | split: "/" | last %}
-      {% assign event_data = site.data.rendered_events.by_slug[slug] %}
-      {% if event_data.pills.frequency and event_data.pills.frequency.size > 0 %}
+      {% if event_data and event_data.pills.frequency and event_data.pills.frequency.size > 0 %}
       <div class="club-detail-pills">
         {% for pill in event_data.pills.frequency %}
         <span class="tag tag--muted">{{ pill }}</span>
@@ -106,7 +85,7 @@ layout: default
     </div>
   </div>
 
-  {% if page.location.lat and page.location.lng %}
+  {% if first_loc and first_loc.lat and first_loc.lng %}
   <div class="detail-map" id="detail-map"></div>
   {% endif %}
 
@@ -141,12 +120,7 @@ layout: default
     {% endif %}
   </div>
 
-  {% assign slug = page.slug | default: page.id | split: "/" | last %}
-  {% if site.data.rendered_events %}
-    {% assign club_events = site.data.rendered_events.by_slug[slug] %}
-  {% else %}
-    {% assign club_events = nil %}
-  {% endif %}
+  {% assign club_events = event_data %}
   <div class="club-upcoming-events">
     <h2>Upcoming events</h2>
     {% if club_events and club_events.upcoming.size > 0 %}
@@ -225,7 +199,7 @@ layout: default
   </div>
 </div>
 
-{% if page.location.lat and page.location.lng %}
+{% if event_data.locations and event_data.locations.size > 0 and event_data.locations[0].lat and event_data.locations[0].lng %}
 <script
   src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
@@ -233,10 +207,12 @@ layout: default
 ></script>
 <script>
   (function() {
+    var locations = {{ event_data.locations | jsonify }};
     var lightOpts = { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>', maxZoom: 19, subdomains: 'abcd' };
     var darkOpts = { attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>', maxZoom: 20 };
     var tiles = { light: { url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', opts: lightOpts }, dark: { url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', opts: darkOpts } };
     var theme = document.documentElement.getAttribute('data-theme') || 'dark';
+    var first = locations[0];
     var map = L.map('detail-map', {
       dragging: false,
       scrollWheelZoom: false,
@@ -245,7 +221,7 @@ layout: default
       keyboard: false,
       zoomControl: false,
       touchZoom: false
-    }).setView([{{ page.location.lat }}, {{ page.location.lng }}], 15);
+    }).setView([first.lat, first.lng], locations.length > 1 ? 12 : 15);
     var initial = tiles[theme] || tiles.dark;
     var tileLayer = L.tileLayer(initial.url, initial.opts).addTo(map);
     document.addEventListener('themechange', function(e) {
@@ -254,8 +230,16 @@ layout: default
       var next = tiles[t] || tiles.dark;
       tileLayer = L.tileLayer(next.url, next.opts).addTo(map);
     });
-    L.marker([{{ page.location.lat }}, {{ page.location.lng }}]).addTo(map)
-      .bindPopup('<strong>{{ page.location.name | escape }}</strong><br>{{ page.location.address | escape }}');
+    var bounds = null;
+    locations.forEach(function(loc) {
+      if (loc.lat && loc.lng) {
+        var popup = '<strong>' + (loc.name || '').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</strong>';
+        L.marker([loc.lat, loc.lng]).addTo(map).bindPopup(popup);
+        if (!bounds) bounds = L.latLngBounds([loc.lat, loc.lng], [loc.lat, loc.lng]);
+        else bounds.extend([loc.lat, loc.lng]);
+      }
+    });
+    if (bounds && locations.length > 1) map.fitBounds(bounds, { padding: [20, 20] });
   })();
 </script>
 {% endif %}
