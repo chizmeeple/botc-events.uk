@@ -75,10 +75,10 @@ layout: default
           >Blood on the Clocktower Group in {% if page.based_in and page.based_in != "" %}{{ page.based_in }}{% elsif first_loc and first_loc.name %}{{ first_loc.name }}{% endif %}</span
         >
       </h1>
-      {% if event_data and event_data.pills.frequency and event_data.pills.frequency.size > 0 %}
+      {% if event_data and event_data.event_days and event_data.event_days.size > 0 %}
       <div class="club-detail-pills">
-        {% for pill in event_data.pills.frequency %}
-        <span class="tag tag--muted">{{ pill }}</span>
+        {% for day in event_data.event_days %}
+        <span class="tag tag--muted">{{ day }}</span>
         {% endfor %}
       </div>
       {% endif %}

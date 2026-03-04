@@ -602,6 +602,12 @@
     flex-wrap: wrap;
     gap: 0.2rem;
     margin-top: 0.5rem;
+
+    .tag {
+      opacity: 1;
+      background: var(--color-tag-day);
+      color: var(--color-on-accent);
+    }
   }
 
   .club-detail-meta {
