@@ -591,6 +591,13 @@
     }
   }
 
+  .club-detail-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    margin-top: 0.5rem;
+  }
+
   .club-detail-meta {
     display: flex;
     flex-wrap: wrap;

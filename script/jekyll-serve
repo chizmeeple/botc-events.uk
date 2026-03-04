@@ -17,4 +17,4 @@ fi
 
 # Generate events data so club pages show upcoming events (same as deploy workflow)
 ruby script/generate_events.rb || true
-bundle exec jekyll serve
+bundle exec jekyll serve --livereload

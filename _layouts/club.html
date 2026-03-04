@@ -94,6 +94,15 @@ layout: default
           >Blood on the Clocktower Group in {% if page.based_in and page.based_in != "" %}{{ page.based_in }}{% else %}{{ page.location.address }}{% endif %}</span
         >
       </h1>
+      {% assign slug = page.slug | default: page.id | split: "/" | last %}
+      {% assign event_data = site.data.rendered_events.by_slug[slug] %}
+      {% if event_data.pills.frequency and event_data.pills.frequency.size > 0 %}
+      <div class="club-detail-pills">
+        {% for pill in event_data.pills.frequency %}
+        <span class="tag tag--muted">{{ pill }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
   </div>
 
