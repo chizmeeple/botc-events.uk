@@ -38,7 +38,7 @@ unless by_slug.is_a?(Hash)
   exit 1
 end
 
-required_event_keys = %w[eventname start_time end_time location signup cost]
+required_event_keys = %w[eventname start_time location signup cost]
 required_location_keys = %w[name address lat lng]
 errors = []
 
