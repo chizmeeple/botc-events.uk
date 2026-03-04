@@ -1,15 +1,6 @@
 ---
 name: "Badger Badger"
 based_in: "Deptford (London)"
-days: ["Sunday"]
-time: "5pm - 9:30pm"
-frequency: "Weekly"
-location:
-  name: "Badger Badger"
-  address: "139-145 Deptford High Street, London, United Kingdom"
-  lat: 51.479040020158536
-  lng: -0.026196995055674823
-cost: "£16"
 image: ""
 website: "https://www.badgerbadger.org/botc/"
 meetup: ""

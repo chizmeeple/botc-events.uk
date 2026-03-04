@@ -1,15 +1,6 @@
 ---
 name: "Evesham Barons TGS"
 based_in: "Evesham"
-days: ["Sunday"]
-time: "10am - 4pm"
-frequency: "Ad Hoc"
-location:
-  name: "Wallace House Community Centre"
-  address: "Oat Street, Evesham. WR11 4PJ"
-  lat: 52.09344124095535
-  lng: -1.9456587013868827
-cost: "£5 (18+), £2 (ages 15–17)"
 image: ""
 website: "https://www.eventbrite.co.uk/cc/blood-on-the-clocktower-evesham-barons-tgs-4791722"
 meetup: ""
@@ -21,4 +12,26 @@ description: >-
   Evesham Barons Tabletop Gaming Society. A social deduction game of lies,
   logic, and laughter in Evesham, Worcestershire.
   https://eveshamclocktower.mezepheles.com
+locations:
+  wallace-house:
+    name: "Wallace House Community Centre"
+    address: "Oat Street, Evesham. WR11 4PJ"
+    lat: 52.09344124095535
+    lng: -1.9456587013868827
+events:
+  adhoc:
+    - eventname: "Blood on the Clocktower @ EBTGS"
+      signup: "https://www.eventbrite.co.uk/e/8th-march-blood-on-the-clocktower-evesham-worcestershire-ebtgs-tickets-1981806513631"
+      cost: "£5 (18+), £2 (ages 15–17)"
+      startdate: 2026-03-08
+      starttime: 1000
+      endtime: 1600
+      location: "wallace-house"
+    - eventname: "Blood on the Clocktower @ EBTGS"
+      signup: "https://www.eventbrite.co.uk/e/22nd-march-blood-on-the-clocktower-evesham-worcestershire-ebtgs-tickets-1981806657060"
+      cost: "£5 (18+), £2 (ages 15–17)"
+      startdate: 2026-03-22
+      starttime: 1000
+      endtime: 1600
+      location: "wallace-house"
 ---

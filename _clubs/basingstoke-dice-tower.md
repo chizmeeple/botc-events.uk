@@ -1,15 +1,6 @@
 ---
 name: "Dice Tower Basingstoke"
 based_in: "Basingstoke"
-days: ["Tuesday"]
-time: "6pm - 10pm"
-frequency: "Weekly"
-location:
-  name: "Dice Tower Basingstoke"
-  address: "London St, Basingstoke RG21 7NY"
-  lat: 51.262409339480726
-  lng: -1.0850773394547892
-cost: ""
 image: ""
 website: "https://www.dicetowercafe.co.uk/clocktower/"
 meetup: ""

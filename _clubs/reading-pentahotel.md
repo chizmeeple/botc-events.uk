@@ -1,15 +1,6 @@
 ---
 name: "Reading Pentahotel"
 based_in: "Reading"
-days: ["Saturday"]
-time: "5pm - 11pm"
-frequency: "Twice monthly (2nd & 4th Saturday)"
-location:
-  name: "Pentahotel Reading"
-  address: "Oxford Rd, Reading RG1 7RH"
-  lat: 51.45486166562228
-  lng: -0.9781043795507257
-cost: "Free"
 image: ""
 website: ""
 meetup: "https://www.meetup.com/reading-blood-on-the-clocktower-alternate-weekends/"

@@ -1,15 +1,6 @@
 ---
 name: "Reading Biscuit Factory"
 based_in: "Reading"
-days: ["Saturday"]
-time: "5pm - 10pm"
-frequency: "Twice monthly (1st & 3rd Saturday)"
-location:
-  name: "Reading Biscuit Factory"
-  address: "1 Queens Walk, Reading RG1 7QE"
-  lat: 51.45512019494365
-  lng: -0.9774400357308308
-cost: "£3"
 image: ""
 website: "https://www.readingbiscuitfactory.co.uk/movie/rbf-board-game-night"
 meetup: ""

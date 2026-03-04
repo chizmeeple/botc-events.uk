@@ -1,15 +1,6 @@
 ---
 name: "Socialdice"
 based_in: "Swansea"
-days: ["Thursday"]
-time: "6pm - 10pm"
-frequency: "Fortnightly"
-location:
-  name: "Socialdice - Board Game Cafe"
-  address: "43 Wind St, Swansea SA1 1EF"
-  lat: 51.61904713593234
-  lng: -3.9393822455762444
-cost: "£5"
 image: ""
 website: "https://www.socialdice.co.uk/ourevents"
 meetup: ""

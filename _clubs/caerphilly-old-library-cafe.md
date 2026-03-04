@@ -1,15 +1,6 @@
 ---
 name: "Caerphilly - The Old Library Cafe"
 based_in: "Caerphilly"
-days: ["Wednesday"]
-time: "6pm - late"
-frequency: "Monthly (3rd Wednesday)"
-location:
-  name: "The Old Library Cafe"
-  address: "The Old Library, Nantgarw Rd, Caerphilly CF83 1AP"
-  lat: 51.57802796027397
-  lng: -3.224581076101536
-cost: "£2.50"
 image: "caerphilly-board-gamers-at-the-old-library.jpg"
 website: "https://www.theoldlibrarycaerphilly.co.uk/"
 meetup: ""

@@ -1,15 +1,6 @@
 ---
 name: "Here For Games"
 based_in: "Hereford"
-days: ["Friday"]
-time: "6:30pm - 10pm"
-frequency: "Ad Hoc"
-location:
-  name: "TheCore Skatehereford Cic"
-  address: "Hereford HR1 2SF"
-  lat: 52.052676
-  lng: -2.699729
-cost: ""
 image: "herefordshire-board-gamers.jpg"
 website: "https://herefor.games/events/"
 meetup: ""
@@ -20,4 +11,19 @@ description: >-
   Volunteer run and led community which provides free friendly inclusive events
   in person and online. Free community lending library of over 600 games and
   event equipment. Over £30,000 raised for causes since 2017 #WeAreHereForGames
+locations:
+  the-core:
+    name: "TheCore Skatehereford Cic"
+    address: "Hereford HR1 2SF"
+    lat: 52.052676
+    lng: -2.699729
+events:
+  adhoc:
+    - eventname: "Blood on the Clocktower"
+      signup: "https://herefor.games/events/"
+      cost: "Free"
+      startdate: 2026-03-27
+      starttime: 1830
+      endtime: 2359
+      location: "the-core"
 ---

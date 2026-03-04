@@ -1,15 +1,6 @@
 ---
 name: "Clocktower Leamington"
 based_in: "Leamington Spa"
-days: ["Tuesday", "Wednesday", "Thursday"]
-time: "7pm onwards"
-frequency: "Twice Monthly (First Thurday & Third Tuesday)"
-location:
-  name: "Upstairs at The Royal Pug"
-  address: "141 Regent St, Leamington Spa CV32 4NX"
-  lat: 52.290650842909415
-  lng: -1.532523462847223
-cost: ""
 image: ""
 website: "https://clocktowerleam.com/"
 meetup: ""
@@ -26,6 +17,13 @@ description: >-
   Tuesday of each month. 7pm-11pm at The Royal Pug.
 
   Signups at https://clocktowerleam.com/
+
+locations:
+  royal-pug:
+    name: "Upstairs at The Royal Pug"
+    address: "141 Regent St, Leamington Spa CV32 4NX"
+    lat: 52.290650842909415
+    lng: -1.532523462847223
 events:
   recurring:
     - eventname: "Clocktower Leamington"
@@ -34,9 +32,18 @@ events:
       startdate: 2026-04-01
       starttime: 1900
       rrule: "FREQ=MONTHLY;BYDAY=1TH,3TU"
-      location:
-        name: "Upstairs at The Royal Pug"
-        address: "141 Regent St, Leamington Spa CV32 4NX"
-        lat: 52.290650842909415
-        lng: -1.532523462847223
+      location: "royal-pug"
+  adhoc:
+    - eventname: "Clocktower Leamington"
+      signup: "https://clocktowerleam.com/Mar26a"
+      cost: "Unknown"
+      startdate: 2026-03-05
+      starttime: 1900
+      location: "royal-pug"
+    - eventname: "Clocktower Leamington"
+      signup: "https://clocktowerleam.com/Mar26b"
+      cost: "Unknown"
+      startdate: 2026-03-18
+      starttime: 1900
+      location: "royal-pug"
 ---

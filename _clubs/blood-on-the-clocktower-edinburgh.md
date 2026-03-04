@@ -1,15 +1,6 @@
 ---
 name: "Blood on the Clocktower - Edinburgh"
 based_in: "Edinburgh"
-days: ["Friday"]
-time: "6pm"
-frequency: "Fortnightly"
-location:
-  name: "Lister Learning and Teaching Centre"
-  address: "5 Roxburgh Place, Edinburgh EH8 9SU"
-  lat: 55.94694034227274
-  lng: -3.184204743771832
-cost: "Free"
 image: ""
 website: "https://www.eventbrite.com/e/blood-on-the-clocktower-edinburgh-tickets-1981485514514"
 meetup: ""

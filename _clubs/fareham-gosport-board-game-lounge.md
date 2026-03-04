@@ -1,15 +1,6 @@
 ---
 name: "Fareham & Gosport Board Game Lounge"
 based_in: "Fareham"
-days: ["Friday"]
-time: "7:15 - late"
-frequency: "3rd Friday"
-location:
-  name: "Catisfield Memorial Hall"
-  address: "22 Catisfield Ln, Catisfield, Fareham PO15 5NN"
-  lat: 50.8538472815163
-  lng: -1.2218374796506306
-cost: "Free"
 image: "fareham.jpg"
 website: "https://farehamandgosportboardgamelounge.co.uk"
 meetup: ""

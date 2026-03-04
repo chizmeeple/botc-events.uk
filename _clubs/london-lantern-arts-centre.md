@@ -1,15 +1,6 @@
 ---
 name: "Blood on the Clocktower @Lantern Centre"
 based_in: "London"
-days: ["Friday"]
-time: "12pm - 6pm"
-frequency: "Weekly"
-location:
-  name: "Somewhere"
-  address: "London"
-  lat: 51.41
-  lng: -0.22
-cost: "£5"
 image: ""
 website: ""
 meetup: "https://www.meetup.com/blood-on-the-clocktower-lantern-centre/events/"

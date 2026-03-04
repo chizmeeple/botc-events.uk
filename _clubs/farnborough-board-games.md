@@ -1,15 +1,6 @@
 ---
 name: "Farnborough Board Games"
 based_in: "Farnborough (Hampshire)"
-days: ["Thursday"]
-time: "7:00pm - 10:00pm"
-frequency: "Twice monthly (2nd & 4th Tuesday)"
-location:
-  name: "Monkey Puzzle (Brewer's Fayre)"
-  address: "Monkey Puzzle (Brewer's Fayre), Farnborough, GU14 0LE"
-  lat: 51.288782720425026
-  lng: -0.7786554104110263
-cost: "Free"
 image: "farnborough-board-games.png"
 website: ""
 meetup: "https://www.meetup.com/farnborough-board-games-club/"

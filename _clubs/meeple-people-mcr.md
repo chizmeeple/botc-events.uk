@@ -1,15 +1,6 @@
 ---
 name: "Meeple People MCR"
 based_in: "Manchester"
-days: ["Tuesday"]
-time: "6:45pm - 10pm"
-frequency: "Twice Monthly"
-location:
-  name: "The Old Monkey"
-  address: "90 Portland St, Manchester M1 4GX"
-  lat: 53.47771353284875
-  lng: -2.240104799688213
-cost: ""
 image: ""
 website: "https://linktr.ee/MeeplePeopleMCR"
 meetup: "https://www.meetup.com/meeple-people-mcr/"
@@ -29,4 +20,19 @@ description: >-
 
   We're building a wonderful community of detectives, schemers, and
   storytellers, and we'd love for you to be a part of it.
+locations:
+  the-old-monkey:
+    name: "The Old Monkey"
+    address: "90 Portland St, Manchester M1 4GX"
+    lat: 53.47771353284875
+    lng: -2.240104799688213
+events:
+  adhoc:
+    - eventname: "Blood on the Clocktower Manchester (Event #10)"
+      signup: "https://www.eventbrite.co.uk/e/blood-on-the-clocktower-manchester-event-10-registration-1983611301801"
+      cost: "£5 optional donation"
+      startdate: 2026-03-24
+      starttime: 1845
+      endtime: 2200
+      location: "the-old-monkey"
 ---

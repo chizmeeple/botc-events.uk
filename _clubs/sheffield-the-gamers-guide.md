@@ -1,15 +1,6 @@
 ---
 name: "The Gamers Guide"
 based_in: "Sheffield"
-days: ["Sunday"]
-time: "6pm - 10pm"
-frequency: "Weekly"
-location:
-  name: "Gamer Guide Cafe"
-  address: "8 E Parade, Sheffield City Centre, Sheffield S1 2ET"
-  lat: 53.38315240818034
-  lng: -1.4684460215429047
-cost: "£5"
 image: ""
 website: ""
 meetup: "https://www.meetup.com/the-gamers-guide-cafe-events/"
