@@ -30,28 +30,45 @@ If you're comfortable with GitHub, you can add a group directly:
 
 ### 2. Copy this template
 
-Paste the following into your new file and fill in the details:
+Paste the following into your new file and fill in the details. See `_club-template.md` in the repo root for the canonical template.
 
 ```yaml
 ---
-name: "Your Group Name"
-days: ["Thursday"]
-time: "7:00pm - 10:00pm"
-frequency: "Weekly"
-location:
-  name: "Venue Name"
-  address: "Full Address, Town, Postcode"
-  lat: 53.0000
-  lng: -1.0000
-cost: "Free"
-image: ""
-website: ""
-facebook: ""
-discord: ""
-bgg: ""
+name: "Unlucky Villagers"
+based_in: "Leeds"
+image: "unlucky-villagers.png"
+website: "https://example.com"
+meetup: "https://www.meetup.com/unlucky-villagers/"
+facebook: "https://facebook.com/unluckyvillagers"
+discord: "https://discord.gg/example"
+bgg: "https://boardgamegeek.com/guild/1234"
 description: >-
-  A short description of your group. What games do you play?
-  Are newcomers welcome? Any other useful info.
+  A friendly group who play Blood on the Clocktower. Newcomers welcome!
+  We meet every Tuesday at The King's Arms.
+locations:
+  the-kings-arms:
+    name: "The King's Arms"
+    address: "12 High Street, Leeds, LS1 1AA"
+    lat: 53.7960
+    lng: -1.5476
+events:
+  recurring:
+    - eventname: "Blood on the Clocktower"
+      signup: "https://www.meetup.com/unlucky-villagers/events/"
+      cost: "£3"
+      startdate: 2026-03-10
+      starttime: 1900
+      endtime: 2200
+      rrule: "FREQ=WEEKLY;BYDAY=TU"
+      location: "the-kings-arms"
+  adhoc:
+    - eventname: "One-off Taster Session"
+      signup: "https://www.meetup.com/unlucky-villagers/events/123"
+      cost: "Free"
+      startdate: 2026-03-15
+      starttime: 1800
+      endtime: 2100
+      location: "the-kings-arms"
 ---
 ```
 
@@ -60,16 +77,18 @@ description: >-
 | Field | Description |
 |-------|-------------|
 | `name` | Your group's full name |
-| `days` | Array of days you meet, e.g. `["Thursday"]` or `["Monday", "Friday"]` |
-| `time` | When you meet, e.g. "7:00pm - 10:00pm" |
-| `frequency` | "Weekly", "Fortnightly", "Monthly", or "Ad-hoc" |
-| `location` | Venue name, full address, and coordinates |
-| `cost` | "Free" or a money amount, e.g. "£2", "£5 (First Session Free)" |
+| `based_in` | Town or city where you're based |
 | `image` | A URL or filename in `source/assets/images/clubs/` (see [step 5](#5-adding-a-logo) below) |
 | `website` | Link to your group's website |
+| `meetup` | Meetup group URL |
 | `facebook` | Link to your club's Facebook page or group |
 | `discord` | Discord invite link |
 | `bgg` | BoardGameGeek guild or group link |
+| `description` | A short description. What games do you play? Are newcomers welcome? |
+| `locations` | Venues keyed by slug (e.g. `the-kings-arms`). Each needs `name`, `address`, `lat`, `lng` |
+| `events.recurring` | Array of recurring events. Each needs `eventname`, `signup`, `cost`, `startdate`, `starttime`, `endtime`, `rrule`, `location` (slug from `locations`) |
+| `events.adhoc` | Array of one-off events. Each needs `eventname`, `signup`, `cost`, `startdate`, `starttime`, `location`. Optionally `endtime` |
+| `rrule` | Recurrence rule, e.g. `FREQ=WEEKLY;BYDAY=TU` (every Tuesday), `FREQ=MONTHLY;BYDAY=2SA` (2nd Saturday of month) |
 
 ### 4. Find your coordinates
 
