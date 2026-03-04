@@ -45,4 +45,18 @@ events:
       rrule: "FREQ=WEEKLY;BYDAY=TU"
       location: "dice-tower-basingstoke"
   adhoc:
+    - eventname: "Blood on the Clocktower – Sundays"
+      signup: "https://www.dicetowercafe.co.uk/clocktower/"
+      cost: "£4"
+      startdate: 2026-03-08
+      starttime: 1200
+      endtime: 2100
+      location: "dice-tower-basingstoke"
+    - eventname: "Blood on the Clocktower – Sundays"
+      signup: "https://www.dicetowercafe.co.uk/clocktower/"
+      cost: "£4"
+      startdate: 2026-03-22
+      starttime: 1200
+      endtime: 2100
+      location: "dice-tower-basingstoke"
 ---
