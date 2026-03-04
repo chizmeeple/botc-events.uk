@@ -239,7 +239,7 @@ layout: default
         else bounds.extend([loc.lat, loc.lng]);
       }
     });
-    if (bounds && locations.length > 1) map.fitBounds(bounds, { padding: [20, 20] });
+    if (bounds && locations.length > 1) map.fitBounds(bounds, { padding: [50, 40, 50, 40] });
   })();
 </script>
 {% endif %}
