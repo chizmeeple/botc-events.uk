@@ -76,6 +76,7 @@
           var locNames = (club.locations || []).map(function (l) { return l.name || ""; }).join(" ");
           var haystack = [
             club.name,
+            club.based_in,
             locNames,
             club.description,
           ]
