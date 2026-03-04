@@ -125,19 +125,6 @@
 
     var html = clubs
       .map(function (club) {
-        var tags = "";
-        club.days.forEach(function (d) {
-          tags += '<span class="tag tag-day">' + escapeHtml(d) + "</span>";
-        });
-
-        if (club.frequency && club.frequency !== "Weekly") {
-          tags += '<span class="tag">' + escapeHtml(club.frequency) + "</span>";
-        }
-
-        if (club.cost) {
-          tags += '<span class="tag tag-cost">' + escapeHtml(club.cost) + "</span>";
-        }
-
         var distanceBadge = "";
         if (club._distance !== undefined) {
           distanceBadge =
@@ -178,9 +165,6 @@
           "</div>" +
           meta +
           "</div>" +
-          "</div>" +
-          '<div class="club-tags">' +
-          tags +
           "</div>" +
           "</a>"
         );

@@ -61,19 +61,6 @@
       clubs.forEach(function (club) {
         if (!club.location.lat || !club.location.lng) return;
 
-        var tags = "";
-        club.days.forEach(function (d) {
-          tags += '<span class="tag tag-day">' + self.escapeHtml(d) + "</span>";
-        });
-
-        if (club.frequency && club.frequency !== "Weekly") {
-          tags += '<span class="tag">' + self.escapeHtml(club.frequency) + "</span>";
-        }
-
-        if (club.cost) {
-          tags += '<span class="tag tag-cost">' + self.escapeHtml(club.cost) + "</span>";
-        }
-
         var popupIcon = "";
         if (club.image) {
           var baseurl = window.GameClub ? window.GameClub.baseurl : "";
@@ -98,9 +85,6 @@
           "</div>" +
           venue +
           "</div>" +
-          "</div>" +
-          '<div class="popup-tags">' +
-          tags +
           "</div>" +
           "</a>";
 
