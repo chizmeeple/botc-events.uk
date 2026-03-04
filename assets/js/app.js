@@ -95,12 +95,9 @@
       search.userLng === null
     ) {
       var club = filtered[0];
-      if (
-        club.location &&
-        club.location.lat &&
-        club.location.lng
-      ) {
-        map.focusOn(club.location.lat, club.location.lng);
+      var firstLoc = club.locations && club.locations[0];
+      if (firstLoc && firstLoc.lat && firstLoc.lng) {
+        map.focusOn(firstLoc.lat, firstLoc.lng);
       } else {
         map.fitToMarkers();
       }
@@ -141,7 +138,8 @@
           icon = '<div class="club-icon-wrap"><img src="' + imgSrc + '" alt="" loading="lazy" onload="window.GameClub.applyImgBg(this)"></div>';
         }
 
-        var locationText = club.based_in || (club.location && club.location.name) || "";
+        var firstLoc = club.locations && club.locations[0];
+        var locationText = club.based_in || (firstLoc && firstLoc.name) || "";
         var venue = locationText
           ? '<div class="club-venue"><i data-lucide="map-pin"></i>' + escapeHtml(locationText) + "</div>"
           : "";

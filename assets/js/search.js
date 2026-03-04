@@ -51,27 +51,33 @@
     getFiltered: function () {
       var self = this;
 
-      // Compute distances first if location is set (needed for distance filter)
+      // Compute distances first if location is set (use nearest of club's locations)
       if (self.userLat !== null && self.userLng !== null) {
         self.allClubs.forEach(function (club) {
-          club._distance = self.haversine(
-            self.userLat,
-            self.userLng,
-            club.location.lat,
-            club.location.lng
-          );
+          var locs = club.locations || [];
+          if (locs.length === 0) return;
+          var minDist = Infinity;
+          for (var i = 0; i < locs.length; i++) {
+            var d = self.haversine(
+              self.userLat,
+              self.userLng,
+              locs[i].lat,
+              locs[i].lng
+            );
+            if (d < minDist) minDist = d;
+          }
+          club._distance = minDist;
         });
       }
 
       var results = this.allClubs.filter(function (club) {
         // Text search
         if (self.searchQuery) {
+          var locNames = (club.locations || []).map(function (l) { return l.name || ""; }).join(" ");
           var haystack = [
             club.name,
-            club.location.name,
-            club.location.address,
+            locNames,
             club.description,
-            club.days.join(" "),
           ]
             .filter(Boolean)
             .join(" ")
@@ -80,7 +86,8 @@
         }
 
         // Day filter (OR logic: club passes if it matches any selected day)
-        if (self.dayFilters.length > 0) {
+        // Clubs without days data pass through when filter is active
+        if (self.dayFilters.length > 0 && club.days && club.days.length > 0) {
           var matchesDay = false;
           for (var i = 0; i < self.dayFilters.length; i++) {
             if (club.days.indexOf(self.dayFilters[i]) !== -1) {

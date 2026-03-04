@@ -59,7 +59,8 @@
       this.markerMap = {};
 
       clubs.forEach(function (club) {
-        if (!club.location.lat || !club.location.lng) return;
+        var locations = club.locations || [];
+        if (locations.length === 0) return;
 
         var popupIcon = "";
         if (club.image) {
@@ -70,7 +71,7 @@
           popupIcon = '<div class="popup-icon-wrap"><img src="' + imgSrc + '" alt="" onload="window.GameClub.applyImgBg(this)"></div>';
         }
 
-        var locationText = club.based_in || (club.location && club.location.name) || '';
+        var locationText = club.based_in || (locations[0] && locations[0].name) || "";
         var venue = locationText
           ? '<div class="popup-venue"><i data-lucide="map-pin"></i>' + self.escapeHtml(locationText) + '</div>'
           : '';
@@ -106,12 +107,12 @@
           "</div>" +
           "</a>";
 
-        var marker = L.marker([club.location.lat, club.location.lng]).bindPopup(
-          popupContent
-        );
-
-        self.markers.addLayer(marker);
-        self.markerMap[club.slug] = marker;
+        locations.forEach(function (loc) {
+          if (!loc.lat || !loc.lng) return;
+          var marker = L.marker([loc.lat, loc.lng]).bindPopup(popupContent);
+          self.markers.addLayer(marker);
+          self.markerMap[club.slug] = marker;
+        });
       });
     },
 

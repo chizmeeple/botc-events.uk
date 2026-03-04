@@ -251,12 +251,19 @@ def main
 
     frequency_pills = upcoming.map { |o| o["frequency"] }.compact.uniq
 
+    unique_locations = upcoming
+      .map { |o| o["location"] }
+      .select { |loc| loc.is_a?(Hash) && loc["lat"] && loc["lng"] }
+      .uniq { |loc| [loc["lat"], loc["lng"]] }
+      .map { |loc| { "name" => loc["name"], "lat" => loc["lat"], "lng" => loc["lng"] } }
+
     by_slug[slug] = {
       "club_name" => club_name,
       "upcoming" => upcoming,
       "pills" => {
         "frequency" => frequency_pills,
       },
+      "locations" => unique_locations,
     }
 
     upcoming.each do |occ|
