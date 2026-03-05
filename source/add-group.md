@@ -17,7 +17,6 @@ The easiest way to add your group is to fill in our form on GitHub. No technical
 
 <div class="contribute-actions">
   <a href="https://github.com/{{ site.repository }}/issues/new?template=add-club.yml" class="contribute-btn contribute-btn--primary">+ Add a Group</a>
-  <a href="https://github.com/{{ site.repository }}/issues/new?template=add-event.yml" class="contribute-btn contribute-btn--secondary">+ Add an Event</a>
   <a href="https://github.com/{{ site.repository }}/issues/new?template=edit-club.yml" class="contribute-btn contribute-btn--secondary">Edit a Group</a>
 </div>
 

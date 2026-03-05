@@ -19,7 +19,6 @@ The easiest way to add an event is to fill in our form on GitHub. No technical k
 
 <div class="contribute-actions">
   <a href="https://github.com/{{ site.repository }}/issues/new?template=add-event.yml" class="contribute-btn contribute-btn--primary">+ Add an Event</a>
-  <a href="https://github.com/{{ site.repository }}/issues/new?template=add-club.yml" class="contribute-btn contribute-btn--secondary">+ Add a Group</a>
 </div>
 
 ## Adding an Event via Pull Request
