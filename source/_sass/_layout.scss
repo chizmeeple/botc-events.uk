@@ -81,6 +81,10 @@
     display: flex;
     gap: 0.35rem;
     align-items: center;
+
+    @media (max-width: $bp-md - 1) {
+      gap: 0.25rem;
+    }
     flex-shrink: 0;
 
     // Hide "Map" and "About" links on mobile
@@ -95,6 +99,10 @@
     color: var(--color-text);
     padding: 0.4rem 0.9rem;
     font-size: 0.82rem;
+
+    @media (max-width: $bp-md - 1) {
+      padding: 0.3rem 0.6rem;
+    }
     font-weight: 500;
     border-radius: 6px;
     background: var(--color-tag);
@@ -131,6 +139,10 @@
     align-items: center;
     justify-content: center;
     padding: 0.4rem 0.5rem;
+
+    @media (max-width: $bp-md - 1) {
+      padding: 0.3rem 0.4rem;
+    }
     background: none;
     border: none;
     border-radius: 6px;
@@ -151,6 +163,10 @@
     align-items: center;
     justify-content: center;
     padding: 0.4rem 0.5rem;
+
+    @media (max-width: $bp-md - 1) {
+      padding: 0.3rem 0.4rem;
+    }
     background: none;
 
     svg {
