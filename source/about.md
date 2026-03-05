@@ -7,9 +7,9 @@ permalink: /about/
 
 <div class="content-page" markdown="1">
 
-# About botc-events.uk
+# About {{site.title}}
 
-botc-events.uk is a free, community-maintained directory of board game groups across the United Kingdom. Our goal is simple: help people find their nearest board game group on an interactive map.
+{{site.title}} is a free, community-maintained directory of board game groups across the United Kingdom. Our goal is simple: help people find their nearest board game group on an interactive map.
 
 ## How It Works
 
@@ -24,7 +24,7 @@ All group data is stored as individual files in our [GitHub repository](https://
 
 ## No Accounts, Privacy Friendly
 
-botc-events.uk is a static website hosted on GitHub Pages. There are no user accounts and no cookies. We use [GoatCounter](https://www.goatcounter.com/) for basic, privacy-friendly analytics — it collects no personal data, uses no cookies, and is fully open source. The interactive map uses OpenStreetMap, which is free and open source.
+{{site.title}} is a static website hosted on GitHub Pages. There are no user accounts and no cookies. We use [GoatCounter](https://www.goatcounter.com/) for basic, privacy-friendly analytics — it collects no personal data, uses no cookies, and is fully open source. The interactive map uses OpenStreetMap, which is free and open source.
 
 ## Get Involved
 

@@ -38,7 +38,6 @@ body:
     attributes:
       label: Cost
       options:
-        - ""
         - Free
         - £1
         - £2
@@ -90,9 +89,8 @@ body:
     id: frequency
     attributes:
       label: How often (required if Recurring)
-      description: Leave blank for one-off events
+      description: Leave 'None' for one-off events
       options:
-        - ""
         - Weekly
         - Fortnightly
         - Twice monthly
@@ -102,9 +100,8 @@ body:
     id: frequency_day
     attributes:
       label: Which day (for recurring)
-      description: Leave blank for one-off events
+      description: Leave 'None' for one-off events
       options:
-        - ""
         - Monday
         - Tuesday
         - Wednesday

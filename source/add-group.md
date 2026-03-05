@@ -1,15 +1,15 @@
 ---
 layout: default
-title: "Add Your Board Game Group to Our UK Directory"
-description: "Submit your board game group to Board Game Clubs UK. Our free, community-maintained directory helps people find board game groups near them across the UK."
+title: "Add Your Blood on the Clocktower Group to Our UK Directory"
+description: "Submit your board game group to botc-events.uk. Our free, community-maintained directory helps people find board game groups near them across the UK."
 permalink: /add-group/
 ---
 
 <div class="content-page" markdown="1">
 
-# Add Your Board Game Group
+# Add Your Blood on the Clocktower Group
 
-Board Game Clubs UK is community-maintained and hosted on GitHub. Anyone can add a new group or update existing information.
+{{site.title}} is community-maintained and hosted on GitHub. Anyone can add a new group or update existing information.
 
 ## Submit via our form
 
@@ -26,7 +26,7 @@ If you're comfortable with GitHub, you can add a group directly:
 
 ### 1. Create a new file
 
-[Create a new file](https://github.com/{{ site.repository }}/new/main/source/_clubs) in the `source/_clubs/` folder on GitHub. Name it using the format `your-club-name.md` (lowercase, hyphens instead of spaces).
+[Create a new file](https://github.com/{{ site.repository }}/new/main/source/\_clubs) in the `source/_clubs/` folder on GitHub. Name it using the format `your-club-name.md` (lowercase, hyphens instead of spaces).
 
 ### 2. Copy this template
 
@@ -74,21 +74,21 @@ events:
 
 ### 3. Fill in the details
 
-| Field | Description |
-|-------|-------------|
-| `name` | Your group's full name |
-| `based_in` | Town or city where you're based |
-| `image` | A URL or filename in `source/assets/images/clubs/` (see [step 5](#5-adding-a-logo) below) |
-| `website` | Link to your group's website |
-| `meetup` | Meetup group URL |
-| `facebook` | Link to your club's Facebook page or group |
-| `discord` | Discord invite link |
-| `bgg` | BoardGameGeek guild or group link |
-| `description` | A short description. What games do you play? Are newcomers welcome? |
-| `locations` | Venues keyed by slug (e.g. `the-kings-arms`). Each needs `name`, `address`, `lat`, `lng` |
+| Field              | Description                                                                                                                                           |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`             | Your group's full name                                                                                                                                |
+| `based_in`         | Town or city where you're based                                                                                                                       |
+| `image`            | A URL or filename in `source/assets/images/clubs/` (see [step 5](#5-adding-a-logo) below)                                                             |
+| `website`          | Link to your group's website                                                                                                                          |
+| `meetup`           | Meetup group URL                                                                                                                                      |
+| `facebook`         | Link to your groups's Facebook page or group                                                                                                          |
+| `discord`          | Discord invite link                                                                                                                                   |
+| `bgg`              | BoardGameGeek guild or group link                                                                                                                     |
+| `description`      | A short description. What games do you play? Are newcomers welcome?                                                                                   |
+| `locations`        | Venues keyed by slug (e.g. `the-kings-arms`). Each needs `name`, `address`, `lat`, `lng`                                                              |
 | `events.recurring` | Array of recurring events. Each needs `eventname`, `signup`, `cost`, `startdate`, `starttime`, `endtime`, `rrule`, `location` (slug from `locations`) |
-| `events.adhoc` | Array of one-off events. Each needs `eventname`, `signup`, `cost`, `startdate`, `starttime`, `location`. Optionally `endtime` |
-| `rrule` | Recurrence rule, e.g. `FREQ=WEEKLY;BYDAY=TU` (every Tuesday), `FREQ=MONTHLY;BYDAY=2SA` (2nd Saturday of month) |
+| `events.adhoc`     | Array of one-off events. Each needs `eventname`, `signup`, `cost`, `startdate`, `starttime`, `location`. Optionally `endtime`                         |
+| `rrule`            | Recurrence rule, e.g. `FREQ=WEEKLY;BYDAY=TU` (every Tuesday), `FREQ=MONTHLY;BYDAY=2SA` (2nd Saturday of month)                                        |
 
 ### 4. Find your coordinates
 
@@ -114,6 +114,6 @@ Commit your file and [open a pull request](https://github.com/{{ site.repository
 
 ## Updating an Existing Group
 
-Find the group's file in the [`source/_clubs/` folder on GitHub](https://github.com/{{ site.repository }}/tree/main/source/_clubs), make your changes, and submit a pull request. Or just **[open an edit request](https://github.com/{{ site.repository }}/issues/new?template=edit-club.yml)** and we'll update it for you.
+Find the group's file in the [`source/_clubs/` folder on GitHub](https://github.com/{{ site.repository }}/tree/main/source/\_clubs), make your changes, and submit a pull request. Or just **[open an edit request](https://github.com/{{ site.repository }}/issues/new?template=edit-club.yml)** and we'll update it for you.
 
 </div>
