@@ -20,7 +20,7 @@ botc-events.uk is a free, community-maintained directory of board game groups ac
 
 ## Community Maintained
 
-All group data is stored as individual files in our [GitHub repository](https://github.com/{{ site.repository }}). Anyone can submit a pull request to add a new group or update existing information. See our [contribution guide]({{ "/contribute" | relative_url }}) for details.
+All group data is stored as individual files in our [GitHub repository](https://github.com/{{ site.repository }}). Anyone can submit a pull request to add a new group or update existing information. See our [contribution guide]({{ "/add-group" | relative_url }}) for details.
 
 ## No Accounts, Privacy Friendly
 
@@ -28,6 +28,6 @@ botc-events.uk is a static website hosted on GitHub Pages. There are no user acc
 
 ## Get Involved
 
-Know a Clocktower group that's not listed? [Add it to the directory]({{ "/contribute" | relative_url }}) by submitting a pull request on GitHub. It only takes a few minutes.
+Know a Clocktower group that's not listed? [Add it to the directory]({{ "/add-group" | relative_url }}) by submitting a pull request on GitHub. It only takes a few minutes.
 
 </div>

@@ -2,7 +2,7 @@
 layout: default
 title: "Add Your Board Game Group to Our UK Directory"
 description: "Submit your board game group to Board Game Clubs UK. Our free, community-maintained directory helps people find board game groups near them across the UK."
-permalink: /contribute/
+permalink: /add-group/
 ---
 
 <div class="content-page" markdown="1">
