@@ -115,6 +115,13 @@
       &:hover {
         background: var(--color-accent-light);
       }
+
+      &.nav-cta--alt {
+        background: var(--color-accent-alt);
+        &:hover {
+          background: var(--color-accent-alt-light);
+        }
+      }
     }
 
   }

@@ -1,0 +1,137 @@
+name: Add an Event
+description: Add an event for an existing group in the directory
+title: "Add event: REPLACE_WITH_EVENT_NAME"
+labels: ["new event"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting an event! **We only accept events for groups that already exist** in our directory. If your group isn't listed, please [add your group first](https://github.com/chizmeeple/botc-events.uk/issues/new?template=add-club.yml) — submissions for non-existent groups will be rejected.
+
+  - type: input
+    id: group_name
+    attributes:
+      label: Group name (must already exist in our directory)
+      placeholder: e.g. Oxford On Board, Unlucky Villagers
+      description: The group this event belongs to. Check our [directory](https://botc-events.uk) first.
+    validations:
+      required: true
+
+  - type: input
+    id: event_name
+    attributes:
+      label: Event name
+      placeholder: e.g. Blood on the Clocktower
+    validations:
+      required: true
+
+  - type: input
+    id: signup_link
+    attributes:
+      label: Sign-up link
+      placeholder: https://
+    validations:
+      required: true
+
+  - type: dropdown
+    id: cost
+    attributes:
+      label: Cost
+      options:
+        - ""
+        - Free
+        - £1
+        - £2
+        - £2.50
+        - £3
+        - £5
+        - Other (specify below)
+
+  - type: input
+    id: cost_other
+    attributes:
+      label: Cost (if Other)
+      placeholder: e.g. £4
+
+  - type: input
+    id: event_date
+    attributes:
+      label: Event date
+      placeholder: YYYY-MM-DD (e.g. 2026-03-15)
+      description: For one-off events, the date. For recurring, the date of first occurrence.
+    validations:
+      required: true
+
+  - type: input
+    id: start_time
+    attributes:
+      label: Start time
+      placeholder: 24hr format, e.g. 1900 for 7pm, 1930 for 7:30pm
+    validations:
+      required: true
+
+  - type: input
+    id: end_time
+    attributes:
+      label: End time (optional)
+      placeholder: 24hr format, e.g. 2200 for 10pm
+
+  - type: dropdown
+    id: event_frequency
+    attributes:
+      label: Event frequency
+      options:
+        - One Off
+        - Recurring
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often (required if Recurring)
+      description: Leave blank for one-off events
+      options:
+        - ""
+        - Weekly
+        - Fortnightly
+        - Twice monthly
+        - Monthly
+
+  - type: dropdown
+    id: frequency_day
+    attributes:
+      label: Which day (for recurring)
+      description: Leave blank for one-off events
+      options:
+        - ""
+        - Monday
+        - Tuesday
+        - Wednesday
+        - Thursday
+        - Friday
+        - Saturday
+        - Sunday
+
+  - type: input
+    id: schedule_notes
+    attributes:
+      label: Schedule notes (if complex)
+      placeholder: e.g. 2nd and 4th Saturday of month
+      description: For patterns like "2nd Tuesday" or "1st and 3rd Friday"
+
+  - type: input
+    id: location_name
+    attributes:
+      label: Location name
+      placeholder: e.g. The King's Arms, Westgate Social
+    validations:
+      required: true
+
+  - type: input
+    id: location_address
+    attributes:
+      label: Location address
+      placeholder: e.g. 12 High Street, Leeds, LS1 1AA
+    validations:
+      required: true
