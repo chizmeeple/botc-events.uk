@@ -9,7 +9,7 @@ permalink: /add-group/
 
 # Add Your Blood on the Clocktower Group
 
-botc-events.uk is community-maintained and hosted on GitHub. Anyone can add a new group or update existing information.
+{{site.title}} is community-maintained and hosted on GitHub. Anyone can add a new group or update existing information.
 
 ## Submit via our form
 

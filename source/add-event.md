@@ -9,7 +9,7 @@ permalink: /add-event/
 
 # Add an Event
 
-Add an event for a group that's already listed on Board Game Clubs UK.
+Add an event for a group that's already listed on {{site.title}}.
 
 **Important:** We only accept event submissions for groups that already exist in our directory. If your group isn't listed yet, please [add your group first](/add-group/) — we will reject event submissions for groups that do not exist.
 
@@ -27,7 +27,7 @@ If you're comfortable with GitHub, you can add an event directly by editing the 
 
 ### 1. Find the group's file
 
-Browse the [group files](https://github.com/{{ site.repository }}/tree/main/source/_clubs) and open the file for the group you want to add an event to (e.g. `oxford-on-board.md`).
+Browse the [group files](https://github.com/{{ site.repository }}/tree/main/source/\_clubs) and open the file for the group you want to add an event to (e.g. `oxford-on-board.md`).
 
 ### 2. Add a new location (if needed)
 
