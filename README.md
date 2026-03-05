@@ -11,9 +11,9 @@ A community-built directory powered by an interactive map.
 [![GitHub Pages](https://img.shields.io/badge/Hosted%20on-GitHub%20Pages-blue?logo=github)](https://boardgameclubs.uk)
 [![Built with Jekyll](https://img.shields.io/badge/Built%20with-Jekyll-cc0000?logo=jekyll)](https://jekyllrb.com/)
 [![MIT License](https://img.shields.io/badge/License-MIT-green)](#license)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange)](https://boardgameclubs.uk/contribute/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange)](https://botc-events.uk/add-group/)
 
-[Live Site](https://botc-events.uk) · [Add a Club](https://botc-events.uk/contribute/) · [Report a Bug](https://github.com/chizmeeple/botc-events.uk/issues/new)
+[Live Site](https://botc-events.uk) · [Add a Group](https://botc-events.uk/add-group/) · [Report a Bug](https://github.com/chizmeeple/botc-events.uk/issues/new)
 
 </div>
 
@@ -32,7 +32,7 @@ botc-events.uk helps people find Blood on the Clocktower groups near them. Searc
 
 ## Adding or editing a club
 
-See the [contribute page](https://boardgameclubs.uk/contribute/) for a full guide on adding a new club or updating an existing listing.
+See the [add-group page](https://botc-events.uk/add-group/) for a full guide on adding a new club or updating an existing listing.
 
 Not comfortable with GitHub? [Open an issue](https://github.com/chizmeeple/botc-events.uk/issues/new) with your club's details and we'll add it for you.
 
