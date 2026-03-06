@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+<div class="content-page club-detail events-page">
+  <h1>Upcoming events</h1>
+
+  {% assign all_events = site.data.rendered_events.all_upcoming %}
+  {% if all_events and all_events.size > 0 %}
+  {% include events-filters.html %}
+
+  <script>
+    window.GameClub = window.GameClub || { baseurl: "{{ site.baseurl }}" };
+    window.GameClub.applyImgBg = function (img) {
+      try {
+        var c = document.createElement("canvas");
+        c.width = img.naturalWidth;
+        c.height = img.naturalHeight;
+        var ctx = c.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var d = ctx.getImageData(0, 0, 1, 1).data;
+        img.style.backgroundColor = "rgb(" + d[0] + "," + d[1] + "," + d[2] + ")";
+      } catch (e) {}
+    };
+  </script>
+  <script id="events-data" type="application/json">{{ all_events | jsonify }}</script>
+
+  <div id="events-list-container" class="club-upcoming-events">
+    {% assign by_date = all_events | group_by_exp: "item", "item.start_time | date: '%Y-%m-%d'" %}
+    {% for group in by_date %}
+    <h2>{{ group.items[0].start_time | date: "%A, %d %B %Y" }}</h2>
+    <ul class="upcoming-events-list">
+      {% for occ in group.items %}
+      {% include event-card.html occ=occ club_slug=occ.slug club_name=occ.club_name show_logo=true %}
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="upcoming-events-empty">No upcoming events scheduled. Check back soon or <a href="{{ '/add-event' | relative_url }}">add an event</a>.</p>
+  {% endif %}
+</div>
+
+<script src="{{ '/assets/js/location.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ '/assets/js/events-page.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

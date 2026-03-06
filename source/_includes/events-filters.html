@@ -1,0 +1,56 @@
+<div class="events-filters filter-bar">
+  <div class="filter-row">
+    <div class="multi-select" id="events-day-filter">
+      <button
+        type="button"
+        class="multi-select-toggle filter-select"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+      >
+        <span class="multi-select-label">All days</span>
+      </button>
+      <div class="multi-select-dropdown" role="listbox" aria-label="Filter by day">
+        <label class="multi-select-option" data-day="Monday"
+          ><input type="checkbox" value="Monday" /><span class="multi-select-check"></span>Monday</label
+        >
+        <label class="multi-select-option" data-day="Tuesday"
+          ><input type="checkbox" value="Tuesday" /><span class="multi-select-check"></span>Tuesday</label
+        >
+        <label class="multi-select-option" data-day="Wednesday"
+          ><input type="checkbox" value="Wednesday" /><span class="multi-select-check"></span>Wednesday</label
+        >
+        <label class="multi-select-option" data-day="Thursday"
+          ><input type="checkbox" value="Thursday" /><span class="multi-select-check"></span>Thursday</label
+        >
+        <label class="multi-select-option" data-day="Friday"
+          ><input type="checkbox" value="Friday" /><span class="multi-select-check"></span>Friday</label
+        >
+        <label class="multi-select-option" data-day="Saturday"
+          ><input type="checkbox" value="Saturday" /><span class="multi-select-check"></span>Saturday</label
+        >
+        <label class="multi-select-option" data-day="Sunday"
+          ><input type="checkbox" value="Sunday" /><span class="multi-select-check"></span>Sunday</label
+        >
+      </div>
+    </div>
+    <button class="locate-btn locate-btn--events" id="locate-btn" type="button" aria-pressed="false">
+      <i data-lucide="crosshair" style="width: 14px; height: 14px"></i>
+      <span>Use my location</span>
+    </button>
+    <select class="filter-select" id="events-distance-filter" disabled>
+      <option value="">Any distance</option>
+      <option value="5">Within 5 miles</option>
+      <option value="10">Within 10 miles</option>
+      <option value="25">Within 25 miles</option>
+      <option value="50">Within 50 miles</option>
+    </select>
+  </div>
+  <div class="location-pill" id="location-pill" style="display: none" aria-hidden="true">
+    <i data-lucide="map-pin" style="width: 12px; height: 12px"></i>
+    <span id="location-pill-label"></span>
+    <button type="button" id="location-clear" aria-label="Clear location">
+      <i data-lucide="x" style="width: 12px; height: 12px"></i>
+    </button>
+  </div>
+  <div class="events-result-count" id="events-result-count"></div>
+</div>

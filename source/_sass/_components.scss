@@ -1,3 +1,73 @@
+// ─── Events page filters ───
+.events-page .events-filters {
+  position: relative;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+  background: transparent;
+
+  @media (min-width: $bp-lg) {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+  }
+
+  .filter-row {
+    padding: 0 0.5rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .location-pill {
+    display: none !important;
+  }
+
+  .locate-btn--events {
+    margin-left: 0;
+  }
+
+  .locate-btn--events.is-active {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    border-color: var(--color-accent);
+
+    svg {
+      color: var(--color-on-accent);
+    }
+
+    &:hover {
+      background: var(--color-accent);
+      color: var(--color-on-accent);
+      border-color: var(--color-accent);
+      opacity: 0.9;
+    }
+  }
+}
+
+.events-page .upcoming-event-card {
+  position: relative;
+  padding-right: 5.5rem;
+
+  .upcoming-event-card__logo {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    width: 64px;
+    height: 64px;
+    border-radius: $border-radius-sm;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--color-border);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+  }
+}
+
 // ─── Filter bar ───
 .filter-bar {
   position: sticky;
@@ -257,7 +327,7 @@
 
   // Hide sidebar locate button on desktop (header one takes over)
   @media (min-width: $bp-lg) {
-    &:not(.locate-btn--header) {
+    &:not(.locate-btn--header):not(.locate-btn--events) {
       display: none;
     }
   }
@@ -638,6 +708,10 @@
       font-size: 1.1rem;
       margin: 0 0 1rem;
     }
+
+    ul + h2 {
+      margin-top: 2rem;
+    }
   }
 
   .upcoming-events-empty {
@@ -665,6 +739,21 @@
     &:hover {
       border-color: var(--color-accent);
       box-shadow: 0 0 0 2px rgba(var(--color-accent-rgb), 0.08);
+    }
+  }
+
+  .upcoming-event-card__group {
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+
+    a {
+      color: var(--color-text-light);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-accent);
+        text-decoration: underline;
+      }
     }
   }
 
@@ -721,6 +810,16 @@
     background: var(--color-tag-cost);
     color: var(--color-primary-dark);
     letter-spacing: 0.04em;
+  }
+
+  .upcoming-event-card__distance {
+    font-size: 0.72rem;
+    color: var(--color-accent);
+    background: rgba(var(--color-accent-rgb), 0.08);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    font-weight: 500;
   }
 
   .upcoming-event-card__signup {
@@ -905,7 +1004,8 @@
 }
 
 // ─── Result count ───
-.result-count {
+.result-count,
+.events-result-count {
   font-size: 0.82rem;
   color: var(--color-text-light);
   margin-bottom: 0.85rem;

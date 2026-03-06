@@ -32,7 +32,7 @@
       this.locateBtn = document.getElementById("locate-btn");
       this.locateBtnHeader = document.getElementById("locate-btn-header");
 
-      if (!this.input && !this.inputMobile) return this;
+      if (!this.input && !this.inputMobile && !this.locateBtn) return this;
 
       this.bindEvents();
       return this;

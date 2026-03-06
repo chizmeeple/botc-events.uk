@@ -302,10 +302,14 @@ def main
       "event_days" => event_days,
     }
 
+    club_image = data["image"].to_s.strip
+    club_image = nil if club_image.empty?
+
     upcoming.each do |occ|
       all_upcoming << {
         "slug" => slug,
         "club_name" => club_name,
+        "image" => club_image,
         "eventname" => occ["eventname"],
         "start_time" => occ["start_time"],
         "end_time" => occ["end_time"],

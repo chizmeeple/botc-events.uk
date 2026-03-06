@@ -1,0 +1,70 @@
+{% comment %}
+  Renders an event card. Pass:
+  - occ: the occurrence object (eventname, start_time, end_time, location, frequency, cost, signup)
+  - club_slug: optional, when present shows a link to the group
+  - club_name: optional, used with club_slug for the link text
+  - show_logo: optional, when true and occ.image exists, show club logo in top right (events page only)
+{% endcomment %}
+<li class="upcoming-event-card">
+  {% if include.show_logo and include.occ.image and include.occ.image != "" %}
+  <div class="upcoming-event-card__logo">
+    {% if include.occ.image contains "://" %}
+    <img src="{{ include.occ.image }}" alt="{{ include.club_name | default: 'Club' }} logo" loading="lazy" />
+    {% else %}
+    <img src="{{ '/assets/images/clubs/' | append: include.occ.image | relative_url }}" alt="{{ include.club_name | default: 'Club' }} logo" loading="lazy" />
+    {% endif %}
+  </div>
+  {% endif %}
+  {% if include.club_slug and include.club_name %}
+  <div class="upcoming-event-card__group">
+    <a href="{{ '/clubs/' | append: include.club_slug | append: '/' | relative_url }}">{{ include.club_name }}</a>
+  </div>
+  {% endif %}
+  <div class="upcoming-event-card__name">{{ include.occ.eventname }}</div>
+  <div class="upcoming-event-card__datetime">
+    {% assign start_time_str = include.occ.start_time | date: "%H:%M" %}
+    {% if include.occ.end_time %}
+    {% assign end_time_str = include.occ.end_time | date: "%H:%M" %}
+    {{ include.occ.start_time | date: "%A, %d %B %Y" }}, {{ start_time_str }}{% if start_time_str != end_time_str %}–{{ end_time_str }}{% else %} start{% endif %}
+    {% else %}
+    {{ include.occ.start_time | date: "%A, %d %B %Y" }}, {{ start_time_str }} start
+    {% endif %}
+  </div>
+  {% if include.occ.location.name or include.occ.location.address %}
+  <div class="upcoming-event-card__venue-block">
+    {% if include.occ.location.name %}
+    <div class="upcoming-event-card__venue">
+      {{ include.occ.location.name }}
+      {% if include.occ.location.lat and include.occ.location.lng %}
+      <a
+        href="https://www.google.com/maps/dir/?api=1&destination={{ include.occ.location.lat }},{{ include.occ.location.lng }}"
+        target="_blank"
+        rel="noopener"
+        class="directions-link"
+        ><i data-lucide="navigation" style="width: 13px; height: 13px"></i>
+        Directions</a
+      >
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if include.occ.location.address %}
+    <div class="upcoming-event-card__address">{{ include.occ.location.address }}</div>
+    {% endif %}
+  </div>
+  {% endif %}
+  <div class="upcoming-event-card__footer">
+    <span class="upcoming-event-card__footer-pills">
+      {% if include.occ.frequency %}
+      <span class="tag tag-day">{{ include.occ.frequency }}</span>
+      {% else %}
+      <span class="tag tag-day">{{ include.occ.start_time | date: "%A" }}</span>
+      {% endif %}
+      {% if include.occ.cost %}
+      <span class="upcoming-event-card__cost">{{ include.occ.cost }}</span>
+      {% endif %}
+    </span>
+    {% if include.occ.signup %}
+    <a href="{{ include.occ.signup }}" target="_blank" rel="noopener" class="upcoming-event-card__signup">Signup</a>
+    {% endif %}
+  </div>
+</li>
