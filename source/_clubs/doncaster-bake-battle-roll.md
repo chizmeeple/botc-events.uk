@@ -1,7 +1,7 @@
 ---
 name: "Bake Battle and Roll"
 based_in: "Doncaster"
-image: ""
+image: "doncaster-bake-battle-roll.jpg"
 website: "https://www.bakebattleroll.co.uk/board-game-takeaway/"
 meetup: ""
 facebook: "https://www.facebook.com/BakeBattleandRoll"

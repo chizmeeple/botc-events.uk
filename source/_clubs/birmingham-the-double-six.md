@@ -1,7 +1,7 @@
 ---
 name: "The Double Six"
 based_in: "Birmingham"
-image: ""
+image: "birmingham-the-double-six.png"
 website: ""
 meetup: ""
 facebook: ""
