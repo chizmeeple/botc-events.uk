@@ -8,6 +8,7 @@ layout: default
   {% assign all_events = site.data.rendered_events.all_upcoming %}
   {% if all_events and all_events.size > 0 %}
   {% include events-filters.html %}
+  <div class="events-result-count" id="events-result-count"></div>
 
   <script>
     window.GameClub = window.GameClub || { baseurl: "{{ site.baseurl }}" };

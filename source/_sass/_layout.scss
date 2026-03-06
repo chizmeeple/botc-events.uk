@@ -6,6 +6,12 @@
   position: relative;
   z-index: 1010;
   border-bottom: 1px solid var(--color-border);
+  overflow: visible;
+
+  /* When menu open, lift entire header above body::before overlay (z-index: 9999) */
+  &.is-nav-open {
+    z-index: 10000;
+  }
 
   // Fix header in place on mobile home page so it doesn't scroll away
   // when browser shifts viewport on input focus
@@ -23,6 +29,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    overflow: visible;
   }
 
   .site-brand {
@@ -77,21 +84,60 @@
     }
   }
 
-  nav {
+  .site-nav {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .nav-menu-toggle {
+    display: none;
+
+    @media (max-width: $bp-md - 1) {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      background: var(--color-tag);
+      border: none;
+      border-radius: 6px;
+      color: var(--color-text);
+      cursor: pointer;
+
+      .nav-menu-close-icon {
+        display: none;
+      }
+
+      &:hover {
+        background: var(--color-border);
+      }
+
+      &[aria-expanded="true"] {
+        .nav-menu-icon {
+          display: none;
+        }
+        .nav-menu-close-icon {
+          display: block;
+        }
+      }
+
+      i {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .nav-links {
     display: flex;
     gap: 0.35rem;
     align-items: center;
 
     @media (max-width: $bp-md - 1) {
-      gap: 0.25rem;
-    }
-    flex-shrink: 0;
-
-    // Hide "Map" and "About" links on mobile
-    a:not(.nav-cta):not(.nav-github) {
-      @media (max-width: $bp-md - 1) {
-        display: none;
-      }
+      display: none; /* Mobile uses .nav-menu-overlay instead */
     }
   }
 
@@ -214,6 +260,72 @@
         border-color: var(--color-accent);
         box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.15);
       }
+    }
+  }
+}
+
+// ─── Nav menu overlay (mobile only, body child to escape header stacking) ───
+.nav-menu-overlay {
+  display: none;
+
+  @media (min-width: $bp-md) {
+    display: none !important;
+  }
+
+  @media (max-width: $bp-md - 1) {
+    position: fixed;
+    top: 55px;
+    left: 1rem;
+    right: 1rem;
+    z-index: 10000;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+    body:has(.site-header.is-nav-open) & {
+      display: flex;
+    }
+  }
+
+  &__item,
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text);
+    background: var(--color-tag);
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: var(--color-border);
+    }
+  }
+
+  &__link--cta {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+
+    &:hover {
+      background: var(--color-accent-light);
+    }
+  }
+
+  &__link--alt {
+    background: var(--color-accent-alt);
+
+    &:hover {
+      background: var(--color-accent-alt-light);
     }
   }
 }

@@ -5,6 +5,7 @@
 </head>
 <body>
   {% include nav.html %}
+  {% include nav-menu-overlay.html %}
   <main class="page-content">
     {{ content }}
   </main>
@@ -12,6 +13,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>lucide.createIcons();</script>
   {% include theme-toggle-script.html %}
+  {% include nav-menu-script.html %}
   {% if site.goatcounter_domain and site.goatcounter_domain != "" %}
   <script data-goatcounter="https://{{ site.goatcounter_domain }}.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
