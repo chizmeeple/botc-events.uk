@@ -3,8 +3,18 @@
   - occ: the occurrence object (eventname, start_time, end_time, location, frequency, cost, signup)
   - club_slug: optional, when present shows a link to the group
   - club_name: optional, used with club_slug for the link text
+  - show_logo: optional, when true and occ.image exists, show club logo in top right (events page only)
 {% endcomment %}
 <li class="upcoming-event-card">
+  {% if include.show_logo and include.occ.image and include.occ.image != "" %}
+  <div class="upcoming-event-card__logo">
+    {% if include.occ.image contains "://" %}
+    <img src="{{ include.occ.image }}" alt="{{ include.club_name | default: 'Club' }} logo" loading="lazy" />
+    {% else %}
+    <img src="{{ '/assets/images/clubs/' | append: include.occ.image | relative_url }}" alt="{{ include.club_name | default: 'Club' }} logo" loading="lazy" />
+    {% endif %}
+  </div>
+  {% endif %}
   {% if include.club_slug and include.club_name %}
   <div class="upcoming-event-card__group">
     <a href="{{ '/clubs/' | append: include.club_slug | append: '/' | relative_url }}">{{ include.club_name }}</a>

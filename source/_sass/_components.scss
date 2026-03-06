@@ -44,6 +44,30 @@
   }
 }
 
+.events-page .upcoming-event-card {
+  position: relative;
+  padding-right: 5.5rem;
+
+  .upcoming-event-card__logo {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    width: 64px;
+    height: 64px;
+    border-radius: $border-radius-sm;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--color-border);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+  }
+}
+
 // ─── Filter bar ───
 .filter-bar {
   position: sticky;

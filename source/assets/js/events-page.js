@@ -102,6 +102,12 @@
     var clubUrl = baseurl + "/clubs/" + encodeURIComponent(occ.slug) + "/";
     var groupBlock = '<div class="upcoming-event-card__group"><a href="' + clubUrl + '">' + escapeHtml(occ.club_name) + "</a></div>";
 
+    var logoBlock = "";
+    if (occ.image) {
+      var imgSrc = occ.image.indexOf("://") !== -1 ? occ.image : baseurl + "/assets/images/clubs/" + encodeURIComponent(occ.image);
+      logoBlock = '<div class="upcoming-event-card__logo"><img src="' + escapeHtml(imgSrc) + '" alt="" loading="lazy" onload="if(window.GameClub.applyImgBg)window.GameClub.applyImgBg(this)"></div>';
+    }
+
     var distBadge = "";
     if (occ._distance !== undefined) {
       distBadge = '<span class="upcoming-event-card__distance">' + occ._distance.toFixed(1) + " mi</span>";
@@ -109,6 +115,7 @@
 
     return (
       '<li class="upcoming-event-card" data-slug="' + escapeHtml(occ.slug) + '">' +
+      logoBlock +
       groupBlock +
       '<div class="upcoming-event-card__name">' + escapeHtml(occ.eventname) + "</div>" +
       '<div class="upcoming-event-card__datetime">' + escapeHtml(datetimeStr) + "</div>" +
