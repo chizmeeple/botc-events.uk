@@ -1,7 +1,7 @@
 ---
 name: "Geek Retreat Cardiff"
 based_in: "Cardiff"
-image: ""
+image: "cardiff-geek-retreat.png"
 website: "https://www.geekretreatcardiff.co.uk/"
 meetup: ""
 facebook: "https://www.facebook.com/GeekRetreatCardiff/"
