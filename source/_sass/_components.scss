@@ -638,6 +638,10 @@
       font-size: 1.1rem;
       margin: 0 0 1rem;
     }
+
+    ul + h2 {
+      margin-top: 2rem;
+    }
   }
 
   .upcoming-events-empty {
@@ -665,6 +669,21 @@
     &:hover {
       border-color: var(--color-accent);
       box-shadow: 0 0 0 2px rgba(var(--color-accent-rgb), 0.08);
+    }
+  }
+
+  .upcoming-event-card__group {
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+
+    a {
+      color: var(--color-text-light);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-accent);
+        text-decoration: underline;
+      }
     }
   }
 

@@ -126,55 +126,7 @@ layout: default
     {% if club_events and club_events.upcoming.size > 0 %}
     <ul class="upcoming-events-list">
       {% for occ in club_events.upcoming %}
-      <li class="upcoming-event-card">
-        <div class="upcoming-event-card__name">{{ occ.eventname }}</div>
-        <div class="upcoming-event-card__datetime">
-          {% assign start_time_str = occ.start_time | date: "%H:%M" %}
-          {% if occ.end_time %}
-          {% assign end_time_str = occ.end_time | date: "%H:%M" %}
-          {{ occ.start_time | date: "%A, %d %B %Y" }}, {{ start_time_str }}{% if start_time_str != end_time_str %}–{{ end_time_str }}{% else %} start{% endif %}
-          {% else %}
-          {{ occ.start_time | date: "%A, %d %B %Y" }}, {{ start_time_str }} start
-          {% endif %}
-        </div>
-        {% if occ.location.name or occ.location.address %}
-        <div class="upcoming-event-card__venue-block">
-          {% if occ.location.name %}
-          <div class="upcoming-event-card__venue">
-            {{ occ.location.name }}
-            {% if occ.location.lat and occ.location.lng %}
-            <a
-              href="https://www.google.com/maps/dir/?api=1&destination={{ occ.location.lat }},{{ occ.location.lng }}"
-              target="_blank"
-              rel="noopener"
-              class="directions-link"
-              ><i data-lucide="navigation" style="width: 13px; height: 13px"></i>
-              Directions</a
-            >
-            {% endif %}
-          </div>
-          {% endif %}
-          {% if occ.location.address %}
-          <div class="upcoming-event-card__address">{{ occ.location.address }}</div>
-          {% endif %}
-        </div>
-        {% endif %}
-        <div class="upcoming-event-card__footer">
-          <span class="upcoming-event-card__footer-pills">
-            {% if occ.frequency %}
-            <span class="tag tag-day">{{ occ.frequency }}</span>
-            {% else %}
-            <span class="tag tag-day">{{ occ.start_time | date: "%A" }}</span>
-            {% endif %}
-            {% if occ.cost %}
-            <span class="upcoming-event-card__cost">{{ occ.cost }}</span>
-            {% endif %}
-          </span>
-          {% if occ.signup %}
-          <a href="{{ occ.signup }}" target="_blank" rel="noopener" class="upcoming-event-card__signup">Signup</a>
-          {% endif %}
-        </div>
-      </li>
+      {% include event-card.html occ=occ %}
       {% endfor %}
     </ul>
     {% else %}
