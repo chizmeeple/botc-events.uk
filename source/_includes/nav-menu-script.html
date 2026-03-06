@@ -1,0 +1,53 @@
+<script>
+(function() {
+  function initNavMenu() {
+    var toggle = document.getElementById('nav-menu-toggle');
+    var header = document.querySelector('.site-header');
+    if (!toggle || !header) return;
+
+    toggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isOpen = header.classList.toggle('is-nav-open');
+      toggle.setAttribute('aria-expanded', isOpen);
+      toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      var overlay = document.querySelector('.nav-menu-overlay');
+      if (overlay) {
+        overlay.setAttribute('aria-hidden', !isOpen);
+        if (isOpen && window.lucide) lucide.createIcons();
+      }
+    });
+
+    // Close menu when clicking a link (for in-page navigation)
+    var dropdown = document.querySelector('.nav-menu-overlay');
+    if (dropdown) {
+      dropdown.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          header.classList.remove('is-nav-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open menu');
+          var overlay = document.querySelector('.nav-menu-overlay');
+          if (overlay) overlay.setAttribute('aria-hidden', 'true');
+        });
+      });
+    }
+
+    // Close menu when clicking outside header and overlay
+    document.addEventListener('click', function(e) {
+      if (!header.classList.contains('is-nav-open')) return;
+      var overlay = document.querySelector('.nav-menu-overlay');
+      if (header.contains(e.target)) return;
+      if (overlay && overlay.contains(e.target)) return;
+      header.classList.remove('is-nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      if (overlay) overlay.setAttribute('aria-hidden', 'true');
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavMenu);
+  } else {
+    initNavMenu();
+  }
+})();
+</script>

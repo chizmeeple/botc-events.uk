@@ -1,0 +1,26 @@
+<div class="nav-menu-overlay" id="nav-menu-dropdown" aria-hidden="true">
+  <button
+    type="button"
+    class="nav-theme-toggle nav-menu-overlay__item"
+    aria-label="Switch to light theme"
+    title="Switch to light theme"
+  >
+    <i data-lucide="moon"></i>
+    <span>Theme</span>
+  </button>
+  <a href="{{ '/' | relative_url }}" class="nav-menu-overlay__link">Map</a>
+  <a href="{{ '/events' | relative_url }}" class="nav-menu-overlay__link">Events</a>
+  <a href="{{ '/about' | relative_url }}" class="nav-menu-overlay__link">About</a>
+  <a href="{{ '/add-event' | relative_url }}" class="nav-menu-overlay__link nav-menu-overlay__link--cta nav-menu-overlay__link--alt">+ Add an Event</a>
+  <a href="{{ '/add-group' | relative_url }}" class="nav-menu-overlay__link nav-menu-overlay__link--cta">+ Add a Group</a>
+  <a
+    href="https://github.com/{{ site.repository }}"
+    target="_blank"
+    rel="noopener"
+    class="nav-menu-overlay__link"
+    aria-label="GitHub"
+  >
+    <i data-lucide="github"></i>
+    <span>GitHub</span>
+  </a>
+</div>

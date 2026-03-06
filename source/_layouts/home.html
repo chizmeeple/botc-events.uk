@@ -42,36 +42,10 @@
             <span>Use my location</span>
           </button>
         </div>
-        <nav>
-          <button
-            type="button"
-            class="nav-theme-toggle"
-            id="theme-toggle"
-            aria-label="Switch to light theme"
-            title="Switch to light theme"
-          >
-            <i data-lucide="moon"></i>
-          </button>
-          <a href="{{ '/' | relative_url }}">Map</a>
-          <a href="{{ '/events' | relative_url }}">Events</a>
-          <a href="{{ '/about' | relative_url }}">About</a>
-          <a href="{{ '/add-event' | relative_url }}" class="nav-cta nav-cta--alt"
-            >+ Add an Event</a
-          >
-          <a href="{{ '/add-group' | relative_url }}" class="nav-cta"
-            >+ Add a Group</a
-          >
-          <a
-            href="https://github.com/{{ site.repository }}"
-            target="_blank"
-            rel="noopener"
-            class="nav-github"
-            aria-label="GitHub"
-            ><i data-lucide="github"></i
-          ></a>
-        </nav>
+        {% include nav-menu.html %}
       </div>
     </header>
+    {% include nav-menu-overlay.html %}
     <main class="page-content">
       <div class="home-layout">
         <div class="map-container">
@@ -226,5 +200,6 @@
       lucide.createIcons();
     </script>
     {% include theme-toggle-script.html %}
+    {% include nav-menu-script.html %}
   </body>
 </html>
