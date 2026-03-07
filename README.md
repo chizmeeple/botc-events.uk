@@ -4,7 +4,7 @@
 
 # botc-events.uk
 
-**Find your nearest board game club in the UK.**
+**Find your nearest Blood on the Clocktower club in the UK.**
 
 A community-built directory powered by an interactive map.
 
