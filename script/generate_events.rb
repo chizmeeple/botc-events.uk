@@ -8,12 +8,15 @@
 
 require "date"
 require "json"
+require "icalendar"
 require "set"
 require "time"
 require "ice_cube"
 require "icalendar/recurrence"
 require "tzinfo"
 require "yaml"
+
+SITE_URL = "https://botc-events.uk"
 
 TZ = TZInfo::Timezone.get("Europe/London")
 LOOKAHEAD_DAYS = 180
@@ -220,6 +223,54 @@ def collect_adhoc(adhoc_list, now, range_end, slug: nil)
   all
 end
 
+def build_ics_calendar(all_upcoming, generated_at, site_url)
+  calendar = Icalendar::Calendar.new
+  calendar.prodid = "-//#{site_url}//Blood on the Clocktower Events//EN"
+  calendar.version = "2.0"
+  calendar.x_wr_calname = "Blood on the Clocktower UK Events"
+  # RFC 7986: hint for clients on how often to re-fetch (1 hour)
+  calendar.append_custom_property("REFRESH-INTERVAL;VALUE=DURATION", "PT1H")
+
+  feed_updated = Time.parse(generated_at)
+
+  all_upcoming.each do |e|
+    event = Icalendar::Event.new
+
+    dtstart = Time.parse(e["start_time"])
+    end_time_missing = e["end_time"].to_s.strip.empty?
+    dtend = end_time_missing ? dtstart + 7200 : Time.parse(e["end_time"])
+    event.dtstart = Icalendar::Values::DateTime.new(dtstart, "tzid" => "UTC")
+    event.dtend = Icalendar::Values::DateTime.new(dtend, "tzid" => "UTC")
+
+    based_in = e["based_in"].to_s.strip
+    loc_name = e["location"].is_a?(Hash) ? e["location"]["name"].to_s.strip : ""
+    event.summary = [based_in, loc_name].reject(&:empty?).join(" - ")
+    event.uid = "#{e["start_time"].to_s.gsub(/[^0-9TZ+-]/, "")}-#{e["slug"]}@#{site_url.gsub(%r{^https?://}, "").split("/").first}"
+    event.dtstamp = Icalendar::Values::DateTime.new(feed_updated, "tzid" => "UTC")
+    event.last_modified = feed_updated
+
+    parts = []
+    parts << "#{e["club_name"]}" if e["club_name"].to_s.strip != ""
+    parts << e["location"]["address"] if e["location"].is_a?(Hash) && e["location"]["address"].to_s.strip != ""
+    event.location = parts.join(", ") if parts.any?
+
+    desc_parts = []
+    desc_parts << e["club_name"].to_s if e["club_name"].to_s.strip != ""
+    desc_parts << "Cost: #{e["cost"]}" if e["cost"].to_s.strip != ""
+    desc_parts << "Sign up: #{e["signup"]}" if e["signup"].to_s.strip != ""
+    desc_parts << "#{SITE_URL}/clubs/#{e["slug"]}/" if e["slug"].to_s.strip != ""
+    desc_parts << "End time estimated" if end_time_missing
+    event.description = desc_parts.join("\n\n") if desc_parts.any?
+
+    event.url = e["signup"] if e["signup"].to_s.strip != ""
+    event.url ||= "#{SITE_URL}/clubs/#{e["slug"]}/" if e["slug"].to_s.strip != ""
+
+    calendar.add_event(event)
+  end
+
+  calendar.to_ical
+end
+
 def extract_frontmatter(path)
   content = File.read(path)
   return nil unless content.match?(/\A---\s*\n/)
@@ -305,10 +356,14 @@ def main
     club_image = data["image"].to_s.strip
     club_image = nil if club_image.empty?
 
+    based_in = data["based_in"].to_s.strip
+    based_in = nil if based_in.empty?
+
     upcoming.each do |occ|
       all_upcoming << {
         "slug" => slug,
         "club_name" => club_name,
+        "based_in" => based_in,
         "image" => club_image,
         "eventname" => occ["eventname"],
         "start_time" => occ["start_time"],
@@ -332,6 +387,14 @@ def main
 
   File.write(out_path, JSON.pretty_generate(payload))
   warn "Wrote #{out_path} (#{by_slug.size} clubs, #{all_upcoming.size} events in all_upcoming)"
+
+  # Generate ICS calendar feed (Jekyll copies source/calendar/ to _site/calendar/)
+  calendar_dir = File.join(root, "source", "calendar")
+  Dir.mkdir(calendar_dir) unless Dir.exist?(calendar_dir)
+  ics_path = File.join(calendar_dir, "events.ics")
+  ics_content = build_ics_calendar(all_upcoming, payload["generated_at"], SITE_URL)
+  File.write(ics_path, ics_content)
+  warn "Wrote #{ics_path} (#{all_upcoming.size} events)"
 end
 
 main if __FILE__ == $PROGRAM_NAME
