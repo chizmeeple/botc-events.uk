@@ -6,6 +6,7 @@
 {% assign baseurl = site.baseurl | default: '' %}
 {% assign ics_url = base_url | append: baseurl | append: '/calendar/events.ics' %}
 {% assign webcal_url = ics_url | replace: 'https://', 'webcal://' | replace: 'http://', 'webcal://' %}
+{% assign preview_title = site.title | default: "Events" | url_encode %}
 
 <div class="calendar-subscribe-wrapper">
   <div class="calendar-subscribe-dropdown-parent" style="position: relative; display: inline-block">
@@ -44,6 +45,16 @@
       >
         <i data-lucide="clipboard-copy" style="width: 14px; height: 14px"></i>
         Copy feed URL
+      </button>
+      <button
+        type="button"
+        class="calendar-subscribe-item"
+        role="menuitem"
+        data-preview-url="https://larrybolt.github.io/online-ics-feed-viewer/#feed={{ ics_url | url_encode }}&cors=true&title={{ preview_title }}&hideinput=false"
+        onclick="window.open(this.getAttribute('data-preview-url'), '_blank', 'noopener,noreferrer')"
+      >
+        <i data-lucide="external-link" style="width: 14px; height: 14px"></i>
+        Preview online
       </button>
       <a
         href="{{ ics_url }}"
