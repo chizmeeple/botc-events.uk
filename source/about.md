@@ -26,6 +26,10 @@ All group data is stored as individual files in our [GitHub repository](https://
 
 {{site.title}} is a static website hosted on GitHub Pages. There are no user accounts and no cookies. We use [GoatCounter](https://www.goatcounter.com/) for basic, privacy-friendly analytics — it collects no personal data, uses no cookies, and is fully open source. The interactive map uses OpenStreetMap, which is free and open source.
 
+## Join the Discord
+
+Join the [BotC UK Events Discord](https://discord.gg/PUTkJXwUJY) for discussion and information about events in the UK.
+
 ## Get Involved
 
 Know a Clocktower group that's not listed? [Add it to the directory]({{ "/add-group" | relative_url }}) by submitting a pull request on GitHub. It only takes a few minutes.
