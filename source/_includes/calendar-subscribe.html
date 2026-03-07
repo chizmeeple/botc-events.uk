@@ -7,8 +7,8 @@
 {% assign ics_url = base_url | append: baseurl | append: '/calendar/events.ics' %}
 {% assign webcal_url = ics_url | replace: 'https://', 'webcal://' | replace: 'http://', 'webcal://' %}
 
-<div class="calendar-subscribe-wrapper" style="margin-bottom: 1.5rem">
-  <div class="dropdown" style="position: relative; display: inline-block">
+<div class="calendar-subscribe-wrapper">
+  <div class="calendar-subscribe-dropdown-parent" style="position: relative; display: inline-block">
     <button
       type="button"
       id="calendarSubscribeBtn"
@@ -17,53 +17,42 @@
       class="calendar-subscribe-btn"
       onclick="toggleCalendarDropdown()"
     >
-      <span style="margin-right: 0.25rem">📅</span>
+      <i data-lucide="calendar" style="width: 14px; height: 14px"></i>
       <span>Subscribe to Calendar</span>
-      <span style="margin-left: 0.25rem; font-size: 0.7em; opacity: 0.7">▼</span>
+      <i data-lucide="chevron-down" style="width: 14px; height: 14px; opacity: 0.7"></i>
     </button>
     <div
       id="calendarDropdown"
-      class="dropdown-menu"
-      style="display: none; position: absolute; top: 100%; left: 0; margin-top: 0.5rem;
-        background: var(--body-bg, #fff); border: 1px solid var(--border-color, rgba(0,0,0,0.1));
-        border-radius: 0.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); min-width: 180px;
-        z-index: 1000; padding: 0.25rem 0;"
+      class="calendar-subscribe-dropdown"
+      role="menu"
     >
       <button
         type="button"
         id="googleCalendarBtn"
-        class="dropdown-item"
+        class="calendar-subscribe-item"
+        role="menuitem"
         onclick="subscribeToGoogleCalendar('{{ webcal_url }}', this)"
-        style="display: block; width: 100%; text-align: left; padding: 0.5rem 0.75rem;
-          color: var(--body-color, #333); text-decoration: none; transition: background-color 0.15s;
-          font-size: 0.9em; background: none; border: none; cursor: pointer; font-family: inherit;"
-        onmouseover="this.style.backgroundColor='var(--accent-color-highlight, rgba(79,177,186,0.1))'"
-        onmouseout="this.style.backgroundColor='transparent'"
       >
-        📅 Google Calendar
+        <i data-lucide="calendar" style="width: 14px; height: 14px"></i>
+        Google Calendar
       </button>
       <button
         type="button"
-        class="dropdown-item"
+        class="calendar-subscribe-item"
+        role="menuitem"
         onclick="copyFeedUrl('{{ webcal_url }}', this)"
-        style="display: block; width: 100%; text-align: left; padding: 0.5rem 0.75rem;
-          color: var(--body-color, #333); text-decoration: none; transition: background-color 0.15s;
-          font-size: 0.9em; background: none; border: none; cursor: pointer; font-family: inherit;"
-        onmouseover="this.style.backgroundColor='var(--accent-color-highlight, rgba(79,177,186,0.1))'"
-        onmouseout="this.style.backgroundColor='transparent'"
       >
-        📋 Copy feed URL
+        <i data-lucide="clipboard-copy" style="width: 14px; height: 14px"></i>
+        Copy feed URL
       </button>
       <a
         href="{{ ics_url }}"
         download="events.ics"
-        class="dropdown-item"
-        style="display: block; padding: 0.5rem 0.75rem; color: var(--body-color, #333);
-          text-decoration: none; transition: background-color 0.15s; font-size: 0.9em;"
-        onmouseover="this.style.backgroundColor='var(--accent-color-highlight, rgba(79,177,186,0.1))'"
-        onmouseout="this.style.backgroundColor='transparent'"
+        class="calendar-subscribe-item"
+        role="menuitem"
       >
-        💾 Download .ics file
+        <i data-lucide="download" style="width: 14px; height: 14px"></i>
+        Download .ics file
       </a>
     </div>
   </div>
@@ -74,12 +63,13 @@
   function toggleCalendarDropdown() {
     var dropdown = document.getElementById("calendarDropdown");
     var button = document.getElementById("calendarSubscribeBtn");
-    if (dropdown.style.display === "none" || dropdown.style.display === "") {
-      dropdown.style.display = "block";
-      button.setAttribute("aria-expanded", "true");
-    } else {
-      dropdown.style.display = "none";
+    var isOpen = dropdown.classList.contains("is-open");
+    if (isOpen) {
+      dropdown.classList.remove("is-open");
       button.setAttribute("aria-expanded", "false");
+    } else {
+      dropdown.classList.add("is-open");
+      button.setAttribute("aria-expanded", "true");
     }
   }
   window.toggleCalendarDropdown = toggleCalendarDropdown;
@@ -88,34 +78,42 @@
     var dropdown = document.getElementById("calendarDropdown");
     var button = document.getElementById("calendarSubscribeBtn");
     if (dropdown && button && !dropdown.contains(event.target) && !button.contains(event.target)) {
-      dropdown.style.display = "none";
+      dropdown.classList.remove("is-open");
       button.setAttribute("aria-expanded", "false");
     }
   });
 
   function subscribeToGoogleCalendar(webcalUrl, button) {
-    var originalText = button ? button.innerHTML : "📅 Google Calendar";
+    var originalHtml = button ? button.innerHTML : "";
     if (button) button.innerHTML = "Opening Google Calendar...";
     var encodedUrl = encodeURIComponent(webcalUrl);
     window.open("https://www.google.com/calendar/render?cid=" + encodedUrl, "_blank", "noopener,noreferrer");
-    if (button) setTimeout(function() { button.innerHTML = originalText; }, 2000);
+    if (button) {
+      setTimeout(function() {
+        button.innerHTML = originalHtml;
+        if (typeof lucide !== "undefined" && lucide.createIcons) lucide.createIcons();
+      }, 2000);
+    }
   }
   window.subscribeToGoogleCalendar = subscribeToGoogleCalendar;
 
   function copyFeedUrl(url, button) {
-    var originalText = button.innerHTML;
+    var originalHtml = button.innerHTML;
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(url).then(function () {
         button.innerHTML = "✓ Copied!";
-        setTimeout(function () { button.innerHTML = originalText; }, 2000);
-      }).catch(function () { fallbackCopy(url, button, originalText); });
+        setTimeout(function () {
+          button.innerHTML = originalHtml;
+          if (typeof lucide !== "undefined" && lucide.createIcons) lucide.createIcons();
+        }, 2000);
+      }).catch(function () { fallbackCopy(url, button, originalHtml); });
     } else {
-      fallbackCopy(url, button, originalText);
+      fallbackCopy(url, button, originalHtml);
     }
   }
   window.copyFeedUrl = copyFeedUrl;
 
-  function fallbackCopy(url, button, originalText) {
+  function fallbackCopy(url, button, originalHtml) {
     var textArea = document.createElement("textarea");
     textArea.value = url;
     textArea.style.position = "fixed";
@@ -129,7 +127,10 @@
     } catch (e) {
       button.innerHTML = "⚠ Copy failed";
     }
-    setTimeout(function () { button.innerHTML = originalText; }, 2000);
+    setTimeout(function () {
+      button.innerHTML = originalHtml;
+      if (typeof lucide !== "undefined" && lucide.createIcons) lucide.createIcons();
+    }, 2000);
     document.body.removeChild(textArea);
   }
 })();

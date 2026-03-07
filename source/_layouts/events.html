@@ -4,10 +4,9 @@ layout: default
 
 <div class="content-page club-detail events-page">
   <h1>Upcoming events</h1>
-  {% include calendar-subscribe.html %}
-
   {% assign all_events = site.data.rendered_events.all_upcoming %}
   {% if all_events and all_events.size > 0 %}
+  {% include calendar-subscribe.html %}
   {% include events-filters.html %}
   <div class="events-result-count" id="events-result-count"></div>
 
