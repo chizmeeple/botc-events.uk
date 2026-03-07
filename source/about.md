@@ -28,7 +28,7 @@ All group data is stored as individual files in our [GitHub repository](https://
 
 ## Join the Discord
 
-Join the [BotC UK Events Discord](https://discord.gg/PUTkJXwUJY) for discussion and information about events in the UK.
+Join the [BotC UK Events Discord]({{ site.discord_link }}) for discussion and information about events in the UK.
 
 ## Get Involved
 
