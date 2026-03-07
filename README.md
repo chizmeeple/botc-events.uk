@@ -39,8 +39,10 @@ Not comfortable with GitHub? [Open an issue](https://github.com/chizmeeple/botc-
 ## Running locally
 
 ```bash
+# make sure you have the required dependencies
 bundle install
-bundle exec jekyll serve
+# run the prepare-and-run dev server script
+./script/jekyll-serve
 ```
 
 Then visit `http://localhost:4000`.
