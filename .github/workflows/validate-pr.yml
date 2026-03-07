@@ -29,6 +29,9 @@ jobs:
           ruby-version: "3.3"
           bundler-cache: true
 
+      - name: Generate events data
+        run: bundle exec ruby script/generate_events.rb
+
       - name: Build site
         run: bundle exec jekyll build
 

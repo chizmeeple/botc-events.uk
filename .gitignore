@@ -15,3 +15,4 @@ script/import_clubs.py
 
 # Generated at build time by script/generate_events.rb (and in deploy workflow)
 source/_data/rendered_events.json
+source/calendar/
