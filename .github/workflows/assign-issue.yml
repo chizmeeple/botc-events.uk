@@ -15,4 +15,4 @@ jobs:
               with:
                   assignees: chizmeeple
                   numOfAssignee: 1
-                  allowSelfAssign: false
+                  allowSelfAssign: true
