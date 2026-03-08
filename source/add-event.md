@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Add an Event to Our UK Directory"
-description: "Submit an event for an existing board game group on Board Game Clubs UK. Events must belong to a group already in our directory."
+description: "Submit an event for an existing Blood on the Clocktower group on botc-events.uk. Events must belong to a group already in our directory."
 permalink: /add-event/
 ---
 

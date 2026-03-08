@@ -10,6 +10,7 @@ locale: "en_GB"
 # If you remove the custom domain, set baseurl: "/botc-events.uk" so chizmeeple.github.io/botc-events.uk/ works.
 baseurl: ""
 repository: "chizmeeple/botc-events.uk"
+discord_link: "https://discord.gg/PUTkJXwUJY"
 og_image: /assets/og.png
 
 goatcounter_domain: botc-events-uk

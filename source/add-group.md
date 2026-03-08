@@ -26,7 +26,8 @@ If you're comfortable with GitHub, you can add a group directly:
 
 ### 1. Create a new file
 
-[Create a new file](https://github.com/{{ site.repository }}/new/main/source/\_clubs) in the `source/_clubs/` folder on GitHub. Name it using the format `your-club-name.md` (lowercase, hyphens instead of spaces).
+[Create a new file](https://github.com/{{ site.repository }}/new/main/source/\_clubs) in the `source/_clubs/` folder on GitHub. Name it using the format `{town}-{your-club-name}.md`
+([lowercase, hyphens instead of spaces](https://dencode.com/en/string/kebab-case?v=RAVENSWOOD%20bluff%20_%20The%20Determined%20Villagers)).
 
 ### 2. Copy this template
 

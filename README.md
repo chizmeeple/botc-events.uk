@@ -4,7 +4,7 @@
 
 # botc-events.uk
 
-**Find your nearest board game club in the UK.**
+**Find your nearest Blood on the Clocktower club in the UK.**
 
 A community-built directory powered by an interactive map.
 
@@ -39,8 +39,10 @@ Not comfortable with GitHub? [Open an issue](https://github.com/chizmeeple/botc-
 ## Running locally
 
 ```bash
+# make sure you have the required dependencies
 bundle install
-bundle exec jekyll serve
+# run the prepare-and-run dev server script
+./script/jekyll-serve
 ```
 
 Then visit `http://localhost:4000`.
