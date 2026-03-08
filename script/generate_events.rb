@@ -21,7 +21,7 @@ SITE_URL = "https://botc-events.uk"
 TZ = TZInfo::Timezone.get("Europe/London")
 LOOKAHEAD_DAYS = 180
 UPCOMING_PER_CLUB = 4
-ALL_UPCOMING_LIMIT = 100
+ALL_UPCOMING_LIMIT = 500
 
 DAY_ABBREV = { "MO" => "Monday", "TU" => "Tuesday", "WE" => "Wednesday",
                "TH" => "Thursday", "FR" => "Friday", "SA" => "Saturday",
