@@ -35,4 +35,25 @@ events:
       starttime: 1845
       endtime: 2200
       location: "the-old-monkey"
+    - eventname: "Blood on the Clocktower Manchester (Event #11)"
+      signup: "https://www.eventbrite.co.uk/e/blood-on-the-clocktower-manchester-event-11-registration-1984709555708"
+      cost: "£5 optional donation"
+      startdate: 2026-04-07
+      starttime: 1845
+      endtime: 2200
+      location: "the-old-monkey"
+    - eventname: "Blood on the Clocktower Manchester (Event #12)"
+      signup: "https://www.eventbrite.co.uk/e/blood-on-the-clocktower-manchester-event-12-registration-1984709533642"
+      cost: "£5 optional donation"
+      startdate: 2026-04-28
+      starttime: 1845
+      endtime: 2200
+      location: "the-old-monkey"
+    - eventname: "Blood on the Clocktower Manchester - All Dayer"
+      signup: "https://www.eventbrite.co.uk/e/blood-on-the-clocktower-manchester-all-dayer-registration-1984709622909"
+      cost: "£5"
+      startdate: 2026-05-10
+      starttime: 1300
+      endtime: 2300
+      location: "the-old-monkey"
 ---
