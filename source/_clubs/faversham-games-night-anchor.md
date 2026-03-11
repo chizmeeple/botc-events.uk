@@ -15,8 +15,8 @@ events:
       signup: "https://signup.com/go/YMxpsxE"
       cost: "Free"
       startdate: 2026-03-01
-      starttime: 1730
-      endtime: 2030
+      starttime: 1800
+      endtime: 2100
       rrule: "FREQ=MONTHLY;BYDAY=2SU,4SU"
       location:
         name: "The Anchor Pub"
