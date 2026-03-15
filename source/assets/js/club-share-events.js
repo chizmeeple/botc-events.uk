@@ -49,9 +49,12 @@
     return occs;
   }
 
-  function buildMarkdown(occList) {
+  function buildMarkdown(occList, wrapForDiscord) {
     if (occList.length === 0) return "";
     var siteUrl = window.location.origin + (baseurl || "") + "/";
+    var wrap = function (url) {
+      return wrapForDiscord ? "<" + url + ">" : url;
+    };
     var lines = [];
     var bySlug = {};
     occList.forEach(function (occ) {
@@ -81,17 +84,19 @@
           lines.push("- " + locLine);
         }
         lines.push("- Cost: " + cost);
-        lines.push("- [More information](" + eventLink + ")");
+        lines.push("- [More information](" + wrap(eventLink) + ")");
         lines.push("");
       });
     });
     if (slugs.length === 1) {
-      lines.push("Find [this group](" + siteUrl + "clubs/" + encodeURIComponent(slugs[0]) + "/) and more on [botc-events.uk](" + siteUrl + ")");
+      lines.push("Find [this group](" + wrap(siteUrl + "clubs/" + encodeURIComponent(slugs[0]) + "/") + ") and more on [botc-events.uk](" + wrap(siteUrl) + ")");
     } else {
-      lines.push("Find these groups and more on [botc-events.uk](" + siteUrl + ")");
+      lines.push("Find these groups and more on [botc-events.uk](" + wrap(siteUrl) + ")");
     }
     return lines.join("\n");
   }
+
+  var shareModalSelectedOccurrences = null;
 
   function getModalElements() {
     return {
@@ -100,12 +105,15 @@
       copyBtn: document.getElementById("share-events-modal-copy"),
       closeBtn: document.getElementById("share-events-modal-close"),
       backdrop: document.querySelector("#share-events-modal .share-events-modal__backdrop"),
+      discordCheckbox: document.getElementById("share-events-modal-discord"),
     };
   }
 
-  function showShareModal(markdown) {
+  function showShareModal(markdown, selected) {
     var el = getModalElements();
     if (!el.modal || !el.code) return;
+    shareModalSelectedOccurrences = selected || null;
+    if (el.discordCheckbox) el.discordCheckbox.checked = false;
     el.code.textContent = markdown;
     el.modal.removeAttribute("hidden");
     el.modal.setAttribute("aria-hidden", "false");
@@ -182,8 +190,8 @@
       }
       var selected = getSelectedOccurrences(allEvents);
       if (selected.length === 0) return;
-      var markdown = buildMarkdown(selected);
-      showShareModal(markdown);
+      var markdown = buildMarkdown(selected, false);
+      showShareModal(markdown, selected);
     });
 
     var selectAllBtn = document.getElementById("club-select-all-btn");
@@ -198,6 +206,14 @@
     if (modalEl.backdrop) modalEl.backdrop.addEventListener("click", hideShareModal);
     if (modalEl.closeBtn) modalEl.closeBtn.addEventListener("click", hideShareModal);
     if (modalEl.copyBtn) modalEl.copyBtn.addEventListener("click", copyModalToClipboard);
+    if (modalEl.discordCheckbox) {
+      modalEl.discordCheckbox.addEventListener("change", function () {
+        if (shareModalSelectedOccurrences && shareModalSelectedOccurrences.length > 0) {
+          var el = getModalElements();
+          if (el.code) el.code.textContent = buildMarkdown(shareModalSelectedOccurrences, this.checked);
+        }
+      });
+    }
   }
 
   if (document.readyState === "loading") {
