@@ -1,7 +1,7 @@
 ---
 name: "Badger Badger"
 based_in: "Deptford (London)"
-image: ""
+image: "london-badger-badger.png"
 website: "https://www.badgerbadger.org/botc/"
 meetup: ""
 facebook: ""
