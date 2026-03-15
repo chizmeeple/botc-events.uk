@@ -1,6 +1,6 @@
 ---
-name: ""
-based_in: ""
+name: "{{GROUP_NAME}}"
+based_in: "{{GROUP_BASED_IN}}"
 image: ""
 website: ""
 meetup: ""

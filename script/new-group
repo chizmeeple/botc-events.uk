@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+GROUP_NAME="${1:-}"
+GROUP_BASED_IN="${2:-}"
+
+# Check if the group name is provided
+if [ -z "$GROUP_NAME" ] || [ -z "$GROUP_BASED_IN" ]; then
+  echo "Error: Group name is required"
+  echo "Usage: $0 <group-name> <group-based-in>"
+  exit 1
+fi
+
+GROUP_SLUG=$(echo "${GROUP_BASED_IN}-${GROUP_NAME}" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
+
+# Check if the group name is already taken
+if [ -d "source/_clubs/$GROUP_SLUG" ]; then
+  echo "Error: Group name is already taken"
+  exit 1
+fi
+
+# copy the template to the new group
+cp "_club-template.md" "source/_clubs/$GROUP_SLUG.md"
+
+# replace the group name in the template (macOS sed -i requires backup arg; use '' for no backup)
+if [[ "$(uname)" == "Darwin" ]]; then
+  sed -i '' "s/{{GROUP_NAME}}/$GROUP_NAME/g" "source/_clubs/$GROUP_SLUG.md"
+  sed -i '' "s/{{GROUP_BASED_IN}}/$GROUP_BASED_IN/g" "source/_clubs/$GROUP_SLUG.md"
+  sed -i '' "s/{{GROUP_SLUG}}/$GROUP_SLUG/g" "source/_clubs/$GROUP_SLUG.md"
+else
+  sed -i "s/{{GROUP_NAME}}/$GROUP_NAME/g" "source/_clubs/$GROUP_SLUG.md"
+  sed -i "s/{{GROUP_BASED_IN}}/$GROUP_BASED_IN/g" "source/_clubs/$GROUP_SLUG.md"
+  sed -i "s/{{GROUP_SLUG}}/$GROUP_SLUG/g" "source/_clubs/$GROUP_SLUG.md"
+fi
+
+# open the new group in the editor
+#code "source/_clubs/$GROUP_SLUG.md"
+
+echo "New group created: $GROUP_NAME"
+echo "New file: source/_clubs/$GROUP_SLUG.md"
