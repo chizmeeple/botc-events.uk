@@ -83,7 +83,9 @@
     else datetimeStr += " start";
 
     var venueBlock = "";
-    if (loc.name || loc.address) {
+    var onsiteParking = loc.parking && loc.parking["on-site"];
+    var hasVenueInfo = !!onsiteParking;
+    if (loc.name || loc.address || hasVenueInfo) {
       var venue = "";
       if (loc.name) {
         var dirs = "";
@@ -93,7 +95,19 @@
         venue = '<div class="upcoming-event-card__venue">' + escapeHtml(loc.name) + dirs + "</div>";
       }
       var addr = loc.address ? '<div class="upcoming-event-card__address">' + escapeHtml(loc.address) + "</div>" : "";
-      venueBlock = '<div class="upcoming-event-card__venue-block">' + venue + addr + "</div>";
+      var venueInfo = "";
+      if (hasVenueInfo) {
+        var costStr = (onsiteParking.cost || "").toLowerCase();
+        var parkingText = costStr === "free" ? "On-Site (Free)" : "On-Site (PAID)";
+        venueInfo =
+          '<div class="upcoming-event-card__venue-info">' +
+          '<span class="upcoming-event-card__venue-info-pills">' +
+          '<span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span> ' +
+          escapeHtml(parkingText) +
+          "</span></span></div>";
+      }
+      venueBlock =
+        '<div class="upcoming-event-card__venue-block">' + venue + addr + venueInfo + "</div>";
     }
 
     var freq = occ.frequency || dayOfWeek(occ.start_time);

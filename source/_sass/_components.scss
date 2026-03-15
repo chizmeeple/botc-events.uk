@@ -1239,6 +1239,38 @@
     opacity: 0.9;
   }
 
+  .upcoming-event-card__venue-info {
+    margin-top: 0.35rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.5rem;
+  }
+
+  .upcoming-event-card__venue-info-pills {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .upcoming-event-card__venue-info-pills .tag-venue {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+    background: var(--color-tag-day);
+    color: var(--color-on-accent);
+  }
+
+  .upcoming-event-card__venue-info-pills .tag-venue .iconify {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+
   .upcoming-event-card__footer {
     display: flex;
     align-items: center;

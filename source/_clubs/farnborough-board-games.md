@@ -19,6 +19,16 @@ locations:
     address: "Monkey Puzzle (Brewer's Fayre), Farnborough, GU14 0LE"
     lat: 51.288782720425026
     lng: -0.7786554104110263
+    parking:
+      on-site:
+        onsite: true
+        cost: "Free"
+        notes: >-
+          Car parking is FREE at the venue but you MUST register your vehicle
+          at the ipad/terminal next to the PREMIER INN reception desk. Select
+          "1 night".
+          <b>DO NOT register your vehicle at the pub's terminal(s) - these
+          allow a maximum of 3 hours.</b>
 events:
   recurring:
     - eventname: Blood on the Clocktower (Beginner Friendly)

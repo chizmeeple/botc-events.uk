@@ -36,14 +36,17 @@
     {{ include.occ.start_time | date: "%A, %d %B %Y" }}, {{ start_time_str }} start
     {% endif %}
   </div>
-  {% if include.occ.location.name or include.occ.location.address %}
+  {% assign loc = include.occ.location %}
+  {% assign onsite_parking = loc.parking["on-site"] %}
+  {% assign has_venue_info = onsite_parking %}
+  {% if loc.name or loc.address or has_venue_info %}
   <div class="upcoming-event-card__venue-block">
-    {% if include.occ.location.name %}
+    {% if loc.name %}
     <div class="upcoming-event-card__venue">
-      {{ include.occ.location.name }}
-      {% if include.occ.location.lat and include.occ.location.lng %}
+      {{ loc.name }}
+      {% if loc.lat and loc.lng %}
       <a
-        href="https://www.google.com/maps/dir/?api=1&destination={{ include.occ.location.lat }},{{ include.occ.location.lng }}"
+        href="https://www.google.com/maps/dir/?api=1&destination={{ loc.lat }},{{ loc.lng }}"
         target="_blank"
         rel="noopener"
         class="directions-link"
@@ -53,8 +56,20 @@
       {% endif %}
     </div>
     {% endif %}
-    {% if include.occ.location.address %}
-    <div class="upcoming-event-card__address">{{ include.occ.location.address }}</div>
+    {% if loc.address %}
+    <div class="upcoming-event-card__address">{{ loc.address }}</div>
+    {% endif %}
+    {% if has_venue_info %}
+    <div class="upcoming-event-card__venue-info">
+      <span class="upcoming-event-card__venue-info-pills">
+        {% assign cost_lower = onsite_parking.cost | downcase %}
+        {% if cost_lower == "free" %}
+        <span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span> On-Site (Free)</span>
+        {% else %}
+        <span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span> On-Site (PAID)</span>
+        {% endif %}
+      </span>
+    </div>
     {% endif %}
   </div>
   {% endif %}
