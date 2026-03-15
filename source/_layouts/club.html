@@ -129,6 +129,9 @@ layout: default
       {% include event-card.html occ=occ %}
       {% endfor %}
     </ul>
+    {% if club_events.upcoming_limited %}
+    <blockquote class="club-upcoming-events-limit">This page only lists the next {{ club_events.upcoming_limit }} upcoming events for this group. For more dates, check the group's website or the links above.</blockquote>
+    {% endif %}
     {% else %}
     <p class="upcoming-events-empty">No upcoming events scheduled.</p>
     {% endif %}

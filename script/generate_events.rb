@@ -20,7 +20,7 @@ SITE_URL = "https://botc-events.uk"
 
 TZ = TZInfo::Timezone.get("Europe/London")
 LOOKAHEAD_DAYS = 180
-UPCOMING_PER_CLUB = 4
+UPCOMING_PER_CLUB = 6
 ALL_UPCOMING_LIMIT = 500
 
 DAY_ABBREV = { "MO" => "Monday", "TU" => "Tuesday", "WE" => "Wednesday",
@@ -331,8 +331,11 @@ def main
 
     upcoming_recurring = collect_upcoming(normalised_recurring, now, range_end, slug: slug)
     upcoming_adhoc = collect_adhoc(normalised_adhoc, now, range_end, slug: slug)
-    upcoming = (upcoming_recurring + upcoming_adhoc).sort_by { |o| o["start_time"] }.take(UPCOMING_PER_CLUB)
+    full_upcoming = (upcoming_recurring + upcoming_adhoc).sort_by { |o| o["start_time"] }
+    upcoming = full_upcoming.take(UPCOMING_PER_CLUB)
     next if upcoming.empty?
+
+    upcoming_limited = full_upcoming.size > UPCOMING_PER_CLUB
 
     frequency_pills = upcoming.map { |o| o["frequency"] }.compact.uniq
     event_days = collect_event_days(normalised_recurring, normalised_adhoc)
@@ -346,6 +349,8 @@ def main
     by_slug[slug] = {
       "club_name" => club_name,
       "upcoming" => upcoming,
+      "upcoming_limited" => upcoming_limited,
+      "upcoming_limit" => UPCOMING_PER_CLUB,
       "pills" => {
         "frequency" => frequency_pills,
       },
