@@ -11,7 +11,7 @@ description: >-
   Evesham Clocktower hosts regular Blood on the Clocktower games with the
   Evesham Barons Tabletop Gaming Society. A social deduction game of lies,
   logic, and laughter in Evesham, Worcestershire.
-  https://eveshamclocktower.mezepheles.com
+  <a href="https://eveshamclocktower.mezepheles.com" target="_blank">https://eveshamclocktower.mezepheles.com</a>
 locations:
   wallace-house:
     name: "Wallace House Community Centre"
@@ -31,6 +31,20 @@ events:
       signup: "https://www.eventbrite.co.uk/e/22nd-march-blood-on-the-clocktower-evesham-worcestershire-ebtgs-tickets-1981806657060"
       cost: "£5 (18+), £2 (ages 15–17)"
       startdate: 2026-03-22
+      starttime: 1000
+      endtime: 1600
+      location: "wallace-house"
+    - eventname: "Blood on the Clocktower @ EBTGS"
+      signup: "https://www.eventbrite.co.uk/e/19th-april-blood-on-the-clocktower-evesham-worcestershire-ebtgs-tickets-1985189611568"
+      cost: "£5 (18+), £2 (ages 15–17)"
+      startdate: 2026-04-19
+      starttime: 1000
+      endtime: 1600
+      location: "wallace-house"
+    - eventname: "Blood on the Clocktower @ EBTGS"
+      signup: "https://www.eventbrite.co.uk/e/19th-april-blood-on-the-clocktower-evesham-worcestershire-ebtgs-tickets-1985189611568"
+      cost: "£5 (18+), £2 (ages 15–17)"
+      startdate: 2026-06-14
       starttime: 1000
       endtime: 1600
       location: "wallace-house"
