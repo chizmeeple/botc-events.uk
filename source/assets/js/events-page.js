@@ -87,8 +87,9 @@
     else datetimeStr += " start";
 
     var venueBlock = "";
-    var onsiteParking = loc.parking && loc.parking["on-site"];
-    var hasVenueInfo = !!onsiteParking;
+    var parking = loc.parking || {};
+    var parkingKeys = Object.keys(parking);
+    var hasVenueInfo = parkingKeys.length > 0;
     if (loc.name || loc.address || hasVenueInfo) {
       var venue = "";
       if (loc.name) {
@@ -101,25 +102,19 @@
       var addr = loc.address ? '<div class="upcoming-event-card__address">' + escapeHtml(loc.address) + "</div>" : "";
       var venueInfo = "";
       if (hasVenueInfo) {
-        var costStr = (onsiteParking.cost || "").toLowerCase();
-        var parkingText = costStr === "free" ? "On-Site (Free)" : "On-Site (PAID)";
-        var notes = onsiteParking.notes || "";
-        var tagHtml =
-          '<span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span> ' +
-          escapeHtml(parkingText) +
-          "</span>";
-        if (notes) {
-          tagHtml =
-            '<span class="venue-info-pill-wrap" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" title="Parking details" data-notes="' +
-            escapeAttr(notes) +
-            '">' +
-            tagHtml +
-            '<span class="venue-info-pill-popup" role="tooltip"></span></span>';
+        var pills = '<span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span></span>';
+        for (var i = 0; i < parkingKeys.length; i++) {
+          var pv = parking[parkingKeys[i]];
+          if (!pv || typeof pv !== "object") continue;
+          var isOnsite = pv.onsite === true || pv.onsite === "true";
+          var label = isOnsite ? "On Site" : (pv.name != null ? String(pv.name) : "");
+          if (label === "") continue;
+          pills += '<span class="tag tag-venue">' + escapeHtml(label) + "</span>";
         }
         venueInfo =
           '<div class="upcoming-event-card__venue-info">' +
           '<span class="upcoming-event-card__venue-info-pills">' +
-          tagHtml +
+          pills +
           "</span></div>";
       }
       venueBlock =

@@ -20,8 +20,7 @@ locations:
     lat: 51.288782720425026
     lng: -0.7786554104110263
     parking:
-      on-site:
-        onsite: true
+      - onsite: true
         cost: "Free"
         notes: >-
           Car parking is FREE at the venue but you MUST register your vehicle

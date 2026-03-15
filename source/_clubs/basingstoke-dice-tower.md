@@ -26,6 +26,14 @@ locations:
     address: "London St, Basingstoke RG21 7NY"
     lat: 51.262409339480726
     lng: -1.0850773394547892
+    parking:
+      - onsite: false
+        cost: "PAID"
+        name: "Central Car Park"
+        address: "Central Short Stay Car Park, Red Lion Ln, Basingstoke RG21 7LX"
+        website: "https://www.basingstoke.gov.uk/carparks"
+        lat: 51.263485749076025
+        lng: -1.0850903424007872
 events:
   recurring:
     - eventname: "Blood on the Clocktower – Any Script Week"

@@ -1271,6 +1271,15 @@
     height: 0.9rem;
   }
 
+  .upcoming-event-card__venue-info-pills a.tag-venue--link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .upcoming-event-card__venue-info-pills a.tag-venue--link:hover {
+    opacity: 0.9;
+  }
+
   .venue-info-pill-wrap {
     position: relative;
     display: inline-flex;

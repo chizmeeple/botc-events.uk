@@ -1,50 +1,74 @@
-{% comment %}
-  Renders an event card. Pass:
-  - occ: the occurrence object (eventname, start_time, end_time, location, frequency, cost, signup)
-  - club_slug: optional, when present shows a link to the group
-  - club_name: optional, used with club_slug for the link text
-  - show_logo: optional, when true and occ.image exists, show club logo in top right (events page only)
-  - share_data: optional, when true add data attributes and share checkbox (club page)
-{% endcomment %}
-<li class="upcoming-event-card"{% if include.share_data and include.club_slug %} data-slug="{{ include.club_slug }}" data-start-time="{{ include.occ.start_time }}"{% endif %}>
+{% comment %} Renders an event card. Pass: - occ: the occurrence object
+(eventname, start_time, end_time, location, frequency, cost, signup) -
+club_slug: optional, when present shows a link to the group - club_name:
+optional, used with club_slug for the link text - show_logo: optional, when true
+and occ.image exists, show club logo in top right (events page only) -
+share_data: optional, when true add data attributes and share checkbox (club
+page) {% endcomment %}
+<li
+  class="upcoming-event-card"
+  {%
+  if
+  include.share_data
+  and
+  include.club_slug
+  %}
+  data-slug="{{ include.club_slug }}"
+  data-start-time="{{ include.occ.start_time }}"
+  {%
+  endif
+  %}
+>
   {% if include.share_data and include.club_slug %}
   <div class="upcoming-event-card__share-wrap">
-    <input type="checkbox" class="upcoming-event-card__share-checkbox share-checkbox" data-slug="{{ include.club_slug }}" data-start-time="{{ include.occ.start_time }}" aria-label="Select for share">
+    <input
+      type="checkbox"
+      class="upcoming-event-card__share-checkbox share-checkbox"
+      data-slug="{{ include.club_slug }}"
+      data-start-time="{{ include.occ.start_time }}"
+      aria-label="Select for share"
+    />
   </div>
-  {% endif %}
-  {% if include.show_logo and include.occ.image and include.occ.image != "" %}
+  {% endif %} {% if include.show_logo and include.occ.image and
+  include.occ.image != "" %}
   <div class="upcoming-event-card__logo">
     {% if include.occ.image contains "://" %}
-    <img src="{{ include.occ.image }}" alt="{{ include.club_name | default: 'Club' }} logo" loading="lazy" />
+    <img
+      src="{{ include.occ.image }}"
+      alt="{{ include.club_name | default: 'Club' }} logo"
+      loading="lazy"
+    />
     {% else %}
-    <img src="{{ '/assets/images/clubs/' | append: include.occ.image | relative_url }}" alt="{{ include.club_name | default: 'Club' }} logo" loading="lazy" />
+    <img
+      src="{{ '/assets/images/clubs/' | append: include.occ.image | relative_url }}"
+      alt="{{ include.club_name | default: 'Club' }} logo"
+      loading="lazy"
+    />
     {% endif %}
   </div>
-  {% endif %}
-  {% if include.club_slug and include.club_name %}
+  {% endif %} {% if include.club_slug and include.club_name %}
   <div class="upcoming-event-card__group">
-    <a href="{{ '/clubs/' | append: include.club_slug | append: '/' | relative_url }}">{{ include.club_name }}</a>
+    <a
+      href="{{ '/clubs/' | append: include.club_slug | append: '/' | relative_url }}"
+      >{{ include.club_name }}</a
+    >
   </div>
   {% endif %}
   <div class="upcoming-event-card__name">{{ include.occ.eventname }}</div>
   <div class="upcoming-event-card__datetime">
-    {% assign start_time_str = include.occ.start_time | date: "%H:%M" %}
-    {% if include.occ.end_time %}
-    {% assign end_time_str = include.occ.end_time | date: "%H:%M" %}
-    {{ include.occ.start_time | date: "%A, %d %B %Y" }}, {{ start_time_str }}{% if start_time_str != end_time_str %}–{{ end_time_str }}{% else %} start{% endif %}
-    {% else %}
-    {{ include.occ.start_time | date: "%A, %d %B %Y" }}, {{ start_time_str }} start
-    {% endif %}
+    {% assign start_time_str = include.occ.start_time | date: "%H:%M" %} {% if
+    include.occ.end_time %} {% assign end_time_str = include.occ.end_time |
+    date: "%H:%M" %} {{ include.occ.start_time | date: "%A, %d %B %Y" }}, {{
+    start_time_str }}{% if start_time_str != end_time_str %}–{{ end_time_str
+    }}{% else %} start{% endif %} {% else %} {{ include.occ.start_time | date:
+    "%A, %d %B %Y" }}, {{ start_time_str }} start {% endif %}
   </div>
-  {% assign loc = include.occ.location %}
-  {% assign onsite_parking = loc.parking["on-site"] %}
-  {% assign has_venue_info = onsite_parking %}
-  {% if loc.name or loc.address or has_venue_info %}
+  {% assign loc = include.occ.location %} {% assign loc_has_parking =
+  loc["parking"] %} {% if loc.name or loc.address or loc_has_parking %}
   <div class="upcoming-event-card__venue-block">
     {% if loc.name %}
     <div class="upcoming-event-card__venue">
-      {{ loc.name }}
-      {% if loc.lat and loc.lng %}
+      {{ loc.name }} {% if loc.lat and loc.lng %}
       <a
         href="https://www.google.com/maps/dir/?api=1&destination={{ loc.lat }},{{ loc.lng }}"
         target="_blank"
@@ -55,30 +79,31 @@
       >
       {% endif %}
     </div>
-    {% endif %}
-    {% if loc.address %}
+    {% endif %} {% if loc.address %}
     <div class="upcoming-event-card__address">{{ loc.address }}</div>
-    {% endif %}
-    {% if has_venue_info %}
+    {% endif %} {% if loc_has_parking %}
     <div class="upcoming-event-card__venue-info">
       <span class="upcoming-event-card__venue-info-pills">
-        {% assign cost_lower = onsite_parking.cost | downcase %}
-        {% if onsite_parking.notes %}
-        <span class="venue-info-pill-wrap" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" title="Parking details">
-          {% if cost_lower == "free" %}
-          <span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span> On-Site (Free)</span>
-          {% else %}
-          <span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span> On-Site (PAID)</span>
-          {% endif %}
-          <span class="venue-info-pill-popup" role="tooltip">{{ onsite_parking.notes }}</span>
-        </span>
+        {% for pv in loc_has_parking %} {% assign onsite_val = pv["onsite"] %}
+        {% if onsite_val == true or onsite_val == "true" %}
+        <span class="tag tag-venue">
+          <span
+            class="iconify"
+            data-icon="mdi:parking"
+            aria-hidden="true"
+          ></span>
+          On Site</span
+        >
         {% else %}
-        {% if cost_lower == "free" %}
-        <span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span> On-Site (Free)</span>
-        {% else %}
-        <span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span> On-Site (PAID)</span>
-        {% endif %}
-        {% endif %}
+        <span class="tag tag-venue"
+          ><span
+            class="iconify"
+            data-icon="mdi:parking"
+            aria-hidden="true"
+          ></span>
+          {{ pv["name"] | default: "Unknown" }}</span
+        >
+        {% endif %} {% endfor %}
       </span>
     </div>
     {% endif %}
@@ -90,13 +115,18 @@
       <span class="tag tag-day">{{ include.occ.frequency }}</span>
       {% else %}
       <span class="tag tag-day">{{ include.occ.start_time | date: "%A" }}</span>
-      {% endif %}
-      {% if include.occ.cost %}
+      {% endif %} {% if include.occ.cost %}
       <span class="upcoming-event-card__cost">{{ include.occ.cost }}</span>
       {% endif %}
     </span>
     {% if include.occ.signup %}
-    <a href="{{ include.occ.signup }}" target="_blank" rel="noopener" class="upcoming-event-card__signup">Signup</a>
+    <a
+      href="{{ include.occ.signup }}"
+      target="_blank"
+      rel="noopener"
+      class="upcoming-event-card__signup"
+      >Signup</a
+    >
     {% endif %}
   </div>
 </li>
