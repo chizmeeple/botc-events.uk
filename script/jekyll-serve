@@ -24,7 +24,7 @@ fi
 ruby script/validate_clubs.rb
 
 # Generate events data so club pages show upcoming events (same as deploy workflow)
-ruby script/generate_events.rb || true
+ruby script/generate_events.rb
 
 # validate events data
 ruby script/validate_events.rb
