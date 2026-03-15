@@ -125,7 +125,12 @@
     el.code.textContent = markdown;
     el.modal.removeAttribute("hidden");
     el.modal.setAttribute("aria-hidden", "false");
-    if (el.copyBtn) el.copyBtn.focus();
+    el.modal.scrollTop = 0;
+    var content = el.modal.querySelector(".share-events-modal__content");
+    if (content) {
+      if (!content.hasAttribute("tabindex")) content.setAttribute("tabindex", "-1");
+      content.focus();
+    }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(markdown).then(
         function () {

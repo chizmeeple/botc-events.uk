@@ -163,6 +163,7 @@
   justify-content: center;
   padding: 1.5rem;
   box-sizing: border-box;
+  overflow-y: auto;
 
   &[aria-hidden="true"],
   &[hidden] {
@@ -180,16 +181,18 @@
 .share-events-modal__content {
   position: relative;
   z-index: 1;
+  margin: auto;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: $border-radius;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
   max-width: 36rem;
   width: 100%;
-  max-height: 85vh;
+  max-height: min(85vh, calc(100vh - 3rem));
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .share-events-modal__title {
