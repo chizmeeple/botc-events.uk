@@ -362,7 +362,12 @@
     el.modal.setAttribute("aria-hidden", "false");
     if (el.copyBtn) el.copyBtn.focus();
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(markdown).catch(function () {});
+      navigator.clipboard.writeText(markdown).then(
+        function () {
+          if (window.showShareToast) window.showShareToast("Copied to clipboard");
+        },
+        function () {}
+      );
     }
     if (window.lucide) lucide.createIcons();
     if (shareModalEscapeHandler) document.removeEventListener("keydown", shareModalEscapeHandler);
@@ -389,15 +394,20 @@
     var el = getModalElements();
     if (!el.code) return;
     var text = el.code.textContent;
+    function showToast() {
+      if (window.showShareToast) window.showShareToast("Copied to clipboard");
+    }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(
-        function () {},
+        showToast,
         function () {
           if (document.execCommand) document.execCommand("copy", false, text);
+          showToast();
         }
       );
     } else if (document.execCommand) {
       document.execCommand("copy", false, text);
+      showToast();
     }
   }
 

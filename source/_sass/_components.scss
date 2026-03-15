@@ -261,6 +261,34 @@
   }
 }
 
+// ─── Share toast ───
+.share-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  max-width: min(90vw, 22rem);
+  padding: 0.5rem 1.25rem;
+  background: var(--color-text);
+  color: var(--color-surface);
+  font-size: 0.85rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 1001;
+  opacity: 0;
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.share-toast--visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
 // ─── Filter bar ───
 .filter-bar {
   position: sticky;
