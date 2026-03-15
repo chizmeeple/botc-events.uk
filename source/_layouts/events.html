@@ -46,24 +46,9 @@ layout: default
   <p class="upcoming-events-empty">No upcoming events scheduled. Check back soon or <a href="{{ '/add-event' | relative_url }}">add an event</a>.</p>
   {% endif %}
 
-  <div class="share-events-modal" id="share-events-modal" role="dialog" aria-modal="true" aria-labelledby="share-events-modal-title" aria-hidden="true" hidden>
-    <div class="share-events-modal__backdrop"></div>
-    <div class="share-events-modal__content">
-      <h2 class="share-events-modal__title" id="share-events-modal-title">Copy event information</h2>
-      <pre class="share-events-modal__code"><code id="share-events-modal-code"></code></pre>
-      <div class="share-events-modal__actions">
-        <label class="share-events-modal__option">
-          <input type="checkbox" id="share-events-modal-discord" class="share-events-modal__discord-checkbox"> Prevent link previews in Discord
-        </label>
-        <button type="button" class="share-events-modal__copy-btn" id="share-events-modal-copy">
-          <i data-lucide="copy" style="width: 16px; height: 16px"></i>
-          Copy
-        </button>
-        <button type="button" class="share-events-modal__close-btn" id="share-events-modal-close">Close</button>
-      </div>
-    </div>
-  </div>
+  {% include share-events-modal.html %}
 </div>
 
 <script src="{{ '/assets/js/location.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ '/assets/js/share-events-modal.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ '/assets/js/events-page.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
