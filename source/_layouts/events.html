@@ -2,9 +2,14 @@
 layout: default
 ---
 
-<div class="content-page club-detail events-page">
-  <h1>Upcoming events</h1>
-  {% assign all_events = site.data.rendered_events.all_upcoming %}
+<div class="content-page club-detail events-page" id="events-page">
+  <header class="events-page__header">
+    <h1>Upcoming events</h1>
+    {% assign all_events = site.data.rendered_events.all_upcoming %}
+    {% if all_events and all_events.size > 0 %}
+    <button type="button" class="events-page__share-btn" id="share-events-btn" aria-label="Share event information">Share Event Information</button>
+    {% endif %}
+  </header>
   {% if all_events and all_events.size > 0 %}
   {% include calendar-subscribe.html %}
   {% include events-filters.html %}
@@ -40,6 +45,21 @@ layout: default
   {% else %}
   <p class="upcoming-events-empty">No upcoming events scheduled. Check back soon or <a href="{{ '/add-event' | relative_url }}">add an event</a>.</p>
   {% endif %}
+
+  <div class="share-events-modal" id="share-events-modal" role="dialog" aria-modal="true" aria-labelledby="share-events-modal-title" aria-hidden="true" hidden>
+    <div class="share-events-modal__backdrop"></div>
+    <div class="share-events-modal__content">
+      <h2 class="share-events-modal__title" id="share-events-modal-title">Copy event information</h2>
+      <pre class="share-events-modal__code"><code id="share-events-modal-code"></code></pre>
+      <div class="share-events-modal__actions">
+        <button type="button" class="share-events-modal__copy-btn" id="share-events-modal-copy">
+          <i data-lucide="copy" style="width: 16px; height: 16px"></i>
+          Copy
+        </button>
+        <button type="button" class="share-events-modal__close-btn" id="share-events-modal-close">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="{{ '/assets/js/location.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

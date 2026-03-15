@@ -121,12 +121,18 @@ layout: default
   </div>
 
   {% assign club_events = event_data %}
-  <div class="club-upcoming-events">
-    <h2>Upcoming events</h2>
+  <div class="club-upcoming-events" id="club-upcoming-events">
+    <header class="club-upcoming-events__header">
+      <h2>Upcoming events</h2>
+      {% if club_events and club_events.upcoming.size > 0 %}
+      <button type="button" class="events-page__share-btn" id="share-events-btn" aria-label="Share event information">Share Event Information</button>
+      {% endif %}
+    </header>
     {% if club_events and club_events.upcoming.size > 0 %}
+    <script id="club-events-data" type="application/json">[{% for occ in club_events.upcoming %}{"eventname":{{ occ.eventname | jsonify }},"start_time":{{ occ.start_time | jsonify }},"end_time":{{ occ.end_time | jsonify }},"location":{{ occ.location | jsonify }},"frequency":{{ occ.frequency | jsonify }},"cost":{{ occ.cost | jsonify }},"signup":{{ occ.signup | jsonify }},"slug":{{ slug | jsonify }},"club_name":{{ event_data.club_name | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
     <ul class="upcoming-events-list">
       {% for occ in club_events.upcoming %}
-      {% include event-card.html occ=occ %}
+      {% include event-card.html occ=occ club_slug=slug share_data=true %}
       {% endfor %}
     </ul>
     {% if club_events.upcoming_limited %}
@@ -152,6 +158,24 @@ layout: default
       edit</a
     >
   </div>
+
+  {% if club_events and club_events.upcoming.size > 0 %}
+  <div class="share-events-modal" id="share-events-modal" role="dialog" aria-modal="true" aria-labelledby="share-events-modal-title" aria-hidden="true" hidden>
+    <div class="share-events-modal__backdrop"></div>
+    <div class="share-events-modal__content">
+      <h2 class="share-events-modal__title" id="share-events-modal-title">Copy event information</h2>
+      <pre class="share-events-modal__code"><code id="share-events-modal-code"></code></pre>
+      <div class="share-events-modal__actions">
+        <button type="button" class="share-events-modal__copy-btn" id="share-events-modal-copy">
+          <i data-lucide="copy" style="width: 16px; height: 16px"></i>
+          Copy
+        </button>
+        <button type="button" class="share-events-modal__close-btn" id="share-events-modal-close">Close</button>
+      </div>
+    </div>
+  </div>
+  <script src="{{ '/assets/js/club-share-events.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+  {% endif %}
 </div>
 
 {% if event_data.locations and event_data.locations.size > 0 and event_data.locations[0].lat and event_data.locations[0].lng %}
