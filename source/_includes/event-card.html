@@ -4,8 +4,14 @@
   - club_slug: optional, when present shows a link to the group
   - club_name: optional, used with club_slug for the link text
   - show_logo: optional, when true and occ.image exists, show club logo in top right (events page only)
+  - share_data: optional, when true add data attributes and share checkbox (club page)
 {% endcomment %}
-<li class="upcoming-event-card">
+<li class="upcoming-event-card"{% if include.share_data and include.club_slug %} data-slug="{{ include.club_slug }}" data-start-time="{{ include.occ.start_time }}"{% endif %}>
+  {% if include.share_data and include.club_slug %}
+  <div class="upcoming-event-card__share-wrap">
+    <input type="checkbox" class="upcoming-event-card__share-checkbox share-checkbox" data-slug="{{ include.club_slug }}" data-start-time="{{ include.occ.start_time }}" aria-label="Select for share">
+  </div>
+  {% endif %}
   {% if include.show_logo and include.occ.image and include.occ.image != "" %}
   <div class="upcoming-event-card__logo">
     {% if include.occ.image contains "://" %}

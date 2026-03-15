@@ -10,6 +10,23 @@
     {{ content }}
   </main>
   {% include footer.html %}
+  <div id="share-toast" class="share-toast" aria-live="polite" aria-atomic="true" role="status"></div>
+  <script>
+    (function () {
+      var hideTimer = null;
+      window.showShareToast = function (message) {
+        var el = document.getElementById("share-toast");
+        if (!el) return;
+        el.textContent = message;
+        el.classList.add("share-toast--visible");
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(function () {
+          el.classList.remove("share-toast--visible");
+          hideTimer = null;
+        }, 2500);
+      };
+    })();
+  </script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>lucide.createIcons();</script>
   {% include theme-toggle-script.html %}

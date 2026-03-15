@@ -2,9 +2,17 @@
 layout: default
 ---
 
-<div class="content-page club-detail events-page">
-  <h1>Upcoming events</h1>
-  {% assign all_events = site.data.rendered_events.all_upcoming %}
+<div class="content-page club-detail events-page" id="events-page">
+  <header class="events-page__header">
+    <h1>Upcoming events</h1>
+    {% assign all_events = site.data.rendered_events.all_upcoming %}
+    {% if all_events and all_events.size > 0 %}
+    <div class="events-page__header-actions">
+      <button type="button" class="events-page__share-btn" id="share-events-btn" aria-label="Share event information">Share Event Information</button>
+      <button type="button" class="events-page__done-btn" id="share-events-done-btn" aria-label="Done selecting">Done</button>
+    </div>
+    {% endif %}
+  </header>
   {% if all_events and all_events.size > 0 %}
   {% include calendar-subscribe.html %}
   {% include events-filters.html %}
@@ -40,7 +48,10 @@ layout: default
   {% else %}
   <p class="upcoming-events-empty">No upcoming events scheduled. Check back soon or <a href="{{ '/add-event' | relative_url }}">add an event</a>.</p>
   {% endif %}
+
+  {% include share-events-modal.html %}
 </div>
 
 <script src="{{ '/assets/js/location.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ '/assets/js/share-events-modal.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ '/assets/js/events-page.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

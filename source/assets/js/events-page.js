@@ -8,6 +8,7 @@
   var maxDistance = 0;
   var userLat = null;
   var userLng = null;
+  var shareMode = false;
 
   function getEventsData() {
     var el = document.getElementById("events-data");
@@ -113,16 +114,39 @@
       distBadge = '<span class="upcoming-event-card__distance">' + occ._distance.toFixed(1) + " mi</span>";
     }
 
+    var shareCheckbox = "";
+    if (shareMode) {
+      shareCheckbox =
+        '<div class="upcoming-event-card__share-wrap">' +
+        '<input type="checkbox" class="upcoming-event-card__share-checkbox share-checkbox" data-slug="' +
+        escapeHtml(occ.slug) +
+        '" data-start-time="' +
+        escapeHtml(occ.start_time) +
+        '" aria-label="Select for share">' +
+        "</div>";
+    }
+
     return (
-      '<li class="upcoming-event-card" data-slug="' + escapeHtml(occ.slug) + '">' +
+      '<li class="upcoming-event-card" data-slug="' +
+      escapeHtml(occ.slug) +
+      '" data-start-time="' +
+      escapeHtml(occ.start_time) +
+      '">' +
+      shareCheckbox +
       logoBlock +
       groupBlock +
-      '<div class="upcoming-event-card__name">' + escapeHtml(occ.eventname) + "</div>" +
-      '<div class="upcoming-event-card__datetime">' + escapeHtml(datetimeStr) + "</div>" +
+      '<div class="upcoming-event-card__name">' +
+      escapeHtml(occ.eventname) +
+      "</div>" +
+      '<div class="upcoming-event-card__datetime">' +
+      escapeHtml(datetimeStr) +
+      "</div>" +
       venueBlock +
       '<div class="upcoming-event-card__footer">' +
       '<span class="upcoming-event-card__footer-pills">' +
-      '<span class="tag tag-day">' + escapeHtml(freq) + "</span>" +
+      '<span class="tag tag-day">' +
+      escapeHtml(freq) +
+      "</span>" +
       cost +
       distBadge +
       "</span>" +
@@ -257,6 +281,28 @@
     var filtered = getFiltered();
     render(filtered);
     updateResultCount(filtered.length, allEvents.length);
+    var page = document.getElementById("events-page");
+    if (page) page.classList.toggle("events-page--share-mode", shareMode);
+  }
+
+  function getSelectedOccurrences() {
+    var checkboxes = document.querySelectorAll(".share-checkbox:checked");
+    var occs = [];
+    for (var i = 0; i < checkboxes.length; i++) {
+      var slug = checkboxes[i].getAttribute("data-slug");
+      var startTime = checkboxes[i].getAttribute("data-start-time");
+      var occ = allEvents.find(function (o) {
+        return o.slug === slug && o.start_time === startTime;
+      });
+      if (occ) occs.push(occ);
+    }
+    return occs;
+  }
+
+  function updateShareButtonLabel() {
+    var btn = document.getElementById("share-events-btn");
+    if (!btn) return;
+    btn.textContent = shareMode ? "Copy Information" : "Share Event Information";
   }
 
   function restoreFromStorage() {
@@ -303,6 +349,30 @@
     var dayToggle = dayFilterEl ? dayFilterEl.querySelector(".multi-select-toggle") : null;
     var dayCheckboxes = dayFilterEl ? dayFilterEl.querySelectorAll("input[type='checkbox']") : [];
     var distanceFilter = document.getElementById("events-distance-filter");
+    var shareBtn = document.getElementById("share-events-btn");
+
+    if (shareBtn) {
+      shareBtn.addEventListener("click", function () {
+        if (!shareMode) {
+          shareMode = true;
+          updateShareButtonLabel();
+          update();
+          return;
+        }
+        var selected = getSelectedOccurrences();
+        if (selected.length === 0) return;
+        if (window.ShareEventsModal) window.ShareEventsModal.show(selected);
+      });
+    }
+
+    var doneBtn = document.getElementById("share-events-done-btn");
+    if (doneBtn) {
+      doneBtn.addEventListener("click", function () {
+        shareMode = false;
+        updateShareButtonLabel();
+        update();
+      });
+    }
 
     if (dayToggle) {
       dayToggle.addEventListener("click", function (e) {
