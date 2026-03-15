@@ -317,8 +317,8 @@ def main
       if loc.is_a?(String)
         resolved = locations_lookup[loc]
         unless resolved.is_a?(Hash)
-          warn "Unknown location '#{loc}' for #{slug} (#{club_name}) event '#{ev['eventname']}' – skipping"
-          return nil
+          warn "Unknown location '#{loc}' for #{slug} (#{club_name}) event '#{ev['eventname']}'"
+          exit 1
         end
         ev.merge("location" => resolved)
       else
