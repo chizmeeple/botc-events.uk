@@ -21,7 +21,7 @@ locations:
     lng: -0.7786554104110263
     parking:
       - onsite: true
-        cost: "Free"
+        free: true
         notes: >-
           Car parking is FREE at the venue but you MUST register your vehicle
           at the ipad/terminal next to the PREMIER INN reception desk. Select

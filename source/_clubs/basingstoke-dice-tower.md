@@ -28,7 +28,7 @@ locations:
     lng: -1.0850773394547892
     parking:
       - onsite: false
-        cost: "PAID"
+        free: false
         name: "Central Car Park"
         address: "Central Short Stay Car Park, Red Lion Ln, Basingstoke RG21 7LX"
         website: "https://www.basingstoke.gov.uk/carparks"
