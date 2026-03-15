@@ -365,6 +365,15 @@
       });
     }
 
+    var doneBtn = document.getElementById("share-events-done-btn");
+    if (doneBtn) {
+      doneBtn.addEventListener("click", function () {
+        shareMode = false;
+        updateShareButtonLabel();
+        update();
+      });
+    }
+
     if (dayToggle) {
       dayToggle.addEventListener("click", function (e) {
         e.stopPropagation();

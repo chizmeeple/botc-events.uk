@@ -104,6 +104,35 @@
   }
 }
 
+.events-page__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.events-page__done-btn {
+  display: none;
+  align-items: center;
+  padding: 0.45rem 0.7rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1.5px solid var(--color-border);
+  border-radius: $border-radius;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.1);
+  }
+}
+
+.events-page--share-mode .events-page__done-btn {
+  display: inline-flex;
+}
+
 .events-page .upcoming-event-card {
   position: relative;
   padding-right: 5.5rem;
@@ -1053,6 +1082,29 @@
 
     &.club-upcoming-events--share-mode .club-upcoming-events__select-all-wrap {
       display: inline-block;
+    }
+
+    .club-upcoming-events__done-btn {
+      display: none;
+      align-items: center;
+      padding: 0.45rem 0.7rem;
+      background: var(--color-surface);
+      color: var(--color-text);
+      border: 1.5px solid var(--color-border);
+      border-radius: $border-radius;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+
+      &:hover {
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.1);
+      }
+    }
+
+    &.club-upcoming-events--share-mode .club-upcoming-events__done-btn {
+      display: inline-flex;
     }
 
     .club-upcoming-events__select-all {

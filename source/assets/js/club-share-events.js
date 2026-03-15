@@ -61,6 +61,17 @@
         for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = true;
       });
     }
+
+    var doneBtn = document.getElementById("share-events-done-btn");
+    if (doneBtn) {
+      doneBtn.addEventListener("click", function () {
+        shareMode = false;
+        updateShareButtonLabel();
+        container.classList.remove("club-upcoming-events--share-mode");
+        var checkboxes = container.querySelectorAll(".share-checkbox");
+        for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = false;
+      });
+    }
   }
 
   if (document.readyState === "loading") {
