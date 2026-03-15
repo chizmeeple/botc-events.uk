@@ -87,9 +87,9 @@
     else datetimeStr += " start";
 
     var venueBlock = "";
-    var parking = loc.parking || {};
-    var parkingKeys = Object.keys(parking);
-    var hasVenueInfo = parkingKeys.length > 0;
+    var parking = loc.parking;
+    var parkingList = Array.isArray(parking) ? parking : [];
+    var hasVenueInfo = parkingList.length > 0;
     if (loc.name || loc.address || hasVenueInfo) {
       var venue = "";
       if (loc.name) {
@@ -103,8 +103,8 @@
       var venueInfo = "";
       if (hasVenueInfo) {
         var pills = '<span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span></span>';
-        for (var i = 0; i < parkingKeys.length; i++) {
-          var pv = parking[parkingKeys[i]];
+        for (var i = 0; i < parkingList.length; i++) {
+          var pv = parkingList[i];
           if (!pv || typeof pv !== "object") continue;
           var isOnsite = pv.onsite === true || pv.onsite === "true";
           var label = isOnsite ? "On Site" : (pv.name != null ? String(pv.name) : "");
