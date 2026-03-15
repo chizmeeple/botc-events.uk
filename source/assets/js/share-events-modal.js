@@ -119,9 +119,9 @@
     if (!selected || selected.length === 0) return;
     var el = getModalElements();
     if (!el.modal || !el.code) return;
-    var markdown = buildMarkdown(selected, false);
     shareModalSelectedOccurrences = selected;
-    if (el.discordCheckbox) el.discordCheckbox.checked = false;
+    if (el.discordCheckbox) el.discordCheckbox.checked = true;
+    var markdown = buildMarkdown(selected, true);
     el.code.textContent = markdown;
     el.modal.removeAttribute("hidden");
     el.modal.setAttribute("aria-hidden", "false");
