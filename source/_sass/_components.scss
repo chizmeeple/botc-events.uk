@@ -1018,6 +1018,35 @@
       }
     }
 
+    .club-upcoming-events__header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .club-upcoming-events__select-all-wrap {
+      display: none;
+    }
+
+    &.club-upcoming-events--share-mode .club-upcoming-events__select-all-wrap {
+      display: inline-block;
+    }
+
+    .club-upcoming-events__select-all {
+      background: none;
+      border: none;
+      padding: 0.35rem 0;
+      font-size: 0.85rem;
+      color: var(--color-accent);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+
+      &:hover {
+        color: var(--color-text);
+      }
+    }
+
     h2 {
       font-size: 1.1rem;
       margin: 0 0 1rem;

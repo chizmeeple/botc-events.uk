@@ -186,6 +186,14 @@
       showShareModal(markdown);
     });
 
+    var selectAllBtn = document.getElementById("club-select-all-btn");
+    if (selectAllBtn) {
+      selectAllBtn.addEventListener("click", function () {
+        var checkboxes = container.querySelectorAll(".share-checkbox");
+        for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = true;
+      });
+    }
+
     var modalEl = getModalElements();
     if (modalEl.backdrop) modalEl.backdrop.addEventListener("click", hideShareModal);
     if (modalEl.closeBtn) modalEl.closeBtn.addEventListener("click", hideShareModal);

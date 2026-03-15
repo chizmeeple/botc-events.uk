@@ -125,7 +125,12 @@ layout: default
     <header class="club-upcoming-events__header">
       <h2>Upcoming events</h2>
       {% if club_events and club_events.upcoming.size > 0 %}
-      <button type="button" class="events-page__share-btn" id="share-events-btn" aria-label="Share event information">Share Event Information</button>
+      <div class="club-upcoming-events__header-actions">
+        <span class="club-upcoming-events__select-all-wrap">
+          <button type="button" class="club-upcoming-events__select-all" id="club-select-all-btn">Select All</button>
+        </span>
+        <button type="button" class="events-page__share-btn" id="share-events-btn" aria-label="Share event information">Share Event Information</button>
+      </div>
       {% endif %}
     </header>
     {% if club_events and club_events.upcoming.size > 0 %}
