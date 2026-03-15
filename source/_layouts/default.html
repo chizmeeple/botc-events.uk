@@ -30,6 +30,39 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
   <script>lucide.createIcons();</script>
+  <script>
+    (function () {
+      document.addEventListener("click", function (e) {
+        var wrap = e.target.closest(".venue-info-pill-wrap");
+        if (wrap) {
+          if (e.target.closest(".venue-info-pill-popup")) return;
+          e.preventDefault();
+          var open = wrap.classList.toggle("venue-info-pill-wrap--open");
+          wrap.setAttribute("aria-expanded", open);
+        } else {
+          document.querySelectorAll(".venue-info-pill-wrap--open").forEach(function (w) {
+            w.classList.remove("venue-info-pill-wrap--open");
+            w.setAttribute("aria-expanded", "false");
+          });
+        }
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          document.querySelectorAll(".venue-info-pill-wrap--open").forEach(function (w) {
+            w.classList.remove("venue-info-pill-wrap--open");
+            w.setAttribute("aria-expanded", "false");
+          });
+          return;
+        }
+        var wrap = e.target.closest(".venue-info-pill-wrap");
+        if (wrap && (e.key === "Enter" || e.key === " ")) {
+          e.preventDefault();
+          var open = wrap.classList.toggle("venue-info-pill-wrap--open");
+          wrap.setAttribute("aria-expanded", open);
+        }
+      });
+    })();
+  </script>
   {% include theme-toggle-script.html %}
   {% include nav-menu-script.html %}
   {% if site.goatcounter_domain and site.goatcounter_domain != "" %}

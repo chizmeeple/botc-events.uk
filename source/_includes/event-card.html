@@ -63,10 +63,21 @@
     <div class="upcoming-event-card__venue-info">
       <span class="upcoming-event-card__venue-info-pills">
         {% assign cost_lower = onsite_parking.cost | downcase %}
+        {% if onsite_parking.notes %}
+        <span class="venue-info-pill-wrap" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" title="Parking details">
+          {% if cost_lower == "free" %}
+          <span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span> On-Site (Free)</span>
+          {% else %}
+          <span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span> On-Site (PAID)</span>
+          {% endif %}
+          <span class="venue-info-pill-popup" role="tooltip">{{ onsite_parking.notes }}</span>
+        </span>
+        {% else %}
         {% if cost_lower == "free" %}
         <span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span> On-Site (Free)</span>
         {% else %}
         <span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span> On-Site (PAID)</span>
+        {% endif %}
         {% endif %}
       </span>
     </div>

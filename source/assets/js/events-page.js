@@ -74,6 +74,10 @@
     return div.innerHTML;
   }
 
+  function escapeAttr(text) {
+    return escapeHtml(text).replace(/"/g, "&quot;");
+  }
+
   function renderEventCard(occ) {
     var loc = occ.location || {};
     var startStr = formatTime(occ.start_time);
@@ -99,12 +103,24 @@
       if (hasVenueInfo) {
         var costStr = (onsiteParking.cost || "").toLowerCase();
         var parkingText = costStr === "free" ? "On-Site (Free)" : "On-Site (PAID)";
+        var notes = onsiteParking.notes || "";
+        var tagHtml =
+          '<span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span> ' +
+          escapeHtml(parkingText) +
+          "</span>";
+        if (notes) {
+          tagHtml =
+            '<span class="venue-info-pill-wrap" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" title="Parking details" data-notes="' +
+            escapeAttr(notes) +
+            '">' +
+            tagHtml +
+            '<span class="venue-info-pill-popup" role="tooltip"></span></span>';
+        }
         venueInfo =
           '<div class="upcoming-event-card__venue-info">' +
           '<span class="upcoming-event-card__venue-info-pills">' +
-          '<span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span> ' +
-          escapeHtml(parkingText) +
-          "</span></span></div>";
+          tagHtml +
+          "</span></div>";
       }
       venueBlock =
         '<div class="upcoming-event-card__venue-block">' + venue + addr + venueInfo + "</div>";
@@ -249,6 +265,10 @@
 
     container.innerHTML = html;
     if (window.lucide) lucide.createIcons();
+    container.querySelectorAll(".venue-info-pill-wrap[data-notes]").forEach(function (wrap) {
+      var popup = wrap.querySelector(".venue-info-pill-popup");
+      if (popup) popup.innerHTML = wrap.getAttribute("data-notes") || "";
+    });
   }
 
   function updateResultCount(shown, total) {
