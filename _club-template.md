@@ -14,6 +14,23 @@ locations:
     address: ""
     lat:
     lng:
+    # Optional: extended information such as parking
+    # parking:
+    #   # Example off-site car park
+    #   - onsite: false          # true for on-site parking, false for separate car park
+    #     free: false            # true for free, false for paid
+    #     name: ""
+    #     address: ""
+    #     website: ""
+    #     lat:
+    #     lng:
+    #     distance_from_venue_m: 0
+    #   # Example on-site parking
+    #   - onsite: true
+    #     free: true
+    #     notes: >-
+    #       Any extra information about where to park, access restrictions,
+    #       or how busy it gets.
 events:
   recurring:
     - eventname: ""
