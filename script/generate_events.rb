@@ -22,11 +22,26 @@ TZ = TZInfo::Timezone.get("Europe/London")
 LOOKAHEAD_DAYS = 180
 UPCOMING_PER_CLUB = 6
 ALL_UPCOMING_LIMIT = 500
+EARTH_RADIUS_M = 6_371_000
 
 DAY_ABBREV = { "MO" => "Monday", "TU" => "Tuesday", "WE" => "Wednesday",
                "TH" => "Thursday", "FR" => "Friday", "SA" => "Saturday",
                "SU" => "Sunday" }.freeze
 DAY_ORDER = %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday].freeze
+
+def haversine_distance_m(lat1, lng1, lat2, lng2)
+  lat1_rad = lat1.to_f * Math::PI / 180.0
+  lng1_rad = lng1.to_f * Math::PI / 180.0
+  lat2_rad = lat2.to_f * Math::PI / 180.0
+  lng2_rad = lng2.to_f * Math::PI / 180.0
+
+  dlat = lat2_rad - lat1_rad
+  dlng = lng2_rad - lng1_rad
+
+  a = Math.sin(dlat / 2)**2 + Math.cos(lat1_rad) * Math.cos(lat2_rad) * Math.sin(dlng / 2)**2
+  c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+  EARTH_RADIUS_M * c
+end
 
 def days_from_rrule(rrule)
   return [] unless rrule.is_a?(String) && !rrule.strip.empty?
@@ -336,6 +351,22 @@ def main
     next if upcoming.empty?
 
     upcoming_limited = full_upcoming.size > UPCOMING_PER_CLUB
+
+    # Enrich parking entries with distance_from_venue_m (where possible)
+    upcoming.each do |occ|
+      loc = occ["location"]
+      next unless loc.is_a?(Hash) && loc["lat"] && loc["lng"]
+      next unless loc["parking"].is_a?(Array)
+
+      venue_lat = loc["lat"].to_f
+      venue_lng = loc["lng"].to_f
+
+      loc["parking"] = loc["parking"].map do |pv|
+        next pv unless pv.is_a?(Hash) && pv["lat"] && pv["lng"]
+        dist_m = haversine_distance_m(venue_lat, venue_lng, pv["lat"], pv["lng"])
+        pv.merge("distance_from_venue_m" => dist_m.round)
+      end
+    end
 
     frequency_pills = upcoming.map { |o| o["frequency"] }.compact.uniq
     event_days = collect_event_days(normalised_recurring, normalised_adhoc)
