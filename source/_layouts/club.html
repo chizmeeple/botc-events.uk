@@ -155,6 +155,55 @@ layout: default
     {{ content }}
   </div>
 
+  {% assign locs = event_data.locations %}
+  {% assign has_parking = false %}
+  {% if locs and locs.size > 0 %}
+    {% for loc in locs %}
+      {% if loc.parking and loc.parking.size > 0 %}
+        {% assign has_parking = true %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if has_parking %}
+  <div class="parking-information">
+    <h2>Parking information</h2>
+    {% for loc in locs %}
+      {% if loc.parking and loc.parking.size > 0 %}
+        {% for pv in loc.parking %}
+        <div class="parking-information__item">
+          <h3 class="parking-information__heading">
+            {% assign onsite_val = pv.onsite %}
+            {% if onsite_val == true or onsite_val == "true" %}
+            On Site Parking
+            {% else %}
+            {{ pv.name | default: "Parking" }}
+            {% endif %}
+            {% assign free_val = pv.free %}
+            {% if free_val == true or free_val == "true" %}
+            <span class="tag tag-day parking-information__pill">Free</span>
+            {% elsif free_val == false or free_val == "false" %}
+            <span class="tag tag-cost parking-information__pill">Paid</span>
+            {% endif %}
+          </h3>
+          {% if pv.address %}
+          <p class="parking-information__address">{{ pv.address }}</p>
+          {% endif %}
+          {% if pv.notes %}
+          <p class="parking-information__notes">{{ pv.notes | markdownify }}</p>
+          {% endif %}
+          {% if pv.website %}
+          <p class="parking-information__link">
+            <a href="{{ pv.website }}" target="_blank" rel="noopener">More info</a>
+          </p>
+          {% endif %}
+        </div>
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
   <div class="club-suggest-edit">
     <a
       href="https://github.com/{{ site.repository }}/issues/new?template=edit-club.yml&title=Edit:+{{ page.name | url_encode }}"
