@@ -55,18 +55,15 @@
       if (self.userLat !== null && self.userLng !== null) {
         self.allClubs.forEach(function (club) {
           var locs = club.locations || [];
-          if (locs.length === 0) return;
           var minDist = Infinity;
           for (var i = 0; i < locs.length; i++) {
-            var d = self.haversine(
-              self.userLat,
-              self.userLng,
-              locs[i].lat,
-              locs[i].lng
-            );
-            if (d < minDist) minDist = d;
+            var lat = locs[i].lat;
+            var lng = locs[i].lng;
+            if (lat == null || lng == null || Number.isNaN(Number(lat)) || Number.isNaN(Number(lng))) continue;
+            var d = self.haversine(self.userLat, self.userLng, Number(lat), Number(lng));
+            if (!Number.isNaN(d) && d < minDist) minDist = d;
           }
-          club._distance = minDist;
+          club._distance = minDist === Infinity ? undefined : minDist;
         });
       }
 
@@ -108,10 +105,12 @@
         return true;
       });
 
-      // Sort by distance if user location is known
+      // Sort by distance if user location is known (nearest first; clubs without distance at end)
       if (self.userLat !== null && self.userLng !== null) {
         results.sort(function (a, b) {
-          return a._distance - b._distance;
+          var da = (a._distance != null && !Number.isNaN(a._distance)) ? a._distance : Infinity;
+          var db = (b._distance != null && !Number.isNaN(b._distance)) ? b._distance : Infinity;
+          return da - db;
         });
       }
 
