@@ -240,9 +240,11 @@ end
 
 def build_ics_calendar(all_upcoming, generated_at, site_url)
   calendar = Icalendar::Calendar.new
-  calendar.prodid = "-//#{site_url}//Blood on the Clocktower Events//EN"
+  calendar.prodid = "-//BOTC Events UK//botc-events.uk//EN"
   calendar.version = "2.0"
-  calendar.x_wr_calname = "Blood on the Clocktower UK Events"
+  calendar.x_wr_calname = "BOTC Events UK"
+  calendar.append_custom_property("X-WR-CALDESC", "Blood on the Clocktower events across the UK")
+  calendar.append_custom_property("X-WR-TIMEZONE", "Europe/London")
   # RFC 7986: hint for clients on how often to re-fetch (1 hour)
   calendar.append_custom_property("REFRESH-INTERVAL;VALUE=DURATION", "PT1H")
 
