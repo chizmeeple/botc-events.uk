@@ -396,10 +396,14 @@ layout: default
         [pLat, pLng]
       );
       pMap.fitBounds(pBounds, {
-        paddingTopLeft: [14, 34],
-        paddingBottomRight: [14, 6],
-        maxZoom: 15
+        paddingTopLeft: [14, 26],
+        paddingBottomRight: [14, 18],
+        maxZoom: 17
       });
+
+      if (pMap.getZoom() < 15) {
+        pMap.setZoom(15);
+      }
     });
   })();
 </script>

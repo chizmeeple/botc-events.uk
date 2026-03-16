@@ -36,6 +36,13 @@ locations:
         lng: -1.0850903424007872
       - onsite: false
         free: false
+        name: "Festival Place Car Park"
+        address: "52 Festival Way, RG21 7BF"
+        website: "http://festivalplace.co.uk/"
+        lat: 51.26497898509491
+        lng: -1.0845345277279683
+      - onsite: false
+        free: false
         name: "Eastlands Car Park"
         address: "Basingstoke RG21 4AW"
         website: "https://www.basingstoke.gov.uk/carparks"
@@ -48,6 +55,13 @@ locations:
         website: "https://www.basingstoke.gov.uk/carparks"
         lat: 51.26128932932684
         lng: -1.0872792144539383
+      - onsite: false
+        free: false
+        name: "Castons Car Park"
+        address: "New Rd, Basingstoke RG21 3EA"
+        website: "https://www.basingstoke.gov.uk/carparks"
+        lat: 51.26127789296829
+        lng: -1.087250553374512
 events:
   recurring:
     - eventname: "Blood on the Clocktower – Any Script Week"
