@@ -141,12 +141,12 @@
 
     var distBadge = "";
     if (occ._distance !== undefined) {
-      distBadge = '<span class="upcoming-event-card__footer-pills"><span class="upcoming-event-card__distance">' + occ._distance.toFixed(1) + " mi</span></span>";
+      distBadge = '<span class="upcoming-event-card__distance">' + occ._distance.toFixed(1) + " mi</span>";
     }
 
-    var hasBottomRow = bottomRowLeft || distBadge || signup;
+    var hasBottomRow = bottomRowLeft || signup;
     var bottomRow = hasBottomRow
-      ? '<div class="upcoming-event-card__bottom-row">' + bottomRowLeft + distBadge + signup + "</div>"
+      ? '<div class="upcoming-event-card__bottom-row">' + bottomRowLeft + signup + "</div>"
       : "";
 
     var shareCheckbox = "";
@@ -182,6 +182,7 @@
       escapeHtml(freq) +
       "</span>" +
       cost +
+      distBadge +
       "</span></div>" +
       venueBlock +
       bottomRow +
