@@ -113,7 +113,7 @@
         var isOnsite = pv.onsite === true || pv.onsite === "true";
         var label = isOnsite ? "On Site" : (pv.name != null ? String(pv.name) : "");
         if (label === "") continue;
-        var costSuffix = pv.free === true || pv.free === "true" ? " (FREE)" : " £ (PAID)";
+        var costSuffix = pv.free === true || pv.free === "true" ? " (FREE)" : "";
         pills += '<span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span>' + escapeHtml(label + costSuffix) + "</span>";
       }
       bottomRowLeft = '<span class="upcoming-event-card__venue-info-pills">' + pills + "</span>";
