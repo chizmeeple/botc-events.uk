@@ -177,6 +177,7 @@ layout: default
         <h3 class="parking-information__subheading">Parking information</h3>
         {% for pv in loc.parking %}
         <div class="parking-information__item">
+          <div class="parking-information__content">
           <h4 class="parking-information__heading">
             {% assign onsite_val = pv.onsite %}
             {% if onsite_val == true or onsite_val == "true" %}
@@ -242,9 +243,12 @@ layout: default
           {% endif %}
           {% endif %}
           {% if origin_parts != '' and dest_parts != '' %}
+          {% assign origin_q = origin_parts | url_encode %}
+          {% assign dest_q = dest_parts | url_encode %}
+          {% assign directions_url = "https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=" | append: origin_q | append: "&destination=" | append: dest_q %}
           <p class="parking-information__link">
             <a
-              href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin={{ origin_parts | url_encode }}&destination={{ dest_parts | url_encode }}"
+              href="{{ directions_url }}"
               target="_blank"
               rel="noopener"
             >
@@ -256,6 +260,24 @@ layout: default
               View directions</a
             >
           </p>
+          {% endif %}
+          </div>
+          {% if pv.lat and pv.lng and loc.lat and loc.lng and origin_parts != '' and dest_parts != '' %}
+          <a
+            class="parking-information__map-link"
+            href="{{ directions_url }}"
+            target="_blank"
+            rel="noopener"
+          >
+            <div
+              class="parking-information__map"
+              data-venue-lat="{{ loc.lat }}"
+              data-venue-lng="{{ loc.lng }}"
+              data-parking-lat="{{ pv.lat }}"
+              data-parking-lng="{{ pv.lng }}"
+              aria-hidden="true"
+            ></div>
+          </a>
           {% endif %}
         </div>
         {% endfor %}
@@ -295,6 +317,12 @@ layout: default
     var darkOpts = { attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>', maxZoom: 20 };
     var tiles = { light: { url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', opts: lightOpts }, dark: { url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', opts: darkOpts } };
     var theme = document.documentElement.getAttribute('data-theme') || 'dark';
+    var parkingIcon = L.divIcon({
+      className: 'parking-marker',
+      html: '<span class="parking-marker__label">P</span>',
+      iconSize: [22, 22],
+      iconAnchor: [11, 11]
+    });
     var first = locations[0];
     var map = L.map('detail-map', {
       dragging: false,
@@ -329,18 +357,50 @@ layout: default
           if (!pv.lat || !pv.lng) return;
           var label = (pv.name || 'Parking').replace(/</g, '&lt;').replace(/>/g, '&gt;');
           L.marker([pv.lat, pv.lng], {
-            icon: L.divIcon({
-              className: 'parking-marker',
-              html: '<span class="parking-marker__label">P</span>',
-              iconSize: [22, 22],
-              iconAnchor: [11, 11]
-            })
+            icon: parkingIcon
           }).addTo(map).bindPopup('<strong>[P]</strong> ' + label);
           bounds.extend([pv.lat, pv.lng]);
         });
       }
     });
     if (bounds && locations.length > 1) map.fitBounds(bounds, { padding: [50, 40, 50, 40] });
+
+    var parkingMaps = document.querySelectorAll('.parking-information__map');
+    parkingMaps.forEach(function(el, index) {
+      var vLat = parseFloat(el.getAttribute('data-venue-lat'));
+      var vLng = parseFloat(el.getAttribute('data-venue-lng'));
+      var pLat = parseFloat(el.getAttribute('data-parking-lat'));
+      var pLng = parseFloat(el.getAttribute('data-parking-lng'));
+      if (isNaN(vLat) || isNaN(vLng) || isNaN(pLat) || isNaN(pLng)) return;
+
+      if (!el.id) {
+        el.id = 'parking-map-' + index;
+      }
+
+      var pMap = L.map(el.id, {
+        dragging: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        keyboard: false,
+        zoomControl: false,
+        touchZoom: false
+      });
+
+      L.tileLayer(initial.url, initial.opts).addTo(pMap);
+      L.marker([vLat, vLng]).addTo(pMap);
+      L.marker([pLat, pLng], { icon: parkingIcon }).addTo(pMap);
+
+      var pBounds = L.latLngBounds(
+        [vLat, vLng],
+        [pLat, pLng]
+      );
+      pMap.fitBounds(pBounds, {
+        paddingTopLeft: [14, 34],
+        paddingBottomRight: [14, 6],
+        maxZoom: 15
+      });
+    });
   })();
 </script>
 {% endif %}
