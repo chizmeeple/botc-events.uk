@@ -25,6 +25,13 @@
     init: function () {
       this.map = L.map("map").setView([53.8, -1.58], 9);
 
+      // Slightly shrink the default Leaflet pin icon
+      L.Icon.Default.mergeOptions({
+        iconSize: [20, 33],
+        iconAnchor: [10, 33],
+        popupAnchor: [1, -30],
+      });
+
       var theme = document.documentElement.getAttribute("data-theme") || "dark";
       var tile = TILE[theme] || TILE.dark;
       this.tileLayer = L.tileLayer(tile.url, tile.options).addTo(this.map);
