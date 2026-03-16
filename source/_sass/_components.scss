@@ -1303,60 +1303,6 @@
     opacity: 0.9;
   }
 
-  .venue-info-pill-wrap {
-    position: relative;
-    display: inline-flex;
-    cursor: pointer;
-  }
-
-  .venue-info-pill-wrap .venue-info-pill-popup {
-    display: none;
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    margin-bottom: 0.35rem;
-    padding: 0.5rem 0.6rem;
-    min-width: 18rem;
-    max-width: min(28rem, calc(100vw - 2rem));
-    width: max-content;
-    font-size: 0.8rem;
-    font-weight: 400;
-    line-height: 1.4;
-    color: var(--color-text);
-    background: var(--color-bg-elevated, var(--color-bg));
-    border: 1px solid var(--color-border, rgba(0, 0, 0, 0.1));
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 10;
-    white-space: normal;
-  }
-
-  @media (max-width: $bp-md - 1) {
-    .venue-info-pill-wrap .venue-info-pill-popup {
-      bottom: auto;
-      top: 100%;
-      margin-bottom: 0;
-      margin-top: 0.35rem;
-      min-width: 12rem;
-    }
-  }
-
-  @media (max-width: $bp-sm - 1) {
-    .venue-info-pill-wrap .venue-info-pill-popup {
-      min-width: 0;
-      max-width: calc(100vw - 2rem);
-    }
-  }
-
-  .venue-info-pill-wrap .venue-info-pill-popup b {
-    font-weight: 600;
-  }
-
-  .venue-info-pill-wrap:hover .venue-info-pill-popup,
-  .venue-info-pill-wrap.venue-info-pill-wrap--open .venue-info-pill-popup {
-    display: block;
-  }
-
   .upcoming-event-card__bottom-row {
     display: flex;
     align-items: center;

@@ -261,10 +261,6 @@
 
     container.innerHTML = html;
     if (window.lucide) lucide.createIcons();
-    container.querySelectorAll(".venue-info-pill-wrap[data-notes]").forEach(function (wrap) {
-      var popup = wrap.querySelector(".venue-info-pill-popup");
-      if (popup) popup.innerHTML = wrap.getAttribute("data-notes") || "";
-    });
   }
 
   function updateResultCount(shown, total) {
