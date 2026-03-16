@@ -206,10 +206,28 @@ layout: default
     var bounds = null;
     locations.forEach(function(loc) {
       if (loc.lat && loc.lng) {
-        var popup = '<strong>' + (loc.name || '').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</strong>';
-        L.marker([loc.lat, loc.lng]).addTo(map).bindPopup(popup);
+        var safeName = (loc.name || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        L.marker([loc.lat, loc.lng]).addTo(map).bindPopup('<strong>' + safeName + '</strong>');
         if (!bounds) bounds = L.latLngBounds([loc.lat, loc.lng], [loc.lat, loc.lng]);
         else bounds.extend([loc.lat, loc.lng]);
+
+        var parking = Array.isArray(loc.parking) ? loc.parking : [];
+        parking.forEach(function(pv) {
+          if (!pv || typeof pv !== 'object') return;
+          var isOnsite = pv.onsite === true || pv.onsite === 'true';
+          if (isOnsite) return;
+          if (!pv.lat || !pv.lng) return;
+          var label = (pv.name || 'Parking').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          L.marker([pv.lat, pv.lng], {
+            icon: L.divIcon({
+              className: 'parking-marker',
+              html: '<span class="parking-marker__label">P</span>',
+              iconSize: [22, 22],
+              iconAnchor: [11, 11]
+            })
+          }).addTo(map).bindPopup('<strong>[P]</strong> ' + label);
+          bounds.extend([pv.lat, pv.lng]);
+        });
       }
     });
     if (bounds && locations.length > 1) map.fitBounds(bounds, { padding: [50, 40, 50, 40] });

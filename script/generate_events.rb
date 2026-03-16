@@ -344,7 +344,15 @@ def main
       .map { |o| o["location"] }
       .select { |loc| loc.is_a?(Hash) && loc["lat"] && loc["lng"] }
       .uniq { |loc| [loc["lat"], loc["lng"]] }
-      .map { |loc| { "name" => loc["name"], "lat" => loc["lat"], "lng" => loc["lng"] } }
+      .map do |loc|
+        base = {
+          "name" => loc["name"],
+          "lat" => loc["lat"],
+          "lng" => loc["lng"],
+        }
+        base["parking"] = loc["parking"] if loc["parking"].is_a?(Array) && !loc["parking"].empty?
+        base
+      end
 
     by_slug[slug] = {
       "club_name" => club_name,
