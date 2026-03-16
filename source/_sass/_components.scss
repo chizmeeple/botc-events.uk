@@ -1633,6 +1633,20 @@
   }
 }
 
+.venue-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.82rem;
+  color: var(--color-accent);
+  margin-top: 0.25rem;
+
+  &:hover {
+    text-decoration: none;
+    color: var(--color-primary-light);
+  }
+}
+
 [data-theme="light"] {
   .upcoming-event-card__cost {
     background: var(--color-tag-cost-bg);

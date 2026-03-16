@@ -169,7 +169,7 @@ layout: default
   <div class="parking-information">
     {% for loc in locs %}
       {% if loc.parking and loc.parking.size > 0 %}
-      <section class="parking-information__location">
+      <section class="parking-information__location" id="venue-information__{{ loc.name | default: page.name | slugify }}">
         <h2 class="parking-information__location-heading">
           <i data-lucide="building-2" style="width: 16px; height: 16px"></i>
           {{ loc.name | default: page.name }}

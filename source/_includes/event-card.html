@@ -100,6 +100,18 @@ page) {% endcomment %}
     </div>
     {% endif %} {% if loc.address %}
     <div class="upcoming-event-card__address">{{ loc.address }}</div>
+    {% if include.club_slug and loc_has_parking and loc.name %}
+    {% assign venue_id = loc.name | slugify %}
+    <div class="upcoming-event-card__more-info">
+      <a
+        href="{{ '/clubs/' | append: include.club_slug | append: '/#venue-information__' | append: venue_id | relative_url }}"
+        class="venue-more-link"
+      >
+        More information
+        <i data-lucide="external-link" style="width: 13px; height: 13px"></i>
+      </a>
+    </div>
+    {% endif %}
     {% endif %}
   </div>
   {% endif %} {% if loc_has_parking or include.occ.signup %}
