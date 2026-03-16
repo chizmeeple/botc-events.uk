@@ -46,7 +46,17 @@ page) {% endcomment %}
     />
     {% endif %}
   </div>
-  {% endif %} {% if include.club_slug and include.club_name %}
+  {% endif %}
+  <div class="upcoming-event-card__name">{{ include.occ.eventname }}</div>
+  <div class="upcoming-event-card__datetime">
+    {% assign start_time_str = include.occ.start_time | date: "%H:%M" %} {% if
+    include.occ.end_time %} {% assign end_time_str = include.occ.end_time |
+    date: "%H:%M" %} {{ include.occ.start_time | date: "%A, %d %B %Y" }}, {{
+    start_time_str }}{% if start_time_str != end_time_str %}–{{ end_time_str
+    }}{% else %} start{% endif %} {% else %} {{ include.occ.start_time | date:
+    "%A, %d %B %Y" }}, {{ start_time_str }} start {% endif %}
+  </div>
+  {% if include.club_slug and include.club_name %}
   <div class="upcoming-event-card__group">
     <a
       href="{{ '/clubs/' | append: include.club_slug | append: '/' | relative_url }}"
@@ -54,7 +64,6 @@ page) {% endcomment %}
     >
   </div>
   {% endif %}
-  <div class="upcoming-event-card__name">{{ include.occ.eventname }}</div>
   <div class="upcoming-event-card__meta-pills">
     <span class="upcoming-event-card__footer-pills">
       {% if include.occ.frequency %}
@@ -65,14 +74,6 @@ page) {% endcomment %}
       <span class="upcoming-event-card__cost">{{ include.occ.cost }}</span>
       {% endif %}
     </span>
-  </div>
-  <div class="upcoming-event-card__datetime">
-    {% assign start_time_str = include.occ.start_time | date: "%H:%M" %} {% if
-    include.occ.end_time %} {% assign end_time_str = include.occ.end_time |
-    date: "%H:%M" %} {{ include.occ.start_time | date: "%A, %d %B %Y" }}, {{
-    start_time_str }}{% if start_time_str != end_time_str %}–{{ end_time_str
-    }}{% else %} start{% endif %} {% else %} {{ include.occ.start_time | date:
-    "%A, %d %B %Y" }}, {{ start_time_str }} start {% endif %}
   </div>
   {% assign loc = include.occ.location %} {% assign loc_has_parking =
   loc["parking"] %} {% if loc.name or loc.address %}

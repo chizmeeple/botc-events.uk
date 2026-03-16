@@ -124,7 +124,9 @@
     var signup = occ.signup ? '<a href="' + escapeHtml(occ.signup) + '" target="_blank" rel="noopener" class="upcoming-event-card__signup">Signup</a>' : "";
 
     var clubUrl = baseurl + "/clubs/" + encodeURIComponent(occ.slug) + "/";
-    var groupBlock = '<div class="upcoming-event-card__group"><a href="' + clubUrl + '">' + escapeHtml(occ.club_name) + "</a></div>";
+    var groupBlock = occ.club_name
+      ? '<div class="upcoming-event-card__group"><a href="' + clubUrl + '">' + escapeHtml(occ.club_name) + "</a></div>"
+      : "";
 
     var logoBlock = "";
     if (occ.image) {
@@ -162,10 +164,13 @@
       '">' +
       shareCheckbox +
       logoBlock +
-      groupBlock +
       '<div class="upcoming-event-card__name">' +
       escapeHtml(occ.eventname) +
       "</div>" +
+      '<div class="upcoming-event-card__datetime">' +
+      escapeHtml(datetimeStr) +
+      "</div>" +
+      groupBlock +
       '<div class="upcoming-event-card__meta-pills">' +
       '<span class="upcoming-event-card__footer-pills">' +
       '<span class="tag tag-day">' +
@@ -173,9 +178,6 @@
       "</span>" +
       cost +
       "</span></div>" +
-      '<div class="upcoming-event-card__datetime">' +
-      escapeHtml(datetimeStr) +
-      "</div>" +
       venueBlock +
       bottomRow +
       "</li>"
