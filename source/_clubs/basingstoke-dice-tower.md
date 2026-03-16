@@ -1,7 +1,7 @@
 ---
 name: "Dice Tower Basingstoke"
 based_in: "Basingstoke"
-image: ""
+image: "basingstoke-dice-tower.jpg"
 website: "https://www.dicetowercafe.co.uk/clocktower/"
 meetup: ""
 facebook: ""
