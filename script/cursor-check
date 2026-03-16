@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Align Ruby/Bundler environment with the user's interactive shell,
+# so Cursor can reliably run the same Jekyll build command.
+export RUBY_ROOT="/Users/chisel/.rubies/ruby-3.4.5"
+export RUBY_ENGINE="ruby"
+export RUBY_VERSION="3.4.5"
+export GEM_ROOT="/Users/chisel/.rubies/ruby-3.4.5/lib/ruby/gems/3.4.0"
+export GEM_HOME="/Users/chisel/.gem/ruby/3.4.5"
+export GEM_PATH="/Users/chisel/.gem/ruby/3.4.5:/Users/chisel/.rubies/ruby-3.4.5/lib/ruby/gems/3.4.0"
+
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+
+exec /Users/chisel/.gem/ruby/3.4.5/bin/bundler exec jekyll build
+

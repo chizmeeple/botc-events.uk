@@ -28,6 +28,15 @@ description: >-
   games.
 
   New players welcome!
+locations:
+  crookham-street-social-club:
+    name: "Crookham Street Social Club"
+    address: "The Street, Crookham Village, Fleet GU51 5SJ"
+    lat: 51.26619757199509
+    lng: -0.8625652146103345
+    parking:
+      - onsite: true
+        free: true
 events:
   recurring:
     - eventname: "Crookham Street Social Club"
@@ -37,9 +46,5 @@ events:
       starttime: 1915
       endtime: 2230
       rrule: "FREQ=MONTHLY;BYDAY=1WE,3WE"
-      location:
-        name: "Crookham Street Social Club"
-        address: "The Street, Crookham Village, Fleet GU51 5SJ"
-        lat: 51.26619757199509
-        lng: -0.8625652146103345
+      location: "crookham-street-social-club"
 ---

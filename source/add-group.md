@@ -91,6 +91,56 @@ events:
 | `events.adhoc`     | Array of one-off events. Each needs `eventname`, `signup`, `cost`, `startdate`, `starttime`, `location`. Optionally `endtime`                         |
 | `rrule`            | Recurrence rule, e.g. `FREQ=WEEKLY;BYDAY=TU` (every Tuesday), `FREQ=MONTHLY;BYDAY=2SA` (2nd Saturday of month)                                        |
 
+### Extended Information: Parking
+
+Optionally, you can add parking information under each venue in `locations`. This powers:
+
+- The **Parking information** cards on the club page
+- The small map on the right that shows both the venue and the car park
+- The walking **View directions** link between car park and venue
+
+Add a `parking` array under a location like this:
+
+```yaml
+locations:
+  dice-tower-basingstoke:
+    name: "Dice Tower Basingstoke"
+    address: "London St, Basingstoke RG21 7NY"
+    lat: 51.262409339480726
+    lng: -1.0850773394547892
+    parking:
+      # Off-site paid car park
+      - onsite: false
+        free: false
+        name: "Central Car Park"
+        address: "Central Short Stay Car Park, Red Lion Ln, Basingstoke RG21 7LX"
+        website: "https://www.basingstoke.gov.uk/carparks"
+        lat: 51.263485749076025
+        lng: -1.0850903424007872
+        distance_from_venue_m: 120
+      # Example on-site parking
+      - onsite: true
+        free: true
+        notes: >
+          Limited on-site parking behind the venue. Please leave the front
+          spaces free for customers with access needs.
+```
+
+**Parking fields**
+
+- `parking` (array, optional): When present and non-empty, a **Parking information** section is shown for this venue.
+- For each item in `parking`:
+  - `onsite` (true/false): `true` for on-site parking, `false` for a separate car park.
+  - `free` (true/false): Whether parking is free. Drives the green **Free** / orange **Paid** pill.
+  - `name` (string, optional for on-site): Name of the car park. On-site entries are labelled “On Site Parking” automatically.
+  - `address` (string, recommended): Shown under the heading and used to build the walking directions link.
+  - `website` (string, optional): Car park information or booking page.
+  - `notes` (markdown string, optional): Extra details – height limits, evening charges, which level to use, etc.
+  - `distance_from_venue_m` (number, optional but recommended): Distance from the venue in metres (approximate is fine).
+  - `lat` / `lng` (numbers, strongly recommended): Coordinates for the car park. If present (and the venue also has `lat`/`lng`), a small Leaflet map will show both pins and centre the view automatically.
+
+If you only add `name`/`address` (without `lat`/`lng`), the **View directions** link will still work, but the mini map cannot be drawn for that car park.
+
 ### 4. Find your coordinates
 
 To get the latitude and longitude for your venue:

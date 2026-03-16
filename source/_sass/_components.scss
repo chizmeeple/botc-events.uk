@@ -121,7 +121,9 @@
   font-size: 0.8rem;
   white-space: nowrap;
   cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 
   &:hover {
     border-color: var(--color-accent);
@@ -289,7 +291,10 @@
   border-radius: $border-radius;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
 }
 
 .share-events-modal__copy-btn {
@@ -1054,6 +1059,173 @@
     overflow: hidden;
   }
 
+  .parking-marker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: var(--color-bg, #101522);
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+    color: var(--color-on-accent, #fff);
+    font-weight: 600;
+    font-size: 0.7rem;
+  }
+
+  .parking-marker__label {
+    line-height: 1;
+  }
+
+  .parking-information {
+    margin-bottom: 2rem;
+
+    h2 {
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  .parking-information__location {
+    margin-bottom: 1.5rem;
+  }
+
+  .parking-information__location-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.05rem;
+    margin: 0 0 0.4rem 0;
+  }
+
+  .parking-information__location-heading i {
+    color: var(--color-primary);
+  }
+
+  .parking-information__subheading {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0 0 0.35rem 0;
+    color: var(--color-text-light);
+  }
+
+  .parking-information__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    border-radius: $border-radius;
+    background: var(--color-surface, rgba(0, 0, 0, 0.15));
+    border: 1px solid var(--color-border);
+    margin-bottom: 0.75rem;
+
+    @media (min-width: $bp-md) {
+      flex-direction: row;
+      align-items: stretch;
+    }
+  }
+
+  .parking-information__content {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .parking-information__heading {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 1rem;
+    margin: 0 0 0.35rem 0;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .parking-information__pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .parking-information__pill--distance {
+    background: rgba(var(--color-accent-rgb), 0.15);
+    border: 1px solid rgba(var(--color-accent-rgb), 0.6);
+    color: var(--color-accent);
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+
+  .parking-information__address {
+    margin: 0 0 0.25rem 0;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+
+  .parking-information__notes {
+    margin: 0 0 0.25rem 0;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .parking-information__distance {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+  }
+
+  .parking-information__link {
+    margin: 0;
+
+    a {
+      font-size: 0.8rem;
+    }
+  }
+
+  .parking-information__map-link {
+    flex: 0 0 150px;
+    align-self: stretch;
+    border-radius: $border-radius-sm;
+    overflow: hidden;
+    border: 2px solid var(--color-border);
+    background: var(--color-tag);
+    display: none;
+
+    @media (min-width: $bp-md) {
+      display: block;
+    }
+  }
+
+  .parking-information__map-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .parking-information__map {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    .leaflet-pane .leaflet-marker-icon,
+    .leaflet-pane .leaflet-marker-shadow {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .leaflet-control-attribution {
+      display: none;
+    }
+
+    .leaflet-control-container {
+      display: none;
+    }
+  }
+
   .club-upcoming-events {
     margin-bottom: 2rem;
 
@@ -1095,7 +1267,9 @@
       font-size: 0.8rem;
       white-space: nowrap;
       cursor: pointer;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
 
       &:hover {
         border-color: var(--color-accent);
@@ -1187,7 +1361,9 @@
     border: 1px solid var(--color-border);
     border-radius: $border-radius;
     padding: 1rem 1.25rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
 
     &:hover {
       border-color: var(--color-accent);
@@ -1200,6 +1376,8 @@
     margin-bottom: 0.25rem;
 
     a {
+      display: inline-flex;
+      align-items: center;
       color: var(--color-text-light);
       text-decoration: none;
 
@@ -1208,13 +1386,21 @@
         text-decoration: underline;
       }
     }
+
+    a + a {
+      margin-left: 0.3rem;
+    }
   }
 
   .upcoming-event-card__name {
     font-weight: 600;
     font-size: 1rem;
     color: var(--color-primary);
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .upcoming-event-card__meta-pills {
+    margin-bottom: 0.4rem;
   }
 
   .upcoming-event-card__datetime {
@@ -1239,13 +1425,59 @@
     opacity: 0.9;
   }
 
-  .upcoming-event-card__footer {
+  .upcoming-event-card__venue-info {
+    margin-top: 0.35rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.5rem;
+  }
+
+  .upcoming-event-card__venue-info-pills {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .upcoming-event-card__venue-info-pills .tag-venue {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+    background: var(--color-tag-day);
+    color: var(--color-on-accent);
+  }
+
+  .upcoming-event-card__venue-info-pills .tag-venue .iconify {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+
+  .upcoming-event-card__venue-info-pills a.tag-venue--link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .upcoming-event-card__venue-info-pills a.tag-venue--link:hover {
+    opacity: 0.9;
+  }
+
+  .upcoming-event-card__bottom-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
-    margin-top: 0.5rem;
+    margin-top: 0.35rem;
     flex-wrap: wrap;
+  }
+
+  .upcoming-event-card__bottom-row--compact {
+    justify-content: flex-end;
+    margin-top: 0;
   }
 
   .upcoming-event-card__footer-pills {
@@ -1277,6 +1509,7 @@
 
   .upcoming-event-card__signup {
     display: inline-block;
+    margin-left: auto;
     padding: 0.35rem 0.7rem;
     font-size: 0.8rem;
     font-weight: 500;
@@ -1284,7 +1517,9 @@
     border: 1px solid var(--color-accent);
     border-radius: $border-radius-sm;
     text-decoration: none;
-    transition: background 0.2s, color 0.2s;
+    transition:
+      background 0.2s,
+      color 0.2s;
 
     &:hover {
       background: var(--color-accent);
@@ -1391,6 +1626,20 @@
   font-size: 0.82rem;
   color: var(--color-accent);
   margin-left: 0.5rem;
+
+  &:hover {
+    text-decoration: none;
+    color: var(--color-primary-light);
+  }
+}
+
+.venue-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.82rem;
+  color: var(--color-accent);
+  margin-top: 0.25rem;
 
   &:hover {
     text-decoration: none;

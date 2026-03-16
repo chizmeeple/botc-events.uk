@@ -1,7 +1,7 @@
 ---
 name: "Dice Tower Basingstoke"
 based_in: "Basingstoke"
-image: ""
+image: "basingstoke-dice-tower.jpg"
 website: "https://www.dicetowercafe.co.uk/clocktower/"
 meetup: ""
 facebook: ""
@@ -26,6 +26,42 @@ locations:
     address: "London St, Basingstoke RG21 7NY"
     lat: 51.262409339480726
     lng: -1.0850773394547892
+    parking:
+      - onsite: false
+        free: false
+        name: "Central Car Park"
+        address: "Central Short Stay Car Park, Red Lion Ln, Basingstoke RG21 7LX"
+        website: "https://www.basingstoke.gov.uk/carparks"
+        lat: 51.263485749076025
+        lng: -1.0850903424007872
+      - onsite: false
+        free: false
+        name: "Festival Place Car Park"
+        address: "52 Festival Way, RG21 7BF"
+        website: "http://festivalplace.co.uk/"
+        lat: 51.26497898509491
+        lng: -1.0845345277279683
+      - onsite: false
+        free: false
+        name: "Eastlands Car Park"
+        address: "Basingstoke RG21 4AW"
+        website: "https://www.basingstoke.gov.uk/carparks"
+        lat: 51.26297470966004
+        lng: -1.0834176061657979
+      - onsite: false
+        free: false
+        name: "Southern Road Car Park"
+        address: "New Rd, Basingstoke RG21 7PF"
+        website: "https://www.basingstoke.gov.uk/carparks"
+        lat: 51.26128932932684
+        lng: -1.0872792144539383
+      - onsite: false
+        free: false
+        name: "Castons Car Park"
+        address: "New Rd, Basingstoke RG21 3EA"
+        website: "https://www.basingstoke.gov.uk/carparks"
+        lat: 51.26127789296829
+        lng: -1.087250553374512
 events:
   recurring:
     - eventname: "Blood on the Clocktower – Any Script Week"

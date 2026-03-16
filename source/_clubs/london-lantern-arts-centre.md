@@ -1,7 +1,7 @@
 ---
 name: "Blood on the Clocktower @Lantern Centre"
 based_in: "London"
-image: ""
+image: "london-lantern-arts-centre.png"
 website: ""
 meetup: "https://www.meetup.com/blood-on-the-clocktower-lantern-centre/events/"
 facebook: ""
