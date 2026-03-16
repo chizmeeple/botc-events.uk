@@ -115,6 +115,11 @@ page) {% endcomment %}
     {% endif %}
   </div>
   {% endif %} {% if loc_has_parking or include.occ.signup %}
+  {% assign venue_anchor_href = nil %}
+  {% if include.club_slug and loc_has_parking and loc.name %}
+  {% assign venue_id = loc.name | slugify %}
+  {% assign venue_anchor_href = '/clubs/' | append: include.club_slug | append: '/#venue-information__' | append: venue_id | relative_url %}
+  {% endif %}
   <div class="upcoming-event-card__bottom-row">
     {% if loc_has_parking %}
     <span class="upcoming-event-card__venue-info-pills">
@@ -123,6 +128,12 @@ page) {% endcomment %}
       "true" %}{% assign cost_suffix = " (FREE)" %}{% else %}{% assign
       cost_suffix = "" %}{% endif %} {% if onsite_val == true or onsite_val ==
       "true" %}
+      {% if venue_anchor_href %}
+      <a
+        href="{{ venue_anchor_href }}"
+        class="tag-venue--link"
+      >
+      {% endif %}
       <span class="tag tag-venue">
         <span
           class="iconify"
@@ -131,7 +142,16 @@ page) {% endcomment %}
         ></span>
         On Site{{ cost_suffix }}</span
       >
+      {% if venue_anchor_href %}
+      </a>
+      {% endif %}
       {% else %}
+      {% if venue_anchor_href %}
+      <a
+        href="{{ venue_anchor_href }}"
+        class="tag-venue--link"
+      >
+      {% endif %}
       <span class="tag tag-venue"
         ><span
           class="iconify"
@@ -140,6 +160,9 @@ page) {% endcomment %}
         ></span>
         {{ pv["name"] | default: "Unknown" }}{{ cost_suffix }}</span
       >
+      {% if venue_anchor_href %}
+      </a>
+      {% endif %}
       {% endif %} {% endfor %}
     </span>
     {% endif %}
