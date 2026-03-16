@@ -125,7 +125,12 @@
 
     var clubUrl = baseurl + "/clubs/" + encodeURIComponent(occ.slug) + "/";
     var groupBlock = occ.club_name
-      ? '<div class="upcoming-event-card__group"><a href="' + clubUrl + '">' + escapeHtml(occ.club_name) + "</a></div>"
+      ? '<div class="upcoming-event-card__group">' +
+        '<a href="' + clubUrl + '">' + escapeHtml(occ.club_name) + "</a>" +
+        '<a href="' + clubUrl + '" aria-label="View ' + escapeAttr(occ.club_name) + ' group page">' +
+        '<i data-lucide="external-link" style="width: 13px; height: 13px"></i>' +
+        "</a>" +
+        "</div>"
       : "";
 
     var logoBlock = "";

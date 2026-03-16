@@ -1376,6 +1376,8 @@
     margin-bottom: 0.25rem;
 
     a {
+      display: inline-flex;
+      align-items: center;
       color: var(--color-text-light);
       text-decoration: none;
 
@@ -1383,6 +1385,10 @@
         color: var(--color-accent);
         text-decoration: underline;
       }
+    }
+
+    a + a {
+      margin-left: 0.3rem;
     }
   }
 

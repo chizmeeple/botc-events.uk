@@ -61,6 +61,13 @@ page) {% endcomment %}
     <a
       href="{{ '/clubs/' | append: include.club_slug | append: '/' | relative_url }}"
       >{{ include.club_name }}</a
+      >
+      <a
+        href="{{ '/clubs/' | append: include.club_slug | append: '/' | relative_url }}"
+        aria-label="View {{ include.club_name }} group page"
+      >
+        <i data-lucide="external-link" style="width: 13px; height: 13px"></i>
+      </a
     >
   </div>
   {% endif %}
