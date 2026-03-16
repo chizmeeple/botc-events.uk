@@ -259,16 +259,25 @@
       return;
     }
 
-    var grouped = groupByDate(events);
     var html = "";
-    grouped.forEach(function (g) {
-      html += '<h2>' + escapeHtml(g.dateLabel) + "</h2>";
+    if (userLat !== null && userLng !== null) {
+      // Sorted by distance: show a single list so "nearest to My location" is accurate
       html += '<ul class="upcoming-events-list">';
-      g.items.forEach(function (occ) {
+      events.forEach(function (occ) {
         html += renderEventCard(occ);
       });
       html += "</ul>";
-    });
+    } else {
+      var grouped = groupByDate(events);
+      grouped.forEach(function (g) {
+        html += '<h2>' + escapeHtml(g.dateLabel) + "</h2>";
+        html += '<ul class="upcoming-events-list">';
+        g.items.forEach(function (occ) {
+          html += renderEventCard(occ);
+        });
+        html += "</ul>";
+      });
+    }
 
     container.innerHTML = html;
     if (window.lucide) lucide.createIcons();
