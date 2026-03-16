@@ -34,6 +34,20 @@ locations:
         website: "https://www.basingstoke.gov.uk/carparks"
         lat: 51.263485749076025
         lng: -1.0850903424007872
+      - onsite: false
+        free: false
+        name: "Eastlands Car Park"
+        address: "Basingstoke RG21 4AW"
+        website: "https://www.basingstoke.gov.uk/carparks"
+        lat: 51.26297470966004
+        lng: -1.0834176061657979
+      - onsite: false
+        free: false
+        name: "Southern Road Car Park"
+        address: "New Rd, Basingstoke RG21 7PF"
+        website: "https://www.basingstoke.gov.uk/carparks"
+        lat: 51.26128932932684
+        lng: -1.0872792144539383
 events:
   recurring:
     - eventname: "Blood on the Clocktower – Any Script Week"
