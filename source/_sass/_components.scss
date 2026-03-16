@@ -1475,6 +1475,11 @@
     flex-wrap: wrap;
   }
 
+  .upcoming-event-card__bottom-row--compact {
+    justify-content: flex-end;
+    margin-top: 0;
+  }
+
   .upcoming-event-card__footer-pills {
     display: inline-flex;
     align-items: center;

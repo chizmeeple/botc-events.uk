@@ -145,8 +145,11 @@
     }
 
     var hasBottomRow = bottomRowLeft || signup;
+    var bottomRowClass = bottomRowLeft
+      ? "upcoming-event-card__bottom-row"
+      : "upcoming-event-card__bottom-row upcoming-event-card__bottom-row--compact";
     var bottomRow = hasBottomRow
-      ? '<div class="upcoming-event-card__bottom-row">' + bottomRowLeft + signup + "</div>"
+      ? '<div class="' + bottomRowClass + '">' + bottomRowLeft + signup + "</div>"
       : "";
 
     var shareCheckbox = "";
