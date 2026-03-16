@@ -1,7 +1,7 @@
 ---
 name: "Reading Pentahotel"
 based_in: "Reading"
-image: ""
+image: "reading-pentahotel.png"
 website: ""
 meetup: "https://www.meetup.com/reading-blood-on-the-clocktower-alternate-weekends/"
 facebook: ""

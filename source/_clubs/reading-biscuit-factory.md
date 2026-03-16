@@ -1,7 +1,7 @@
 ---
 name: "Reading Biscuit Factory"
 based_in: "Reading"
-image: ""
+image: "reading-biscuit-factory.png"
 website: "https://www.readingbiscuitfactory.co.uk/movie/rbf-board-game-night"
 meetup: ""
 facebook: ""

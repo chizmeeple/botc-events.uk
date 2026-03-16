@@ -1,7 +1,7 @@
 ---
 name: "Shakes and Ladders"
 based_in: "Surbiton (London)"
-image: ""
+image: "surbiton-shakes-and-ladders.png"
 website: "https://www.shakesandladders.co.uk/upcoming-events"
 meetup: ""
 facebook: "https://www.facebook.com/shakesandladdersuk"
