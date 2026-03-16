@@ -121,7 +121,9 @@
   font-size: 0.8rem;
   white-space: nowrap;
   cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 
   &:hover {
     border-color: var(--color-accent);
@@ -289,7 +291,10 @@
   border-radius: $border-radius;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
 }
 
 .share-events-modal__copy-btn {
@@ -1094,8 +1099,10 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 0.4rem;
-    font-size: 0.95rem;
+    font-size: 1rem;
     margin: 0 0 0.35rem 0;
+    font-weight: 600;
+    color: var(--color-primary);
   }
 
   .parking-information__pill {
@@ -1113,7 +1120,10 @@
 
   .parking-information__notes {
     margin: 0 0 0.25rem 0;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    color: var(--color-text);
+    font-weight: 400;
+    line-height: 1.5;
   }
 
   .parking-information__link {
@@ -1165,7 +1175,9 @@
       font-size: 0.8rem;
       white-space: nowrap;
       cursor: pointer;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
 
       &:hover {
         border-color: var(--color-accent);
@@ -1257,7 +1269,9 @@
     border: 1px solid var(--color-border);
     border-radius: $border-radius;
     padding: 1rem 1.25rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
 
     &:hover {
       border-color: var(--color-accent);
@@ -1400,7 +1414,9 @@
     border: 1px solid var(--color-accent);
     border-radius: $border-radius-sm;
     text-decoration: none;
-    transition: background 0.2s, color 0.2s;
+    transition:
+      background 0.2s,
+      color 0.2s;
 
     &:hover {
       background: var(--color-accent);

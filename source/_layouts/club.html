@@ -190,7 +190,7 @@ layout: default
           <p class="parking-information__address">{{ pv.address }}</p>
           {% endif %}
           {% if pv.notes %}
-          <p class="parking-information__notes">{{ pv.notes | markdownify }}</p>
+          {{ pv.notes | markdownify | replace: '<p>', '<p class="parking-information__notes">' }}
           {% endif %}
           {% if pv.website %}
           <p class="parking-information__link">
