@@ -167,12 +167,17 @@ layout: default
 
   {% if has_parking %}
   <div class="parking-information">
-    <h2>Parking information</h2>
     {% for loc in locs %}
       {% if loc.parking and loc.parking.size > 0 %}
+      <section class="parking-information__location">
+        <h2 class="parking-information__location-heading">
+          <i data-lucide="building-2" style="width: 16px; height: 16px"></i>
+          {{ loc.name | default: page.name }}
+        </h2>
+        <h3 class="parking-information__subheading">Parking information</h3>
         {% for pv in loc.parking %}
         <div class="parking-information__item">
-          <h3 class="parking-information__heading">
+          <h4 class="parking-information__heading">
             {% assign onsite_val = pv.onsite %}
             {% if onsite_val == true or onsite_val == "true" %}
             On Site Parking
@@ -185,7 +190,7 @@ layout: default
             {% elsif free_val == false or free_val == "false" %}
             <span class="tag tag-cost parking-information__pill">Paid</span>
             {% endif %}
-          </h3>
+          </h4>
           {% if pv.address %}
           <p class="parking-information__address">{{ pv.address }}</p>
           {% endif %}
@@ -199,6 +204,7 @@ layout: default
           {% endif %}
         </div>
         {% endfor %}
+      </section>
       {% endif %}
     {% endfor %}
   </div>
