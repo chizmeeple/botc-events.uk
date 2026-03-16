@@ -90,7 +90,7 @@
     var parking = loc.parking;
     var parkingList = Array.isArray(parking) ? parking : [];
     var hasVenueInfo = parkingList.length > 0;
-    if (loc.name || loc.address || hasVenueInfo) {
+    if (loc.name || loc.address) {
       var venue = "";
       if (loc.name) {
         var dirs = "";
@@ -100,26 +100,23 @@
         venue = '<div class="upcoming-event-card__venue">' + escapeHtml(loc.name) + dirs + "</div>";
       }
       var addr = loc.address ? '<div class="upcoming-event-card__address">' + escapeHtml(loc.address) + "</div>" : "";
-      var venueInfo = "";
-      if (hasVenueInfo) {
-        var pills = '<span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span></span>';
-        for (var i = 0; i < parkingList.length; i++) {
-          var pv = parkingList[i];
-          if (!pv || typeof pv !== "object") continue;
-          var isOnsite = pv.onsite === true || pv.onsite === "true";
-          var label = isOnsite ? "On Site" : (pv.name != null ? String(pv.name) : "");
-          if (label === "") continue;
-          var costSuffix = pv.free === true || pv.free === "true" ? " (FREE)" : " £ (PAID)";
-          pills += '<span class="tag tag-venue">' + escapeHtml(label + costSuffix) + "</span>";
-        }
-        venueInfo =
-          '<div class="upcoming-event-card__venue-info">' +
-          '<span class="upcoming-event-card__venue-info-pills">' +
-          pills +
-          "</span></div>";
-      }
       venueBlock =
-        '<div class="upcoming-event-card__venue-block">' + venue + addr + venueInfo + "</div>";
+        '<div class="upcoming-event-card__venue-block">' + venue + addr + "</div>";
+    }
+
+    var bottomRowLeft = "";
+    if (hasVenueInfo) {
+      var pills = "";
+      for (var i = 0; i < parkingList.length; i++) {
+        var pv = parkingList[i];
+        if (!pv || typeof pv !== "object") continue;
+        var isOnsite = pv.onsite === true || pv.onsite === "true";
+        var label = isOnsite ? "On Site" : (pv.name != null ? String(pv.name) : "");
+        if (label === "") continue;
+        var costSuffix = pv.free === true || pv.free === "true" ? " (FREE)" : " £ (PAID)";
+        pills += '<span class="tag tag-venue"><span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span>' + escapeHtml(label + costSuffix) + "</span>";
+      }
+      bottomRowLeft = '<span class="upcoming-event-card__venue-info-pills">' + pills + "</span>";
     }
 
     var freq = occ.frequency || dayOfWeek(occ.start_time);
@@ -137,8 +134,13 @@
 
     var distBadge = "";
     if (occ._distance !== undefined) {
-      distBadge = '<span class="upcoming-event-card__distance">' + occ._distance.toFixed(1) + " mi</span>";
+      distBadge = '<span class="upcoming-event-card__footer-pills"><span class="upcoming-event-card__distance">' + occ._distance.toFixed(1) + " mi</span></span>";
     }
+
+    var hasBottomRow = bottomRowLeft || distBadge || signup;
+    var bottomRow = hasBottomRow
+      ? '<div class="upcoming-event-card__bottom-row">' + bottomRowLeft + distBadge + signup + "</div>"
+      : "";
 
     var shareCheckbox = "";
     if (shareMode) {
@@ -164,20 +166,18 @@
       '<div class="upcoming-event-card__name">' +
       escapeHtml(occ.eventname) +
       "</div>" +
-      '<div class="upcoming-event-card__datetime">' +
-      escapeHtml(datetimeStr) +
-      "</div>" +
-      venueBlock +
-      '<div class="upcoming-event-card__footer">' +
+      '<div class="upcoming-event-card__meta-pills">' +
       '<span class="upcoming-event-card__footer-pills">' +
       '<span class="tag tag-day">' +
       escapeHtml(freq) +
       "</span>" +
       cost +
-      distBadge +
-      "</span>" +
-      signup +
+      "</span></div>" +
+      '<div class="upcoming-event-card__datetime">' +
+      escapeHtml(datetimeStr) +
       "</div>" +
+      venueBlock +
+      bottomRow +
       "</li>"
     );
   }

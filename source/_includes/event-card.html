@@ -55,6 +55,17 @@ page) {% endcomment %}
   </div>
   {% endif %}
   <div class="upcoming-event-card__name">{{ include.occ.eventname }}</div>
+  <div class="upcoming-event-card__meta-pills">
+    <span class="upcoming-event-card__footer-pills">
+      {% if include.occ.frequency %}
+      <span class="tag tag-day">{{ include.occ.frequency }}</span>
+      {% else %}
+      <span class="tag tag-day">{{ include.occ.start_time | date: "%A" }}</span>
+      {% endif %} {% if include.occ.cost %}
+      <span class="upcoming-event-card__cost">{{ include.occ.cost }}</span>
+      {% endif %}
+    </span>
+  </div>
   <div class="upcoming-event-card__datetime">
     {% assign start_time_str = include.occ.start_time | date: "%H:%M" %} {% if
     include.occ.end_time %} {% assign end_time_str = include.occ.end_time |
@@ -64,7 +75,7 @@ page) {% endcomment %}
     "%A, %d %B %Y" }}, {{ start_time_str }} start {% endif %}
   </div>
   {% assign loc = include.occ.location %} {% assign loc_has_parking =
-  loc["parking"] %} {% if loc.name or loc.address or loc_has_parking %}
+  loc["parking"] %} {% if loc.name or loc.address %}
   <div class="upcoming-event-card__venue-block">
     {% if loc.name %}
     <div class="upcoming-event-card__venue">
@@ -81,47 +92,37 @@ page) {% endcomment %}
     </div>
     {% endif %} {% if loc.address %}
     <div class="upcoming-event-card__address">{{ loc.address }}</div>
-    {% endif %} {% if loc_has_parking %}
-    <div class="upcoming-event-card__venue-info">
-      <span class="upcoming-event-card__venue-info-pills">
-        {% for pv in loc_has_parking %} {% assign onsite_val = pv["onsite"] %}
-        {% assign free_val = pv["free"] %} {% if free_val == true or free_val ==
-        "true" %}{% assign cost_suffix = " (FREE)" %}{% else %}{% assign
-        cost_suffix = "" %}{% endif %} {% if onsite_val == true or onsite_val ==
-        "true" %}
-        <span class="tag tag-venue">
-          <span
-            class="iconify"
-            data-icon="mdi:parking"
-            aria-hidden="true"
-          ></span>
-          On Site{{ cost_suffix }}</span
-        >
-        {% else %}
-        <span class="tag tag-venue"
-          ><span
-            class="iconify"
-            data-icon="mdi:parking"
-            aria-hidden="true"
-          ></span>
-          {{ pv["name"] | default: "Unknown" }}{{ cost_suffix }}</span
-        >
-        {% endif %} {% endfor %}
-      </span>
-    </div>
     {% endif %}
   </div>
-  {% endif %}
-  <div class="upcoming-event-card__footer">
-    <span class="upcoming-event-card__footer-pills">
-      {% if include.occ.frequency %}
-      <span class="tag tag-day">{{ include.occ.frequency }}</span>
+  {% endif %} {% if loc_has_parking or include.occ.signup %}
+  <div class="upcoming-event-card__bottom-row">
+    {% if loc_has_parking %}
+    <span class="upcoming-event-card__venue-info-pills">
+      {% for pv in loc_has_parking %} {% assign onsite_val = pv["onsite"] %}
+      {% assign free_val = pv["free"] %} {% if free_val == true or free_val ==
+      "true" %}{% assign cost_suffix = " (FREE)" %}{% else %}{% assign
+      cost_suffix = "" %}{% endif %} {% if onsite_val == true or onsite_val ==
+      "true" %}
+      <span class="tag tag-venue">
+        <span
+          class="iconify"
+          data-icon="mdi:parking"
+          aria-hidden="true"
+        ></span>
+        On Site{{ cost_suffix }}</span
+      >
       {% else %}
-      <span class="tag tag-day">{{ include.occ.start_time | date: "%A" }}</span>
-      {% endif %} {% if include.occ.cost %}
-      <span class="upcoming-event-card__cost">{{ include.occ.cost }}</span>
-      {% endif %}
+      <span class="tag tag-venue"
+        ><span
+          class="iconify"
+          data-icon="mdi:parking"
+          aria-hidden="true"
+        ></span>
+        {{ pv["name"] | default: "Unknown" }}{{ cost_suffix }}</span
+      >
+      {% endif %} {% endfor %}
     </span>
+    {% endif %}
     {% if include.occ.signup %}
     <a
       href="{{ include.occ.signup }}"
@@ -132,4 +133,5 @@ page) {% endcomment %}
     >
     {% endif %}
   </div>
+  {% endif %}
 </li>

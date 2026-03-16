@@ -1214,7 +1214,11 @@
     font-weight: 600;
     font-size: 1rem;
     color: var(--color-primary);
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .upcoming-event-card__meta-pills {
+    margin-bottom: 0.4rem;
   }
 
   .upcoming-event-card__datetime {
@@ -1334,12 +1338,12 @@
     display: block;
   }
 
-  .upcoming-event-card__footer {
+  .upcoming-event-card__bottom-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
-    margin-top: 0.5rem;
+    margin-top: 0.35rem;
     flex-wrap: wrap;
   }
 
@@ -1372,6 +1376,7 @@
 
   .upcoming-event-card__signup {
     display: inline-block;
+    margin-left: auto;
     padding: 0.35rem 0.7rem;
     font-size: 0.8rem;
     font-weight: 500;
