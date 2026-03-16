@@ -1135,6 +1135,15 @@
     text-transform: uppercase;
   }
 
+  .parking-information__pill--distance {
+    background: rgba(var(--color-accent-rgb), 0.15);
+    border: 1px solid rgba(var(--color-accent-rgb), 0.6);
+    color: var(--color-accent);
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+
   .parking-information__address {
     margin: 0 0 0.25rem 0;
     font-size: 0.85rem;
@@ -1147,6 +1156,12 @@
     color: var(--color-text);
     font-weight: 400;
     line-height: 1.5;
+  }
+
+  .parking-information__distance {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--color-text-light);
   }
 
   .parking-information__link {

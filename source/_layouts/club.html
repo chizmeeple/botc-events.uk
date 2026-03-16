@@ -185,6 +185,11 @@ layout: default
             {{ pv.name | default: "Parking" }}
             {% endif %}
             {% assign free_val = pv.free %}
+            {% if pv.distance_from_venue_m %}
+            <span class="tag parking-information__pill parking-information__pill--distance">
+              {{ pv.distance_from_venue_m }}m
+            </span>
+            {% endif %}
             {% if free_val == true or free_val == "true" %}
             <span class="tag tag-day parking-information__pill">Free</span>
             {% elsif free_val == false or free_val == "false" %}
@@ -196,6 +201,11 @@ layout: default
           {% endif %}
           {% if pv.notes %}
           {{ pv.notes | markdownify | replace: '<p>', '<p class="parking-information__notes">' }}
+          {% endif %}
+          {% if pv.distance_from_venue_m %}
+          <p class="parking-information__distance">
+            Approx. {{ pv.distance_from_venue_m | round }} m from venue
+          </p>
           {% endif %}
           {% if pv.website %}
           <p class="parking-information__link">

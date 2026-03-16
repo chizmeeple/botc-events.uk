@@ -364,7 +364,8 @@ def main
       loc["parking"] = loc["parking"].map do |pv|
         next pv unless pv.is_a?(Hash) && pv["lat"] && pv["lng"]
         dist_m = haversine_distance_m(venue_lat, venue_lng, pv["lat"], pv["lng"])
-        pv.merge("distance_from_venue_m" => dist_m.round)
+        rounded_5m = (dist_m.to_f / 5).round * 5
+        pv.merge("distance_from_venue_m" => rounded_5m.to_i)
       end
     end
 
