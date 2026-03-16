@@ -109,7 +109,8 @@
           var isOnsite = pv.onsite === true || pv.onsite === "true";
           var label = isOnsite ? "On Site" : (pv.name != null ? String(pv.name) : "");
           if (label === "") continue;
-          pills += '<span class="tag tag-venue">' + escapeHtml(label) + "</span>";
+          var costSuffix = pv.free === true || pv.free === "true" ? " (FREE)" : " £ (PAID)";
+          pills += '<span class="tag tag-venue">' + escapeHtml(label + costSuffix) + "</span>";
         }
         venueInfo =
           '<div class="upcoming-event-card__venue-info">' +

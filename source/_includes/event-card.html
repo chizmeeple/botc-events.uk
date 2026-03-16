@@ -85,14 +85,17 @@ page) {% endcomment %}
     <div class="upcoming-event-card__venue-info">
       <span class="upcoming-event-card__venue-info-pills">
         {% for pv in loc_has_parking %} {% assign onsite_val = pv["onsite"] %}
-        {% if onsite_val == true or onsite_val == "true" %}
+        {% assign free_val = pv["free"] %} {% if free_val == true or free_val ==
+        "true" %}{% assign cost_suffix = " (FREE)" %}{% else %}{% assign
+        cost_suffix = "" %}{% endif %} {% if onsite_val == true or onsite_val ==
+        "true" %}
         <span class="tag tag-venue">
           <span
             class="iconify"
             data-icon="mdi:parking"
             aria-hidden="true"
           ></span>
-          On Site</span
+          On Site{{ cost_suffix }}</span
         >
         {% else %}
         <span class="tag tag-venue"
@@ -101,7 +104,7 @@ page) {% endcomment %}
             data-icon="mdi:parking"
             aria-hidden="true"
           ></span>
-          {{ pv["name"] | default: "Unknown" }}</span
+          {{ pv["name"] | default: "Unknown" }}{{ cost_suffix }}</span
         >
         {% endif %} {% endfor %}
       </span>
