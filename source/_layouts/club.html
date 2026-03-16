@@ -209,7 +209,14 @@ layout: default
           {% endif %}
           {% if pv.website %}
           <p class="parking-information__link">
-            <a href="{{ pv.website }}" target="_blank" rel="noopener">More info</a>
+            <a href="{{ pv.website }}" target="_blank" rel="noopener">
+              <span
+                class="iconify"
+                data-icon="mdi:parking"
+                aria-hidden="true"
+              ></span>
+              Car park website</a
+            >
           </p>
           {% endif %}
           {% assign origin_parts = '' %}
@@ -240,7 +247,13 @@ layout: default
               href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin={{ origin_parts | url_encode }}&destination={{ dest_parts | url_encode }}"
               target="_blank"
               rel="noopener"
-              >View directions</a
+            >
+              <span
+                class="iconify"
+                data-icon="mdi:walk"
+                aria-hidden="true"
+              ></span>
+              View directions</a
             >
           </p>
           {% endif %}
