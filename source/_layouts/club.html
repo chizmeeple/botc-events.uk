@@ -212,6 +212,38 @@ layout: default
             <a href="{{ pv.website }}" target="_blank" rel="noopener">More info</a>
           </p>
           {% endif %}
+          {% assign origin_parts = '' %}
+          {% if pv.name %}
+          {% assign origin_parts = pv.name %}
+          {% endif %}
+          {% if pv.address %}
+          {% if origin_parts != '' %}
+          {% assign origin_parts = origin_parts | append: ' ' | append: pv.address %}
+          {% else %}
+          {% assign origin_parts = pv.address %}
+          {% endif %}
+          {% endif %}
+          {% assign dest_parts = '' %}
+          {% if loc.name %}
+          {% assign dest_parts = loc.name %}
+          {% endif %}
+          {% if loc.address %}
+          {% if dest_parts != '' %}
+          {% assign dest_parts = dest_parts | append: ' ' | append: loc.address %}
+          {% else %}
+          {% assign dest_parts = loc.address %}
+          {% endif %}
+          {% endif %}
+          {% if origin_parts != '' and dest_parts != '' %}
+          <p class="parking-information__link">
+            <a
+              href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin={{ origin_parts | url_encode }}&destination={{ dest_parts | url_encode }}"
+              target="_blank"
+              rel="noopener"
+              >View directions</a
+            >
+          </p>
+          {% endif %}
         </div>
         {% endfor %}
       </section>
