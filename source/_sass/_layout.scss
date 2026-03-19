@@ -92,137 +92,38 @@
   }
 
   .nav-menu-toggle {
-    display: none;
-
-    @media (max-width: $bp-md - 1) {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      padding: 0;
-      background: var(--color-tag);
-      border: none;
-      border-radius: 6px;
-      color: var(--color-text);
-      cursor: pointer;
-
-      .nav-menu-close-icon {
-        display: none;
-      }
-
-      &:hover {
-        background: var(--color-border);
-      }
-
-      &[aria-expanded="true"] {
-        .nav-menu-icon {
-          display: none;
-        }
-        .nav-menu-close-icon {
-          display: block;
-        }
-      }
-
-      svg {
-        width: 20px;
-        height: 20px;
-      }
-    }
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 0.35rem;
-    align-items: center;
-
-    @media (max-width: $bp-md - 1) {
-      display: none; /* Mobile uses .nav-menu-overlay instead */
-    }
-  }
-
-  nav a {
-    color: var(--color-text);
-    padding: 0.4rem 0.9rem;
-    font-size: 0.82rem;
-
-    @media (max-width: $bp-md - 1) {
-      padding: 0.3rem 0.6rem;
-    }
-    font-weight: 500;
-    border-radius: 6px;
-    background: var(--color-tag);
-    transition: background 0.2s, transform 0.15s;
-    letter-spacing: 0.02em;
-
-    &:hover {
-      background: var(--color-border);
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
-
-    &.nav-cta {
-      background: var(--color-accent);
-      color: var(--color-on-accent);
-      font-weight: 600;
-
-      &:hover {
-        background: var(--color-accent-light);
-      }
-
-      &.nav-cta--alt {
-        background: var(--color-accent-alt);
-        &:hover {
-          background: var(--color-accent-alt-light);
-        }
-      }
-    }
-
-  }
-
-  .nav-theme-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.4rem 0.5rem;
-
-    @media (max-width: $bp-md - 1) {
-      padding: 0.3rem 0.4rem;
-    }
-    background: none;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: var(--color-tag);
     border: none;
     border-radius: 6px;
     color: var(--color-text);
+    cursor: pointer;
 
-    svg {
-      width: 16px;
-      height: 16px;
+    .nav-menu-close-icon {
+      display: none;
     }
 
     &:hover {
       background: var(--color-border);
     }
-  }
 
-  .nav-github,
-  .nav-discord {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.4rem 0.5rem;
-
-    @media (max-width: $bp-md - 1) {
-      padding: 0.3rem 0.4rem;
+    &[aria-expanded="true"] {
+      .nav-menu-icon {
+        display: none;
+      }
+      .nav-menu-close-icon {
+        display: block;
+      }
     }
-    background: none;
 
     svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    &:hover {
-      background: var(--color-border);
+      width: 20px;
+      height: 20px;
     }
   }
 
@@ -265,31 +166,29 @@
   }
 }
 
-// ─── Nav menu overlay (mobile only, body child to escape header stacking) ───
+// ─── Nav menu overlay (body child to escape header stacking; all breakpoints use hamburger) ───
 .nav-menu-overlay {
   display: none;
+  position: fixed;
+  top: 55px;
+  left: 1rem;
+  right: 1rem;
+  z-index: 10000;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 
   @media (min-width: $bp-md) {
-    display: none !important;
+    left: auto;
+    width: min(22rem, calc(100vw - 2rem));
   }
 
-  @media (max-width: $bp-md - 1) {
-    position: fixed;
-    top: 55px;
-    left: 1rem;
-    right: 1rem;
-    z-index: 10000;
-    flex-direction: column;
-    gap: 0.25rem;
-    padding: 0.75rem;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-
-    body:has(.site-header.is-nav-open) & {
-      display: flex;
-    }
+  body:has(.site-header.is-nav-open) & {
+    display: flex;
   }
 
   &__item,

@@ -29,6 +29,10 @@ ruby script/generate_events.rb
 # validate events data
 ruby script/validate_events.rb
 
+# Generate & validate special events data so /special pages render.
+ruby script/generate_special_events.rb
+ruby script/validate_special_events.rb
+
 # Build site so we can validate clubs.json output (catches invalid JSON e.g. from missing lat/lng)
 bundle exec jekyll build --quiet
 

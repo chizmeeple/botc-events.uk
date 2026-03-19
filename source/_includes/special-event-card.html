@@ -1,0 +1,160 @@
+{%- comment -%}
+Renders a special event card (conventions over multiple days).
+
+Expected include:
+- occ: a special event occurrence object from rendered_special_events.json
+  (eventname, start_time, end_time, cost, location, slug, banner_image, image)
+{%- endcomment -%}
+
+{% assign special_url = '/special/' | append: include.occ.slug | append: '/' | relative_url %}
+
+{% assign loc = include.occ.location %}
+{% assign loc_has_parking = loc["parking"] %}
+
+{% assign start_date_key = include.occ.start_time | date: "%Y-%m-%d" %}
+{% assign end_date_key = include.occ.end_time | date: "%Y-%m-%d" %}
+
+{% assign start_time_str = include.occ.start_time | date: "%H:%M" %}
+{% assign end_time_str = include.occ.end_time | date: "%H:%M" %}
+
+{% assign show_side_logo = false %}
+{% unless include.occ.banner_image and include.occ.banner_image != "" %}
+  {% if include.occ.image and include.occ.image != "" %}
+    {% assign show_side_logo = true %}
+  {% endif %}
+{% endunless %}
+
+<div class="upcoming-event-card{% if show_side_logo %} special-event-card--with-side-logo{% endif %}">
+  {% if include.occ.banner_image and include.occ.banner_image != "" %}
+    <div class="special-event-card__banner">
+      <img
+        src="{{ '/assets/images/special/' | append: include.occ.banner_image | relative_url }}"
+        alt="{{ include.occ.eventname }} banner"
+        loading="lazy"
+      />
+    </div>
+  {% endif %}
+
+  {% if show_side_logo %}
+  <div class="special-event-card__logo-row">
+    <div class="special-event-card__logo">
+      {% if include.occ.image contains "://" %}
+        <img
+          src="{{ include.occ.image }}"
+          alt="{{ include.occ.eventname }} logo"
+          loading="lazy"
+        />
+      {% else %}
+        <img
+          src="{{ '/assets/images/special/' | append: include.occ.image | relative_url }}"
+          alt="{{ include.occ.eventname }} logo"
+          loading="lazy"
+        />
+      {% endif %}
+    </div>
+    <div class="special-event-card__body">
+  {% endif %}
+
+  <div class="upcoming-event-card__name">
+    <a
+      href="{{ special_url }}"
+      aria-label="View special event {{ include.occ.eventname }}"
+      style="color: inherit; text-decoration: none"
+    >
+      {{ include.occ.eventname }}
+    </a>
+  </div>
+
+  <div class="upcoming-event-card__datetime">
+    {% if include.occ.end_time %}
+      {% if start_date_key != end_date_key %}
+        {{ include.occ.start_time | date: "%A, %d %B %Y" }}, {{ start_time_str }} -
+        {{ include.occ.end_time | date: "%A, %d %B %Y" }}, {{ end_time_str }}
+      {% else %}
+        {{ include.occ.start_time | date: "%A, %d %B %Y" }}, {{ start_time_str }} -
+        {{ end_time_str }}
+      {% endif %}
+    {% else %}
+      {{ include.occ.start_time | date: "%A, %d %B %Y" }}, {{ start_time_str }}
+    {% endif %}
+  </div>
+
+  <div class="upcoming-event-card__meta-pills">
+    <span class="upcoming-event-card__footer-pills">
+      <span class="tag tag-day">{{ include.occ.start_time | date: "%A" }}</span>
+      {% if include.occ.cost %}
+      <span class="upcoming-event-card__cost">{{ include.occ.cost }}</span>
+      {% endif %}
+    </span>
+  </div>
+
+  {% if loc.name or loc.address %}
+  <div class="upcoming-event-card__venue-block">
+    {% if loc.name %}
+    <div class="upcoming-event-card__venue">
+      {{ loc.name }}
+      {% if loc.lat and loc.lng %}
+      <a
+        href="https://www.google.com/maps/dir/?api=1&destination={{ loc.lat }},{{ loc.lng }}"
+        target="_blank"
+        rel="noopener"
+        class="directions-link"
+      >
+        <span class="iconify" data-icon="lucide:navigation" style="width: 13px; height: 13px" aria-hidden="true"></span>
+        Directions
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if loc.address %}
+    <div class="upcoming-event-card__address">{{ loc.address }}</div>
+    {% endif %}
+
+    {% if loc_has_parking and loc.name %}
+      {% assign venue_id = loc.name | slugify %}
+      {% assign venue_anchor_href = '/special/' | append: include.occ.slug | append: '/#venue-information__' | append: venue_id | relative_url %}
+      <div class="upcoming-event-card__more-info">
+        <a href="{{ venue_anchor_href }}" class="venue-more-link">
+          More information
+          <span class="iconify" data-icon="lucide:external-link" style="width: 13px; height: 13px" aria-hidden="true"></span>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if loc_has_parking %}
+  <div class="upcoming-event-card__bottom-row">
+    <span class="upcoming-event-card__venue-info-pills">
+      {% for pv in loc_has_parking %}
+        {% assign onsite_val = pv["onsite"] %}
+        {% assign free_val = pv["free"] %}
+
+        {% if free_val == true or free_val == "true" %}
+          {% assign cost_suffix = " (FREE)" %}
+        {% else %}
+          {% assign cost_suffix = "" %}
+        {% endif %}
+
+        {% if onsite_val == true or onsite_val == "true" %}
+          <span class="tag tag-venue">
+            <span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span>
+            On Site{{ cost_suffix }}
+          </span>
+        {% else %}
+          <span class="tag tag-venue">
+            <span class="iconify" data-icon="mdi:parking" aria-hidden="true"></span>
+            {{ pv["name"] | default: "Unknown" }}{{ cost_suffix }}
+          </span>
+        {% endif %}
+      {% endfor %}
+    </span>
+  </div>
+  {% endif %}
+
+  {% if show_side_logo %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+

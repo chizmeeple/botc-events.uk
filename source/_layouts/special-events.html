@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<div class="content-page club-detail events-page" id="special-events-page">
+  <header class="events-page__header">
+    <h1>Special Events</h1>
+  </header>
+
+  {% assign all_events = site.data.rendered_special_events.all_upcoming %}
+  {% if all_events and all_events.size > 0 %}
+    <div id="special-events-list-container" class="club-upcoming-events">
+      <div class="upcoming-events-list">
+        {% for occ in all_events %}
+          {% include special-event-card.html occ=occ %}
+        {% endfor %}
+      </div>
+    </div>
+  {% else %}
+    <p class="upcoming-events-empty">No special events scheduled.</p>
+  {% endif %}
+</div>
+

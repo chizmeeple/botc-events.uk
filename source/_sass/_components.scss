@@ -969,6 +969,105 @@
   padding: 2.5rem 1.25rem;
   animation: fadeSlideIn 0.5s ease both;
 
+  .special-event-banner {
+    width: 100%;
+    margin-bottom: 2rem;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: $border-radius;
+      display: block;
+      border: 2px solid var(--color-border);
+    }
+  }
+
+  // Special events should feel "ad/flyer-like": bigger titles and no date
+  // headers inside the list.
+  &#special-events-page {
+    .upcoming-events-list {
+      gap: 0.5rem;
+    }
+
+    .special-event-card__banner {
+      margin-bottom: 0.6rem;
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: $border-radius;
+        border: 1px solid var(--color-border);
+      }
+    }
+
+    .special-event-card__logo-row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+
+    .special-event-card__body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .special-event-card__logo {
+      flex-shrink: 0;
+      width: 4.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.35rem;
+      box-sizing: border-box;
+      border-radius: $border-radius;
+      border: 1px solid var(--color-border);
+      background: rgba(0, 0, 0, 0.12);
+
+      img {
+        max-width: 100%;
+        max-height: 4.5rem;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        display: block;
+      }
+
+      @media (max-width: $bp-sm - 1) {
+        width: 4rem;
+
+        img {
+          max-height: 3.75rem;
+        }
+      }
+    }
+
+    .upcoming-event-card__name {
+      font-weight: 900;
+      font-size: 1.45rem;
+      line-height: 1.15;
+      letter-spacing: 0.015em;
+      margin-bottom: 0.35rem;
+      text-shadow: 0 2px 18px rgba(var(--color-accent-rgb), 0.2);
+
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+        display: inline-block;
+        padding: 0.1rem 0.65rem;
+        border-radius: 999px;
+        background: rgba(var(--color-accent-rgb), 0.18);
+        box-shadow: 0 2px 22px rgba(var(--color-accent-rgb), 0.12);
+
+        &:hover {
+          text-decoration: underline;
+          text-underline-offset: 0.15em;
+        }
+      }
+    }
+  }
+
   h1 {
     color: var(--color-primary);
     margin-bottom: 0.5rem;
@@ -1570,6 +1669,10 @@
     }
   }
 
+  .special-event-overview {
+    margin-top: 1.5rem;
+  }
+
   .club-links {
     display: flex;
     flex-wrap: wrap;
@@ -1703,6 +1806,18 @@
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     }
   }
+}
+
+// ─── Special event CTA ───
+.special-event-find-out-more {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.special-event-find-out-more__btn {
+  font-size: 1.15rem;
+  padding: 1rem 2.25rem;
 }
 
 // ─── Result count ───
