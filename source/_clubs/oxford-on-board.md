@@ -72,4 +72,40 @@ events:
       starttime: 1900
       endtime: 2200
       location: "westgate-social"
+
+    - eventname: "Custom Script Night"
+      signup: "https://www.meetup.com/oxfordonboard/events/"
+      cost: "Free"
+      startdate: 2026-04-08
+      starttime: 1900
+      endtime: 2200
+      location: "westgate-social"
+    - eventname: "Custom Script Night"
+      signup: "https://www.meetup.com/oxfordonboard/events/"
+      cost: "Free"
+      startdate: 2026-04-15
+      starttime: 1900
+      endtime: 2200
+      location: "westgate-social"
+    - eventname: "Beginner Friendly"
+      signup: "https://www.meetup.com/oxfordonboard/events/"
+      cost: "Free"
+      startdate: 2026-04-20
+      starttime: 1900
+      endtime: 2200
+      location: "westgate-social"
+    - eventname: "Blood on the Clocktower - Sunday Special!"
+      signup: "https://www.meetup.com/oxfordonboard/events/"
+      cost: "£5"
+      startdate: 2026-04-26
+      starttime: 1130
+      endtime: 1930
+      location: "wig-and-pen"
+    - eventname: "Custom Script Night"
+      signup: "https://www.meetup.com/oxfordonboard/events/"
+      cost: "Free"
+      startdate: 2026-04-29
+      starttime: 1900
+      endtime: 2200
+      location: "westgate-social"
 ---
