@@ -44,4 +44,16 @@ events:
       startdate: 2026-03-26
       starttime: 1815
       location: "the-dice-cup"
+    - eventname: "Blood on the Clocktower"
+      signup: "https://dicecuponline.co.uk/collections/events"
+      cost: "£6"
+      startdate: 2026-04-01
+      starttime: 1815
+      location: "the-dice-cup"
+    - eventname: "Blood on the Clocktower"
+      signup: "https://dicecuponline.co.uk/collections/events"
+      cost: "£6"
+      startdate: 2026-04-30
+      starttime: 1815
+      location: "the-dice-cup"
 ---

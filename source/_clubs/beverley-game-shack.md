@@ -18,6 +18,13 @@ locations:
 events:
   adhoc:
     - eventname: "Blood on the Clocktower"
+      signup: "https://the-game-shack.sumupstore.com/product/blood-on-the-clocktower-experienced-players-fri-27th-mar-2026-6-30-9pm"
+      cost: "£3"
+      startdate: 2026-03-27
+      starttime: 1830
+      endtime: 2100
+      location: "the-game-shack"
+    - eventname: "Blood on the Clocktower"
       signup: "https://the-game-shack.sumupstore.com/product/blood-on-the-clocktower-friday-03rd-apr-6-30-9pm"
       cost: "£3"
       startdate: 2026-04-03
