@@ -40,4 +40,12 @@ events:
       endtime: 2200
       rrule: "FREQ=WEEKLY;BYDAY=FR"
       location: "bristol-independent-gaming"
+  adhoc:
+    - eventname: "Blood on the Clocktower"
+      signup: "https://www.bristolindependentgaming.co.uk/collections/deductive-games"
+      cost: "£6"
+      startdate: 2026-04-04
+      starttime: 1000
+      endtime: 1800
+      location: "bristol-independent-gaming"
 ---
