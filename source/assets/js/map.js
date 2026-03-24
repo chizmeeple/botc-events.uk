@@ -15,9 +15,47 @@
     dark: { url: "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png", options: DARK_OPTIONS },
   };
 
+  var SPECIAL_MARKER_ICON = L.divIcon({
+    className: "leaflet-div-icon map-marker map-marker--special",
+    html: '<span class="map-marker__special-inner" aria-hidden="true">★</span>',
+    iconSize: [26, 26],
+    iconAnchor: [13, 26],
+    popupAnchor: [1, -22],
+  });
+
+  function specialMarkerIconForCount(count) {
+    if (count <= 1) return SPECIAL_MARKER_ICON;
+    return L.divIcon({
+      className: "leaflet-div-icon map-marker map-marker--special map-marker--special-multi",
+      html:
+        '<span class="map-marker__special-inner" aria-hidden="true">★</span>' +
+        '<span class="map-marker__special-count" aria-hidden="true">' +
+        String(count) +
+        "</span>",
+      iconSize: [26, 26],
+      iconAnchor: [13, 26],
+      popupAnchor: [1, -22],
+    });
+  }
+
+  /** Blue bullseye — distinct from orange ★ special-event markers. */
+  var USER_LOCATION_ICON = L.divIcon({
+    className: "leaflet-div-icon map-marker map-marker--user-location",
+    html: '<span class="map-marker__user-inner" aria-hidden="true"></span>',
+    iconSize: [28, 28],
+    iconAnchor: [14, 14],
+    popupAnchor: [0, -12],
+  });
+
+  function coordKey(lat, lng) {
+    return lat.toFixed(6) + "," + lng.toFixed(6);
+  }
+
   var GameClubMap = {
     map: null,
     markers: null,
+    /** Club markers only; special events are kept separate so they are never clustered. */
+    specialMarkers: null,
     markerMap: {},
     userMarker: null,
     tileLayer: null,
@@ -50,7 +88,10 @@
         showCoverageOnHover: false,
       });
 
+      this.specialMarkers = L.layerGroup();
+
       this.map.addLayer(this.markers);
+      this.map.addLayer(this.specialMarkers);
 
       // Re-render Iconify icons inside popups when they open
       this.map.on("popupopen", function () {
@@ -63,20 +104,24 @@
     addClubs: function (clubs) {
       var self = this;
       this.markers.clearLayers();
+      this.specialMarkers.clearLayers();
       this.markerMap = {};
 
-      clubs.forEach(function (club) {
+      function buildClubPopupHtml(club) {
         var locations = club.locations || [];
-        if (locations.length === 0) return;
-
         var popupIcon = "";
         if (club.image) {
           var baseurl = window.GameClub ? window.GameClub.baseurl : "";
+          var imgDir = club.kind === "special" ? "special" : "clubs";
           var imgSrc = club.image.indexOf("://") !== -1
             ? self.escapeHtml(club.image)
-            : baseurl + "/assets/images/clubs/" + encodeURIComponent(club.image);
+            : baseurl + "/assets/images/" + imgDir + "/" + encodeURIComponent(club.image);
           popupIcon = '<div class="popup-icon-wrap"><img src="' + imgSrc + '" alt="" onload="window.GameClub.applyImgBg(this)"></div>';
         }
+
+        var kindLabel = club.kind === "special"
+          ? '<div class="popup-kind">Special event</div>'
+          : "";
 
         var locationText = club.based_in || (locations[0] && locations[0].name) || "";
         var venue = locationText
@@ -92,11 +137,13 @@
             '</div>';
         }
 
-        var popupContent =
-          '<a class="popup-card" href="' + club.url + '">' +
+        var popupCardClass = "popup-card" + (club.kind === "special" ? " popup-card--special" : "");
+        return (
+          '<a class="' + popupCardClass + '" href="' + club.url + '">' +
           '<div class="popup-body">' +
           popupIcon +
           '<div class="popup-content">' +
+          kindLabel +
           '<div class="popup-name">' +
           self.escapeHtml(club.name) +
           "</div>" +
@@ -104,13 +151,54 @@
           pillsHtml +
           "</div>" +
           "</div>" +
-          "</a>";
+          "</a>"
+        );
+      }
 
+      var specialsByCoord = {};
+
+      clubs.forEach(function (club) {
+        var locations = club.locations || [];
+        if (locations.length === 0) return;
+
+        if (club.kind === "special") {
+          locations.forEach(function (loc) {
+            if (!loc.lat || !loc.lng) return;
+            var key = coordKey(loc.lat, loc.lng);
+            if (!specialsByCoord[key]) specialsByCoord[key] = [];
+            specialsByCoord[key].push({ club: club, loc: loc });
+          });
+          return;
+        }
+
+        var popupContent = buildClubPopupHtml(club);
         locations.forEach(function (loc) {
           if (!loc.lat || !loc.lng) return;
           var marker = L.marker([loc.lat, loc.lng]).bindPopup(popupContent);
           self.markers.addLayer(marker);
           self.markerMap[club.slug] = marker;
+        });
+      });
+
+      Object.keys(specialsByCoord).forEach(function (key) {
+        var group = specialsByCoord[key];
+        var loc = group[0].loc;
+        var count = group.length;
+        var icon = specialMarkerIconForCount(count);
+        var popupContent =
+          count === 1
+            ? buildClubPopupHtml(group[0].club)
+            : '<div class="map-popup-stack">' +
+              group
+                .map(function (item) {
+                  return buildClubPopupHtml(item.club);
+                })
+                .join("") +
+              "</div>";
+        var marker = L.marker([loc.lat, loc.lng], { icon: icon }).bindPopup(popupContent);
+        self.specialMarkers.addLayer(marker);
+        group.forEach(function (item) {
+          self.markerMap[item.club.slug] = marker;
         });
       });
     },
@@ -121,9 +209,26 @@
       this.map.setView([lat, lng], targetZoom);
     },
 
+    /**
+     * Bounds for fitting the map. We iterate markers instead of calling
+     * MarkerClusterGroup#getBounds(), which can report an incorrect extent
+     * (cluster internals) when regular and special markers live in separate layers.
+     */
+    _allMarkerBounds: function () {
+      var bounds = L.latLngBounds();
+      this.markers.eachLayer(function (layer) {
+        if (layer.getLatLng) bounds.extend(layer.getLatLng());
+      });
+      this.specialMarkers.eachLayer(function (layer) {
+        if (layer.getLatLng) bounds.extend(layer.getLatLng());
+      });
+      return bounds;
+    },
+
     fitToMarkers: function () {
-      if (this.markers.getLayers().length > 0) {
-        this.map.fitBounds(this.markers.getBounds(), { padding: [30, 30] });
+      var b = this._allMarkerBounds();
+      if (b.isValid()) {
+        this.map.fitBounds(b, { padding: [30, 30] });
       }
     },
 
@@ -139,19 +244,12 @@
         this.map.removeLayer(this.userMarker);
       }
 
-      this.userMarker = L.circleMarker([lat, lng], {
-        radius: 10,
-        fillColor: "#c8702a",
-        color: "#fff",
-        weight: 2,
-        opacity: 1,
-        fillOpacity: 0.9,
-      })
+      this.userMarker = L.marker([lat, lng], { icon: USER_LOCATION_ICON })
         .addTo(this.map)
         .bindPopup("You are here");
 
       // Fit bounds to include user and all visible markers
-      var bounds = this.markers.getBounds();
+      var bounds = this._allMarkerBounds();
       if (bounds.isValid()) {
         bounds.extend([lat, lng]);
         this.map.fitBounds(bounds, { padding: [30, 30] });

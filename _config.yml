@@ -15,10 +15,18 @@ og_image: /assets/og.png
 
 goatcounter_domain: botc-events-uk
 
+# Special events markdown filenames start with a date (e.g. 2026-05-02-...).
+# Jekyll may treat these like future-dated documents and skip writing them
+# unless we explicitly allow `future`.
+future: true
+
 collections:
   clubs:
     output: true
     permalink: /clubs/:slug/
+  special_events:
+    output: true
+    permalink: /special/:path/
 
 defaults:
   - scope:
@@ -26,6 +34,11 @@ defaults:
       type: "clubs"
     values:
       layout: "club"
+  - scope:
+      path: ""
+      type: "special_events"
+    values:
+      layout: "special-event"
 
 plugins:
   - jekyll-seo-tag

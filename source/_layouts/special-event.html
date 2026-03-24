@@ -1,0 +1,404 @@
+---
+layout: default
+---
+
+{% assign filename = page.path | split: "/" | last %}
+{% assign slug = filename | split: "." | first %}
+{% assign event_data = site.data.rendered_special_events.by_slug[slug] %}
+
+{% assign first_loc = nil %}
+{% if event_data and event_data.locations and event_data.locations.size > 0 %}
+  {% assign first_loc = event_data.locations[0] %}
+{% endif %}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": {{ page.name | jsonify }},
+    {% if page.description %}"description": {{ page.description | jsonify }},{% endif %}
+    {% if page.website and page.website != "" %}"url": {{ page.website | jsonify }},{% endif %}
+    "sameAs": [{% if page.discord and page.discord != "" %}{{ page.discord | jsonify }}{% endif %}]
+    {% if first_loc and first_loc.lat and first_loc.lng %},
+    "location": {
+      "@type": "Place",
+      "name": {{ first_loc.name | jsonify }},
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": {{ first_loc.lat }},
+        "longitude": {{ first_loc.lng }}
+      }
+    }{% endif %}
+  }
+</script>
+
+<div class="club-detail special-event-detail">
+  {% assign banner_file = nil %}
+  {% if page.banner_image and page.banner_image != "" %}
+    {% if page.banner_image.image %}
+      {% assign banner_file = page.banner_image.image %}
+    {% else %}
+      {% assign banner_file = page.banner_image %}
+    {% endif %}
+  {% endif %}
+
+  {% if banner_file and banner_file != "" %}
+    {% if banner_file contains "://" %}
+      {% assign banner_src = banner_file %}
+    {% else %}
+      {% assign banner_src = '/assets/images/special/' | append: banner_file | relative_url %}
+    {% endif %}
+    <div class="special-event-banner">
+      <img src="{{ banner_src }}" alt="{{ page.name }}" loading="lazy" />
+    </div>
+  {% endif %}
+
+  <div class="club-detail-heading">
+    {% if page.image and page.image != "" %}
+      <div class="club-detail-icon">
+        {% if page.image contains "://" %}
+          <img
+            src="{{ page.image }}"
+            alt="{{ page.name }}"
+          />
+        {% else %}
+          <img
+            src="{{ '/assets/images/special/' | append: page.image | relative_url }}"
+            alt="{{ page.name }}"
+          />
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="club-detail-heading-text">
+      <h1>
+        {{ page.name }}
+        <span class="club-location-subtitle">
+          {% if page.based_in and page.based_in != "" %}Special event in {{ page.based_in }}{% elsif first_loc and first_loc.name %}Special event at {{ first_loc.name }}{% endif %}
+        </span>
+      </h1>
+
+      {% comment %}Special events don't need day-of-week pills{% endcomment %}
+    </div>
+  </div>
+
+  {% if first_loc and first_loc.lat and first_loc.lng %}
+    <div class="detail-map" id="detail-map"></div>
+  {% endif %}
+
+  <div class="club-links">
+    {% if page.website and page.website != "" %}
+      <a href="{{ page.website }}" target="_blank" rel="noopener">
+        <span class="iconify" data-icon="lucide:globe" style="width: 16px; height: 16px" aria-hidden="true"></span> Website
+      </a>
+    {% endif %}
+    {% if page.discord and page.discord != "" %}
+      <a href="{{ page.discord }}" target="_blank" rel="noopener">
+        <span class="iconify" data-icon="lucide:message-circle" style="width: 16px; height: 16px" aria-hidden="true"></span> Discord
+      </a>
+    {% endif %}
+    {% if page.clocktracker and page.clocktracker != "" %}
+      <a href="https://clocktracker.app/community/{{ page.clocktracker }}" target="_blank" rel="noopener">
+        <span class="iconify" data-icon="lucide:clock" style="width: 16px; height: 16px" aria-hidden="true"></span> Clocktracker
+      </a>
+    {% endif %}
+  </div>
+
+  {% if event_data and event_data.start_time %}
+    <div class="club-detail-meta">
+      {% assign start_date_key = event_data.start_time | date: "%Y-%m-%d" %}
+      {% assign end_date_key = event_data.end_time | date: "%Y-%m-%d" %}
+      {% assign start_time_str = event_data.start_time | date: "%H:%M" %}
+      {% assign end_time_str = event_data.end_time | date: "%H:%M" %}
+
+      <span class="tag tag-day">
+        {{ event_data.start_time | date: "%A" }}
+      </span>
+      {% if event_data.cost %}
+        <span class="tag tag-cost">{{ event_data.cost }}</span>
+      {% endif %}
+      <div style="flex-basis: 100%; margin-top: 0.15rem; color: var(--color-text); font-size: 0.95rem;">
+        {% if start_date_key != end_date_key %}
+          {{ event_data.start_time | date: "%d %B %Y" }}, {{ start_time_str }} - {{ event_data.end_time | date: "%d %B %Y" }}, {{ end_time_str }}
+        {% else %}
+          {{ event_data.start_time | date: "%d %B %Y" }}, {{ start_time_str }} - {{ end_time_str }}
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="club-description special-event-overview">
+    <h2>Overview</h2>
+    {% if page.description %}
+      <p>{{ page.description }}</p>
+    {% endif %}
+    {{ content }}
+
+    {% if page.website and page.website != "" %}
+      <div class="special-event-find-out-more">
+        <a
+          class="contribute-btn contribute-btn--primary special-event-find-out-more__btn"
+          href="{{ page.website }}"
+          target="_blank"
+          rel="noopener"
+        >
+          Find Out More
+        </a>
+      </div>
+    {% endif %}
+  </div>
+
+  {% assign locs = event_data.locations %}
+  {% assign has_parking = false %}
+  {% if locs and locs.size > 0 %}
+    {% for loc in locs %}
+      {% if loc.parking and loc.parking.size > 0 %}
+        {% assign has_parking = true %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if has_parking %}
+    <div class="parking-information">
+      {% for loc in locs %}
+        {% if loc.parking and loc.parking.size > 0 %}
+          <section class="parking-information__location" id="venue-information__{{ loc.name | default: page.name | slugify }}">
+            <h2 class="parking-information__location-heading">
+              <span class="iconify" data-icon="lucide:building-2" style="width: 16px; height: 16px" aria-hidden="true"></span>
+              {{ loc.name | default: page.name }}
+            </h2>
+            <h3 class="parking-information__subheading">Parking information</h3>
+            {% for pv in loc.parking %}
+              <div class="parking-information__item">
+                <div class="parking-information__content">
+                  <h4 class="parking-information__heading">
+                    {% assign onsite_val = pv.onsite %}
+                    {% if onsite_val == true or onsite_val == "true" %}
+                      On Site Parking
+                    {% else %}
+                      {{ pv.name | default: "Parking" }}
+                    {% endif %}
+                    {% assign free_val = pv.free %}
+                    {% if pv.distance_from_venue_m %}
+                      <span class="tag parking-information__pill parking-information__pill--distance">
+                        {{ pv.distance_from_venue_m }}m
+                      </span>
+                    {% endif %}
+                    {% if free_val == true or free_val == "true" %}
+                      <span class="tag tag-day parking-information__pill">Free</span>
+                    {% elsif free_val == false or free_val == "false" %}
+                      <span class="tag tag-cost parking-information__pill">Paid</span>
+                    {% endif %}
+                  </h4>
+
+                  {% if pv.address %}
+                    <p class="parking-information__address">{{ pv.address }}</p>
+                  {% endif %}
+
+                  {% if pv.notes %}
+                    {{ pv.notes | markdownify | replace: '<p>', '<p class="parking-information__notes">' }}
+                  {% endif %}
+
+                  {% if pv.distance_from_venue_m %}
+                    <p class="parking-information__distance">
+                      Approx. {{ pv.distance_from_venue_m | round }} m from venue
+                    </p>
+                  {% endif %}
+
+                  {% if pv.website %}
+                    <p class="parking-information__link">
+                      <a href="{{ pv.website }}" target="_blank" rel="noopener">
+                        <span
+                          class="iconify"
+                          data-icon="mdi:parking"
+                          aria-hidden="true"
+                        ></span>
+                        Car park website
+                      </a>
+                    </p>
+                  {% endif %}
+
+                  {% assign origin_parts = '' %}
+                  {% if pv.name %}
+                    {% assign origin_parts = pv.name %}
+                  {% endif %}
+                  {% if pv.address %}
+                    {% if origin_parts != '' %}
+                      {% assign origin_parts = origin_parts | append: ' ' | append: pv.address %}
+                    {% else %}
+                      {% assign origin_parts = pv.address %}
+                    {% endif %}
+                  {% endif %}
+
+                  {% assign dest_parts = '' %}
+                  {% if loc.name %}
+                    {% assign dest_parts = loc.name %}
+                  {% endif %}
+                  {% if loc.address %}
+                    {% if dest_parts != '' %}
+                      {% assign dest_parts = dest_parts | append: ' ' | append: loc.address %}
+                    {% else %}
+                      {% assign dest_parts = loc.address %}
+                    {% endif %}
+                  {% endif %}
+
+                  {% if origin_parts != '' and dest_parts != '' %}
+                    {% assign origin_q = origin_parts | url_encode %}
+                    {% assign dest_q = dest_parts | url_encode %}
+                    {% assign directions_url = "https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=" | append: origin_q | append: "&destination=" | append: dest_q %}
+                    <p class="parking-information__link">
+                      <a href="{{ directions_url }}" target="_blank" rel="noopener noreferrer">
+                        <span
+                          class="iconify"
+                          data-icon="mdi:walk"
+                          aria-hidden="true"
+                        ></span>
+                        View directions
+                      </a>
+                    </p>
+                  {% endif %}
+                </div>
+
+                {% if pv.lat and pv.lng and loc.lat and loc.lng and origin_parts != '' and dest_parts != '' %}
+                  {% if directions_url %}
+                    <a
+                      class="parking-information__map-link"
+                      href="{{ directions_url }}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span
+                        style="
+                          position: absolute;
+                          left: -9999px;
+                          width: 1px;
+                          height: 1px;
+                          overflow: hidden;
+                        "
+                      >
+                        Parking map
+                      </span>
+                      <div
+                        class="parking-information__map"
+                        data-venue-lat="{{ loc.lat }}"
+                        data-venue-lng="{{ loc.lng }}"
+                        data-parking-lat="{{ pv.lat }}"
+                        data-parking-lng="{{ pv.lng }}"
+                        aria-hidden="true"
+                      ></div>
+                    </a>
+                  {% endif %}
+                {% endif %}
+              </div>
+            {% endfor %}
+          </section>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+{% if event_data.locations and event_data.locations.size > 0 and event_data.locations[0].lat and event_data.locations[0].lng %}
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script>
+    (function() {
+      var locations = {{ event_data.locations | jsonify }};
+      var lightOpts = { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>', maxZoom: 19, subdomains: 'abcd' };
+      var darkOpts = { attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>', maxZoom: 20 };
+      var tiles = { light: { url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', opts: lightOpts }, dark: { url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', opts: darkOpts } };
+      var theme = document.documentElement.getAttribute('data-theme') || 'dark';
+
+      var parkingIcon = L.divIcon({
+        className: 'parking-marker',
+        html: '<span class="parking-marker__label">P</span>',
+        iconSize: [22, 22],
+        iconAnchor: [11, 11]
+      });
+
+      var first = locations[0];
+      var map = L.map('detail-map', {
+        dragging: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        keyboard: false,
+        zoomControl: false,
+        touchZoom: false
+      }).setView([first.lat, first.lng], locations.length > 1 ? 12 : 15);
+
+      var initial = tiles[theme] || tiles.dark;
+      var tileLayer = L.tileLayer(initial.url, initial.opts).addTo(map);
+      document.addEventListener('themechange', function(e) {
+        var t = (e.detail && e.detail.theme) || document.documentElement.getAttribute('data-theme') || 'dark';
+        map.removeLayer(tileLayer);
+        var next = tiles[t] || tiles.dark;
+        tileLayer = L.tileLayer(next.url, next.opts).addTo(map);
+      });
+
+      var bounds = null;
+      locations.forEach(function(loc) {
+        if (loc.lat && loc.lng) {
+          var safeName = (loc.name || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          L.marker([loc.lat, loc.lng]).addTo(map).bindPopup('<strong>' + safeName + '</strong>');
+          if (!bounds) bounds = L.latLngBounds([loc.lat, loc.lng], [loc.lat, loc.lng]);
+          else bounds.extend([loc.lat, loc.lng]);
+
+          var parking = Array.isArray(loc.parking) ? loc.parking : [];
+          parking.forEach(function(pv) {
+            if (!pv || typeof pv !== 'object') return;
+            var isOnsite = pv.onsite === true || pv.onsite === 'true';
+            if (isOnsite) return;
+            if (!pv.lat || !pv.lng) return;
+            var label = (pv.name || 'Parking').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            L.marker([pv.lat, pv.lng], { icon: parkingIcon }).addTo(map).bindPopup('<strong>[P]</strong> ' + label);
+            bounds.extend([pv.lat, pv.lng]);
+          });
+        }
+      });
+
+      if (bounds && locations.length > 1) map.fitBounds(bounds, { padding: [50, 40, 50, 40] });
+
+      var parkingMaps = document.querySelectorAll('.parking-information__map');
+      parkingMaps.forEach(function(el, index) {
+        var vLat = parseFloat(el.getAttribute('data-venue-lat'));
+        var vLng = parseFloat(el.getAttribute('data-venue-lng'));
+        var pLat = parseFloat(el.getAttribute('data-parking-lat'));
+        var pLng = parseFloat(el.getAttribute('data-parking-lng'));
+        if (isNaN(vLat) || isNaN(vLng) || isNaN(pLat) || isNaN(pLng)) return;
+
+        if (!el.id) {
+          el.id = 'parking-map-' + index;
+        }
+
+        var pMap = L.map(el.id, {
+          dragging: false,
+          scrollWheelZoom: false,
+          doubleClickZoom: false,
+          boxZoom: false,
+          keyboard: false,
+          zoomControl: false,
+          touchZoom: false
+        });
+
+        L.tileLayer(initial.url, initial.opts).addTo(pMap);
+        L.marker([vLat, vLng]).addTo(pMap);
+        L.marker([pLat, pLng], { icon: parkingIcon }).addTo(pMap);
+
+        var pBounds = L.latLngBounds([vLat, vLng], [pLat, pLng]);
+        pMap.fitBounds(pBounds, {
+          paddingTopLeft: [14, 26],
+          paddingBottomRight: [14, 18],
+          maxZoom: 17
+        });
+
+        if (pMap.getZoom() < 15) {
+          pMap.setZoom(15);
+        }
+      });
+    })();
+  </script>
+{% endif %}
+

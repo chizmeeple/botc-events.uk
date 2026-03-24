@@ -28,13 +28,11 @@
   function restoreFromUrl() {
     var params = readUrlParams();
     var searchInput = document.getElementById("search-input");
-    var searchInputMobile = document.getElementById("search-input-mobile");
     var distanceFilter = document.getElementById("distance-filter");
 
     if (params.q) {
       search.setQuery(params.q);
       if (searchInput) searchInput.value = params.q;
-      if (searchInputMobile) searchInputMobile.value = params.q;
     }
     if (params.days && params.days.length > 0) {
       search.setDayFilters(params.days);
@@ -157,11 +155,19 @@
 
         var icon = "";
         if (club.image) {
+          var imgDir = club.kind === "special" ? "special" : "clubs";
           var imgSrc = club.image.indexOf("://") !== -1
             ? escapeHtml(club.image)
-            : baseurl + "/assets/images/clubs/" + encodeURIComponent(club.image);
+            : baseurl + "/assets/images/" + imgDir + "/" + encodeURIComponent(club.image);
           icon = '<div class="club-icon-wrap"><img src="' + imgSrc + '" alt="" loading="lazy" onload="window.GameClub.applyImgBg(this)"></div>';
         }
+
+        var kindBadge =
+          club.kind === "special"
+            ? '<span class="tag tag--special">Special event</span>'
+            : "";
+
+        var headerAside = '<div class="club-card-header__aside">' + kindBadge + distanceBadge + "</div>";
 
         var firstLoc = club.locations && club.locations[0];
         var locationText = club.based_in || (firstLoc && firstLoc.name) || "";
@@ -186,7 +192,9 @@
           : "";
 
         return (
-          '<a class="club-card" href="' +
+          '<a class="club-card' +
+          (club.kind === "special" ? " club-card--special" : "") +
+          '" href="' +
           escapeHtml(club.url) +
           '">' +
           '<div class="club-card-body">' +
@@ -196,7 +204,7 @@
           '<div class="club-name">' +
           escapeHtml(club.name) +
           "</div>" +
-          distanceBadge +
+          headerAside +
           "</div>" +
           meta +
           "</div>" +
@@ -216,9 +224,9 @@
 
     var text;
     if (shown === total) {
-      text = "Showing " + total + " groups";
+      text = "Showing " + total + " entries";
     } else {
-      text = "Showing " + shown + " of " + total + " groups";
+      text = "Showing " + shown + " of " + total + " entries";
     }
 
     var locationLabel = window.GameClubLocation && window.GameClubLocation.getActiveLabel
@@ -247,31 +255,21 @@
 
   function bindEvents() {
     var searchInput = document.getElementById("search-input");
-    var searchInputMobile = document.getElementById("search-input-mobile");
     var dayFilterEl = document.getElementById("day-filter");
     var dayToggle = dayFilterEl ? dayFilterEl.querySelector(".multi-select-toggle") : null;
     var dayCheckboxes = dayFilterEl ? dayFilterEl.querySelectorAll("input[type='checkbox']") : [];
     var distanceFilter = document.getElementById("distance-filter");
 
-    // Sync both search inputs
-    function onSearchInput(source, other) {
+    function onSearchInput() {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(function () {
-        if (other) other.value = source.value;
-        search.setQuery(source.value);
+        search.setQuery(searchInput ? searchInput.value : "");
         update();
       }, 200);
     }
 
     if (searchInput) {
-      searchInput.addEventListener("input", function () {
-        onSearchInput(searchInput, searchInputMobile);
-      });
-    }
-    if (searchInputMobile) {
-      searchInputMobile.addEventListener("input", function () {
-        onSearchInput(searchInputMobile, searchInput);
-      });
+      searchInput.addEventListener("input", onSearchInput);
     }
 
     // Day filter multi-select dropdown
@@ -323,7 +321,6 @@
         // Clear text search when a location is selected via postcode
         search.setQuery("");
         if (searchInput) searchInput.value = "";
-        if (searchInputMobile) searchInputMobile.value = "";
         search.setUserLocation(lat, lng);
         map.showUserLocation(lat, lng);
         // Enable distance filter

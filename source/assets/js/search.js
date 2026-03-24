@@ -76,6 +76,7 @@
             club.based_in,
             locNames,
             club.description,
+            club.kind === "special" ? "special event" : "",
           ]
             .filter(Boolean)
             .join(" ")
