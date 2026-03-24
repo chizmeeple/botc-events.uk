@@ -166,7 +166,7 @@
         var firstLoc = club.locations && club.locations[0];
         var locationText = club.based_in || (firstLoc && firstLoc.name) || "";
         var venue = locationText
-          ? '<div class="club-venue"><i data-lucide="map-pin"></i>' + escapeHtml(locationText) + "</div>"
+          ? '<div class="club-venue"><span class="iconify" data-icon="lucide:map-pin" aria-hidden="true"></span>' + escapeHtml(locationText) + "</div>"
           : "";
 
         var pillsHtml = "";
@@ -207,7 +207,7 @@
       .join("");
 
     container.innerHTML = html;
-    if (window.lucide) lucide.createIcons();
+    if (window.Iconify && Iconify.scan) Iconify.scan(container);
   }
 
   function updateResultCount(shown, total) {

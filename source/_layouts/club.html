@@ -92,30 +92,30 @@ layout: default
   <div class="club-links">
     {% if page.website and page.website != "" %}
     <a href="{{ page.website }}" target="_blank" rel="noopener"
-      ><i data-lucide="globe" style="width: 16px; height: 16px"></i> Website</a
+      ><span class="iconify" data-icon="lucide:globe" style="width: 16px; height: 16px" aria-hidden="true"></span> Website</a
     >
     {% endif %} {% if page.meetup and page.meetup != "" %}
     <a href="{{ page.meetup }}" target="_blank" rel="noopener"
-      ><i data-lucide="calendar" style="width: 16px; height: 16px"></i>
+      ><span class="iconify" data-icon="lucide:calendar" style="width: 16px; height: 16px" aria-hidden="true"></span>
       Meetup</a
     >
     {% endif %} {% if page.facebook and page.facebook != "" %}
     <a href="{{ page.facebook }}" target="_blank" rel="noopener"
-      ><i data-lucide="facebook" style="width: 16px; height: 16px"></i>
+      ><span class="iconify" data-icon="lucide:facebook" style="width: 16px; height: 16px" aria-hidden="true"></span>
       Facebook</a
     >
     {% endif %} {% if page.discord and page.discord != "" %}
     <a href="{{ page.discord }}" target="_blank" rel="noopener"
-      ><i data-lucide="message-circle" style="width: 16px; height: 16px"></i>
+      ><span class="iconify" data-icon="lucide:message-circle" style="width: 16px; height: 16px" aria-hidden="true"></span>
       Discord</a
     >
     {% endif %} {% if page.bgg and page.bgg != "" %}
     <a href="{{ page.bgg }}" target="_blank" rel="noopener"
-      ><i data-lucide="dice-5" style="width: 16px; height: 16px"></i> BGG</a
+      ><span class="iconify" data-icon="lucide:dice-5" style="width: 16px; height: 16px" aria-hidden="true"></span> BGG</a
     >
     {% endif %} {% if page.clocktracker and page.clocktracker != "" %}
     <a href="https://clocktracker.app/community/{{ page.clocktracker }}" target="_blank" rel="noopener"
-      ><i data-lucide="clock" style="width: 16px; height: 16px"></i> Clocktracker</a
+      ><span class="iconify" data-icon="lucide:clock" style="width: 16px; height: 16px" aria-hidden="true"></span> Clocktracker</a
     >
     {% endif %}
   </div>
@@ -171,7 +171,7 @@ layout: default
       {% if loc.parking and loc.parking.size > 0 %}
       <section class="parking-information__location" id="venue-information__{{ loc.name | default: page.name | slugify }}">
         <h2 class="parking-information__location-heading">
-          <i data-lucide="building-2" style="width: 16px; height: 16px"></i>
+          <span class="iconify" data-icon="lucide:building-2" style="width: 16px; height: 16px" aria-hidden="true"></span>
           {{ loc.name | default: page.name }}
         </h2>
         <h3 class="parking-information__subheading">Parking information</h3>
@@ -292,7 +292,7 @@ layout: default
       href="https://github.com/{{ site.repository }}/issues/new?template=edit-club.yml&title=Edit:+{{ page.name | url_encode }}"
       target="_blank"
       rel="noopener"
-      ><i data-lucide="pencil" style="width: 14px; height: 14px"></i> Suggest an
+      ><span class="iconify" data-icon="lucide:pencil" style="width: 14px; height: 14px" aria-hidden="true"></span> Suggest an
       edit</a
     >
   </div>

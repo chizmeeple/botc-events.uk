@@ -13,7 +13,7 @@
       var overlay = document.querySelector('.nav-menu-overlay');
       if (overlay) {
         overlay.setAttribute('aria-hidden', !isOpen);
-        if (isOpen && window.lucide) lucide.createIcons();
+        if (isOpen && window.Iconify && Iconify.scan) Iconify.scan(overlay);
       }
     });
 

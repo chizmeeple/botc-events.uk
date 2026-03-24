@@ -7,8 +7,8 @@
     aria-expanded="false"
     aria-controls="nav-menu-dropdown"
   >
-    <i data-lucide="menu" class="nav-menu-icon"></i>
-    <i data-lucide="x" class="nav-menu-close-icon"></i>
+    <span class="iconify nav-menu-icon" data-icon="lucide:menu" aria-hidden="true"></span>
+    <span class="iconify nav-menu-close-icon" data-icon="lucide:x" aria-hidden="true"></span>
   </button>
   <div class="nav-links">
     <button
@@ -17,7 +17,7 @@
       aria-label="Switch to light theme"
       title="Switch to light theme"
     >
-      <i data-lucide="moon"></i>
+      <span class="nav-theme-icon-slot" aria-hidden="true"><span class="iconify" data-icon="lucide:moon" aria-hidden="true"></span></span>
     </button>
     <a href="{{ '/' | relative_url }}">Map</a>
     <a href="{{ '/events' | relative_url }}">Events</a>
@@ -41,7 +41,6 @@
       rel="noopener"
       class="nav-github"
       aria-label="GitHub"
-      ><i data-lucide="github"></i
-    ></a>
+      ><span class="iconify" data-icon="lucide:github" aria-hidden="true"></span></a>
   </div>
 </nav>

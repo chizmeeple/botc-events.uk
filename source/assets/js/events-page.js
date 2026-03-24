@@ -95,7 +95,7 @@
       if (loc.name) {
         var dirs = "";
         if (loc.lat && loc.lng) {
-          dirs = ' <a href="https://www.google.com/maps/dir/?api=1&destination=' + loc.lat + "," + loc.lng + '" target="_blank" rel="noopener" class="directions-link"><i data-lucide="navigation" style="width: 13px; height: 13px"></i> Directions</a>';
+          dirs = ' <a href="https://www.google.com/maps/dir/?api=1&destination=' + loc.lat + "," + loc.lng + '" target="_blank" rel="noopener" class="directions-link"><span class="iconify" data-icon="lucide:navigation" style="width: 13px; height: 13px" aria-hidden="true"></span> Directions</a>';
         }
         venue = '<div class="upcoming-event-card__venue">' + escapeHtml(loc.name) + dirs + "</div>";
       }
@@ -128,7 +128,7 @@
       ? '<div class="upcoming-event-card__group">' +
         '<a href="' + clubUrl + '">' + escapeHtml(occ.club_name) + "</a>" +
         '<a href="' + clubUrl + '" aria-label="View ' + escapeAttr(occ.club_name) + ' group page">' +
-        '<i data-lucide="external-link" style="width: 13px; height: 13px"></i>' +
+        '<span class="iconify" data-icon="lucide:external-link" style="width: 13px; height: 13px" aria-hidden="true"></span>' +
         "</a>" +
         "</div>"
       : "";
@@ -280,7 +280,7 @@
     }
 
     container.innerHTML = html;
-    if (window.lucide) lucide.createIcons();
+    if (window.Iconify && Iconify.scan) Iconify.scan(container);
   }
 
   function updateResultCount(shown, total) {

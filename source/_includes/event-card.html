@@ -66,7 +66,7 @@ page) {% endcomment %}
         href="{{ '/clubs/' | append: include.club_slug | append: '/' | relative_url }}"
         aria-label="View {{ include.club_name }} group page"
       >
-        <i data-lucide="external-link" style="width: 13px; height: 13px"></i>
+        <span class="iconify" data-icon="lucide:external-link" style="width: 13px; height: 13px" aria-hidden="true"></span>
       </a
     >
   </div>
@@ -93,7 +93,7 @@ page) {% endcomment %}
         target="_blank"
         rel="noopener"
         class="directions-link"
-        ><i data-lucide="navigation" style="width: 13px; height: 13px"></i>
+        ><span class="iconify" data-icon="lucide:navigation" style="width: 13px; height: 13px" aria-hidden="true"></span>
         Directions</a
       >
       {% endif %}
@@ -108,7 +108,7 @@ page) {% endcomment %}
         class="venue-more-link"
       >
         More information
-        <i data-lucide="external-link" style="width: 13px; height: 13px"></i>
+        <span class="iconify" data-icon="lucide:external-link" style="width: 13px; height: 13px" aria-hidden="true"></span>
       </a>
     </div>
     {% endif %}

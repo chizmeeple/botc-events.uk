@@ -19,12 +19,9 @@ site.title | default: "Events" | url_encode %}
       class="calendar-subscribe-btn"
       onclick="toggleCalendarDropdown()"
     >
-      <i data-lucide="calendar" style="width: 14px; height: 14px"></i>
+      <span class="iconify" data-icon="lucide:calendar" style="width: 14px; height: 14px" aria-hidden="true"></span>
       <span>Subscribe to Calendar</span>
-      <i
-        data-lucide="chevron-down"
-        style="width: 14px; height: 14px; opacity: 0.7"
-      ></i>
+      <span class="iconify" data-icon="lucide:chevron-down" style="width: 14px; height: 14px; opacity: 0.7" aria-hidden="true"></span>
     </button>
     <div id="calendarDropdown" class="calendar-subscribe-dropdown" role="menu">
       <button
@@ -34,7 +31,7 @@ site.title | default: "Events" | url_encode %}
         role="menuitem"
         onclick="subscribeToGoogleCalendar('{{ webcal_url }}', this)"
       >
-        <i data-lucide="calendar" style="width: 14px; height: 14px"></i>
+        <span class="iconify" data-icon="lucide:calendar" style="width: 14px; height: 14px" aria-hidden="true"></span>
         Google Calendar
       </button>
       <button
@@ -43,7 +40,7 @@ site.title | default: "Events" | url_encode %}
         role="menuitem"
         onclick="copyFeedUrl('{{ webcal_url }}', this)"
       >
-        <i data-lucide="clipboard-copy" style="width: 14px; height: 14px"></i>
+        <span class="iconify" data-icon="lucide:clipboard-copy" style="width: 14px; height: 14px" aria-hidden="true"></span>
         Copy feed URL
       </button>
       <button
@@ -59,7 +56,7 @@ site.title | default: "Events" | url_encode %}
           )
         "
       >
-        <i data-lucide="external-link" style="width: 14px; height: 14px"></i>
+        <span class="iconify" data-icon="lucide:external-link" style="width: 14px; height: 14px" aria-hidden="true"></span>
         Preview online
       </button>
       <a
@@ -68,7 +65,7 @@ site.title | default: "Events" | url_encode %}
         class="calendar-subscribe-item"
         role="menuitem"
       >
-        <i data-lucide="download" style="width: 14px; height: 14px"></i>
+        <span class="iconify" data-icon="lucide:download" style="width: 14px; height: 14px" aria-hidden="true"></span>
         Download .ics file
       </a>
     </div>
@@ -117,8 +114,8 @@ site.title | default: "Events" | url_encode %}
       if (button) {
         setTimeout(function () {
           button.innerHTML = originalHtml;
-          if (typeof lucide !== "undefined" && lucide.createIcons)
-            lucide.createIcons();
+          if (typeof Iconify !== "undefined" && Iconify.scan)
+            Iconify.scan(button);
         }, 2000);
       }
     }
@@ -133,8 +130,8 @@ site.title | default: "Events" | url_encode %}
             button.innerHTML = "✓ Copied!";
             setTimeout(function () {
               button.innerHTML = originalHtml;
-              if (typeof lucide !== "undefined" && lucide.createIcons)
-                lucide.createIcons();
+              if (typeof Iconify !== "undefined" && Iconify.scan)
+                Iconify.scan(button);
             }, 2000);
           })
           .catch(function () {
@@ -162,8 +159,8 @@ site.title | default: "Events" | url_encode %}
       }
       setTimeout(function () {
         button.innerHTML = originalHtml;
-        if (typeof lucide !== "undefined" && lucide.createIcons)
-          lucide.createIcons();
+        if (typeof Iconify !== "undefined" && Iconify.scan)
+          Iconify.scan(button);
       }, 2000);
       document.body.removeChild(textArea);
     }
