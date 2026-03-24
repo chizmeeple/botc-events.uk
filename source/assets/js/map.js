@@ -52,9 +52,9 @@
 
       this.map.addLayer(this.markers);
 
-      // Re-render Lucide icons inside popups when they open
+      // Re-render Iconify icons inside popups when they open
       this.map.on("popupopen", function () {
-        if (window.lucide) lucide.createIcons();
+        if (window.Iconify && Iconify.scan) Iconify.scan();
       });
 
       return this;
@@ -80,7 +80,7 @@
 
         var locationText = club.based_in || (locations[0] && locations[0].name) || "";
         var venue = locationText
-          ? '<div class="popup-venue"><i data-lucide="map-pin"></i>' + self.escapeHtml(locationText) + '</div>'
+          ? '<div class="popup-venue"><span class="iconify" data-icon="lucide:map-pin" aria-hidden="true"></span>' + self.escapeHtml(locationText) + '</div>'
           : '';
 
         var pillsHtml = '';

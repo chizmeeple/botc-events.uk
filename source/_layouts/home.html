@@ -23,7 +23,7 @@
         </a>
         <div class="header-search">
           <div class="search-bar">
-            <i data-lucide="search" class="search-icon"></i>
+            <span class="iconify search-icon" data-icon="lucide:search" aria-hidden="true"></span>
             <input
               type="text"
               class="search-input"
@@ -38,7 +38,7 @@
             id="locate-btn-header"
             type="button"
           >
-            <i data-lucide="crosshair" style="width: 14px; height: 14px"></i>
+            <span class="iconify" data-icon="lucide:crosshair" style="width: 14px; height: 14px" aria-hidden="true"></span>
             <span>Use my location</span>
           </button>
         </div>
@@ -53,11 +53,11 @@
         </div>
         <div class="sidebar" id="sidebar">
           <div class="drawer-handle" id="drawer-handle">
-            <i data-lucide="chevron-up" class="drawer-chevron"></i>
+            <span class="iconify drawer-chevron" data-icon="lucide:chevron-up" aria-hidden="true"></span>
           </div>
           <div class="filter-bar">
             <div class="search-bar sidebar-search">
-              <i data-lucide="search" class="search-icon"></i>
+              <span class="iconify search-icon" data-icon="lucide:search" aria-hidden="true"></span>
               <input
                 type="text"
                 class="search-input"
@@ -137,22 +137,19 @@
                 <option value="50">Within 50 miles</option>
               </select>
               <button class="locate-btn" id="locate-btn" type="button">
-                <i
-                  data-lucide="crosshair"
-                  style="width: 14px; height: 14px"
-                ></i>
+                <span class="iconify" data-icon="lucide:crosshair" style="width: 14px; height: 14px" aria-hidden="true"></span>
                 <span>Use my location</span>
               </button>
             </div>
             <div class="location-pill" id="location-pill" style="display: none">
-              <i data-lucide="map-pin" style="width: 12px; height: 12px"></i>
+              <span class="iconify" data-icon="lucide:map-pin" style="width: 12px; height: 12px" aria-hidden="true"></span>
               <span id="location-pill-label"></span>
               <button
                 type="button"
                 id="location-clear"
                 aria-label="Clear location"
               >
-                <i data-lucide="x" style="width: 12px; height: 12px"></i>
+                <span class="iconify" data-icon="lucide:x" style="width: 12px; height: 12px" aria-hidden="true"></span>
               </button>
             </div>
           </div>
@@ -195,10 +192,7 @@
     <script src="{{ '/assets/js/location.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ '/assets/js/drawer.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ '/assets/js/app.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-      lucide.createIcons();
-    </script>
+    {% include iconify-script.html %}
     {% include theme-toggle-script.html %}
     {% include nav-menu-script.html %}
   </body>

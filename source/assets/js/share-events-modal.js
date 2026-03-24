@@ -139,7 +139,7 @@
         function () {}
       );
     }
-    if (window.lucide) lucide.createIcons();
+    if (window.Iconify && Iconify.scan && el.modal) Iconify.scan(el.modal);
     if (shareModalEscapeHandler) document.removeEventListener("keydown", shareModalEscapeHandler);
     shareModalEscapeHandler = function (e) {
       if (e.key === "Escape") hideShareModal();

@@ -119,14 +119,14 @@
       suggestionsEl.innerHTML = postcodes
         .map(function (pc) {
           return '<button class="location-suggestion" type="button" data-postcode="' + pc + '">' +
-            '<i data-lucide="map-pin" style="width:14px;height:14px;"></i>' +
+            '<span class="iconify" data-icon="lucide:map-pin" style="width:14px;height:14px;" aria-hidden="true"></span>' +
             pc + '</button>';
         })
         .join("");
 
       suggestionsEl.classList.add("is-visible");
 
-      if (window.lucide) lucide.createIcons();
+      if (window.Iconify && Iconify.scan) Iconify.scan(suggestionsEl);
 
       var buttons = suggestionsEl.querySelectorAll(".location-suggestion");
       for (var i = 0; i < buttons.length; i++) {
