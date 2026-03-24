@@ -237,7 +237,9 @@ def main
       "banner_image" => banner_image,
       "image" => image,
       "locations" => unique_locations,
-      "event_days" => event_days
+      "event_days" => event_days,
+      "description" => data["description"].to_s,
+      "website" => data["website"].to_s
     }
 
     occs_for_slug.each { |occ| all_upcoming << occ }
@@ -249,6 +251,7 @@ def main
   payload = {
     "generated_at" => now.utc.iso8601,
     "by_slug" => by_slug,
+    "map_slugs" => by_slug.keys.sort,
     "all_upcoming" => all_upcoming
   }
 

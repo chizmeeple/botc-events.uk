@@ -840,6 +840,13 @@
     gap: 0.75rem;
   }
 
+  .club-card-header__aside {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 0;
+  }
+
   .club-name {
     font-size: 0.95rem;
     font-weight: 600;
@@ -937,6 +944,15 @@
   font-size: 0.65rem;
   opacity: 0.85;
   font-weight: 400;
+}
+
+.tag--special {
+  font-size: 0.62rem;
+  font-weight: 600;
+  background: linear-gradient(145deg, #e8a317, #c4860f);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
 }
 
 // ─── Club detail page ───
@@ -1921,6 +1937,43 @@ noscript .club-list {
     opacity: 1;
     background: var(--color-tag-day);
     color: var(--color-on-accent);
+  }
+
+  &.popup-card--special {
+    border-left: 3px solid #e8a317;
+    padding-left: 0.35rem;
+    margin-left: -0.35rem;
+  }
+
+  .popup-kind {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #e8a317;
+    margin-bottom: 0.15rem;
+  }
+}
+
+// ─── Map: special event marker (distinct from default Leaflet pin) ───
+.map-marker.map-marker--special {
+  border: none;
+  background: transparent;
+
+  .map-marker__special-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #e8a317, #c4860f);
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    color: #fff;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 700;
   }
 }
 

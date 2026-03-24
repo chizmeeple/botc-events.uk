@@ -34,6 +34,12 @@ unless data.key?("generated_at")
   exit 1
 end
 
+map_slugs = data["map_slugs"]
+unless map_slugs.is_a?(Array)
+  puts "ERROR: \"map_slugs\" must be an array, got #{map_slugs.class}"
+  exit 1
+end
+
 required_all_occurrence_keys = %w[eventname start_time end_time location cost]
 required_location_keys = %w[name address lat lng]
 
@@ -42,6 +48,11 @@ errors = []
 by_slug = data["by_slug"]
 unless by_slug.is_a?(Hash)
   puts "ERROR: \"by_slug\" must be an object, got #{by_slug.class}"
+  exit 1
+end
+
+unless map_slugs.sort == by_slug.keys.sort
+  puts "ERROR: \"map_slugs\" must list the same slugs as \"by_slug\" keys"
   exit 1
 end
 

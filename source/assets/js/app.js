@@ -155,11 +155,19 @@
 
         var icon = "";
         if (club.image) {
+          var imgDir = club.kind === "special" ? "special" : "clubs";
           var imgSrc = club.image.indexOf("://") !== -1
             ? escapeHtml(club.image)
-            : baseurl + "/assets/images/clubs/" + encodeURIComponent(club.image);
+            : baseurl + "/assets/images/" + imgDir + "/" + encodeURIComponent(club.image);
           icon = '<div class="club-icon-wrap"><img src="' + imgSrc + '" alt="" loading="lazy" onload="window.GameClub.applyImgBg(this)"></div>';
         }
+
+        var kindBadge =
+          club.kind === "special"
+            ? '<span class="tag tag--special">Special event</span>'
+            : "";
+
+        var headerAside = '<div class="club-card-header__aside">' + kindBadge + distanceBadge + "</div>";
 
         var firstLoc = club.locations && club.locations[0];
         var locationText = club.based_in || (firstLoc && firstLoc.name) || "";
@@ -184,7 +192,9 @@
           : "";
 
         return (
-          '<a class="club-card" href="' +
+          '<a class="club-card' +
+          (club.kind === "special" ? " club-card--special" : "") +
+          '" href="' +
           escapeHtml(club.url) +
           '">' +
           '<div class="club-card-body">' +
@@ -194,7 +204,7 @@
           '<div class="club-name">' +
           escapeHtml(club.name) +
           "</div>" +
-          distanceBadge +
+          headerAside +
           "</div>" +
           meta +
           "</div>" +
@@ -214,9 +224,9 @@
 
     var text;
     if (shown === total) {
-      text = "Showing " + total + " groups";
+      text = "Showing " + total + " entries";
     } else {
-      text = "Showing " + shown + " of " + total + " groups";
+      text = "Showing " + shown + " of " + total + " entries";
     }
 
     var locationLabel = window.GameClubLocation && window.GameClubLocation.getActiveLabel

@@ -15,6 +15,14 @@
     dark: { url: "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png", options: DARK_OPTIONS },
   };
 
+  var SPECIAL_MARKER_ICON = L.divIcon({
+    className: "leaflet-div-icon map-marker map-marker--special",
+    html: '<span class="map-marker__special-inner" aria-hidden="true">★</span>',
+    iconSize: [26, 26],
+    iconAnchor: [13, 26],
+    popupAnchor: [1, -22],
+  });
+
   var GameClubMap = {
     map: null,
     markers: null,
@@ -72,11 +80,16 @@
         var popupIcon = "";
         if (club.image) {
           var baseurl = window.GameClub ? window.GameClub.baseurl : "";
+          var imgDir = club.kind === "special" ? "special" : "clubs";
           var imgSrc = club.image.indexOf("://") !== -1
             ? self.escapeHtml(club.image)
-            : baseurl + "/assets/images/clubs/" + encodeURIComponent(club.image);
+            : baseurl + "/assets/images/" + imgDir + "/" + encodeURIComponent(club.image);
           popupIcon = '<div class="popup-icon-wrap"><img src="' + imgSrc + '" alt="" onload="window.GameClub.applyImgBg(this)"></div>';
         }
+
+        var kindLabel = club.kind === "special"
+          ? '<div class="popup-kind">Special event</div>'
+          : "";
 
         var locationText = club.based_in || (locations[0] && locations[0].name) || "";
         var venue = locationText
@@ -92,11 +105,13 @@
             '</div>';
         }
 
+        var popupCardClass = "popup-card" + (club.kind === "special" ? " popup-card--special" : "");
         var popupContent =
-          '<a class="popup-card" href="' + club.url + '">' +
+          '<a class="' + popupCardClass + '" href="' + club.url + '">' +
           '<div class="popup-body">' +
           popupIcon +
           '<div class="popup-content">' +
+          kindLabel +
           '<div class="popup-name">' +
           self.escapeHtml(club.name) +
           "</div>" +
@@ -108,7 +123,8 @@
 
         locations.forEach(function (loc) {
           if (!loc.lat || !loc.lng) return;
-          var marker = L.marker([loc.lat, loc.lng]).bindPopup(popupContent);
+          var markerOpts = club.kind === "special" ? { icon: SPECIAL_MARKER_ICON } : {};
+          var marker = L.marker([loc.lat, loc.lng], markerOpts).bindPopup(popupContent);
           self.markers.addLayer(marker);
           self.markerMap[club.slug] = marker;
         });
