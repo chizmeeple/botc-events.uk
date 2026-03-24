@@ -22,7 +22,8 @@ require "yaml"
 SITE_URL = "https://botc-events.uk"
 
 TZ = TZInfo::Timezone.get("Europe/London")
-LOOKAHEAD_DAYS = 180
+# Unlike club events (generate_events.rb), special events are not capped by a
+# lookahead window: any future occurrence in the markdown is included.
 ALL_UPCOMING_LIMIT = 500
 
 EARTH_RADIUS_M = 6_371_000
@@ -128,7 +129,6 @@ def main
   Dir.mkdir(data_dir) unless Dir.exist?(data_dir)
 
   now = TZ.now
-  range_end = now + (LOOKAHEAD_DAYS * 24 * 60 * 60)
 
   by_slug = {}
   all_upcoming = []
@@ -193,7 +193,7 @@ def main
       start_t = TZ.local_time(start_d.year, start_d.month, start_d.day, shour, smin, 0)
       end_t = TZ.local_time(end_d.year, end_d.month, end_d.day, ehour, emin, 0)
 
-      next if start_t < now || start_t > range_end
+      next if start_t < now
 
       cost = ev["cost"].to_s.strip
       cost = nil if cost.empty?
