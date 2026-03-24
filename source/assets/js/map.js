@@ -38,6 +38,15 @@
     });
   }
 
+  /** Blue bullseye — distinct from orange ★ special-event markers. */
+  var USER_LOCATION_ICON = L.divIcon({
+    className: "leaflet-div-icon map-marker map-marker--user-location",
+    html: '<span class="map-marker__user-inner" aria-hidden="true"></span>',
+    iconSize: [28, 28],
+    iconAnchor: [14, 14],
+    popupAnchor: [0, -12],
+  });
+
   function coordKey(lat, lng) {
     return lat.toFixed(6) + "," + lng.toFixed(6);
   }
@@ -235,14 +244,7 @@
         this.map.removeLayer(this.userMarker);
       }
 
-      this.userMarker = L.circleMarker([lat, lng], {
-        radius: 10,
-        fillColor: "#c8702a",
-        color: "#fff",
-        weight: 2,
-        opacity: 1,
-        fillOpacity: 0.9,
-      })
+      this.userMarker = L.marker([lat, lng], { icon: USER_LOCATION_ICON })
         .addTo(this.map)
         .bindPopup("You are here");
 

@@ -2013,6 +2013,36 @@ noscript .club-list {
   }
 }
 
+// Map: your location (blue bullseye — not the orange ★ used for special events)
+.map-marker.map-marker--user-location {
+  border: none;
+  background: transparent;
+
+  .map-marker__user-inner {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background: #2563eb;
+    border: 3px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    position: relative;
+  }
+
+  .map-marker__user-inner::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: #fff;
+  }
+}
+
 // ─── Marker cluster overrides ───
 .marker-cluster-small,
 .marker-cluster-medium,
