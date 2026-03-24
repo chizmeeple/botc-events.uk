@@ -316,6 +316,40 @@ def validate_event_location!(slug, eventname, loc)
   exit 1
 end
 
+# Venues from club YAML for the map / distance search. The map must show every
+# meeting place even when a club has no upcoming events in the lookahead window.
+def yaml_map_locations(locations_lookup)
+  return [] unless locations_lookup.is_a?(Hash)
+
+  locs = []
+  locations_lookup.each_value do |loc|
+    next unless loc.is_a?(Hash) && valid_lat_lng?(loc["lat"], loc["lng"])
+
+    base = {
+      "name" => loc["name"],
+      "lat" => loc["lat"],
+      "lng" => loc["lng"],
+    }
+    base["parking"] = loc["parking"] if loc["parking"].is_a?(Array) && !loc["parking"].empty?
+    locs << base
+  end
+  locs.uniq { |l| [l["lat"].to_f.round(6), l["lng"].to_f.round(6)] }
+end
+
+# Union by rounded lat/lng; event-derived rows (parking enrichment) win over YAML.
+def merge_map_locations(event_locs, yaml_locs)
+  by_key = {}
+  yaml_locs.each do |loc|
+    k = [loc["lat"].to_f.round(6), loc["lng"].to_f.round(6)]
+    by_key[k] = loc
+  end
+  event_locs.each do |loc|
+    k = [loc["lat"].to_f.round(6), loc["lng"].to_f.round(6)]
+    by_key[k] = loc
+  end
+  by_key.values
+end
+
 def main
   warn "Generating JSON file for events"
   root = File.expand_path("..", __dir__)
@@ -372,7 +406,25 @@ def main
     upcoming_adhoc = collect_adhoc(normalised_adhoc, now, range_end, slug: slug)
     full_upcoming = (upcoming_recurring + upcoming_adhoc).sort_by { |o| o["start_time"] }
     upcoming = full_upcoming.take(UPCOMING_PER_CLUB)
-    next if upcoming.empty?
+    yaml_locs = yaml_map_locations(locations_lookup)
+
+    if upcoming.empty?
+      next if yaml_locs.empty?
+
+      event_days = collect_event_days(normalised_recurring, normalised_adhoc)
+      by_slug[slug] = {
+        "club_name" => club_name,
+        "upcoming" => [],
+        "upcoming_limited" => false,
+        "upcoming_limit" => UPCOMING_PER_CLUB,
+        "pills" => {
+          "frequency" => [],
+        },
+        "locations" => yaml_locs,
+        "event_days" => event_days,
+      }
+      next
+    end
 
     upcoming_limited = full_upcoming.size > UPCOMING_PER_CLUB
 
@@ -396,7 +448,7 @@ def main
     frequency_pills = upcoming.map { |o| o["frequency"] }.compact.uniq
     event_days = collect_event_days(normalised_recurring, normalised_adhoc)
 
-    unique_locations = upcoming
+    event_unique_locations = upcoming
       .map { |o| o["location"] }
       .select { |loc| loc.is_a?(Hash) && loc["lat"] && loc["lng"] }
       .uniq { |loc| [loc["lat"], loc["lng"]] }
@@ -409,6 +461,8 @@ def main
         base["parking"] = loc["parking"] if loc["parking"].is_a?(Array) && !loc["parking"].empty?
         base
       end
+
+    unique_locations = merge_map_locations(event_unique_locations, yaml_locs)
 
     by_slug[slug] = {
       "club_name" => club_name,

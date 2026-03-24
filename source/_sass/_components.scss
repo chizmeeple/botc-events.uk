@@ -1985,31 +1985,52 @@ noscript .club-list {
     font-weight: 700;
   }
 
-  &.map-marker--special-multi {
-    position: relative;
-    overflow: visible;
+}
 
-    .map-marker__special-count {
-      position: absolute;
-      top: -6px;
-      right: -7px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-sizing: border-box;
-      min-width: 19px;
-      height: 19px;
-      padding: 0 5px;
-      border-radius: 999px;
-      background: #fff;
-      color: #a86f0d;
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 1;
-      font-variant-numeric: tabular-nums;
-      border: 1.5px solid rgba(255, 255, 255, 0.95);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
-    }
+// Shared count badge: several specials at one pin, or several clubs at one venue
+.map-marker.map-marker--special-multi,
+.map-marker.map-marker--club-multi {
+  position: relative;
+  overflow: visible;
+
+  .map-marker__count-badge {
+    position: absolute;
+    top: -6px;
+    right: -7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    border: 1.5px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.map-marker.map-marker--special-multi .map-marker__count-badge {
+  color: #a86f0d;
+}
+
+.map-marker.map-marker--club-multi {
+  border: none;
+  background: transparent;
+
+  .map-marker__pin {
+    display: block;
+    width: 20px;
+    height: 33px;
+  }
+
+  .map-marker__count-badge {
+    color: #2a6ea4;
   }
 }
 
