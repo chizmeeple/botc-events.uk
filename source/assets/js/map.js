@@ -23,18 +23,37 @@
     popupAnchor: [1, -22],
   });
 
+  /** Same image as Leaflet default pin (see L.Icon.Default.mergeOptions in init). */
+  var LEAFLET_MARKER_ICON_URL = "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png";
+
   function specialMarkerIconForCount(count) {
     if (count <= 1) return SPECIAL_MARKER_ICON;
     return L.divIcon({
       className: "leaflet-div-icon map-marker map-marker--special map-marker--special-multi",
       html:
         '<span class="map-marker__special-inner" aria-hidden="true">★</span>' +
-        '<span class="map-marker__special-count" aria-hidden="true">' +
+        '<span class="map-marker__count-badge" aria-hidden="true">' +
         String(count) +
         "</span>",
       iconSize: [26, 26],
       iconAnchor: [13, 26],
       popupAnchor: [1, -22],
+    });
+  }
+
+  /** Multiple regular clubs at the same coordinates — default pin + count badge. */
+  function clubMarkerIconForCount(count) {
+    if (count <= 1) return null;
+    return L.divIcon({
+      className: "leaflet-div-icon map-marker map-marker--club-multi",
+      html:
+        '<img class="map-marker__pin" src="' + LEAFLET_MARKER_ICON_URL + '" alt="" width="20" height="33" />' +
+        '<span class="map-marker__count-badge" aria-hidden="true">' +
+        String(count) +
+        "</span>",
+      iconSize: [20, 33],
+      iconAnchor: [10, 33],
+      popupAnchor: [1, -30],
     });
   }
 
@@ -156,6 +175,7 @@
       }
 
       var specialsByCoord = {};
+      var clubsByCoord = {};
 
       clubs.forEach(function (club) {
         var locations = club.locations || [];
@@ -171,12 +191,34 @@
           return;
         }
 
-        var popupContent = buildClubPopupHtml(club);
         locations.forEach(function (loc) {
           if (!loc.lat || !loc.lng) return;
-          var marker = L.marker([loc.lat, loc.lng]).bindPopup(popupContent);
-          self.markers.addLayer(marker);
-          self.markerMap[club.slug] = marker;
+          var key = coordKey(loc.lat, loc.lng);
+          if (!clubsByCoord[key]) clubsByCoord[key] = [];
+          clubsByCoord[key].push({ club: club, loc: loc });
+        });
+      });
+
+      Object.keys(clubsByCoord).forEach(function (key) {
+        var group = clubsByCoord[key];
+        var loc = group[0].loc;
+        var count = group.length;
+        var icon = clubMarkerIconForCount(count);
+        var markerOpts = icon ? { icon: icon } : {};
+        var popupContent =
+          count === 1
+            ? buildClubPopupHtml(group[0].club)
+            : '<div class="map-popup-stack">' +
+              group
+                .map(function (item) {
+                  return buildClubPopupHtml(item.club);
+                })
+                .join("") +
+              "</div>";
+        var marker = L.marker([loc.lat, loc.lng], markerOpts).bindPopup(popupContent);
+        self.markers.addLayer(marker);
+        group.forEach(function (item) {
+          self.markerMap[item.club.slug] = marker;
         });
       });
 
