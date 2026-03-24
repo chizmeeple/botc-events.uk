@@ -23,6 +23,25 @@
     popupAnchor: [1, -22],
   });
 
+  function specialMarkerIconForCount(count) {
+    if (count <= 1) return SPECIAL_MARKER_ICON;
+    return L.divIcon({
+      className: "leaflet-div-icon map-marker map-marker--special map-marker--special-multi",
+      html:
+        '<span class="map-marker__special-inner" aria-hidden="true">★</span>' +
+        '<span class="map-marker__special-count" aria-hidden="true">' +
+        String(count) +
+        "</span>",
+      iconSize: [26, 26],
+      iconAnchor: [13, 26],
+      popupAnchor: [1, -22],
+    });
+  }
+
+  function coordKey(lat, lng) {
+    return lat.toFixed(6) + "," + lng.toFixed(6);
+  }
+
   var GameClubMap = {
     map: null,
     markers: null,
@@ -79,10 +98,8 @@
       this.specialMarkers.clearLayers();
       this.markerMap = {};
 
-      clubs.forEach(function (club) {
+      function buildClubPopupHtml(club) {
         var locations = club.locations || [];
-        if (locations.length === 0) return;
-
         var popupIcon = "";
         if (club.image) {
           var baseurl = window.GameClub ? window.GameClub.baseurl : "";
@@ -112,7 +129,7 @@
         }
 
         var popupCardClass = "popup-card" + (club.kind === "special" ? " popup-card--special" : "");
-        var popupContent =
+        return (
           '<a class="' + popupCardClass + '" href="' + club.url + '">' +
           '<div class="popup-body">' +
           popupIcon +
@@ -125,18 +142,54 @@
           pillsHtml +
           "</div>" +
           "</div>" +
-          "</a>";
+          "</a>"
+        );
+      }
 
+      var specialsByCoord = {};
+
+      clubs.forEach(function (club) {
+        var locations = club.locations || [];
+        if (locations.length === 0) return;
+
+        if (club.kind === "special") {
+          locations.forEach(function (loc) {
+            if (!loc.lat || !loc.lng) return;
+            var key = coordKey(loc.lat, loc.lng);
+            if (!specialsByCoord[key]) specialsByCoord[key] = [];
+            specialsByCoord[key].push({ club: club, loc: loc });
+          });
+          return;
+        }
+
+        var popupContent = buildClubPopupHtml(club);
         locations.forEach(function (loc) {
           if (!loc.lat || !loc.lng) return;
-          var markerOpts = club.kind === "special" ? { icon: SPECIAL_MARKER_ICON } : {};
-          var marker = L.marker([loc.lat, loc.lng], markerOpts).bindPopup(popupContent);
-          if (club.kind === "special") {
-            self.specialMarkers.addLayer(marker);
-          } else {
-            self.markers.addLayer(marker);
-          }
+          var marker = L.marker([loc.lat, loc.lng]).bindPopup(popupContent);
+          self.markers.addLayer(marker);
           self.markerMap[club.slug] = marker;
+        });
+      });
+
+      Object.keys(specialsByCoord).forEach(function (key) {
+        var group = specialsByCoord[key];
+        var loc = group[0].loc;
+        var count = group.length;
+        var icon = specialMarkerIconForCount(count);
+        var popupContent =
+          count === 1
+            ? buildClubPopupHtml(group[0].club)
+            : '<div class="map-popup-stack">' +
+              group
+                .map(function (item) {
+                  return buildClubPopupHtml(item.club);
+                })
+                .join("") +
+              "</div>";
+        var marker = L.marker([loc.lat, loc.lng], { icon: icon }).bindPopup(popupContent);
+        self.specialMarkers.addLayer(marker);
+        group.forEach(function (item) {
+          self.markerMap[item.club.slug] = marker;
         });
       });
     },
