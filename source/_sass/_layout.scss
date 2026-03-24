@@ -89,6 +89,43 @@
     align-items: center;
     flex-shrink: 0;
     position: relative;
+    gap: 0.35rem;
+  }
+
+  .site-nav-desktop {
+    display: none;
+    align-items: center;
+    gap: 0.1rem;
+
+    @media (min-width: $bp-lg) {
+      display: flex;
+    }
+  }
+
+  .site-nav-desktop__link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.55rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+      background: var(--color-tag);
+      color: var(--color-text);
+      text-decoration: none;
+    }
+
+    .iconify {
+      width: 1rem;
+      height: 1rem;
+      flex-shrink: 0;
+    }
   }
 
   .nav-menu-toggle {
@@ -128,7 +165,7 @@
   }
 }
 
-// ─── Nav menu overlay (body child to escape header stacking; all breakpoints use hamburger) ───
+// ─── Nav menu overlay (body child to escape header stacking; hamburger at all widths; Map/Events/Special also in header from md+) ───
 .nav-menu-overlay {
   display: none;
   position: fixed;
@@ -195,6 +232,12 @@
     width: 1rem;
     height: 1rem;
     flex-shrink: 0;
+  }
+
+  &__link--also-in-header {
+    @media (min-width: $bp-lg) {
+      display: none;
+    }
   }
 }
 

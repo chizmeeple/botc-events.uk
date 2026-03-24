@@ -1,4 +1,18 @@
 <nav class="site-nav">
+  <div class="site-nav-desktop" aria-label="Main sections">
+    <a href="{{ '/' | relative_url }}" class="site-nav-desktop__link">
+      <span class="iconify" data-icon="lucide:map" aria-hidden="true"></span>
+      <span>Map</span>
+    </a>
+    <a href="{{ '/events' | relative_url }}" class="site-nav-desktop__link">
+      <span class="iconify" data-icon="lucide:calendar" aria-hidden="true"></span>
+      <span>Events</span>
+    </a>
+    <a href="{{ '/special-events' | relative_url }}" class="site-nav-desktop__link">
+      <span class="iconify" data-icon="lucide:star" aria-hidden="true"></span>
+      <span>Special Events</span>
+    </a>
+  </div>
   <button
     type="button"
     class="nav-menu-toggle"
