@@ -38,6 +38,13 @@ events:
     - eventname: "Blood on the Clocktower"
       signup: "https://www.upalevelyork.co.uk/get-in-touch/"
       cost: "£5"
+      startdate: 2026-04-11
+      starttime: 1800
+      endtime: 2200
+      location: "up-a-level"
+    - eventname: "Blood on the Clocktower"
+      signup: "https://www.upalevelyork.co.uk/get-in-touch/"
+      cost: "£5"
       startdate: 2026-04-18
       starttime: 1800
       endtime: 2200
