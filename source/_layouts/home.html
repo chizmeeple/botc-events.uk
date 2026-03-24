@@ -21,27 +21,6 @@
             >
           </div>
         </a>
-        <div class="header-search">
-          <div class="search-bar">
-            <span class="iconify search-icon" data-icon="lucide:search" aria-hidden="true"></span>
-            <input
-              type="text"
-              class="search-input"
-              id="search-input"
-              placeholder="Search by postcode, group name, or location..."
-              autocomplete="off"
-            />
-            <div class="location-suggestions" id="location-suggestions"></div>
-          </div>
-          <button
-            class="locate-btn locate-btn--header"
-            id="locate-btn-header"
-            type="button"
-          >
-            <span class="iconify" data-icon="lucide:crosshair" style="width: 14px; height: 14px" aria-hidden="true"></span>
-            <span>Use my location</span>
-          </button>
-        </div>
         {% include nav-menu.html %}
       </div>
     </header>
@@ -56,19 +35,16 @@
             <span class="iconify drawer-chevron" data-icon="lucide:chevron-up" aria-hidden="true"></span>
           </div>
           <div class="filter-bar">
-            <div class="search-bar sidebar-search">
+            <div class="search-bar">
               <span class="iconify search-icon" data-icon="lucide:search" aria-hidden="true"></span>
               <input
                 type="text"
                 class="search-input"
-                id="search-input-mobile"
+                id="search-input"
                 placeholder="Search by postcode, group name, or location..."
                 autocomplete="off"
               />
-              <div
-                class="location-suggestions"
-                id="location-suggestions-mobile"
-              ></div>
+              <div class="location-suggestions" id="location-suggestions"></div>
             </div>
             <div class="filter-row">
               <div class="multi-select" id="day-filter">
@@ -136,7 +112,7 @@
                 <option value="25">Within 25 miles</option>
                 <option value="50">Within 50 miles</option>
               </select>
-              <button class="locate-btn" id="locate-btn" type="button">
+              <button class="locate-btn locate-btn--home" id="locate-btn" type="button">
                 <span class="iconify" data-icon="lucide:crosshair" style="width: 14px; height: 14px" aria-hidden="true"></span>
                 <span>Use my location</span>
               </button>

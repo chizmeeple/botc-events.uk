@@ -28,13 +28,11 @@
   function restoreFromUrl() {
     var params = readUrlParams();
     var searchInput = document.getElementById("search-input");
-    var searchInputMobile = document.getElementById("search-input-mobile");
     var distanceFilter = document.getElementById("distance-filter");
 
     if (params.q) {
       search.setQuery(params.q);
       if (searchInput) searchInput.value = params.q;
-      if (searchInputMobile) searchInputMobile.value = params.q;
     }
     if (params.days && params.days.length > 0) {
       search.setDayFilters(params.days);
@@ -247,31 +245,21 @@
 
   function bindEvents() {
     var searchInput = document.getElementById("search-input");
-    var searchInputMobile = document.getElementById("search-input-mobile");
     var dayFilterEl = document.getElementById("day-filter");
     var dayToggle = dayFilterEl ? dayFilterEl.querySelector(".multi-select-toggle") : null;
     var dayCheckboxes = dayFilterEl ? dayFilterEl.querySelectorAll("input[type='checkbox']") : [];
     var distanceFilter = document.getElementById("distance-filter");
 
-    // Sync both search inputs
-    function onSearchInput(source, other) {
+    function onSearchInput() {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(function () {
-        if (other) other.value = source.value;
-        search.setQuery(source.value);
+        search.setQuery(searchInput ? searchInput.value : "");
         update();
       }, 200);
     }
 
     if (searchInput) {
-      searchInput.addEventListener("input", function () {
-        onSearchInput(searchInput, searchInputMobile);
-      });
-    }
-    if (searchInputMobile) {
-      searchInputMobile.addEventListener("input", function () {
-        onSearchInput(searchInputMobile, searchInput);
-      });
+      searchInput.addEventListener("input", onSearchInput);
     }
 
     // Day filter multi-select dropdown
@@ -323,7 +311,6 @@
         // Clear text search when a location is selected via postcode
         search.setQuery("");
         if (searchInput) searchInput.value = "";
-        if (searchInputMobile) searchInputMobile.value = "";
         search.setUserLocation(lat, lng);
         map.showUserLocation(lat, lng);
         // Enable distance filter

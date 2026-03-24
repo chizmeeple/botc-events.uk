@@ -13,7 +13,6 @@
     pillLabel: null,
     clearBtn: null,
     locateBtn: null,
-    locateBtnHeader: null,
     debounceTimer: null,
     onLocationSet: null,
     onLocationClear: null,
@@ -30,7 +29,6 @@
       this.pillLabel = document.getElementById("location-pill-label");
       this.clearBtn = document.getElementById("location-clear");
       this.locateBtn = document.getElementById("locate-btn");
-      this.locateBtnHeader = document.getElementById("locate-btn-header");
 
       if (!this.input && !this.inputMobile && !this.locateBtn) return this;
 
@@ -86,12 +84,6 @@
 
       if (this.locateBtn) {
         this.locateBtn.addEventListener("click", function () {
-          self.geolocate();
-        });
-      }
-
-      if (this.locateBtnHeader) {
-        this.locateBtnHeader.addEventListener("click", function () {
           self.geolocate();
         });
       }
@@ -170,7 +162,6 @@
 
     setLocateBtnsDisabled: function (disabled) {
       if (this.locateBtn) this.locateBtn.disabled = disabled;
-      if (this.locateBtnHeader) this.locateBtnHeader.disabled = disabled;
     },
 
     geolocate: function () {
@@ -214,8 +205,7 @@
       if (this.pill) {
         this.pill.style.display = "none";
       }
-      // Focus whichever input is visible
-      var focusTarget = this.input && this.input.offsetParent !== null ? this.input : this.inputMobile;
+      var focusTarget = this.input || this.inputMobile;
       if (focusTarget) focusTarget.focus();
       if (this.onLocationClear) {
         this.onLocationClear();

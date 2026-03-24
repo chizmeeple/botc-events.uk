@@ -392,13 +392,6 @@
   margin-bottom: 0.5rem;
 }
 
-// Sidebar search: visible on mobile only (header search takes over on desktop)
-.sidebar-search {
-  @media (min-width: 992px) {
-    display: none;
-  }
-}
-
 .search-icon {
   position: absolute;
   right: 0.75rem;
@@ -603,9 +596,8 @@
     transform: none;
   }
 
-  // Hide sidebar locate button on desktop (header one takes over)
   @media (min-width: $bp-lg) {
-    &:not(.locate-btn--header):not(.locate-btn--events) {
+    &:not(.locate-btn--header):not(.locate-btn--events):not(.locate-btn--home) {
       display: none;
     }
   }
@@ -688,21 +680,6 @@
 
   &:hover {
     background: var(--color-tag);
-  }
-}
-
-// Header locate button (desktop only, next to search bar)
-.locate-btn--header {
-  display: none;
-
-  @media (min-width: $bp-lg) {
-    display: inline-flex;
-    margin-left: 0;
-    flex-shrink: 0;
-    // Match header search input height exactly
-    padding: 0.5rem 0.85rem;
-    font-size: 0.85rem;
-    border-width: 1.5px;
   }
 }
 
