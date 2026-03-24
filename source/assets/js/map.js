@@ -26,6 +26,8 @@
   var GameClubMap = {
     map: null,
     markers: null,
+    /** Club markers only; special events are kept separate so they are never clustered. */
+    specialMarkers: null,
     markerMap: {},
     userMarker: null,
     tileLayer: null,
@@ -58,7 +60,10 @@
         showCoverageOnHover: false,
       });
 
+      this.specialMarkers = L.layerGroup();
+
       this.map.addLayer(this.markers);
+      this.map.addLayer(this.specialMarkers);
 
       // Re-render Iconify icons inside popups when they open
       this.map.on("popupopen", function () {
@@ -71,6 +76,7 @@
     addClubs: function (clubs) {
       var self = this;
       this.markers.clearLayers();
+      this.specialMarkers.clearLayers();
       this.markerMap = {};
 
       clubs.forEach(function (club) {
@@ -125,7 +131,11 @@
           if (!loc.lat || !loc.lng) return;
           var markerOpts = club.kind === "special" ? { icon: SPECIAL_MARKER_ICON } : {};
           var marker = L.marker([loc.lat, loc.lng], markerOpts).bindPopup(popupContent);
-          self.markers.addLayer(marker);
+          if (club.kind === "special") {
+            self.specialMarkers.addLayer(marker);
+          } else {
+            self.markers.addLayer(marker);
+          }
           self.markerMap[club.slug] = marker;
         });
       });
@@ -137,9 +147,26 @@
       this.map.setView([lat, lng], targetZoom);
     },
 
+    /**
+     * Bounds for fitting the map. We iterate markers instead of calling
+     * MarkerClusterGroup#getBounds(), which can report an incorrect extent
+     * (cluster internals) when regular and special markers live in separate layers.
+     */
+    _allMarkerBounds: function () {
+      var bounds = L.latLngBounds();
+      this.markers.eachLayer(function (layer) {
+        if (layer.getLatLng) bounds.extend(layer.getLatLng());
+      });
+      this.specialMarkers.eachLayer(function (layer) {
+        if (layer.getLatLng) bounds.extend(layer.getLatLng());
+      });
+      return bounds;
+    },
+
     fitToMarkers: function () {
-      if (this.markers.getLayers().length > 0) {
-        this.map.fitBounds(this.markers.getBounds(), { padding: [30, 30] });
+      var b = this._allMarkerBounds();
+      if (b.isValid()) {
+        this.map.fitBounds(b, { padding: [30, 30] });
       }
     },
 
@@ -167,7 +194,7 @@
         .bindPopup("You are here");
 
       // Fit bounds to include user and all visible markers
-      var bounds = this.markers.getBounds();
+      var bounds = this._allMarkerBounds();
       if (bounds.isValid()) {
         bounds.extend([lat, lng]);
         this.map.fitBounds(bounds, { padding: [30, 30] });
