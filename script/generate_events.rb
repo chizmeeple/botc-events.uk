@@ -298,6 +298,24 @@ rescue Psych::SyntaxError
   nil
 end
 
+def valid_lat_lng?(lat, lng)
+  lat_f = Float(lat)
+  lng_f = Float(lng)
+  lat_f.finite? && lng_f.finite? &&
+    lat_f >= -90 && lat_f <= 90 &&
+    lng_f >= -180 && lng_f <= 180
+rescue ArgumentError, TypeError
+  false
+end
+
+def validate_event_location!(slug, eventname, loc)
+  label = eventname.to_s.strip.empty? ? "(unnamed event)" : eventname
+  return if loc.is_a?(Hash) && valid_lat_lng?(loc["lat"], loc["lng"])
+
+  warn "Invalid or missing lat/lng for #{slug} (#{label}): #{loc.inspect}"
+  exit 1
+end
+
 def main
   warn "Generating JSON file for events"
   root = File.expand_path("..", __dir__)
@@ -345,6 +363,10 @@ def main
 
     normalised_recurring = (recurring || []).map { |ev| normalise_location.call(ev) }.compact
     normalised_adhoc = (adhoc || []).map { |ev| normalise_location.call(ev) }.compact
+
+    (normalised_recurring + normalised_adhoc).each do |ev|
+      validate_event_location!(slug, ev["eventname"], ev["location"])
+    end
 
     upcoming_recurring = collect_upcoming(normalised_recurring, now, range_end, slug: slug)
     upcoming_adhoc = collect_adhoc(normalised_adhoc, now, range_end, slug: slug)
