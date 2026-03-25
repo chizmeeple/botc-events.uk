@@ -37,6 +37,7 @@ Paste the following into your new file and fill in the details. See `_club-templ
 ---
 name: "Unlucky Villagers"
 based_in: "Leeds"
+group_id: "unlucky-villagers"
 image: "unlucky-villagers.png"
 website: "https://example.com"
 meetup: "https://www.meetup.com/unlucky-villagers/"
@@ -55,6 +56,7 @@ locations:
 events:
   recurring:
     - eventname: "Blood on the Clocktower"
+      event_id: "tuesday-game-night"
       signup: "https://www.meetup.com/unlucky-villagers/events/"
       cost: "£3"
       startdate: 2026-03-10
@@ -64,6 +66,7 @@ events:
       location: "the-kings-arms"
   adhoc:
     - eventname: "One-off Taster Session"
+      special_event_id: "taster-2026-03-15"
       signup: "https://www.meetup.com/unlucky-villagers/events/123"
       cost: "Free"
       startdate: 2026-03-15
@@ -79,6 +82,7 @@ events:
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`             | Your group's full name                                                                                                                                |
 | `based_in`         | Town or city where you're based                                                                                                                       |
+| `group_id`         | Stable ID (lowercase, hyphens). Used for calendar feeds; do not change when renaming the file. Must be unique site-wide. Required when you list events. |
 | `image`            | A URL or filename in `source/assets/images/clubs/` (see [step 5](#5-adding-a-logo) below)                                                             |
 | `website`          | Link to your group's website                                                                                                                          |
 | `meetup`           | Meetup group URL                                                                                                                                      |
@@ -87,8 +91,8 @@ events:
 | `bgg`              | BoardGameGeek guild or group link                                                                                                                     |
 | `description`      | A short description. What games do you play? Are newcomers welcome?                                                                                   |
 | `locations`        | Venues keyed by slug (e.g. `the-kings-arms`). Each needs `name`, `address`, `lat`, `lng`                                                              |
-| `events.recurring` | Array of recurring events. Each needs `eventname`, `signup`, `cost`, `startdate`, `starttime`, `endtime`, `rrule`, `location` (slug from `locations`) |
-| `events.adhoc`     | Array of one-off events. Each needs `eventname`, `signup`, `cost`, `startdate`, `starttime`, `location`. Optionally `endtime`                         |
+| `events.recurring` | Array of recurring events. Each needs `eventname`, `event_id` (stable, unique within the group), `signup`, `cost`, `startdate`, `starttime`, `endtime`, `rrule`, `location` (slug from `locations`) |
+| `events.adhoc`     | Array of one-off events. Each needs `eventname`, `special_event_id` (stable, unique within the group), `signup`, `cost`, `startdate`, `starttime`, `location`. Optionally `endtime`               |
 | `rrule`            | Recurrence rule, e.g. `FREQ=WEEKLY;BYDAY=TU` (every Tuesday), `FREQ=MONTHLY;BYDAY=2SA` (2nd Saturday of month)                                        |
 
 ### Extended Information: Parking

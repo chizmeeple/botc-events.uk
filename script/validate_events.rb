@@ -38,7 +38,7 @@ unless by_slug.is_a?(Hash)
   exit 1
 end
 
-required_event_keys = %w[eventname start_time location signup cost]
+required_event_keys = %w[group_id eventname start_time location signup cost]
 required_location_keys = %w[name address lat lng]
 errors = []
 
@@ -57,6 +57,18 @@ by_slug.each do |slug, club_data|
       if evt[key].nil?
         errors << "#{slug} event ##{i}: missing \"#{key}\""
       end
+    end
+
+    eid = evt["event_id"].to_s.strip
+    sid = evt["special_event_id"].to_s.strip
+    if eid.empty? && sid.empty?
+      errors << "#{slug} event ##{i}: missing event_id and special_event_id (exactly one required)"
+    elsif !eid.empty? && !sid.empty?
+      errors << "#{slug} event ##{i}: must have only one of event_id or special_event_id"
+    end
+
+    if !eid.empty? && evt["rrule"].to_s.strip.empty?
+      errors << "#{slug} event ##{i}: recurring occurrence missing \"rrule\""
     end
 
     loc = evt["location"]

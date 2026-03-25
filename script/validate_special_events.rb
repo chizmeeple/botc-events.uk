@@ -40,7 +40,7 @@ unless map_slugs.is_a?(Array)
   exit 1
 end
 
-required_all_occurrence_keys = %w[eventname start_time end_time location cost]
+required_all_occurrence_keys = %w[group_id special_event_id eventname start_time end_time location cost]
 required_location_keys = %w[name address lat lng]
 
 errors = []

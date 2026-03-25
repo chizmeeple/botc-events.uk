@@ -15,6 +15,7 @@ Thanks for helping grow the directory! Here's how to contribute.
 ---
 name: "Unlucky Villagers"
 based_in: "Leeds"
+group_id: "unlucky-villagers"
 image: "unlucky-villagers.png"
 website: "https://example.com"
 meetup: "https://www.meetup.com/unlucky-villagers/"
@@ -33,6 +34,7 @@ locations:
 events:
   recurring:
     - eventname: "Blood on the Clocktower"
+      event_id: "tuesday-game-night"
       signup: "https://www.meetup.com/unlucky-villagers/events/"
       cost: "£3"
       startdate: 2026-03-10
@@ -42,6 +44,7 @@ events:
       location: "the-kings-arms"
   adhoc:
     - eventname: "One-off Taster Session"
+      special_event_id: "taster-2026-03-15"
       signup: "https://www.meetup.com/unlucky-villagers/events/123"
       cost: "Free"
       startdate: 2026-03-15
@@ -57,10 +60,11 @@ events:
 |-------|----------|-------|
 | `name` | Yes | Full club name |
 | `based_in` | Yes | Town or city |
+| `group_id` | Yes (when `events` has entries) | Stable identifier (lowercase, hyphenated). Used for calendar UIDs; do not change when renaming the file or URL. Must be unique across the site. |
 | `description` | Yes | 1-3 sentence description |
 | `locations` | Yes | Venues keyed by slug. Each needs `name`, `address`, `lat`, `lng`. Can also include extended information such as `parking` (see below). |
-| `events.recurring` | No | Array of recurring events. Each needs `eventname`, `signup`, `cost`, `startdate`, `starttime`, `endtime`, `rrule`, `location` |
-| `events.adhoc` | No | Array of one-off events. Each needs `eventname`, `signup`, `cost`, `startdate`, `starttime`, `location`. Optionally `endtime` |
+| `events.recurring` | No | Array of recurring events. Each needs `eventname`, `event_id` (stable, unique within the group), `signup`, `cost`, `startdate`, `starttime`, `endtime`, `rrule`, `location` |
+| `events.adhoc` | No | Array of one-off events. Each needs `eventname`, `special_event_id` (stable, unique within the group), `signup`, `cost`, `startdate`, `starttime`, `location`. Optionally `endtime` |
 | `rrule` | — | Recurrence rule, e.g. `FREQ=WEEKLY;BYDAY=TU` (every Tuesday), `FREQ=MONTHLY;BYDAY=2SA` (2nd Saturday). Times in 24hr format (e.g. 1900). |
 | `image` | No | Photo URL or filename in `source/assets/images/clubs/` |
 | `website` | No | Full URL |
@@ -133,7 +137,7 @@ Before submitting a PR, you can validate your club file:
 ruby script/validate_clubs.rb
 ```
 
-This checks all `source/_clubs/*.md` files for correct frontmatter (required fields, valid day names, coordinate ranges, etc.). The same check runs automatically on every pull request.
+This checks all `source/_clubs/*.md` files for correct frontmatter (required fields, valid day names, coordinate ranges, etc.). It also validates stable `group_id`, `event_id`, and `special_event_id` fields when events are present. The same check runs automatically on every pull request.
 
 ## Local Development
 

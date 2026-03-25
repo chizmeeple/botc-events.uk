@@ -1,11 +1,12 @@
 ---
-name: "Bloodfest"
-based_in: "Milton Keynes"
-banner_image: "2026-05-02-milton-keynes-bloodfest-banner.png"
-image: ""
-website: "https://www.eventbrite.co.uk/e/bloodfest-2026-tickets-1488466656839"
-discord: "https://discord.gg/Y5yTzyVnEC"
-clocktracker: ""
+name: Bloodfest
+based_in: Milton Keynes
+group_id: 2026-05-02-milton-keynes-bloodfest
+banner_image: 2026-05-02-milton-keynes-bloodfest-banner.png
+image: ''
+website: https://www.eventbrite.co.uk/e/bloodfest-2026-tickets-1488466656839
+discord: https://discord.gg/Y5yTzyVnEC
+clocktracker: ''
 description: |-
   Run by fans, for fans! Get ready for another weekend of mayhem and mis-trust
   in Milton Keynes!
@@ -24,16 +25,17 @@ description: |-
   - Monday 4th May: 9am until 5pm
 events:
   special:
-    - startdate: 2026-05-02
-      starttime: 0900
-      enddate: 2026-05-04
-      endtime: 1730
-      location: "kents-hill-park-tcc"
-      cost: "£22"
+  - startdate: 2026-05-02
+    starttime: '0900'
+    enddate: 2026-05-04
+    endtime: 1730
+    location: kents-hill-park-tcc
+    cost: "£22"
+    special_event_id: main
 locations:
   kents-hill-park-tcc:
-    name: "Kents Hill Park Training and Conference Centre"
-    address: "Timbold Drive, Kents Hill, MK7 6BZ"
+    name: Kents Hill Park Training and Conference Centre
+    address: Timbold Drive, Kents Hill, MK7 6BZ
     lat: 52.03009318851866
     lng: -0.7024886661583617
 ---

@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# frozen_string_literal: true
 #
 # Generates _data/rendered_special_events.json from special event markdown in
 # source/_special_events/*.md.
@@ -160,6 +159,12 @@ def main
 
     locations_lookup = data["locations"].is_a?(Hash) ? data["locations"] : {}
 
+    group_id = data["group_id"].to_s.strip
+    if group_id.empty?
+      warn "Missing group_id for special event #{slug}"
+      exit 1
+    end
+
     special_list = data.dig("events", "special")
     next unless special_list.is_a?(Array) && special_list.any?
     if special_list.size > 1
@@ -180,6 +185,12 @@ def main
       loc_key = ev["location"]
 
       next unless startdate && enddate && starttime && endtime && loc_key.is_a?(String)
+
+      sid = ev["special_event_id"].to_s.strip
+      if sid.empty?
+        warn "Missing special_event_id for special event #{slug}"
+        exit 1
+      end
 
       resolved_location = locations_lookup[loc_key]
       next unless resolved_location.is_a?(Hash)
@@ -202,6 +213,8 @@ def main
 
       occ = {
         "slug" => slug,
+        "group_id" => group_id,
+        "special_event_id" => sid,
         "eventname" => eventname,
         "based_in" => based_in,
         "start_time" => start_t.iso8601,
