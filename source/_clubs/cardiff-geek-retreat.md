@@ -1,29 +1,30 @@
 ---
-name: "Geek Retreat Cardiff"
-based_in: "Cardiff"
-image: "cardiff-geek-retreat.png"
-website: "https://www.geekretreatcardiff.co.uk/"
-meetup: ""
-facebook: "https://www.facebook.com/GeekRetreatCardiff/"
-discord: ""
-bgg: ""
-description: >-
-  Geek Retreat don't usually list this as it tends to be more of an informal
+name: Geek Retreat Cardiff
+based_in: Cardiff
+group_id: cardiff-geek-retreat
+image: cardiff-geek-retreat.png
+website: https://www.geekretreatcardiff.co.uk/
+meetup: ''
+facebook: https://www.facebook.com/GeekRetreatCardiff/
+discord: ''
+bgg: ''
+description: Geek Retreat don't usually list this as it tends to be more of an informal
   gathering than some of their other events.
 locations:
   geek-retreat-cardiff:
-    name: "Geek Retreat Cardiff"
-    address: "2 Barry Lane, Morgan Arcade, Cardiff CF10 1AF"
+    name: Geek Retreat Cardiff
+    address: 2 Barry Lane, Morgan Arcade, Cardiff CF10 1AF
     lat: 51.478839830289466
     lng: -3.1767370100970997
 events:
   recurring:
-    - eventname: "Geek Retreat Cardiff"
-      signup: "https://www.geekretreatcardiff.co.uk/"
-      cost: "Free"
-      startdate: 2026-03-01
-      starttime: 1800
-      endtime: 2200
-      rrule: "FREQ=MONTHLY;INTERVAL=1;BYDAY=2TU"
-      location: "geek-retreat-cardiff"
+  - eventname: Geek Retreat Cardiff
+    signup: https://www.geekretreatcardiff.co.uk/
+    cost: Free
+    startdate: 2026-03-01
+    starttime: 1800
+    endtime: 2200
+    rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=2TU
+    location: geek-retreat-cardiff
+    event_id: geek-retreat-cardiff
 ---

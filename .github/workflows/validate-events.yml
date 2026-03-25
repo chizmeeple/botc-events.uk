@@ -22,6 +22,9 @@ jobs:
       - name: Generate special events data
         run: bundle exec ruby script/generate_special_events.rb
 
+      - name: Generate calendar ICS feed
+        run: bundle exec ruby script/generate_calendar_ics.rb
+
       - name: Validate rendered_events.json
         run: ruby script/validate_events.rb
 

@@ -51,6 +51,8 @@ jobs:
         run: bundle exec ruby script/generate_events.rb
       - name: Generate special events data
         run: bundle exec ruby script/generate_special_events.rb
+      - name: Generate calendar ICS feed
+        run: bundle exec ruby script/generate_calendar_ics.rb
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"

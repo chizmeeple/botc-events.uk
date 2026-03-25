@@ -95,6 +95,10 @@ end
 # Report results
 if errors.empty?
   puts "All #{files.length} club files are valid."
+  unless system("ruby", File.join(__dir__, "validate_event_identity.rb"))
+    exit 1
+  end
+
   exit 0
 else
   puts "Validation failed!\n\n"

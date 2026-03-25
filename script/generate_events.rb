@@ -4,7 +4,8 @@
 # Generates _data/rendered_events.json from events.recurring and events.adhoc in _clubs/*.md.
 # Run before Jekyll build (e.g. in deploy workflow or locally before jekyll serve).
 # Uses Europe/London for all times. Output is used by the club layout and
-# future "all upcoming events" pages.
+# future "all upcoming events" pages. The combined ICS feed is built by
+# script/generate_calendar_ics.rb (canonical UIDs from group_id + event_id / special_event_id).
 
 require "date"
 require "json"
@@ -146,7 +147,7 @@ rescue StandardError
   []
 end
 
-def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil)
+def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, group_id: nil)
   all = []
 
   recurring_list.each do |ev|
@@ -173,6 +174,19 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil)
     cost = ev["cost"].to_s.strip
     cost = nil if cost.empty?
 
+    eid = ev["event_id"].to_s.strip
+    if eid.empty?
+      ctx = slug ? " (#{slug}, event: #{eventname})" : " (event: #{eventname})"
+      warn "Missing event_id#{ctx}"
+      exit 1
+    end
+
+    gid = group_id.to_s.strip
+    if gid.empty?
+      warn "Missing group_id for recurring event#{slug ? " (#{slug})" : ""}"
+      exit 1
+    end
+
     occurrences.each do |start_t, end_t|
       next if start_t < now
       occ = {
@@ -180,6 +194,9 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil)
         "start_time" => start_t.iso8601,
         "end_time" => end_t&.iso8601,
         "location" => location,
+        "group_id" => gid,
+        "event_id" => eid,
+        "rrule" => rrule,
       }
       occ["frequency"] = frequency if frequency
       occ["signup"] = signup if signup
@@ -193,7 +210,7 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil)
   all
 end
 
-def collect_adhoc(adhoc_list, now, range_end, slug: nil)
+def collect_adhoc(adhoc_list, now, range_end, slug: nil, group_id: nil)
   return [] unless adhoc_list.is_a?(Array)
 
   all = []
@@ -217,6 +234,19 @@ def collect_adhoc(adhoc_list, now, range_end, slug: nil)
 
     next if start_t < now || start_t > range_end
 
+    sid = ev["special_event_id"].to_s.strip
+    if sid.empty?
+      ctx = slug ? " (#{slug}, event: #{eventname})" : " (event: #{eventname})"
+      warn "Missing special_event_id#{ctx}"
+      exit 1
+    end
+
+    gid = group_id.to_s.strip
+    if gid.empty?
+      warn "Missing group_id for adhoc event#{slug ? " (#{slug})" : ""}"
+      exit 1
+    end
+
     signup = ev["signup"].to_s.strip
     signup = nil if signup.empty?
 
@@ -228,6 +258,8 @@ def collect_adhoc(adhoc_list, now, range_end, slug: nil)
       "start_time" => start_t.iso8601,
       "end_time" => end_t&.iso8601,
       "location" => location,
+      "group_id" => gid,
+      "special_event_id" => sid,
     }
     occ["signup"] = signup if signup
     occ["cost"] = cost if cost
@@ -236,56 +268,6 @@ def collect_adhoc(adhoc_list, now, range_end, slug: nil)
 
   all.sort_by! { |o| o["start_time"] }
   all
-end
-
-def build_ics_calendar(all_upcoming, generated_at, site_url)
-  calendar = Icalendar::Calendar.new
-  calendar.prodid = "-//BOTC Events UK//botc-events.uk//EN"
-  calendar.version = "2.0"
-  calendar.x_wr_calname = "BOTC Events UK"
-  calendar.append_custom_property("X-WR-CALDESC", "Blood on the Clocktower events across the UK")
-  calendar.append_custom_property("X-WR-TIMEZONE", "Europe/London")
-  # RFC 7986: hint for clients on how often to re-fetch (1 hour)
-  calendar.append_custom_property("REFRESH-INTERVAL;VALUE=DURATION", "PT1H")
-
-  feed_updated = Time.parse(generated_at)
-
-  all_upcoming.each do |e|
-    event = Icalendar::Event.new
-
-    dtstart = Time.parse(e["start_time"])
-    end_time_missing = e["end_time"].to_s.strip.empty?
-    dtend = end_time_missing ? dtstart + 7200 : Time.parse(e["end_time"])
-    event.dtstart = Icalendar::Values::DateTime.new(dtstart, "tzid" => "UTC")
-    event.dtend = Icalendar::Values::DateTime.new(dtend, "tzid" => "UTC")
-
-    based_in = e["based_in"].to_s.strip
-    loc_name = e["location"].is_a?(Hash) ? e["location"]["name"].to_s.strip : ""
-    event.summary = [based_in, loc_name].reject(&:empty?).join(" - ")
-    event.uid = "#{e["start_time"].to_s.gsub(/[^0-9TZ+-]/, "")}-#{e["slug"]}@#{site_url.gsub(%r{^https?://}, "").split("/").first}"
-    event.dtstamp = Icalendar::Values::DateTime.new(feed_updated, "tzid" => "UTC")
-    event.last_modified = feed_updated
-
-    parts = []
-    parts << "#{e["club_name"]}" if e["club_name"].to_s.strip != ""
-    parts << e["location"]["address"] if e["location"].is_a?(Hash) && e["location"]["address"].to_s.strip != ""
-    event.location = parts.join(", ") if parts.any?
-
-    desc_parts = []
-    desc_parts << e["club_name"].to_s if e["club_name"].to_s.strip != ""
-    desc_parts << "Cost: #{e["cost"]}" if e["cost"].to_s.strip != ""
-    desc_parts << "Sign up: #{e["signup"]}" if e["signup"].to_s.strip != ""
-    desc_parts << "#{SITE_URL}/clubs/#{e["slug"]}/" if e["slug"].to_s.strip != ""
-    desc_parts << "End time estimated" if end_time_missing
-    event.description = desc_parts.join("\n\n") if desc_parts.any?
-
-    event.url = e["signup"] if e["signup"].to_s.strip != ""
-    event.url ||= "#{SITE_URL}/clubs/#{e["slug"]}/" if e["slug"].to_s.strip != ""
-
-    calendar.add_event(event)
-  end
-
-  calendar.to_ical
 end
 
 def extract_frontmatter(path)
@@ -402,8 +384,14 @@ def main
       validate_event_location!(slug, ev["eventname"], ev["location"])
     end
 
-    upcoming_recurring = collect_upcoming(normalised_recurring, now, range_end, slug: slug)
-    upcoming_adhoc = collect_adhoc(normalised_adhoc, now, range_end, slug: slug)
+    group_id = data["group_id"].to_s.strip
+    if group_id.empty?
+      warn "Missing group_id for club #{slug}"
+      exit 1
+    end
+
+    upcoming_recurring = collect_upcoming(normalised_recurring, now, range_end, slug: slug, group_id: group_id)
+    upcoming_adhoc = collect_adhoc(normalised_adhoc, now, range_end, slug: slug, group_id: group_id)
     full_upcoming = (upcoming_recurring + upcoming_adhoc).sort_by { |o| o["start_time"] }
     upcoming = full_upcoming.take(UPCOMING_PER_CLUB)
     yaml_locs = yaml_map_locations(locations_lookup)
@@ -483,8 +471,9 @@ def main
     based_in = nil if based_in.empty?
 
     upcoming.each do |occ|
-      all_upcoming << {
+      row = {
         "slug" => slug,
+        "group_id" => occ["group_id"],
         "club_name" => club_name,
         "based_in" => based_in,
         "image" => club_image,
@@ -495,7 +484,11 @@ def main
         "frequency" => occ["frequency"],
         "cost" => occ["cost"],
         "signup" => occ["signup"],
-      }.compact
+      }
+      row["event_id"] = occ["event_id"] if occ["event_id"]
+      row["special_event_id"] = occ["special_event_id"] if occ["special_event_id"]
+      row["rrule"] = occ["rrule"] if occ["rrule"]
+      all_upcoming << row.compact
     end
   end
 
@@ -510,14 +503,6 @@ def main
 
   File.write(out_path, JSON.pretty_generate(payload))
   warn "Wrote #{out_path} (#{by_slug.size} clubs, #{all_upcoming.size} events in all_upcoming)"
-
-  # Generate ICS calendar feed (Jekyll copies source/calendar/ to _site/calendar/)
-  calendar_dir = File.join(root, "source", "calendar")
-  Dir.mkdir(calendar_dir) unless Dir.exist?(calendar_dir)
-  ics_path = File.join(calendar_dir, "events.ics")
-  ics_content = build_ics_calendar(all_upcoming, payload["generated_at"], SITE_URL)
-  File.write(ics_path, ics_content)
-  warn "Wrote #{ics_path} (#{all_upcoming.size} events)"
 end
 
 main if __FILE__ == $PROGRAM_NAME

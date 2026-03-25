@@ -1,6 +1,8 @@
 ---
 name: "{{GROUP_NAME}}"
 based_in: "{{GROUP_BASED_IN}}"
+# Stable ID for calendar feeds and APIs; do not change when renaming the file or URL slug.
+group_id: "{{GROUP_SLUG}}"
 image: ""
 website: ""
 meetup: ""
@@ -34,6 +36,8 @@ locations:
 events:
   recurring:
     - eventname: ""
+      # Stable ID for this series (unique within this group; used in calendar UIDs).
+      event_id: ""
       signup: ""
       cost: ""
       startdate: 2026-02-10
@@ -43,6 +47,8 @@ events:
       location: "the-name"
   adhoc:
     - eventname: ""
+      # Stable ID for this one-off (unique within this group; used in calendar UIDs).
+      special_event_id: ""
       signup: ""
       cost: ""
       startdate: 2026-02-10
