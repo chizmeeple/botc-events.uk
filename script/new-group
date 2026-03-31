@@ -11,7 +11,7 @@ if [ -z "$GROUP_NAME" ] || [ -z "$GROUP_BASED_IN" ]; then
   exit 1
 fi
 
-GROUP_SLUG=$(echo "${GROUP_BASED_IN}-${GROUP_NAME}" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
+GROUP_SLUG=$(echo "${GROUP_BASED_IN}-${GROUP_NAME}" | tr ' ' '-' | tr '[:upper:]' '[:lower:]' | tr -d '()' | tr -s '-')
 
 # Check if the group name is already taken
 if [ -d "source/_clubs/$GROUP_SLUG" ]; then
@@ -26,11 +26,9 @@ cp "_club-template.md" "source/_clubs/$GROUP_SLUG.md"
 if [[ "$(uname)" == "Darwin" ]]; then
   sed -i '' "s/{{GROUP_NAME}}/$GROUP_NAME/g" "source/_clubs/$GROUP_SLUG.md"
   sed -i '' "s/{{GROUP_BASED_IN}}/$GROUP_BASED_IN/g" "source/_clubs/$GROUP_SLUG.md"
-  sed -i '' "s/{{GROUP_SLUG}}/$GROUP_SLUG/g" "source/_clubs/$GROUP_SLUG.md"
 else
   sed -i "s/{{GROUP_NAME}}/$GROUP_NAME/g" "source/_clubs/$GROUP_SLUG.md"
   sed -i "s/{{GROUP_BASED_IN}}/$GROUP_BASED_IN/g" "source/_clubs/$GROUP_SLUG.md"
-  sed -i "s/{{GROUP_SLUG}}/$GROUP_SLUG/g" "source/_clubs/$GROUP_SLUG.md"
 fi
 
 # open the new group in the editor

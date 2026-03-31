@@ -71,4 +71,12 @@ events:
     endtime: 2330
     location: sip-and-conquer
     special_event_id: blood-on-the-clocktower-20260327
+  - eventname: Blood on the Clocktower
+    signup: "https://www.designmynight.com/uk/restaurants/sip-conquer/blood-on-the-clocktower-1?t=tickets"
+    cost: "£20"
+    startdate: 2026-04-24
+    starttime: 1830
+    endtime: 2330
+    location: sip-and-conquer
+    special_event_id: blood-on-the-clocktower-20260424
 ---

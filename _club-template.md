@@ -1,8 +1,8 @@
 ---
 name: "{{GROUP_NAME}}"
 based_in: "{{GROUP_BASED_IN}}"
-# Stable ID for calendar feeds and APIs; do not change when renaming the file or URL slug.
-group_id: "{{GROUP_SLUG}}"
+# Optional: group_id — omit when the stable id matches this file's slug (without .md).
+# Set explicitly when renaming the file but keeping the same calendar/API identity.
 image: ""
 website: ""
 meetup: ""
