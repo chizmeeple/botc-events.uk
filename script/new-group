@@ -26,11 +26,9 @@ cp "_club-template.md" "source/_clubs/$GROUP_SLUG.md"
 if [[ "$(uname)" == "Darwin" ]]; then
   sed -i '' "s/{{GROUP_NAME}}/$GROUP_NAME/g" "source/_clubs/$GROUP_SLUG.md"
   sed -i '' "s/{{GROUP_BASED_IN}}/$GROUP_BASED_IN/g" "source/_clubs/$GROUP_SLUG.md"
-  sed -i '' "s/{{GROUP_SLUG}}/$GROUP_SLUG/g" "source/_clubs/$GROUP_SLUG.md"
 else
   sed -i "s/{{GROUP_NAME}}/$GROUP_NAME/g" "source/_clubs/$GROUP_SLUG.md"
   sed -i "s/{{GROUP_BASED_IN}}/$GROUP_BASED_IN/g" "source/_clubs/$GROUP_SLUG.md"
-  sed -i "s/{{GROUP_SLUG}}/$GROUP_SLUG/g" "source/_clubs/$GROUP_SLUG.md"
 fi
 
 # open the new group in the editor

@@ -48,9 +48,9 @@ Dir.glob(File.join(clubs_dir, "*.md")).sort.each do |path|
   adhoc = events["adhoc"]
   next unless (recurring.is_a?(Array) && recurring.any?) || (adhoc.is_a?(Array) && adhoc.any?)
 
-  gid = data["group_id"]
+  gid = data["group_id"].to_s.strip
+  gid = slug if gid.empty?
   validate_id_string!("group_id in #{slug}.md", gid)
-  gid = gid.strip
 
   if group_ids_global[gid]
     errors << "Duplicate group_id #{gid.inspect} (#{slug}.md and #{group_ids_global[gid]})"

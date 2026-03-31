@@ -82,7 +82,7 @@ events:
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`             | Your group's full name                                                                                                                                |
 | `based_in`         | Town or city where you're based                                                                                                                       |
-| `group_id`         | Stable ID (lowercase, hyphens). Used for calendar feeds; do not change when renaming the file. Must be unique site-wide. Required when you list events. |
+| `group_id`         | Stable ID (lowercase, hyphens). Used for calendar feeds; do not change when renaming the file. Must be unique site-wide. Omit when it matches the filename slug (without `.md`); set explicitly if the stable id must differ from the slug. Required when you list events. |
 | `image`            | A URL or filename in `source/assets/images/clubs/` (see [step 5](#5-adding-a-logo) below)                                                             |
 | `website`          | Link to your group's website                                                                                                                          |
 | `meetup`           | Meetup group URL                                                                                                                                      |

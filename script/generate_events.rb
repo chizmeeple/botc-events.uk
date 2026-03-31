@@ -385,10 +385,7 @@ def main
     end
 
     group_id = data["group_id"].to_s.strip
-    if group_id.empty?
-      warn "Missing group_id for club #{slug}"
-      exit 1
-    end
+    group_id = slug if group_id.empty?
 
     upcoming_recurring = collect_upcoming(normalised_recurring, now, range_end, slug: slug, group_id: group_id)
     upcoming_adhoc = collect_adhoc(normalised_adhoc, now, range_end, slug: slug, group_id: group_id)
