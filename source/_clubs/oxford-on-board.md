@@ -316,4 +316,46 @@ events:
     starttime: 1900
     location: westgate-social
     special_event_id: custom-script-night-20261028
+  - eventname: Blood on the Clocktower - Westgate Social (Base 3)
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-11-02
+    starttime: 1900
+    location: westgate-social
+    special_event_id: blood-on-the-clocktower-westgate-social-base-3-20261102
+  - eventname: Custom Script Night
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-11-11
+    starttime: 1900
+    location: westgate-social
+    special_event_id: custom-script-night-20261111
+  - eventname: Blood on the Clocktower - Westgate Social (Base 3)
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-11-16
+    starttime: 1900
+    location: westgate-social
+    special_event_id: blood-on-the-clocktower-westgate-social-base-3-20261116
+  - eventname: Custom Script Night
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-11-25
+    starttime: 1900
+    location: westgate-social
+    special_event_id: custom-script-night-20261125
+  - eventname: Blood on the Clocktower - Sunday Special!
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: "£5"
+    startdate: 2026-11-29
+    starttime: 1130
+    location: wig-and-pen
+    special_event_id: blood-on-the-clocktower-sunday-special-20261129
+  - eventname: Blood on the Clocktower - Westgate Social (Base 3)
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-11-30
+    starttime: 1900
+    location: westgate-social
+    special_event_id: blood-on-the-clocktower-westgate-social-base-3-20261130
 ---
