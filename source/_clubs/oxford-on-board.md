@@ -33,6 +33,11 @@ locations:
     address: 9-13 George St, Oxford OX1 2AU
     lat: 51.753691275022774
     lng: -1.2596746264552612
+  cosmo-oxford:
+    name: Cosmo
+    address: Magdalen Street, Oxford OX1 3AD
+    lat: 51.7543664
+    lng: -1.2591859
 events:
   adhoc:
   - eventname: Blood on the Clocktower - Westgate Social
@@ -358,4 +363,39 @@ events:
     starttime: 1900
     location: westgate-social
     special_event_id: blood-on-the-clocktower-westgate-social-base-3-20261130
+  - eventname: Blood on the Clocktower - Westgate Social (Base 3)
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-12-07
+    starttime: 1900
+    location: westgate-social
+    special_event_id: blood-on-the-clocktower-westgate-social-base-3-20261207
+  - eventname: Christmas dinner at Cosmo (no Clocktower)
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-12-14
+    starttime: 1900
+    location: cosmo-oxford
+    special_event_id: christmas-dinner-cosmo-20261214
+  - eventname: Custom Script Night
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-12-16
+    starttime: 1900
+    location: westgate-social
+    special_event_id: custom-script-night-20261216
+  - eventname: Blood on the Clocktower - Sunday Special!
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: "£5"
+    startdate: 2026-12-20
+    starttime: 1130
+    location: wig-and-pen
+    special_event_id: blood-on-the-clocktower-sunday-special-20261220
+  - eventname: Blood on the Clocktower - Westgate Social (Base 3)
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-12-21
+    starttime: 1900
+    location: westgate-social
+    special_event_id: blood-on-the-clocktower-westgate-social-base-3-20261221
 ---
