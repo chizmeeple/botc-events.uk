@@ -393,7 +393,7 @@ def main
     upcoming = full_upcoming.take(UPCOMING_PER_CLUB)
     yaml_locs = yaml_map_locations(locations_lookup)
 
-    if upcoming.empty?
+    if full_upcoming.empty?
       next if yaml_locs.empty?
 
       event_days = collect_event_days(normalised_recurring, normalised_adhoc)
@@ -414,7 +414,7 @@ def main
     upcoming_limited = full_upcoming.size > UPCOMING_PER_CLUB
 
     # Enrich parking entries with distance_from_venue_m (where possible)
-    upcoming.each do |occ|
+    full_upcoming.each do |occ|
       loc = occ["location"]
       next unless loc.is_a?(Hash) && loc["lat"] && loc["lng"]
       next unless loc["parking"].is_a?(Array)
@@ -467,7 +467,7 @@ def main
     based_in = data["based_in"].to_s.strip
     based_in = nil if based_in.empty?
 
-    upcoming.each do |occ|
+    full_upcoming.each do |occ|
       row = {
         "slug" => slug,
         "group_id" => occ["group_id"],
