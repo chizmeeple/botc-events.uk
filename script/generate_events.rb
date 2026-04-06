@@ -26,7 +26,6 @@ TZ = TZInfo::Timezone.get("Europe/London")
 # special events) and include any future startdate regardless of how far ahead.
 LOOKAHEAD_DAYS = 180
 UPCOMING_PER_CLUB = 6
-ALL_UPCOMING_LIMIT = 500
 EARTH_RADIUS_M = 6_371_000
 
 DAY_ABBREV = { "MO" => "Monday", "TU" => "Tuesday", "WE" => "Wednesday",
@@ -494,7 +493,6 @@ def main
   end
 
   all_upcoming.sort_by! { |o| o["start_time"] }
-  all_upcoming = all_upcoming.take(ALL_UPCOMING_LIMIT)
 
   payload = {
     "generated_at" => now.utc.iso8601,
