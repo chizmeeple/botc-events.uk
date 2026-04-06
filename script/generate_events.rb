@@ -4,8 +4,10 @@
 # Generates _data/rendered_events.json from events.recurring and events.adhoc in _clubs/*.md.
 # Run before Jekyll build (e.g. in deploy workflow or locally before jekyll serve).
 # Uses Europe/London for all times. Output is used by the club layout and
-# future "all upcoming events" pages. The combined ICS feed is built by
-# script/generate_calendar_ics.rb (canonical UIDs from group_id + event_id / special_event_id).
+# the all-upcoming events page. Recurring occurrences are expanded only within
+# LOOKAHEAD_DAYS; adhoc rows are included for any future startdate in YAML.
+# The combined ICS feed is built by script/generate_calendar_ics.rb (canonical UIDs
+# from group_id + event_id / special_event_id).
 
 require "date"
 require "json"
@@ -20,6 +22,8 @@ require "yaml"
 SITE_URL = "https://botc-events.uk"
 
 TZ = TZInfo::Timezone.get("Europe/London")
+# Recurring RRULE expansion window only. Adhoc dates are explicit listings (like
+# special events) and include any future startdate regardless of how far ahead.
 LOOKAHEAD_DAYS = 180
 UPCOMING_PER_CLUB = 6
 ALL_UPCOMING_LIMIT = 500
@@ -210,7 +214,7 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, grou
   all
 end
 
-def collect_adhoc(adhoc_list, now, range_end, slug: nil, group_id: nil)
+def collect_adhoc(adhoc_list, now, slug: nil, group_id: nil)
   return [] unless adhoc_list.is_a?(Array)
 
   all = []
@@ -232,7 +236,7 @@ def collect_adhoc(adhoc_list, now, range_end, slug: nil, group_id: nil)
               TZ.local_time(start_date.year, start_date.month, start_date.day, ehour, emin, 0)
             end
 
-    next if start_t < now || start_t > range_end
+    next if start_t < now
 
     sid = ev["special_event_id"].to_s.strip
     if sid.empty?
@@ -388,7 +392,7 @@ def main
     group_id = slug if group_id.empty?
 
     upcoming_recurring = collect_upcoming(normalised_recurring, now, range_end, slug: slug, group_id: group_id)
-    upcoming_adhoc = collect_adhoc(normalised_adhoc, now, range_end, slug: slug, group_id: group_id)
+    upcoming_adhoc = collect_adhoc(normalised_adhoc, now, slug: slug, group_id: group_id)
     full_upcoming = (upcoming_recurring + upcoming_adhoc).sort_by { |o| o["start_time"] }
     upcoming = full_upcoming.take(UPCOMING_PER_CLUB)
     yaml_locs = yaml_map_locations(locations_lookup)
