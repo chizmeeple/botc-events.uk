@@ -23,7 +23,6 @@ SITE_URL = "https://botc-events.uk"
 TZ = TZInfo::Timezone.get("Europe/London")
 # Unlike club events (generate_events.rb), special events are not capped by a
 # lookahead window: any future occurrence in the markdown is included.
-ALL_UPCOMING_LIMIT = 500
 
 EARTH_RADIUS_M = 6_371_000
 
@@ -259,7 +258,6 @@ def main
   end
 
   all_upcoming.sort_by! { |o| o["start_time"] }
-  all_upcoming = all_upcoming.take(ALL_UPCOMING_LIMIT)
 
   payload = {
     "generated_at" => now.utc.iso8601,
