@@ -13,6 +13,15 @@ require "time"
 require_relative "calendar_uid"
 
 SITE_URL = "https://botc-events.uk"
+CALENDAR_PREFIX = "🕯️🎭"
+
+def calendar_summary(text)
+  t = text.to_s.strip
+  return CALENDAR_PREFIX if t.empty?
+  return t if t.start_with?(CALENDAR_PREFIX)
+
+  "#{CALENDAR_PREFIX} #{t}"
+end
 
 def club_source_file_hint(row)
   slug = row["slug"].to_s.strip
@@ -45,7 +54,7 @@ def build_club_oneoff_event(row, feed_updated)
 
   based_in = row["based_in"].to_s.strip
   loc_name = row["location"].is_a?(Hash) ? row["location"]["name"].to_s.strip : ""
-  event.summary = [based_in, loc_name].reject(&:empty?).join(" - ")
+  event.summary = calendar_summary([based_in, loc_name].reject(&:empty?).join(" - "))
 
   event.uid = row_uid(row)
   event.dtstamp = Icalendar::Values::DateTime.new(feed_updated, "tzid" => "UTC")
@@ -96,7 +105,7 @@ def build_recurring_series_event(rows, feed_updated)
 
   based_in = first["based_in"].to_s.strip
   loc_name = first["location"].is_a?(Hash) ? first["location"]["name"].to_s.strip : ""
-  event.summary = [based_in, loc_name].reject(&:empty?).join(" - ")
+  event.summary = calendar_summary([based_in, loc_name].reject(&:empty?).join(" - "))
 
   event.uid = CalendarUid.ical_uid(group_id: first["group_id"], event_id: first["event_id"])
   event.dtstamp = Icalendar::Values::DateTime.new(feed_updated, "tzid" => "UTC")
@@ -138,7 +147,7 @@ def build_special_ics_event(row, feed_updated)
 
   based_in = row["based_in"].to_s.strip
   loc_name = row["location"].is_a?(Hash) ? row["location"]["name"].to_s.strip : ""
-  event.summary = [based_in, loc_name].reject(&:empty?).join(" - ")
+  event.summary = calendar_summary([based_in, loc_name].reject(&:empty?).join(" - "))
 
   event.uid = row_uid(row)
   event.dtstamp = Icalendar::Values::DateTime.new(feed_updated, "tzid" => "UTC")
