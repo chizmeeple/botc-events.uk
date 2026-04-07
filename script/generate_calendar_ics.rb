@@ -14,6 +14,7 @@ require_relative "calendar_uid"
 
 SITE_URL = "https://botc-events.uk"
 CALENDAR_PREFIX = "🕯️🎭"
+LONDON_TZID = "Europe/London"
 
 def calendar_summary(text)
   t = text.to_s.strip
@@ -43,14 +44,20 @@ def row_uid(row)
   CalendarUid.ical_uid(group_id: gid, event_id: eid, special_event_id: sid)
 end
 
+def ical_london_datetime(time)
+  # Emit Europe/London wall-clock time (no trailing "Z"), so calendar clients
+  # don't reinterpret local event times as UTC.
+  Icalendar::Values::DateTime.new(time.strftime("%Y%m%dT%H%M%S"), "tzid" => LONDON_TZID)
+end
+
 def build_club_oneoff_event(row, feed_updated)
-  dtstart = Time.parse(row["start_time"])
+  dtstart = Time.iso8601(row["start_time"].to_s)
   end_time_missing = row["end_time"].to_s.strip.empty?
-  dtend = end_time_missing ? dtstart + 7200 : Time.parse(row["end_time"])
+  dtend = end_time_missing ? dtstart + 7200 : Time.iso8601(row["end_time"].to_s)
 
   event = Icalendar::Event.new
-  event.dtstart = Icalendar::Values::DateTime.new(dtstart, "tzid" => "UTC")
-  event.dtend = Icalendar::Values::DateTime.new(dtend, "tzid" => "UTC")
+  event.dtstart = ical_london_datetime(dtstart)
+  event.dtend = ical_london_datetime(dtend)
 
   based_in = row["based_in"].to_s.strip
   loc_name = row["location"].is_a?(Hash) ? row["location"]["name"].to_s.strip : ""
@@ -94,13 +101,13 @@ def build_recurring_series_event(rows, feed_updated)
     exit 1
   end
 
-  dtstart = Time.parse(first["start_time"])
+  dtstart = Time.iso8601(first["start_time"].to_s)
   end_time_missing = first["end_time"].to_s.strip.empty?
-  dtend = end_time_missing ? dtstart + 7200 : Time.parse(first["end_time"])
+  dtend = end_time_missing ? dtstart + 7200 : Time.iso8601(first["end_time"].to_s)
 
   event = Icalendar::Event.new
-  event.dtstart = Icalendar::Values::DateTime.new(dtstart, "tzid" => "UTC")
-  event.dtend = Icalendar::Values::DateTime.new(dtend, "tzid" => "UTC")
+  event.dtstart = ical_london_datetime(dtstart)
+  event.dtend = ical_london_datetime(dtend)
   event.rrule = rrule
 
   based_in = first["based_in"].to_s.strip
@@ -137,13 +144,13 @@ def build_recurring_series_event(rows, feed_updated)
 end
 
 def build_special_ics_event(row, feed_updated)
-  dtstart = Time.parse(row["start_time"])
+  dtstart = Time.iso8601(row["start_time"].to_s)
   end_time_missing = row["end_time"].to_s.strip.empty?
-  dtend = end_time_missing ? dtstart + 7200 : Time.parse(row["end_time"])
+  dtend = end_time_missing ? dtstart + 7200 : Time.iso8601(row["end_time"].to_s)
 
   event = Icalendar::Event.new
-  event.dtstart = Icalendar::Values::DateTime.new(dtstart, "tzid" => "UTC")
-  event.dtend = Icalendar::Values::DateTime.new(dtend, "tzid" => "UTC")
+  event.dtstart = ical_london_datetime(dtstart)
+  event.dtend = ical_london_datetime(dtend)
 
   based_in = row["based_in"].to_s.strip
   loc_name = row["location"].is_a?(Hash) ? row["location"]["name"].to_s.strip : ""
