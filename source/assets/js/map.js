@@ -70,6 +70,37 @@
     return lat.toFixed(6) + "," + lng.toFixed(6);
   }
 
+  function isMobileViewport() {
+    // Keep this aligned with the CSS breakpoint for the home drawer/sidebar.
+    return window.matchMedia && window.matchMedia("(max-width: 991px)").matches;
+  }
+
+  function mobileDrawerOverlapPx() {
+    if (!isMobileViewport()) return 0;
+    var sidebar = document.getElementById("sidebar");
+    if (!sidebar) return 0;
+    var rect = sidebar.getBoundingClientRect();
+    if (!rect || typeof rect.top !== "number") return 0;
+    // Sidebar is fixed to bottom; the portion visible is how much covers the map.
+    var visible = window.innerHeight - rect.top;
+    if (!isFinite(visible)) return 0;
+    return Math.max(0, Math.round(visible));
+  }
+
+  function fitBoundsOptions() {
+    var base = 30;
+    return { padding: [base, base] };
+  }
+
+  function panUpForMobileDrawer(map) {
+    if (!map) return;
+    var extraBottom = mobileDrawerOverlapPx();
+    if (!extraBottom) return;
+    // Move the map down so the "interesting area" appears higher,
+    // avoiding the mobile drawer without forcing a zoom-out.
+    map.panBy([0, Math.round(extraBottom / 2)], { animate: false });
+  }
+
   var GameClubMap = {
     map: null,
     markers: null,
@@ -249,6 +280,11 @@
       if (!this.map) return;
       var targetZoom = typeof zoom === "number" ? zoom : Math.max(this.map.getZoom(), 11);
       this.map.setView([lat, lng], targetZoom);
+      var extraBottom = mobileDrawerOverlapPx();
+      if (extraBottom) {
+        // Nudge the target above the mobile drawer.
+        this.map.panBy([0, Math.round(extraBottom / 2)], { animate: false });
+      }
     },
 
     /**
@@ -270,7 +306,8 @@
     fitToMarkers: function () {
       var b = this._allMarkerBounds();
       if (b.isValid()) {
-        this.map.fitBounds(b, { padding: [30, 30] });
+        this.map.fitBounds(b, fitBoundsOptions());
+        panUpForMobileDrawer(this.map);
       }
     },
 
@@ -294,7 +331,8 @@
       var bounds = this._allMarkerBounds();
       if (bounds.isValid()) {
         bounds.extend([lat, lng]);
-        this.map.fitBounds(bounds, { padding: [30, 30] });
+        this.map.fitBounds(bounds, fitBoundsOptions());
+        panUpForMobileDrawer(this.map);
       } else {
         this.map.setView([lat, lng], 12);
       }
