@@ -786,6 +786,13 @@
     transform 0.2s ease;
   animation: fadeSlideIn 0.35s ease both;
 
+  &.club-card--special {
+    border-color: #e8a317;
+    border-width: 2px;
+    background: rgba(232, 163, 23, 0.08);
+    box-shadow: 0 0 0 1px rgba(232, 163, 23, 0.12);
+  }
+
   // Stagger entrance: JS-rendered cards won't get nth-child, but noscript ones will
   @for $i from 1 through 20 {
     &:nth-child(#{$i}) {
@@ -803,6 +810,13 @@
       .club-name {
         color: var(--color-accent);
       }
+    }
+
+    &.club-card--special:hover {
+      border-color: #e8a317;
+      box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.06),
+        0 0 0 3px rgba(232, 163, 23, 0.18);
     }
   }
 
