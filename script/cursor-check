@@ -13,5 +13,5 @@ export GEM_PATH="/Users/chisel/.gem/ruby/3.4.5:/Users/chisel/.rubies/ruby-3.4.5/
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
-exec /Users/chisel/.gem/ruby/3.4.5/bin/bundler exec jekyll build
+exec "${RUBY_ROOT}/bin/bundler" exec jekyll build
 
