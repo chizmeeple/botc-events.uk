@@ -24,4 +24,11 @@ events:
     starttime: 1500
     location: bargammons-tavern
     special_event_id: blood-on-the-clocktower-20260321
+  - eventname: Blood on the Clocktower
+    signup: https://bargammon.co.uk/events/
+    cost: "£6"
+    startdate: 2026-05-30
+    starttime: 1500
+    location: bargammons-tavern
+    special_event_id: blood-on-the-clocktower-20260530
 ---
