@@ -13,6 +13,7 @@ description: |-
   If you haven’t heard of Blood on the Clocktower before it is an evolution of classic party games like Mafia/Werewolf where a hidden evil team takes on the good team by lying and killing. The good team has a few tricks up their sleeve but will have to work together to deduce who the evil doers are in their midst. In the middle of it all is our Storyteller who will be running the game and providing information based on the secret unique roles each player has.
   This is a beginner friendly event so no experience with the game is necessary.
   On average each game will last approximately 90 minutes.
+  WhatsApp group: <a href="https://chat.whatsapp.com/IXDTV6tVYOYIY2zZ4puB4T">https://chat.whatsapp.com/IXDTV6tVYOYIY2zZ4puB4T</a>
 locations:
   the-space:
     name: The Space
@@ -35,4 +36,12 @@ events:
       starttime: 1830
       location: the-space
       special_event_id: blood-on-the-clocktower-20260414
+    - eventname: Blood on the Clocktower
+      signup: https://space.org.uk/event/blood-on-the-clocktower/
+      cost: "£4"
+      startdate: 2026-05-19
+      starttime: 1830
+      endtime: 2300
+      location: the-space
+      special_event_id: blood-on-the-clocktower-20260519
 ---

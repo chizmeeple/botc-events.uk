@@ -41,4 +41,28 @@ events:
     endtime: 2100
     location: roll-the-dice-cafe
     special_event_id: blood-on-the-clocktower-20260308-2
+  - eventname: Beginner Session - Trouble Brewing
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-05-31
+    starttime: 1100
+    endtime: 1400
+    location: roll-the-dice-cafe
+    special_event_id: beginner-session-trouble-brewing-20260531
+  - eventname: Standard Session - Tentacle Reach
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-05-31
+    starttime: 1430
+    endtime: 1700
+    location: roll-the-dice-cafe
+    special_event_id: standard-session-tentacle-reach-20260531
+  - eventname: Standard Session - Average IQ of 42 Script
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-05-31
+    starttime: 1800
+    endtime: 2030
+    location: roll-the-dice-cafe
+    special_event_id: standard-session-average-iq-of-42-script-20260531
 ---
