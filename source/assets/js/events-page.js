@@ -220,11 +220,16 @@
         });
       }
 
-      // Sort by distance
+      // Sort by soonest day first, then nearest within the same day
       results.sort(function (a, b) {
+        var ka = dateKey(a.start_time);
+        var kb = dateKey(b.start_time);
+        if (ka !== kb) return ka.localeCompare(kb);
+
         var da = a._distance !== undefined ? a._distance : Infinity;
         var db = b._distance !== undefined ? b._distance : Infinity;
         if (da !== db) return da - db;
+
         return (a.start_time || "").localeCompare(b.start_time || "");
       });
     } else {
@@ -260,24 +265,15 @@
     }
 
     var html = "";
-    if (userLat !== null && userLng !== null) {
-      // Sorted by distance: show a single list so "nearest to My location" is accurate
+    var grouped = groupByDate(events);
+    grouped.forEach(function (g) {
+      html += '<h2>' + escapeHtml(g.dateLabel) + "</h2>";
       html += '<ul class="upcoming-events-list">';
-      events.forEach(function (occ) {
+      g.items.forEach(function (occ) {
         html += renderEventCard(occ);
       });
       html += "</ul>";
-    } else {
-      var grouped = groupByDate(events);
-      grouped.forEach(function (g) {
-        html += '<h2>' + escapeHtml(g.dateLabel) + "</h2>";
-        html += '<ul class="upcoming-events-list">';
-        g.items.forEach(function (occ) {
-          html += renderEventCard(occ);
-        });
-        html += "</ul>";
-      });
-    }
+    });
 
     container.innerHTML = html;
     if (window.Iconify && Iconify.scan) Iconify.scan(container);
@@ -296,7 +292,7 @@
 
     var locationLabel = window.GameClubLocation && window.GameClubLocation.getActiveLabel ? window.GameClubLocation.getActiveLabel() : null;
     if (locationLabel) {
-      text += " · sorted by nearest to " + locationLabel;
+      text += " · sorted by soonest first (then nearest to " + locationLabel + " on the same day)";
     }
 
     el.textContent = text;
