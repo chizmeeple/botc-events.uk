@@ -33,4 +33,20 @@ events:
     endtime: 2200
     location: waterstones-cambridge
     special_event_id: botc-at-cambridge-waterstones-20260418
+  - eventname: BotC at Cambridge Waterstones
+    signup: https://www.waterstones.com/events/board-games-night-and-disney-lorcana-set-championship/cambridge
+    cost: Unknown
+    startdate: 2026-05-09
+    starttime: 1800
+    endtime: 2200
+    location: waterstones-cambridge
+    special_event_id: botc-at-cambridge-waterstones-20260509
+  - eventname: BotC at Cambridge Waterstones
+    signup: https://www.waterstones.com/events/games-night-in-cambridge/cambridge-164367
+    cost: Unknown
+    startdate: 2026-05-22
+    starttime: 1800
+    endtime: 2200
+    location: waterstones-cambridge
+    special_event_id: botc-at-cambridge-waterstones-20260522
 ---
