@@ -4,7 +4,7 @@ based_in: Basingstoke
 group_id: 2026-05-17-basingstoke-mini-con
 image: ''
 banner_image: ''
-website: https://www.dicetowercafe.co.uk/event/blood-at-the-dicetower-mini-con/
+website: https://www.taverngaming.co.uk/events/
 discord: https://www.tiny.cc/dtdiscord
 clocktracker: ''
 description: |-
