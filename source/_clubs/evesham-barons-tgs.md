@@ -31,7 +31,7 @@ locations:
 events:
   adhoc:
   - eventname: Blood on the Clocktower @ EBTGS
-    signup: https://www.eventbrite.co.uk/e/19th-april-blood-on-the-clocktower-evesham-worcestershire-ebtgs-tickets-1985189611568
+    signup: https://eveshamclocktower.mezepheles.com/
     cost: "£5 (18+), £2 (ages 15–17)"
     startdate: 2026-06-14
     starttime: 1000
