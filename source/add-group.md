@@ -93,7 +93,7 @@ events:
 | `locations`        | Venues keyed by slug (e.g. `the-kings-arms`). Each needs `name`, `address`, `lat`, `lng`                                                              |
 | `events.recurring` | Array of recurring events. Each needs `eventname`, `event_id` (stable, unique within the group), `signup`, `cost`, `startdate`, `starttime`, `endtime`, `rrule`, `location` (slug from `locations`) |
 | `events.adhoc`     | Array of one-off events. Each needs `eventname`, `special_event_id` (stable, unique within the group), `signup`, `cost`, `startdate`, `starttime`, `location`. Optionally `endtime`               |
-| `rrule`            | Recurrence rule, e.g. `FREQ=WEEKLY;BYDAY=TU` (every Tuesday), `FREQ=MONTHLY;BYDAY=2SA` (2nd Saturday of month)                                        |
+| `rrule`            | Recurrence rule, e.g. `FREQ=WEEKLY;BYDAY=TU` (every Tuesday), `FREQ=MONTHLY;BYDAY=2SA` (2nd Saturday of month) FREQ=WEEKLY;INTERVAL=2;BYDAY=WE (every other Wednesday)                             |
 
 ### Extended Information: Parking
 
