@@ -31,30 +31,6 @@ locations:
 events:
   adhoc:
   - eventname: Blood on the Clocktower @ EBTGS
-    signup: https://www.eventbrite.co.uk/e/8th-march-blood-on-the-clocktower-evesham-worcestershire-ebtgs-tickets-1981806513631
-    cost: "£5 (18+), £2 (ages 15–17)"
-    startdate: 2026-03-08
-    starttime: 1000
-    endtime: 1600
-    location: wallace-house
-    special_event_id: blood-on-the-clocktower-ebtgs-20260308
-  - eventname: Blood on the Clocktower @ EBTGS
-    signup: https://www.eventbrite.co.uk/e/22nd-march-blood-on-the-clocktower-evesham-worcestershire-ebtgs-tickets-1981806657060
-    cost: "£5 (18+), £2 (ages 15–17)"
-    startdate: 2026-03-22
-    starttime: 1000
-    endtime: 1600
-    location: wallace-house
-    special_event_id: blood-on-the-clocktower-ebtgs-20260322
-  - eventname: Blood on the Clocktower @ EBTGS
-    signup: https://www.eventbrite.co.uk/e/19th-april-blood-on-the-clocktower-evesham-worcestershire-ebtgs-tickets-1985189611568
-    cost: "£5 (18+), £2 (ages 15–17)"
-    startdate: 2026-04-19
-    starttime: 1000
-    endtime: 1600
-    location: wallace-house
-    special_event_id: blood-on-the-clocktower-ebtgs-20260419
-  - eventname: Blood on the Clocktower @ EBTGS
     signup: https://www.eventbrite.co.uk/e/19th-april-blood-on-the-clocktower-evesham-worcestershire-ebtgs-tickets-1985189611568
     cost: "£5 (18+), £2 (ages 15–17)"
     startdate: 2026-06-14
