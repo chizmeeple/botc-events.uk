@@ -2,7 +2,7 @@
 name: Clocktower Leamington
 based_in: Leamington Spa
 group_id: leamington-clocktower
-image: ''
+image: 'leamington-clocktower.jpg'
 website: https://clocktowerleam.com/
 meetup: ''
 facebook: ''
@@ -22,25 +22,12 @@ events:
   recurring:
   - eventname: Clocktower Leamington
     signup: https://clocktowerleam.com/
-    cost: Unknown
+    cost: "Free"
     startdate: 2026-04-01
     starttime: 1900
+    endtime: 2200
     rrule: FREQ=MONTHLY;BYDAY=1TH,3TU
     location: royal-pug
     event_id: clocktower-leamington
-  adhoc:
-  - eventname: Clocktower Leamington
-    signup: https://clocktowerleam.com/Mar26a
-    cost: Unknown
-    startdate: 2026-03-05
-    starttime: 1900
-    location: royal-pug
-    special_event_id: clocktower-leamington-20260305
-  - eventname: Clocktower Leamington
-    signup: https://clocktowerleam.com/Mar26b
-    cost: Unknown
-    startdate: 2026-03-18
-    starttime: 1900
-    location: royal-pug
-    special_event_id: clocktower-leamington-20260318
+  adhoc: []
 ---
