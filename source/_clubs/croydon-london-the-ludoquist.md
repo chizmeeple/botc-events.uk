@@ -49,6 +49,6 @@ events:
       cost: "£8"
       startdate: 2026-04-10
       starttime: 1900
-      rrule: "FREQ=MONTHLY;BYDAY=2TU"
+      rrule: "FREQ=WEEKLY;BYDAY=FR"
       location: "the-ludoquist"
 ---
