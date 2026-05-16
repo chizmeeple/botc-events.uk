@@ -1,8 +1,9 @@
-# .github/workflows/auto-author-assign.yml
-name: Auto Author Assign
+---
+name: Assign PR Owner
 
 on:
-  - pull_request
+  pull_request:
+    types: [opened, reopened]
 
 permissions:
   pull-requests: write
