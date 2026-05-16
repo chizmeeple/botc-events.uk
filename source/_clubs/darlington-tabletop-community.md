@@ -34,4 +34,12 @@ events:
       endtime: 2100
       location: darlington-connect
       special_event_id: darlington-blood-on-the-clocktower-20260425
+    - eventname: Darlington Blood on the Clocktower
+      signup: https://forms.gle/VdnTUKRvjVzTCaj17
+      cost: Free
+      startdate: 2026-05-23
+      starttime: 1700
+      endtime: 2100
+      location: darlington-connect
+      special_event_id: darlington-blood-on-the-clocktower-20260523
 ---
