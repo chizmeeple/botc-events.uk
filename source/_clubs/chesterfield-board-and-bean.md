@@ -56,4 +56,36 @@ events:
       starttime: 1800
       endtime: 2200
       location: "board-and-bean"
+    - eventname: "Blood on the Clocktower 12th June"
+      special_event_id: "board-bean-chesterfield-20260612"
+      signup: "https://boardandbean.co.uk/events"
+      cost: "£5"
+      startdate: 2026-06-12
+      starttime: 1800
+      endtime: 2200
+      location: "board-and-bean"
+    - eventname: "Blood on the Clocktower 10th July"
+      special_event_id: "board-bean-chesterfield-20260710"
+      signup: "https://boardandbean.co.uk/events"
+      cost: "£5"
+      startdate: 2026-07-10
+      starttime: 1800
+      endtime: 2200
+      location: "board-and-bean"
+    - eventname: "Blood on the Clocktower 24th July"
+      special_event_id: "board-bean-chesterfield-20260724"
+      signup: "https://boardandbean.co.uk/events"
+      cost: "£5"
+      startdate: 2026-07-24
+      starttime: 1800
+      endtime: 2200
+      location: "board-and-bean"
+    - eventname: "Blood on the Clocktower 7th August"
+      special_event_id: "board-bean-chesterfield-20260807"
+      signup: "https://boardandbean.co.uk/events"
+      cost: "£5"
+      startdate: 2026-08-07
+      starttime: 1800
+      endtime: 2200
+      location: "board-and-bean"
 ---
