@@ -1,6 +1,6 @@
 ---
 name: Patch
-based_in: ''
+based_in: York
 group_id: york-patch
 image: ''
 website: ''
