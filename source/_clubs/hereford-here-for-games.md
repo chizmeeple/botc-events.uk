@@ -27,4 +27,20 @@ events:
     endtime: 2359
     location: the-core
     special_event_id: blood-on-the-clocktower-20260327
+  - eventname: Blood on the Clocktower
+    signup: https://herefor.games/events/
+    cost: Free
+    startdate: 2026-06-19
+    starttime: 1830
+    endtime: 2359
+    location: the-core
+    special_event_id: blood-on-the-clocktower-20260619
+  - eventname: Blood on the Clocktower
+    signup: https://herefor.games/events/
+    cost: Free
+    startdate: 2026-07-24
+    starttime: 1830
+    endtime: 2359
+    location: the-core
+    special_event_id: blood-on-the-clocktower-20260724
 ---
