@@ -20,27 +20,64 @@ locations:
     address: 34-36 South St, Worthing, BN11 3AA
     lat: 50.81118343017858
     lng: -0.37098167288782924
+  brewhouse:
+    name: Brewhouse & Kitchen
+    address: 14 Wykeham Rd, Worthing BN11 4JD
+    lat: 50.814185
+    lng: -0.380937
 events:
   adhoc:
   - eventname: Blood on the Clocktower
-    signup: https://discord.gg/PUTkJXwUJY
-    cost: Unknown
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
     startdate: 2026-04-10
     starttime: 1900
     location: wsk-cafe
     special_event_id: blood-on-the-clocktower-20260410
   - eventname: Blood on the Clocktower
-    signup: https://discord.gg/PUTkJXwUJY
-    cost: Unknown
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
     startdate: 2026-04-18
     starttime: 1800
     location: g-zone
     special_event_id: blood-on-the-clocktower-20260418
   - eventname: Blood on the Clocktower
-    signup: https://discord.gg/PUTkJXwUJY
-    cost: Unknown
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
     startdate: 2026-04-24
     starttime: 1900
     location: wsk-cafe
     special_event_id: blood-on-the-clocktower-20260424
+  - eventname: Blood on the Clocktower
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
+    startdate: 2026-05-08
+    starttime: 1900
+    endtime: 2300
+    location: wsk-cafe
+    special_event_id: blood-on-the-clocktower-20260508
+  - eventname: Blood on the Clocktower
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
+    startdate: 2026-05-16
+    starttime: 1800
+    endtime: 2200
+    location: g-zone
+    special_event_id: blood-on-the-clocktower-20260516
+  - eventname: Blood on the Clocktower
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
+    startdate: 2026-05-18
+    starttime: 1900
+    endtime: 2300
+    location: brewhouse
+    special_event_id: blood-on-the-clocktower-20260518
+  - eventname: Blood on the Clocktower
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
+    startdate: 2026-05-22
+    starttime: 1900
+    endtime: 2300
+    location: wsk-cafe
+    special_event_id: blood-on-the-clocktower-20260522
 ---

@@ -28,4 +28,12 @@ events:
       starttime: 1800
       endtime: 2200
       location: "stable-games-room"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "weston-super-mare-stable-games-room-20260612"
+      signup: "https://www.thestable.online/the-games-room"
+      cost: "Free"
+      startdate: 2026-06-12
+      starttime: 1800
+      endtime: 2200
+      location: "stable-games-room"
 ---

@@ -44,4 +44,22 @@ events:
       startdate: 2026-05-04
       starttime: 1900
       location: "the-horseshoe-inn"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "wolves-ravenswood-20260608"
+      signup: "https://discord.gg/U7aaBNW6qp"
+      cost: "Unknown"
+      startdate: 2026-06-08
+      starttime: 1900
+      endtime: 2300
+      location: "the-horseshoe-inn"
+  recurring:
+    - eventname: "Blood on the Clocktower"
+      event_id: "wolves-ravenswood-first-monday"
+      signup: "https://discord.gg/U7aaBNW6qp"
+      cost: "Unknown"
+      startdate: 2026-07-06
+      starttime: 1900
+      endtime: 2300
+      rrule: "FREQ=MONTHLY;BYDAY=1MO"
+      location: "the-horseshoe-inn"
 ---
