@@ -8,7 +8,10 @@ meetup: https://www.meetup.com/exeter-board-gamers/
 facebook: ''
 discord: ''
 bgg: ''
-description: Blood on the Clocktower in Exeter (beginner-friendly games).
+description: >-
+  Blood on the Clocktower in Exeter (beginner-friendly games) at White Hart in
+  the city centre, under 10 minutes' walk from Exeter Central station. Free to
+  play; please buy a drink or food at the venue if you can.
 locations:
   white-hart:
     name: White Hart by Marston's Inns
@@ -33,4 +36,20 @@ events:
     endtime: 2300
     location: white-hart
     special_event_id: blood-on-the-clocktower-20260515
+  - eventname: Blood on the Clocktower
+    signup: https://www.meetup.com/exeter-board-gamers/events/314368308/
+    cost: Free
+    startdate: 2026-06-05
+    starttime: 1700
+    endtime: 2200
+    location: white-hart
+    special_event_id: blood-on-the-clocktower-20260605
+  - eventname: Blood on the Clocktower
+    signup: https://www.meetup.com/exeter-board-gamers/events/314368423/
+    cost: Free
+    startdate: 2026-06-21
+    starttime: 1215
+    endtime: 1830
+    location: white-hart
+    special_event_id: blood-on-the-clocktower-20260621
 ---
