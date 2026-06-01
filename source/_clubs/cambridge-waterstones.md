@@ -49,4 +49,20 @@ events:
     endtime: 2200
     location: waterstones-cambridge
     special_event_id: botc-at-cambridge-waterstones-20260522
+  - eventname: BotC at Cambridge Waterstones
+    signup: https://www.waterstones.com/events/games-night-in-cambridge/cambridge-166194
+    cost: Unknown
+    startdate: 2026-06-06
+    starttime: 1800
+    endtime: 2200
+    location: waterstones-cambridge
+    special_event_id: botc-at-cambridge-waterstones-20260606
+  - eventname: BotC at Cambridge Waterstones
+    signup: https://www.waterstones.com/events/games-night-in-cambridge/cambridge-166196
+    cost: Unknown
+    startdate: 2026-06-19
+    starttime: 1800
+    endtime: 2200
+    location: waterstones-cambridge
+    special_event_id: botc-at-cambridge-waterstones-20260619
 ---
