@@ -3,7 +3,7 @@ name: The Tavern Gaming Cafe
 based_in: Basingstoke
 group_id: basingstoke-dice-tower
 image: basingstoke-the-tavern.png
-website: https://www.dicetowercafe.co.uk/clocktower/
+website: https://www.taverngaming.co.uk/
 meetup: ""
 facebook: ""
 discord: ""
@@ -13,6 +13,7 @@ description: |-
   A Social Deduction Game at its finest. Across three main versions of the game, Blood on the Clocktower offers 99 unique characters each with their own ability to help your team prevail. You will either be Good or Evil, playing for your side.
   One of you, will be the Demon, killing at night to take over the town. Will Evil manage to bluff and kill their way to victory? Or will Good see though the web of lies and manage to execute the Demon before it’s too late?
   We run weekly on Tuesdays from 6:00pm – 10:00pm along with selected Sundays.
+  Book early — bookings close 24 hours before each event.
 locations:
   the-tavern-basingstoke:
     name: The Tavern
@@ -58,17 +59,89 @@ locations:
 events:
   recurring:
     - eventname: Blood on the Clocktower – Any Script Week
-      signup: https://www.dicetowercafe.co.uk/clocktower/
+      signup: https://www.taverngaming.co.uk/events/
       cost: "£3"
-      startdate: 2026-03-03
+      startdate: 2026-07-07
       starttime: 1800
       endtime: 2200
       rrule: FREQ=WEEKLY;BYDAY=TU
       location: the-tavern-basingstoke
       event_id: blood-on-the-clocktower-any-script-week
   adhoc:
+    - eventname: Blood on the Clocktower – Beginner Friendly Week
+      signup: https://www.taverngaming.co.uk/events/
+      cost: "£3"
+      startdate: 2026-06-02
+      starttime: 1800
+      endtime: 2200
+      location: the-tavern-basingstoke
+      special_event_id: blood-on-the-clocktower-20260602-beginner
+    - eventname: Blood on the Clocktower – Script Competition Finals
+      signup: https://www.taverngaming.co.uk/events/
+      cost: "£3"
+      startdate: 2026-06-09
+      starttime: 1800
+      endtime: 2200
+      location: the-tavern-basingstoke
+      special_event_id: blood-on-the-clocktower-20260609-finals
+    - eventname: Blood on the Clocktower – Beginner Session
+      signup: https://www.taverngaming.co.uk/events/
+      cost: "£4"
+      startdate: 2026-06-14
+      starttime: 1200
+      endtime: 1615
+      location: the-tavern-basingstoke
+      special_event_id: blood-on-the-clocktower-20260614-am
+    - eventname: Blood on the Clocktower – Advanced Session
+      signup: https://www.taverngaming.co.uk/events/
+      cost: "£4"
+      startdate: 2026-06-14
+      starttime: 1645
+      endtime: 2100
+      location: the-tavern-basingstoke
+      special_event_id: blood-on-the-clocktower-20260614-pm
+    - eventname: Blood on the Clocktower – Any Script Night
+      signup: https://www.taverngaming.co.uk/events/
+      cost: "£3"
+      startdate: 2026-06-16
+      starttime: 1800
+      endtime: 2200
+      location: the-tavern-basingstoke
+      special_event_id: blood-on-the-clocktower-20260616
+    - eventname: Blood on the Clocktower – Any Script Night
+      signup: https://www.taverngaming.co.uk/events/
+      cost: "£3"
+      startdate: 2026-06-23
+      starttime: 1800
+      endtime: 2200
+      location: the-tavern-basingstoke
+      special_event_id: blood-on-the-clocktower-20260623
+    - eventname: Blood on the Clocktower – Advanced Session
+      signup: https://www.taverngaming.co.uk/events/
+      cost: "£4"
+      startdate: 2026-06-28
+      starttime: 1200
+      endtime: 1615
+      location: the-tavern-basingstoke
+      special_event_id: blood-on-the-clocktower-20260628-am
+    - eventname: Blood on the Clocktower – Beginner Session
+      signup: https://www.taverngaming.co.uk/events/
+      cost: "£4"
+      startdate: 2026-06-28
+      starttime: 1645
+      endtime: 2100
+      location: the-tavern-basingstoke
+      special_event_id: blood-on-the-clocktower-20260628-pm
+    - eventname: Blood on the Clocktower – Any Script Night
+      signup: https://www.taverngaming.co.uk/events/
+      cost: "£3"
+      startdate: 2026-06-30
+      starttime: 1800
+      endtime: 2200
+      location: the-tavern-basingstoke
+      special_event_id: blood-on-the-clocktower-20260630
     - eventname: Blood on the Clocktower – Sundays
-      signup: https://www.dicetowercafe.co.uk/clocktower/
+      signup: https://www.taverngaming.co.uk/events/
       cost: "£4"
       startdate: 2026-03-08
       starttime: 1200
@@ -76,7 +149,7 @@ events:
       location: the-tavern-basingstoke
       special_event_id: blood-on-the-clocktower-sundays-20260308
     - eventname: Blood on the Clocktower – Sundays
-      signup: https://www.dicetowercafe.co.uk/clocktower/
+      signup: https://www.taverngaming.co.uk/events/
       cost: "£4"
       startdate: 2026-03-22
       starttime: 1200
