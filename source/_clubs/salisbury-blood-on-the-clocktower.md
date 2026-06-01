@@ -19,6 +19,13 @@ locations:
     lat: 51.06734495449047
     lng: -1.7936545058252304
     website: https://www.thetabletoptavern.uk/
+    parking:
+      - onsite: false
+        free: true
+        name: Brown Street car park
+        address: Brown Street, Salisbury SP1 1HE (adjacent to The Red Lion Hotel)
+        notes: >-
+          Free parking after 6pm.
 events:
   recurring:
     - eventname: 'Blood on the Clocktower: Trouble Brewing'

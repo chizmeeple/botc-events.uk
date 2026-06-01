@@ -21,7 +21,21 @@ locations:
     address: The Tetley, Hunslet Rd, Leeds LS10 1JQ
     lat: 53.79203682946148
     lng: -1.539724842327518
+  ireland-wood-st-pauls:
+    name: Ireland Wood Games (St Paul's Church)
+    address: Raynel Drive, Ireland Wood, Leeds LS16 6BS
+    lat: 53.8520021
+    lng: -1.6029185
 events:
+  adhoc:
+    - eventname: Blood on the Clocktower - Ireland Wood Games
+      signup: https://www.facebook.com/groups/242662616421670/
+      cost: Free
+      startdate: 2026-06-13
+      starttime: 1000
+      endtime: 1800
+      location: ireland-wood-st-pauls
+      special_event_id: ireland-wood-games-20260613
   recurring:
   - eventname: Blood on the Clocktower
     signup: https://www.meetup.com/leeds-nerds/events/
