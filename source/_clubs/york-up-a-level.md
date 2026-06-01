@@ -34,4 +34,12 @@ events:
     endtime: 2200
     location: up-a-level
     special_event_id: blood-on-the-clocktower-20260418
+  - eventname: Blood on the Clocktower
+    signup: https://www.upalevelyork.co.uk/get-in-touch/
+    cost: "£5"
+    startdate: 2026-06-06
+    starttime: 1830
+    endtime: 2230
+    location: up-a-level
+    special_event_id: blood-on-the-clocktower-20260606
 ---
