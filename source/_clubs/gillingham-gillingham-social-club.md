@@ -34,4 +34,11 @@ events:
     starttime: 1700
     location: social-club
     special_event_id: blood-on-the-clocktower-20260405
+  - eventname: Blood on the Clocktower (Beginner Friendly)
+    signup: https://discord.gg/PUTkJXwUJY
+    cost: "£4"
+    startdate: 2026-06-28
+    starttime: 1900
+    location: social-club
+    special_event_id: blood-on-the-clocktower-20260628
 ---
