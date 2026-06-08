@@ -8,7 +8,9 @@ meetup: ''
 facebook: ''
 discord: ''
 bgg: ''
-description: York based Blood on the Clocktower
+description: >-
+  York based Blood on the Clocktower at Up A Level. Sessions run every two
+  weeks on Saturdays, 6:30pm, £5 per player.
 locations:
   up-a-level:
     name: Up A Level
@@ -16,30 +18,14 @@ locations:
     lat: 53.9590373689484
     lng: -1.0820517183562828
 events:
-  recurring: 
-  adhoc:
-  - eventname: Blood on the Clocktower
-    signup: https://www.upalevelyork.co.uk/get-in-touch/
-    cost: "£5"
-    startdate: 2026-04-11
-    starttime: 1800
-    endtime: 2200
-    location: up-a-level
-    special_event_id: blood-on-the-clocktower-20260411
-  - eventname: Blood on the Clocktower
-    signup: https://www.upalevelyork.co.uk/get-in-touch/
-    cost: "£5"
-    startdate: 2026-04-18
-    starttime: 1800
-    endtime: 2200
-    location: up-a-level
-    special_event_id: blood-on-the-clocktower-20260418
-  - eventname: Blood on the Clocktower
-    signup: https://www.upalevelyork.co.uk/get-in-touch/
-    cost: "£5"
-    startdate: 2026-06-06
-    starttime: 1830
-    endtime: 2230
-    location: up-a-level
-    special_event_id: blood-on-the-clocktower-20260606
+  recurring:
+    - eventname: Blood on the Clocktower
+      event_id: fortnightly-saturday-up-a-level
+      signup: https://www.upalevelyork.co.uk/get-in-touch/
+      cost: "£5"
+      startdate: 2026-06-20
+      starttime: 1830
+      endtime: 2230
+      rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=SA
+      location: up-a-level
 ---
