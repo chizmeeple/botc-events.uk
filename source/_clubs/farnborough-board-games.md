@@ -13,18 +13,14 @@ description: We've been meeting in Farnborough since 2016 and have grown into a 
   welcoming group of regulars and newcomers alike. Whether you're completely new to
   the hobby or you've got shelves full of cardboard at home, you'll fit in just fine.
 locations:
-  monkey-puzzle:
-    name: Monkey Puzzle (Brewer's Fayre)
-    address: Monkey Puzzle (Brewer's Fayre), Farnborough, GU14 0LE
-    lat: 51.288782720425026
-    lng: -0.7786554104110263
+  new-inn:
+    name: New Inn
+    address: Hawley Rd, Blackwater, Farnborough, Camberley GU17 9ES
+    lat: 51.3171511849935
+    lng: -0.766192505084449
     parking:
     - onsite: true
       free: true
-      notes: Car parking is FREE at the venue but you MUST register your vehicle at
-        the ipad/terminal next to the PREMIER INN reception desk. Select "1 night".
-        <b>DO NOT register your vehicle at the pub's terminal(s) - these allow a maximum
-        of 3 hours.</b>
 events:
   recurring:
   - eventname: Blood on the Clocktower (Beginner Friendly)
@@ -34,7 +30,7 @@ events:
     starttime: 1850
     endtime: 2200
     rrule: FREQ=MONTHLY;BYDAY=2TU
-    location: monkey-puzzle
+    location: new-inn
     event_id: blood-on-the-clocktower-beginner-friendly
   - eventname: Blood on the Clocktower (Intermediate+)
     signup: https://www.meetup.com/farnborough-board-games-club/
@@ -43,6 +39,6 @@ events:
     starttime: 1850
     endtime: 2200
     rrule: FREQ=MONTHLY;BYDAY=4TU
-    location: monkey-puzzle
+    location: new-inn
     event_id: blood-on-the-clocktower-intermediate
 ---
