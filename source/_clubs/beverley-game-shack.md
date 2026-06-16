@@ -121,4 +121,36 @@ events:
     endtime: 2100
     location: the-game-shack
     special_event_id: blood-on-the-clocktower-20260626
+  - eventname: Blood on the Clocktower
+    signup: https://the-game-shack.sumupstore.com
+    cost: "£3"
+    startdate: 2026-07-03
+    starttime: 1830
+    endtime: 2100
+    location: the-game-shack
+    special_event_id: blood-on-the-clocktower-20260703
+  - eventname: Blood on the Clocktower
+    signup: https://the-game-shack.sumupstore.com
+    cost: "£3"
+    startdate: 2026-07-11
+    starttime: 1830
+    endtime: 2100
+    location: the-game-shack
+    special_event_id: blood-on-the-clocktower-20260711
+  - eventname: Blood on the Clocktower
+    signup: https://the-game-shack.sumupstore.com
+    cost: "£3"
+    startdate: 2026-07-24
+    starttime: 1830
+    endtime: 2100
+    location: the-game-shack
+    special_event_id: blood-on-the-clocktower-20260724
+  - eventname: Blood on the Clocktower
+    signup: https://the-game-shack.sumupstore.com
+    cost: "£3"
+    startdate: 2026-07-31
+    starttime: 1830
+    endtime: 2100
+    location: the-game-shack
+    special_event_id: blood-on-the-clocktower-20260731
 ---
