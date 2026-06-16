@@ -8,9 +8,11 @@
 
 require "json"
 require "icalendar"
+require "date"
 require "time"
 
 require_relative "calendar_uid"
+require_relative "recurrence_rules"
 
 SITE_URL = "https://botc-events.uk"
 CALENDAR_PREFIX = "🕯️🎭"
@@ -109,6 +111,26 @@ def build_recurring_series_event(rows, feed_updated)
   event.dtstart = ical_london_datetime(dtstart)
   event.dtend = ical_london_datetime(dtend)
   event.rrule = rrule
+
+  exrule = first["exrule"].to_s.strip
+  if !exrule.empty?
+    recurrence_start = first["recurrence_startdate"].to_s.strip
+    if recurrence_start.empty?
+      warn "ERROR: missing recurrence_startdate for recurring series with exrule #{first["group_id"]}.#{first["event_id"]}#{club_source_file_hint(first)}"
+      exit 1
+    end
+
+    range_start = feed_updated
+    range_end = feed_updated + (RecurrenceRules::LOOKAHEAD_DAYS * 24 * 60 * 60)
+    start_date = Date.parse(recurrence_start)
+    starttime = dtstart.strftime("%H%M")
+    endtime_str = end_time_missing ? nil : dtend.strftime("%H%M")
+
+    exclusions = RecurrenceRules.exclusion_datetimes(
+      start_date, starttime, endtime_str, exrule, range_start, range_end
+    )
+    event.exdate = exclusions.map { |t| ical_london_datetime(t) } unless exclusions.empty?
+  end
 
   based_in = first["based_in"].to_s.strip
   loc_name = first["location"].is_a?(Hash) ? first["location"]["name"].to_s.strip : ""
@@ -230,6 +252,14 @@ def main
       g = r0["group_id"]
       e = r0["event_id"]
       warn "ERROR: inconsistent rrule for series #{g}.#{e}#{club_source_file_hint(r0)}"
+      exit 1
+    end
+    ex = rows.map { |r| r["exrule"].to_s.strip }.uniq
+    if ex.size > 1
+      r0 = rows.first
+      g = r0["group_id"]
+      e = r0["event_id"]
+      warn "ERROR: inconsistent exrule for series #{g}.#{e}#{club_source_file_hint(r0)}"
       exit 1
     end
     emit_queue << { kind: :recurring_series, rows: rows }
