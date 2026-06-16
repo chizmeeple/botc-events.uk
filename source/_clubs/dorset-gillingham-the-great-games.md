@@ -29,4 +29,20 @@ events:
     endtime: 1200
     location: gillingham-social-club
     special_event_id: blood-on-the-clocktower-20260321
+  - eventname: Blood on the Clocktower
+    signup: https://www.facebook.com/thegreatgamesgillingham/
+    cost: "£3 members / £4 non-members"
+    startdate: 2026-07-04
+    starttime: 1000
+    endtime: 1200
+    location: gillingham-social-club
+    special_event_id: blood-on-the-clocktower-20260704
+  - eventname: Blood on the Clocktower
+    signup: https://www.facebook.com/thegreatgamesgillingham/
+    cost: "£3 members / £4 non-members"
+    startdate: 2026-07-18
+    starttime: 1000
+    endtime: 1200
+    location: gillingham-social-club
+    special_event_id: blood-on-the-clocktower-20260718
 ---
