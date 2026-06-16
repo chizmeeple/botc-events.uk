@@ -41,4 +41,11 @@ events:
     starttime: 1900
     location: social-club
     special_event_id: blood-on-the-clocktower-20260628
+  - eventname: Blood on the Clocktower (Beginner Friendly, venue TBC)
+    signup: https://discord.gg/PUTkJXwUJY
+    cost: "£4"
+    startdate: 2026-07-26
+    starttime: 1900
+    location: social-club
+    special_event_id: blood-on-the-clocktower-beginner-friendly-20260726
 ---
