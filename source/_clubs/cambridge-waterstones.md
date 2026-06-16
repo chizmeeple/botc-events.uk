@@ -65,4 +65,28 @@ events:
     endtime: 2200
     location: waterstones-cambridge
     special_event_id: botc-at-cambridge-waterstones-20260619
+  - eventname: BotC at Cambridge Waterstones
+    signup: https://www.waterstones.com/events/search/shop/cambridge-sidney-str/category/10
+    cost: Unknown
+    startdate: 2026-07-10
+    starttime: 1800
+    endtime: 2200
+    location: waterstones-cambridge
+    special_event_id: botc-at-cambridge-waterstones-20260710
+  - eventname: BotC at Cambridge Waterstones
+    signup: https://www.waterstones.com/events/search/shop/cambridge-sidney-str/category/10
+    cost: Unknown
+    startdate: 2026-07-25
+    starttime: 1800
+    endtime: 2200
+    location: waterstones-cambridge
+    special_event_id: botc-at-cambridge-waterstones-20260725
+  - eventname: Games Celebration Day
+    signup: https://www.waterstones.com/events/search/shop/cambridge-sidney-str/category/10
+    cost: Unknown
+    startdate: 2026-08-29
+    starttime: 1400
+    endtime: 2200
+    location: waterstones-cambridge
+    special_event_id: games-celebration-day-20260829
 ---

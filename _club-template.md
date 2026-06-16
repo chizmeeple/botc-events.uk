@@ -44,6 +44,8 @@ events:
       starttime: 1800
       endtime: 2200
       rrule: "FREQ=MONTHLY;BYDAY=2TU"
+      # Optional: exrule excludes matching recurrence (RFC 5545 EXRULE; emitted as EXDATE in ICS).
+      # exrule: "FREQ=MONTHLY;BYDAY=WE;BYSETPOS=-1"
       location: "the-name"
   adhoc:
     - eventname: ""

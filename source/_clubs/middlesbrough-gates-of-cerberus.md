@@ -36,6 +36,14 @@ events:
     endtime: 2300
     location: gates-of-cerberus
     special_event_id: blood-on-the-clocktower-20260605
+  - eventname: Impromptu Blood on the Clocktower
+    signup: https://discord.com/channels/1247195779970498780/1314165871874408448
+    cost: "£5"
+    startdate: 2026-06-19
+    starttime: 1830
+    endtime: 2300
+    location: gates-of-cerberus
+    special_event_id: impromptu-blood-on-the-clocktower-20260619
   - eventname: Blood on the Clocktower
     signup: https://discord.com/channels/1247195779970498780/1314165871874408448
     cost: "£5"

@@ -19,12 +19,14 @@ require "icalendar/recurrence"
 require "tzinfo"
 require "yaml"
 
+require_relative "recurrence_rules"
+
 SITE_URL = "https://botc-events.uk"
 
-TZ = TZInfo::Timezone.get("Europe/London")
+TZ = RecurrenceRules::TZ
 # Recurring RRULE expansion window only. Adhoc dates are explicit listings (like
 # special events) and include any future startdate regardless of how far ahead.
-LOOKAHEAD_DAYS = 180
+LOOKAHEAD_DAYS = RecurrenceRules::LOOKAHEAD_DAYS
 UPCOMING_PER_CLUB = 6
 EARTH_RADIUS_M = 6_371_000
 
@@ -84,70 +86,7 @@ rescue ArgumentError, StandardError
 end
 
 def parse_hhmm(val)
-  str = val.to_s
-  return [0, 0] if str.empty?
-  hour = str.length >= 2 ? str[0..1].to_i : 0
-  min  = str.length >= 4 ? str[-2..].to_i : 0
-  [hour, min]
-end
-
-def nth_wday_of_month(year, month, wday, n)
-  if n > 0
-    first = Date.new(year, month, 1)
-    delta = (wday - first.wday) % 7
-    date = first + delta + 7 * (n - 1)
-    date.month == month ? date : nil
-  else
-    last = Date.new(year, month, -1)
-    delta = (last.wday - wday) % 7
-    date = last - delta - 7 * (n.abs - 1)
-    date.month == month ? date : nil
-  end
-end
-
-def expand_recurrence(startdate, starttime, endtime, rrule, now, range_end)
-  expand_recurrence_with_icalendar(startdate, starttime, endtime, rrule, now, range_end)
-end
-
-def expand_recurrence_with_icalendar(startdate, starttime, endtime, rrule, now, range_end)
-  return [] unless rrule.is_a?(String) && !rrule.strip.empty?
-
-  start_date = startdate.is_a?(Date) ? startdate : Date.parse(startdate.to_s)
-  shour, smin = parse_hhmm(starttime)
-  ehour, emin = parse_hhmm(endtime) if endtime
-
-  dtstart = TZ.local_time(start_date.year, start_date.month, start_date.day, shour, smin, 0)
-  dtend = if endtime
-            TZ.local_time(start_date.year, start_date.month, start_date.day, ehour, emin, 0)
-          end
-
-  ics_lines = []
-  ics_lines << "BEGIN:VCALENDAR"
-  ics_lines << "VERSION:2.0"
-  ics_lines << "BEGIN:VEVENT"
-  ics_lines << "DTSTART:#{dtstart.strftime('%Y%m%dT%H%M%S')}"
-  ics_lines << "DTEND:#{dtend.strftime('%Y%m%dT%H%M%S')}" if dtend
-  ics_lines << "RRULE:#{rrule}"
-  ics_lines << "END:VEVENT"
-  ics_lines << "END:VCALENDAR"
-  ics = ics_lines.join("\n")
-
-  cal = Icalendar::Calendar.parse(ics).first
-  event = cal.events.first
-  return [] unless event
-
-  occs = event.occurrences_between(now, range_end)
-  occs.map do |occ|
-    s = occ.start_time
-    e = occ.end_time
-    start_t = TZ.local_time(s.year, s.month, s.day, s.hour, s.min, s.sec)
-    end_t = if e
-              TZ.local_time(e.year, e.month, e.day, e.hour, e.min, e.sec)
-            end
-    [start_t, end_t]
-  end
-rescue StandardError
-  []
+  RecurrenceRules.parse_hhmm(val)
 end
 
 def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, group_id: nil)
@@ -164,12 +103,19 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, grou
       warn "Could not generate user-friendly frequency for RRULE#{context}: #{rrule}"
     end
 
+    exrule = ev["exrule"].to_s.strip
+    exrule = nil if exrule.empty?
+    RecurrenceRules.validate_exrule!(exrule, slug: slug, eventname: eventname) if exrule
+
     startdate = ev["startdate"]
     starttime = ev["starttime"]
     endtime = ev["endtime"]
     location = ev["location"].is_a?(Hash) ? ev["location"] : {}
+    start_date = startdate.is_a?(Date) ? startdate : Date.parse(startdate.to_s)
 
-    occurrences = expand_recurrence(startdate, starttime, endtime, rrule, now, range_end)
+    occurrences = RecurrenceRules.expand_recurrence(
+      start_date, starttime, endtime, rrule, now, range_end, exrule: exrule
+    )
 
     signup = ev["signup"].to_s.strip
     signup = nil if signup.empty?
@@ -200,7 +146,9 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, grou
         "group_id" => gid,
         "event_id" => eid,
         "rrule" => rrule,
+        "recurrence_startdate" => start_date.iso8601,
       }
+      occ["exrule"] = exrule if exrule
       occ["frequency"] = frequency if frequency
       occ["signup"] = signup if signup
       occ["cost"] = cost if cost
@@ -488,6 +436,8 @@ def main
       row["event_id"] = occ["event_id"] if occ["event_id"]
       row["special_event_id"] = occ["special_event_id"] if occ["special_event_id"]
       row["rrule"] = occ["rrule"] if occ["rrule"]
+      row["exrule"] = occ["exrule"] if occ["exrule"]
+      row["recurrence_startdate"] = occ["recurrence_startdate"] if occ["recurrence_startdate"]
       all_upcoming << row.compact
     end
   end
