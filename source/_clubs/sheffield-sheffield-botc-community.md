@@ -49,7 +49,7 @@ events:
       startdate: 2026-04-10
       starttime: 1730
       endtime: 2200
-      rrule: "FREQ=WEEKLY;INTERAL=2;BYDAY=FR"
+      rrule: "FREQ=WEEKLY;INTERVAL=2;BYDAY=FR"
       location: "rutland-arms"
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
