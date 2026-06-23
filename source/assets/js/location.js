@@ -211,8 +211,13 @@
       this.activeLabel = label;
       if (this.pill) {
         this.pillLabel.textContent = label;
-        this.pill.style.display = "";
-        this.pill.setAttribute("aria-hidden", "false");
+        if (label === "My location") {
+          this.pill.style.display = "none";
+          this.pill.setAttribute("aria-hidden", "true");
+        } else {
+          this.pill.style.display = "";
+          this.pill.setAttribute("aria-hidden", "false");
+        }
       }
       this.setLocateBtnActive(label === "My location");
     },
