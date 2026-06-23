@@ -396,16 +396,33 @@
     user-select: none;
 
     .drawer-chevron {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 24px;
       height: 24px;
       color: var(--color-text-light);
-      transition: transform 0.3s ease;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .drawer-chevron-down {
+        display: none;
+      }
     }
   }
 }
 
 .sidebar.drawer-half .drawer-chevron {
-  transform: rotate(180deg);
+  .drawer-chevron-up {
+    display: none;
+  }
+
+  .drawer-chevron-down {
+    display: block;
+  }
 }
 
 // Lock body on home page — prevent scrolling at all sizes
