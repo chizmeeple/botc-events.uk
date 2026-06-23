@@ -42,4 +42,12 @@ events:
     endtime: 2300
     location: st-andrews-church
     special_event_id: weekend-event-20260418
+  - eventname: Blood on the Clocktower – All Afternoon/Evening Event
+    signup: https://buytickets.at/devizesbloodontheclotkwer/2274294
+    cost: "£12.50"
+    startdate: 2026-08-15
+    starttime: 1300
+    endtime: 2300
+    location: st-andrews-church
+    special_event_id: all-afternoon-evening-event-20260815
 ---
