@@ -63,4 +63,12 @@ events:
     endtime: 2200
     location: scout-hq
     special_event_id: blood-on-the-clocktower-20260626
+  - eventname: Blood on the Clocktower
+    signup: https://www.facebook.com/events/908047181762199/
+    cost: "£2"
+    startdate: 2026-07-31
+    starttime: 1830
+    endtime: 2200
+    location: scout-hq
+    special_event_id: blood-on-the-clocktower-20260731
 ---
