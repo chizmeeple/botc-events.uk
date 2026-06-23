@@ -367,22 +367,9 @@
       }
 
       if (window.GameClubLocation) window.GameClubLocation.setActive("My location");
-      setLocateButtonActive(true);
       update();
     } catch (e) {
       sessionStorage.removeItem(STORAGE_KEY);
-    }
-  }
-
-  function setLocateButtonActive(active) {
-    var btn = document.getElementById("locate-btn");
-    if (!btn) return;
-    if (active) {
-      btn.classList.add("is-active");
-      btn.setAttribute("aria-pressed", "true");
-    } else {
-      btn.classList.remove("is-active");
-      btn.setAttribute("aria-pressed", "false");
     }
   }
 
@@ -457,28 +444,11 @@
     }
 
     if (window.GameClubLocation) {
-      var locateBtn = document.getElementById("locate-btn");
-      if (locateBtn) {
-        locateBtn.addEventListener(
-          "click",
-          function (e) {
-            if (userLat !== null && userLng !== null) {
-              e.preventDefault();
-              e.stopImmediatePropagation();
-              if (window.GameClubLocation) window.GameClubLocation.clearLocation();
-              return;
-            }
-          },
-          true
-        );
-      }
-
       window.GameClubLocation.init(
         function (lat, lng, label) {
           userLat = lat;
           userLng = lng;
           if (distanceFilter) distanceFilter.disabled = false;
-          setLocateButtonActive(true);
           if (label === "My location") {
             try {
               sessionStorage.setItem(
@@ -497,7 +467,6 @@
           userLat = null;
           userLng = null;
           maxDistance = 0;
-          setLocateButtonActive(false);
           if (distanceFilter) {
             distanceFilter.value = "";
             distanceFilter.disabled = true;
