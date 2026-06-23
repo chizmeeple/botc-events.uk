@@ -29,6 +29,7 @@
     var params = readUrlParams();
     var searchInput = document.getElementById("search-input");
     var distanceFilter = document.getElementById("distance-filter");
+    var eventsFilter = document.getElementById("events-filter");
 
     if (params.q) {
       search.setQuery(params.q);
@@ -48,6 +49,10 @@
     if (params.distance) {
       search.setMaxDistance(params.distance);
       if (distanceFilter) distanceFilter.value = params.distance;
+    }
+    if (params.events) {
+      search.setEventsFilter(params.events);
+      if (eventsFilter) eventsFilter.value = params.events;
     }
   }
 
@@ -87,22 +92,26 @@
     return {
       q: params.get("q") || "",
       days: days,
-      distance: params.get("distance") || ""
+      distance: params.get("distance") || "",
+      events: params.get("events") || ""
     };
   }
 
   function writeUrlParams() {
     var searchInput = document.getElementById("search-input");
     var distanceFilter = document.getElementById("distance-filter");
+    var eventsFilter = document.getElementById("events-filter");
 
     var params = new URLSearchParams();
     var q = searchInput ? searchInput.value.trim() : "";
     var days = search.dayFilters.join(",");
     var distance = distanceFilter ? distanceFilter.value : "";
+    var events = eventsFilter ? eventsFilter.value : "";
 
     if (q) params.set("q", q);
     if (days) params.set("days", days);
     if (distance) params.set("distance", distance);
+    if (events) params.set("events", events);
 
     var newUrl = window.location.pathname + (params.toString() ? "?" + params.toString() : "");
     history.replaceState(null, "", newUrl);
@@ -266,6 +275,7 @@
     var dayToggle = dayFilterEl ? dayFilterEl.querySelector(".multi-select-toggle") : null;
     var dayCheckboxes = dayFilterEl ? dayFilterEl.querySelectorAll("input[type='checkbox']") : [];
     var distanceFilter = document.getElementById("distance-filter");
+    var eventsFilter = document.getElementById("events-filter");
 
     function onSearchInput() {
       clearTimeout(debounceTimer);
@@ -303,6 +313,13 @@
         if (dayToggle) dayToggle.setAttribute("aria-expanded", "false");
       }
     });
+
+    if (eventsFilter) {
+      eventsFilter.addEventListener("change", function () {
+        search.setEventsFilter(eventsFilter.value);
+        update();
+      });
+    }
 
     // Distance filter
     if (distanceFilter) {

@@ -53,23 +53,6 @@
   .locate-btn--events {
     margin-left: 0;
   }
-
-  .locate-btn--events.is-active {
-    background: var(--color-accent);
-    color: var(--color-on-accent);
-    border-color: var(--color-accent);
-
-    svg {
-      color: var(--color-on-accent);
-    }
-
-    &:hover {
-      background: var(--color-accent);
-      color: var(--color-on-accent);
-      border-color: var(--color-accent);
-      opacity: 0.9;
-    }
-  }
 }
 
 .events-page__header {
@@ -428,6 +411,22 @@
 }
 
 // ─── Filter row ───
+.filter-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+
+  .filter-row {
+    margin-bottom: 0;
+  }
+
+  .multi-select,
+  .filter-select {
+    flex: 1;
+  }
+}
+
 .filter-row {
   display: flex;
   gap: 0.4rem;
@@ -436,6 +435,17 @@
 
   @media (max-width: 991px) {
     flex-wrap: nowrap;
+  }
+}
+
+.filter-row--location {
+  .filter-select {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .locate-btn {
+    flex-shrink: 0;
   }
 }
 
@@ -594,6 +604,23 @@
     opacity: 0.45;
     cursor: not-allowed;
     transform: none;
+  }
+
+  &.is-active {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    border-color: var(--color-accent);
+
+    svg {
+      color: var(--color-on-accent);
+    }
+
+    &:hover {
+      background: var(--color-accent);
+      color: var(--color-on-accent);
+      border-color: var(--color-accent);
+      opacity: 0.9;
+    }
   }
 
   @media (min-width: $bp-lg) {

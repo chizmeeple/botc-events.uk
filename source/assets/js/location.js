@@ -84,6 +84,10 @@
 
       if (this.locateBtn) {
         this.locateBtn.addEventListener("click", function () {
+          if (self.activeLabel === "My location") {
+            self.clearLocation();
+            return;
+          }
           self.geolocate();
         });
       }
@@ -164,6 +168,17 @@
       if (this.locateBtn) this.locateBtn.disabled = disabled;
     },
 
+    setLocateBtnActive: function (active) {
+      if (!this.locateBtn) return;
+      if (active) {
+        this.locateBtn.classList.add("is-active");
+        this.locateBtn.setAttribute("aria-pressed", "true");
+      } else {
+        this.locateBtn.classList.remove("is-active");
+        this.locateBtn.setAttribute("aria-pressed", "false");
+      }
+    },
+
     geolocate: function () {
       var self = this;
 
@@ -197,14 +212,18 @@
       if (this.pill) {
         this.pillLabel.textContent = label;
         this.pill.style.display = "";
+        this.pill.setAttribute("aria-hidden", "false");
       }
+      this.setLocateBtnActive(label === "My location");
     },
 
     clearLocation: function () {
       this.activeLabel = null;
       if (this.pill) {
         this.pill.style.display = "none";
+        this.pill.setAttribute("aria-hidden", "true");
       }
+      this.setLocateBtnActive(false);
       var focusTarget = this.input || this.inputMobile;
       if (focusTarget) focusTarget.focus();
       if (this.onLocationClear) {

@@ -5,6 +5,7 @@
     allClubs: [],
     searchQuery: "",
     dayFilters: [],
+    eventsFilter: "",
     maxDistance: 0,
     userLat: null,
     userLng: null,
@@ -20,6 +21,10 @@
 
     setDayFilters: function (days) {
       this.dayFilters = days || [];
+    },
+
+    setEventsFilter: function (value) {
+      this.eventsFilter = value || "";
     },
 
     toggleDayFilter: function (day) {
@@ -96,6 +101,14 @@
             }
           }
           if (!matchesDay) return false;
+        }
+
+        // Upcoming events filter
+        if (self.eventsFilter === "upcoming" && !club.has_upcoming_events) {
+          return false;
+        }
+        if (self.eventsFilter === "none" && club.has_upcoming_events) {
+          return false;
         }
 
         // Distance filter (only when location is set)
