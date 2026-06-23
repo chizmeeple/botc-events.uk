@@ -3,15 +3,18 @@ name: The Kobold's Kettle
 based_in: Lytham
 group_id: lytham-kobolds-kettle
 image: lytham-kobolds-kettle.png
-website: ''
+website: https://bookwhen.com/the-kobolds-kettle
 meetup: ''
 facebook: https://www.facebook.com/profile.php?id=61561955950416
 discord: ''
 bgg: ''
 description: |-
-  Our monthly Blood on the Clock awaits. Join us at 5:45pm her at The Kobold’s Kettle for a night of Mystery and Murder. Badmoon Rising adds a bunch of new roles for both Townsfolk and Demons which adds so many new a whole new dimension to the game, less people you can trust and more ways for the Demon to get the upper hand.
-  Blood on the Clocktower is a game of murder and mystery, lies and logic, deduction and deception for five-to-twenty courageous players and one devious storyteller.
-  A social game played in person, seated in a circle, each player receives either a ‘good’ or ‘evil’ token with their unique character on it. Good players share information to solve the mystery whilst evil players lie about who they are and what they know. The good team wins if they can piece together their knowledge, trust each other, and execute the demon. The evil team wins if the demon can sow distrust, evade detection, and wipe out the village.
+  The sleepy town of Ravenswood Bluff is in danger, and you could be the one to solve it, or bring the town to its knees.
+  Join us for one of the most award-winning social deduction games ever made!
+  New players welcome!
+  Recommended age 15+ (under-16s will need adult supervision).
+  Start time is 6pm; please arrive at 5:30pm for introductions and game rules.
+  £10 a ticket — food and drink available during the event.
 locations:
   the-kobolds-kettle:
     name: The Kobold's Kettle
@@ -27,4 +30,12 @@ events:
     starttime: 1745
     location: the-kobolds-kettle
     special_event_id: blood-on-the-clocktower-bad-moon-rising-20260314
+  - eventname: Blood on the Clocktower, June Event
+    signup: https://bookwhen.com/the-kobolds-kettle/e/ev-s8wc9-20260627180000
+    cost: "£10"
+    startdate: 2026-06-27
+    starttime: 1800
+    endtime: 2000
+    location: the-kobolds-kettle
+    special_event_id: blood-on-the-clocktower-june-event-20260627
 ---
