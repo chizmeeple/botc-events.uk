@@ -25,7 +25,7 @@ events:
       cost: "£5"
       startdate: 2026-06-20
       starttime: 1830
-      endtime: 2230
+      endtime: 2300
       rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=SA
       location: up-a-level
 ---
