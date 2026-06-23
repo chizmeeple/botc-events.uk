@@ -14,10 +14,18 @@
     return matrix.m42;
   }
 
+  function updateHandleA11y() {
+    if (!handle) return;
+    var expanded = currentState === 1;
+    handle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    handle.setAttribute('aria-label', expanded ? 'Collapse panel' : 'Expand panel');
+  }
+
   function setState(index) {
     currentState = Math.max(0, Math.min(index, STATES.length - 1));
     sidebar.classList.remove(STATES[0], STATES[1], 'drawer-dragging');
     sidebar.classList.add(STATES[currentState]);
+    updateHandleA11y();
   }
 
   function snapToNearest(currentY) {
