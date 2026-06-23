@@ -178,14 +178,20 @@
           ? '<div class="popup-venue"><span class="iconify" data-icon="lucide:map-pin" aria-hidden="true"></span>' + self.escapeHtml(locationText) + '</div>'
           : '';
 
-        var pillsHtml = '';
+        var dayPills = '';
         if (club.event_days && club.event_days.length > 0) {
-          pillsHtml = '<div class="popup-pills">' +
-            club.event_days.map(function (day) {
-              return '<span class="tag tag--muted">' + self.escapeHtml(String(day)) + '</span>';
-            }).join('') +
-            '</div>';
+          dayPills = club.event_days.map(function (day) {
+            return '<span class="tag tag--muted">' + self.escapeHtml(String(day)) + '</span>';
+          }).join('');
         }
+
+        var upcomingPill = club.has_upcoming_events
+          ? '<span class="tag tag--upcoming">Upcoming events</span>'
+          : '<span class="tag tag--upcoming-none">No upcoming events</span>';
+
+        var pillsHtml = dayPills || upcomingPill
+          ? '<div class="popup-pills">' + dayPills + upcomingPill + '</div>'
+          : '';
 
         var popupCardClass = "popup-card" + (club.kind === "special" ? " popup-card--special" : "");
         return (
