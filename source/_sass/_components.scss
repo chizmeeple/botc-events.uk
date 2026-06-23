@@ -411,6 +411,22 @@
 }
 
 // ─── Filter row ───
+.filter-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+
+  .filter-row {
+    margin-bottom: 0;
+  }
+
+  .multi-select,
+  .filter-select {
+    flex: 1;
+  }
+}
+
 .filter-row {
   display: flex;
   gap: 0.4rem;
@@ -419,6 +435,17 @@
 
   @media (max-width: 991px) {
     flex-wrap: nowrap;
+  }
+}
+
+.filter-row--location {
+  .filter-select {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .locate-btn {
+    flex-shrink: 0;
   }
 }
 
