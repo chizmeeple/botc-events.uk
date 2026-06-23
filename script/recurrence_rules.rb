@@ -116,4 +116,27 @@ module RecurrenceRules
       startdate, starttime, endtime, rule, range_start, range_end
     ).map(&:first)
   end
+
+  def exdate_datetimes(exdates, starttime)
+    return [] unless exdates.is_a?(Array) && exdates.any?
+
+    shour, smin = parse_hhmm(starttime)
+    exdates.filter_map do |d|
+      date = d.is_a?(Date) ? d : Date.parse(d.to_s)
+      TZ.local_time(date.year, date.month, date.day, shour, smin, 0)
+    rescue StandardError
+      nil
+    end
+  end
+
+  def apply_exdates(occurrences, exdates)
+    return occurrences unless exdates.is_a?(Array) && exdates.any?
+
+    exdate_set = exdates.map { |d| d.is_a?(Date) ? d : Date.parse(d.to_s) }.to_set
+    occurrences.reject do |start_t, _end_t|
+      exdate_set.include?(Date.new(start_t.year, start_t.month, start_t.day))
+    end
+  rescue StandardError
+    occurrences
+  end
 end
