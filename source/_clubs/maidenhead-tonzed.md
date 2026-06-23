@@ -1,5 +1,5 @@
 ---
-name: "Tonzed (Maidenhead"
+name: "Tonzed (Maidenhead)"
 based_in: Maidenhead
 group_id: maidenhead-tonzed
 image: ''
@@ -18,7 +18,7 @@ locations:
     lng: -0.718999
 events:
   adhoc:
-  - eventname: "Tonzed (Maidenhead: Next game in Maidenhead"
+  - eventname: "Tonzed (Maidenhead): Next game in Maidenhead"
     signup: https://discord.com/channels/1247195779970498780/1357448674317434900
     cost: Free
     startdate: 2026-05-03
