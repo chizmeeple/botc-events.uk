@@ -59,4 +59,20 @@ events:
     endtime: 1500
     location: commune-cafe
     special_event_id: blood-on-the-clocktower-20260627
+  - eventname: Blood on the Clocktower
+    signup: https://excelsiorgamesandcomics.co.uk/pages/about-us
+    cost: Unknown
+    startdate: 2026-07-25
+    starttime: 1030
+    endtime: 1700
+    location: excelsior
+    special_event_id: blood-on-the-clocktower-20260725
+  - eventname: Blood on the Clocktower
+    signup: https://ratings.food.gov.uk/business/en-GB/1765529
+    cost: Unknown
+    startdate: 2026-08-31
+    starttime: 1000
+    endtime: 1500
+    location: commune-cafe
+    special_event_id: blood-on-the-clocktower-20260831
 ---

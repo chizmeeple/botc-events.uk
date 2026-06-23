@@ -107,6 +107,9 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, grou
     exrule = nil if exrule.empty?
     RecurrenceRules.validate_exrule!(exrule, slug: slug, eventname: eventname) if exrule
 
+    exdates = ev["exdate"]
+    exdates = nil unless exdates.is_a?(Array) && exdates.any?
+
     startdate = ev["startdate"]
     starttime = ev["starttime"]
     endtime = ev["endtime"]
@@ -116,6 +119,7 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, grou
     occurrences = RecurrenceRules.expand_recurrence(
       start_date, starttime, endtime, rrule, now, range_end, exrule: exrule
     )
+    occurrences = RecurrenceRules.apply_exdates(occurrences, exdates) if exdates
 
     signup = ev["signup"].to_s.strip
     signup = nil if signup.empty?
@@ -149,6 +153,7 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, grou
         "recurrence_startdate" => start_date.iso8601,
       }
       occ["exrule"] = exrule if exrule
+      occ["exdate"] = exdates if exdates
       occ["frequency"] = frequency if frequency
       occ["signup"] = signup if signup
       occ["cost"] = cost if cost
@@ -437,6 +442,7 @@ def main
       row["special_event_id"] = occ["special_event_id"] if occ["special_event_id"]
       row["rrule"] = occ["rrule"] if occ["rrule"]
       row["exrule"] = occ["exrule"] if occ["exrule"]
+      row["exdate"] = occ["exdate"] if occ["exdate"]
       row["recurrence_startdate"] = occ["recurrence_startdate"] if occ["recurrence_startdate"]
       all_upcoming << row.compact
     end

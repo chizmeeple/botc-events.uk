@@ -26,6 +26,11 @@ locations:
     address: Raynel Drive, Ireland Wood, Leeds LS16 6BS
     lat: 53.8520021
     lng: -1.6029185
+  the-terrace-luu:
+    name: The Terrace, Leeds University Union
+    address: Leeds University Union, Lifton Place, Leeds, LS2 9JZ
+    lat: 53.8065325
+    lng: -1.5561705
 events:
   adhoc:
     - eventname: Blood on the Clocktower - Ireland Wood Games
@@ -36,6 +41,14 @@ events:
       endtime: 1800
       location: ireland-wood-st-pauls
       special_event_id: ireland-wood-games-20260613
+    - eventname: Blood on the Clocktower
+      signup: https://www.meetup.com/leeds-nerds/events/
+      cost: Free
+      startdate: 2026-06-24
+      starttime: 1800
+      endtime: 2200
+      location: the-terrace-luu
+      special_event_id: blood-on-the-clocktower-20260624
   recurring:
   - eventname: Blood on the Clocktower
     signup: https://www.meetup.com/leeds-nerds/events/
@@ -44,6 +57,8 @@ events:
     starttime: 1800
     endtime: 2200
     rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=WE
+    exdate:
+      - 2026-06-24
     location: the-tetley
     event_id: blood-on-the-clocktower
 ---

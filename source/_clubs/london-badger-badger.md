@@ -15,7 +15,7 @@ events:
   recurring:
   - eventname: Badger Badger
     signup: https://www.badgerbadger.org/botc/
-    cost: "£16"
+    cost: "£10"
     startdate: 2026-03-01
     starttime: 1700
     endtime: 2130

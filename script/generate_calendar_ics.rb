@@ -132,6 +132,14 @@ def build_recurring_series_event(rows, feed_updated)
     event.exdate = exclusions.map { |t| ical_london_datetime(t) } unless exclusions.empty?
   end
 
+  exdates = first["exdate"]
+  if exdates.is_a?(Array) && exdates.any?
+    starttime = dtstart.strftime("%H%M")
+    manual_exclusions = RecurrenceRules.exdate_datetimes(exdates, starttime)
+    existing = event.exdate ? Array(event.exdate) : []
+    event.exdate = existing + manual_exclusions.map { |t| ical_london_datetime(t) } unless manual_exclusions.empty?
+  end
+
   based_in = first["based_in"].to_s.strip
   loc_name = first["location"].is_a?(Hash) ? first["location"]["name"].to_s.strip : ""
   event.summary = calendar_summary([based_in, loc_name].reject(&:empty?).join(" - "))
