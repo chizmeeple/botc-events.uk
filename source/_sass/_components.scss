@@ -923,6 +923,18 @@
       background: var(--color-tag-day);
       color: var(--color-on-accent);
     }
+
+    .tag--upcoming {
+      background: var(--color-tag-cost-bg);
+      color: var(--color-tag-cost);
+    }
+
+    .tag--upcoming-none {
+      opacity: 0.55;
+      background: var(--color-tag);
+      color: var(--color-text-light);
+      font-weight: 400;
+    }
   }
 
   .club-tags {
@@ -1951,6 +1963,18 @@ noscript .club-list {
     opacity: 1;
     background: var(--color-tag-day);
     color: var(--color-on-accent);
+  }
+
+  .popup-pills .tag--upcoming {
+    background: var(--color-tag-cost-bg);
+    color: var(--color-tag-cost);
+  }
+
+  .popup-pills .tag--upcoming-none {
+    opacity: 0.55;
+    background: var(--color-tag);
+    color: var(--color-text-light);
+    font-weight: 400;
   }
 
   &.popup-card--special {

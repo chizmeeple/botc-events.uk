@@ -175,17 +175,24 @@
           ? '<div class="club-venue"><span class="iconify" data-icon="lucide:map-pin" aria-hidden="true"></span>' + escapeHtml(locationText) + "</div>"
           : "";
 
-        var pillsHtml = "";
+        var dayPills = "";
         if (club.event_days && club.event_days.length > 0) {
-          pillsHtml =
-            '<div class="club-pills">' +
-            club.event_days
-              .map(function (day) {
-                return '<span class="tag tag--muted">' + escapeHtml(String(day)) + "</span>";
-              })
-              .join("") +
-            "</div>";
+          dayPills = club.event_days
+            .map(function (day) {
+              return '<span class="tag tag--muted">' + escapeHtml(String(day)) + "</span>";
+            })
+            .join("");
         }
+
+        var upcomingPill =
+          club.has_upcoming_events
+            ? '<span class="tag tag--upcoming">Upcoming events</span>'
+            : '<span class="tag tag--upcoming-none">No upcoming events</span>';
+
+        var pillsHtml =
+          dayPills || upcomingPill
+            ? '<div class="club-pills">' + dayPills + upcomingPill + "</div>"
+            : "";
 
         var meta = venue || pillsHtml
           ? '<div class="club-card-meta">' + venue + pillsHtml + "</div>"
