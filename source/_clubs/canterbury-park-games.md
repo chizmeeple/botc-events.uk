@@ -19,8 +19,8 @@ locations:
   westgate-gardens-toddlers-cove:
     name: Westgate Gardens (Toddler's Cove)
     address: Westgate Gardens, Canterbury CT1 2BQ (near Toddler's Cove playground)
-    lat: 51.2784
-    lng: -1.0709
+    lat: 51.278178
+    lng: 1.070669
 events:
   adhoc:
     - eventname: Park Games — Blood on the Clocktower
