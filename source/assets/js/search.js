@@ -5,7 +5,7 @@
     allClubs: [],
     searchQuery: "",
     dayFilters: [],
-    eventsFilter: "",
+    eventsFilter: "upcoming",
     maxDistance: 0,
     userLat: null,
     userLng: null,
