@@ -50,10 +50,8 @@
       search.setMaxDistance(params.distance);
       if (distanceFilter) distanceFilter.value = params.distance;
     }
-    if (params.events) {
-      search.setEventsFilter(params.events);
-      if (eventsFilter) eventsFilter.value = params.events;
-    }
+    search.setEventsFilter(params.events);
+    if (eventsFilter) eventsFilter.value = params.events;
   }
 
   function restoreFromStorage() {
@@ -93,7 +91,7 @@
       q: params.get("q") || "",
       days: days,
       distance: params.get("distance") || "",
-      events: params.get("events") || ""
+      events: params.has("events") ? (params.get("events") || "") : "upcoming"
     };
   }
 
@@ -111,7 +109,13 @@
     if (q) params.set("q", q);
     if (days) params.set("days", days);
     if (distance) params.set("distance", distance);
-    if (events) params.set("events", events);
+    if (events === "upcoming") {
+      // Default filter — omit from URL.
+    } else if (events === "") {
+      params.set("events", "");
+    } else {
+      params.set("events", events);
+    }
 
     var newUrl = window.location.pathname + (params.toString() ? "?" + params.toString() : "");
     history.replaceState(null, "", newUrl);
