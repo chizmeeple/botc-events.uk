@@ -88,4 +88,25 @@ events:
     starttime: 1630
     location: reroll
     special_event_id: advanced-20260627
+  - eventname: Beginner
+    signup: https://rerollcafe.com/contact/
+    cost: "£6.50"
+    startdate: 2026-07-11
+    starttime: 1630
+    location: reroll
+    special_event_id: beginner-20260711
+  - eventname: Mixed
+    signup: https://rerollcafe.com/contact/
+    cost: "£6.50"
+    startdate: 2026-07-18
+    starttime: 1630
+    location: reroll
+    special_event_id: mixed-20260718
+  - eventname: Advanced
+    signup: https://rerollcafe.com/contact/
+    cost: "£6.50"
+    startdate: 2026-07-25
+    starttime: 1630
+    location: reroll
+    special_event_id: advanced-20260725
 ---
