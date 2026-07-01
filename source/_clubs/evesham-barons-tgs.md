@@ -46,8 +46,8 @@ events:
       signup: "https://eveshamclocktower.mezepheles.com/"
       cost: "£5 (18+), £2 (ages 15–17)"
       startdate: 2026-06-28
-      starttime: 1000
-      endtime: 1600
+      starttime: 1030
+      endtime: 1530
       rrule: "FREQ=WEEKLY;INTERVAL=2;BYDAY=SU"
       location: "wallace-house"
 ---
