@@ -1,5 +1,5 @@
 ---
-name: 'Board Game Museum & Cafe '
+name: Board Game Museum & Cafe
 based_in: Hastings
 group_id: hastings-board-game-museum-cafe
 image: ''
@@ -8,26 +8,24 @@ meetup: ''
 facebook: https://www.facebook.com/BoardGameCafeUK
 discord: ''
 bgg: ''
-description: Come join our beginner friendly Social Deduction Games & Murder Mystery
-  Styled Games Night. Our host (Gary) will guide you through all you need to know
-  to get started and then run a short friendly social deduction game. Price is £4
-  per person and will last around 3 hours. You can come as a solo gamer on your own
-  or as a group. I will make sure everyone can join in.
+description: >-
+  Blood on the Clocktower every Wednesday at 7:30pm at the Board Game Museum &
+  Cafe. £4 entry for the evening. Book via the link below (no pre-payment taken).
+  Beginner friendly — solo players and groups welcome.
 locations:
   board-game-museum:
-    name: Board Game Museum
-    address: 25 Courthouse Street, Hastings, East Sussex TN34 3AU
+    name: Board Game Museum & Cafe
+    address: 25a Courthouse Street, Hastings, TN34 3AU
     lat: 50.85721599858302
     lng: 0.5925762416795921
 events:
   recurring:
-  - eventname: TRATIOR & Social Deduction Games & Murder Mystery Styled Games Night
-      – Beginner & Learn to Play (Werewolf, Blood on the Clocktower Etc)
-    signup: https://boardgamemuseum.co.uk/events/
+  - eventname: Blood on the Clocktower
+    signup: https://boardgamemuseum.co.uk/book-a-table/
     cost: "£4"
-    startdate: 2026-03-04
-    starttime: 1900
-    endtime: 2200
+    startdate: 2026-07-02
+    starttime: 1930
+    endtime: 2230
     rrule: FREQ=WEEKLY;BYDAY=WE
     location: board-game-museum
     event_id: tratior-social-deduction-games-murder-mystery-styled-games-night-beginner-learn-to-play-werewolf-blood-on-the-clocktower-etc
