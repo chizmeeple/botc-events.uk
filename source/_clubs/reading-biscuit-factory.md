@@ -20,6 +20,8 @@ events:
     starttime: 1700
     endtime: 2200
     rrule: FREQ=MONTHLY;BYDAY=1SA,3SA
+    exdate:
+      - 2026-07-04
     location:
       name: Reading Biscuit Factory
       address: 1 Queens Walk, Reading RG1 7QE
