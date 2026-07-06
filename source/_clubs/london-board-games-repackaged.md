@@ -22,7 +22,7 @@ events:
   recurring:
     - eventname: Blood on the Clocktower
       event_id: monthly-first-sunday-the-ministry
-      signup: ""
+      signup: https://discord.gg/PUTkJXwUJY
       cost: Free
       startdate: 2026-08-02
       starttime: 1400
