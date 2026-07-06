@@ -27,4 +27,28 @@ events:
       starttime: 1800
       endtime: 2100
       location: boardroom-gaming-cafe
+    - eventname: 'Blood on the Clocktower: Trouble Brewing'
+      special_event_id: trouble-brewing-20260713
+      signup: https://boardroomgamingcafe.co.uk/store/p/scbq4nkd8qtq2g9f6v946xz4rmqkcl
+      cost: "£5"
+      startdate: 2026-07-13
+      starttime: 1800
+      endtime: 2100
+      location: boardroom-gaming-cafe
+    - eventname: Weekend Shenanigans
+      special_event_id: weekend-shenanigans-20260718
+      signup: https://boardroomgamingcafe.co.uk/store/p/scbq4nkd8qtq2g9f6v946xz4rmqkcl
+      cost: "£5"
+      startdate: 2026-07-18
+      starttime: 1600
+      endtime: 2100
+      location: boardroom-gaming-cafe
+    - eventname: Bad Moon Rising or Sects & Violets
+      special_event_id: bad-moon-rising-or-sects-and-violets-20260727
+      signup: https://boardroomgamingcafe.co.uk/store/p/scbq4nkd8qtq2g9f6v946xz4rmqkcl
+      cost: "£5"
+      startdate: 2026-07-27
+      starttime: 1800
+      endtime: 2100
+      location: boardroom-gaming-cafe
 ---
