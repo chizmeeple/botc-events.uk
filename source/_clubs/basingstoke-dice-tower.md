@@ -65,6 +65,8 @@ events:
       starttime: 1800
       endtime: 2200
       rrule: FREQ=WEEKLY;BYDAY=TU
+      exdate:
+        - 2026-07-07
       location: the-tavern-basingstoke
       event_id: blood-on-the-clocktower-any-script-week
   adhoc:
@@ -140,6 +142,46 @@ events:
       endtime: 2200
       location: the-tavern-basingstoke
       special_event_id: blood-on-the-clocktower-20260630
+    - eventname: Blood on the Clocktower – Beginner Friendly Week
+      signup: https://www.taverngaming.co.uk/events/
+      cost: "£3"
+      startdate: 2026-07-07
+      starttime: 1800
+      endtime: 2200
+      location: the-tavern-basingstoke
+      special_event_id: blood-on-the-clocktower-20260707-beginner
+    - eventname: Blood on the Clocktower – Beginner Session
+      signup: https://www.taverngaming.co.uk/events/
+      cost: "£4"
+      startdate: 2026-07-12
+      starttime: 1200
+      endtime: 1615
+      location: the-tavern-basingstoke
+      special_event_id: blood-on-the-clocktower-20260712-am
+    - eventname: Blood on the Clocktower – Advanced Session
+      signup: https://www.taverngaming.co.uk/events/
+      cost: "£4"
+      startdate: 2026-07-12
+      starttime: 1645
+      endtime: 2100
+      location: the-tavern-basingstoke
+      special_event_id: blood-on-the-clocktower-20260712-pm
+    - eventname: Blood on the Clocktower – Advanced Session
+      signup: https://www.taverngaming.co.uk/events/
+      cost: "£4"
+      startdate: 2026-07-26
+      starttime: 1200
+      endtime: 1615
+      location: the-tavern-basingstoke
+      special_event_id: blood-on-the-clocktower-20260726-am
+    - eventname: Blood on the Clocktower – Beginner Session
+      signup: https://www.taverngaming.co.uk/events/
+      cost: "£4"
+      startdate: 2026-07-26
+      starttime: 1645
+      endtime: 2100
+      location: the-tavern-basingstoke
+      special_event_id: blood-on-the-clocktower-20260726-pm
     - eventname: Blood on the Clocktower – Sundays
       signup: https://www.taverngaming.co.uk/events/
       cost: "£4"

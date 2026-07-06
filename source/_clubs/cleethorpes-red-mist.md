@@ -65,4 +65,100 @@ events:
     endtime: 2030
     location: roll-the-dice-cafe
     special_event_id: standard-session-average-iq-of-42-script-20260531
+  - eventname: Starter & Beginner Blood On The Clocktower
+    signup: https://www.eventbrite.co.uk/e/starter-beginner-blood-on-the-clocktower-roll-the-dice-cafe-cleethorpes-tickets-1992291624881
+    cost: "£3"
+    startdate: 2026-07-05
+    starttime: 1100
+    endtime: 1400
+    location: roll-the-dice-cafe
+    special_event_id: starter-beginner-blood-on-the-clocktower-20260705
+  - eventname: Standard Session - A Discharge of Silver Shards
+    signup: https://www.eventbrite.co.uk/e/blood-on-the-clocktower-roll-the-dice-cafe-cleethorpes-tickets-1992291824478
+    cost: "£3"
+    startdate: 2026-07-05
+    starttime: 1430
+    endtime: 1700
+    location: roll-the-dice-cafe
+    special_event_id: standard-session-a-discharge-of-silver-shards-20260705
+  - eventname: Standard Session - Bad Moon Rising
+    signup: https://www.eventbrite.co.uk/e/blood-on-the-clocktower-roll-the-dice-cafe-cleethorpes-tickets-1992291854568
+    cost: "£3"
+    startdate: 2026-07-05
+    starttime: 1800
+    endtime: 2030
+    location: roll-the-dice-cafe
+    special_event_id: standard-session-bad-moon-rising-20260705
+  - eventname: Beginner Session
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-08-09
+    starttime: 1100
+    endtime: 1400
+    location: roll-the-dice-cafe
+    special_event_id: beginner-session-20260809
+  - eventname: Standard Session
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-08-09
+    starttime: 1430
+    endtime: 1700
+    location: roll-the-dice-cafe
+    special_event_id: standard-session-20260809
+  - eventname: Standard Session
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-08-09
+    starttime: 1800
+    endtime: 2030
+    location: roll-the-dice-cafe
+    special_event_id: standard-session-20260809-2
+  - eventname: Beginner Session
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-09-06
+    starttime: 1100
+    endtime: 1400
+    location: roll-the-dice-cafe
+    special_event_id: beginner-session-20260906
+  - eventname: Standard Session
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-09-06
+    starttime: 1430
+    endtime: 1700
+    location: roll-the-dice-cafe
+    special_event_id: standard-session-20260906
+  - eventname: Standard Session
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-09-06
+    starttime: 1800
+    endtime: 2030
+    location: roll-the-dice-cafe
+    special_event_id: standard-session-20260906-2
+  - eventname: Beginner Session
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-10-04
+    starttime: 1100
+    endtime: 1400
+    location: roll-the-dice-cafe
+    special_event_id: beginner-session-20261004
+  - eventname: Standard Session
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-10-04
+    starttime: 1430
+    endtime: 1700
+    location: roll-the-dice-cafe
+    special_event_id: standard-session-20261004
+  - eventname: Standard Session
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-10-04
+    starttime: 1800
+    endtime: 2030
+    location: roll-the-dice-cafe
+    special_event_id: standard-session-20261004-2
 ---
