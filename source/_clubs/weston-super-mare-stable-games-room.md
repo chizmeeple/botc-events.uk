@@ -36,4 +36,52 @@ events:
       starttime: 1800
       endtime: 2200
       location: "stable-games-room"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "weston-super-mare-stable-games-room-20260710"
+      signup: "https://www.thestable.online/the-games-room"
+      cost: "Free"
+      startdate: 2026-07-10
+      starttime: 1800
+      endtime: 2200
+      location: "stable-games-room"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "weston-super-mare-stable-games-room-20260814"
+      signup: "https://www.thestable.online/the-games-room"
+      cost: "Free"
+      startdate: 2026-08-14
+      starttime: 1800
+      endtime: 2200
+      location: "stable-games-room"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "weston-super-mare-stable-games-room-20260911"
+      signup: "https://www.thestable.online/the-games-room"
+      cost: "Free"
+      startdate: 2026-09-11
+      starttime: 1800
+      endtime: 2200
+      location: "stable-games-room"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "weston-super-mare-stable-games-room-20261016"
+      signup: "https://www.thestable.online/the-games-room"
+      cost: "Free"
+      startdate: 2026-10-16
+      starttime: 1800
+      endtime: 2200
+      location: "stable-games-room"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "weston-super-mare-stable-games-room-20261113"
+      signup: "https://www.thestable.online/the-games-room"
+      cost: "Free"
+      startdate: 2026-11-13
+      starttime: 1800
+      endtime: 2200
+      location: "stable-games-room"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "weston-super-mare-stable-games-room-20261211"
+      signup: "https://www.thestable.online/the-games-room"
+      cost: "Free"
+      startdate: 2026-12-11
+      starttime: 1800
+      endtime: 2200
+      location: "stable-games-room"
 ---
