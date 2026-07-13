@@ -30,4 +30,12 @@ events:
       starttime: 1800
       endtime: 2230
       location: margate-arts-club
+    - eventname: Blood on the Clocktower
+      special_event_id: blood-on-the-clocktower-20260812
+      signup: https://www.eventbrite.com/e/1993322614599
+      cost: "£10"
+      startdate: 2026-08-12
+      starttime: 1800
+      endtime: 2200
+      location: margate-arts-club
 ---

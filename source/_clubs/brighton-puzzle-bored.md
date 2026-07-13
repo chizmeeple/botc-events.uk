@@ -27,4 +27,12 @@ events:
       starttime: 1600
       endtime: 2000
       location: puzzle-bored
+    - eventname: Blood on the Clocktower
+      special_event_id: brighton-puzzle-bored-20260808
+      signup: https://puzzlebored.com/products/blood-on-the-clocktower-saturday-16th-may-at-4pm
+      cost: £5
+      startdate: 2026-08-08
+      starttime: 1700
+      endtime: 2100
+      location: puzzle-bored
 ---

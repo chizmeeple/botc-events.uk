@@ -21,9 +21,9 @@ events:
   recurring:
     - eventname: Blood on the Clocktower -- Ealing
       event_id: fortnightly-thursday-the-forester
-      signup: https://www.eventbrite.co.uk/e/blood-on-the-clocktower-ealing-tickets-1992761221457
+      signup: https://www.eventbrite.co.uk/e/blood-on-the-clocktower-ealing-tickets-1993661609542
       cost: Unknown
-      startdate: 2026-07-09
+      startdate: 2026-07-23
       starttime: 1830
       endtime: 2300
       rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=TH

@@ -3,22 +3,55 @@ name: Kircaldy Gaming Society
 based_in: Kircaldy
 group_id: kircaldy-gaming-society
 image: kirkcaldy-gaming-society.png
-website: https://www.kirkcaldygamingsociety.co.uk/event-details/kgs-presents-blood-on-the-clocktower-with-ben-burns
+website: https://www.kirkcaldygamingsociety.co.uk/
 meetup: ''
 facebook: ''
 discord: ''
 bgg: ''
-description: |-
-  Join us for a full-day Blood on the Clocktower special event, designed for experienced players who want a smooth, well-run day with plenty of time in the circle.
-  We’ll be running two parallel games across the day, with players split into Group A and Group B. Each group will play two full games, with one game run by Daddy Ben and one run by our experienced local Storytellers.
-  To make sure as many people as possible get time with Ben Burns, each player will have one game slot with him during the day. Groups will swap Storytellers at the break, so everyone gets the same experience.
+description: >-
+  Lang Toun Bluff — regular Blood on the Clocktower with Kirkcaldy Gaming
+  Society at Glebe Park Centre. Sessions on the 1st Sunday, 2nd Sunday, and 3rd
+  Thursday of each month.
 locations:
   the-hive:
     name: The Hive
     address: 10 Whytescauseway, Kirkcaldy KY1 1XF, UK
     lat: 56.1092877660701
     lng: -3.1609912317861353
+  glebe-park-centre:
+    name: Glebe Park Centre
+    address: Glebe Park Centre, Glebe Park, Kirkcaldy KY1 1BL, UK
+    lat: 56.1165819
+    lng: -3.1575647
 events:
+  recurring:
+  - eventname: Lang Toun Bluff
+    event_id: lang-toun-bluff-first-sunday
+    signup: https://www.kirkcaldygamingsociety.co.uk/event-list
+    cost: "£3/£5"
+    startdate: 2026-08-02
+    starttime: 1800
+    endtime: 2200
+    rrule: FREQ=MONTHLY;BYDAY=1SU
+    location: glebe-park-centre
+  - eventname: Lang Toun Bluff
+    event_id: lang-toun-bluff-second-sunday
+    signup: https://www.kirkcaldygamingsociety.co.uk/event-list
+    cost: "£3/£5"
+    startdate: 2026-08-09
+    starttime: 1800
+    endtime: 2200
+    rrule: FREQ=MONTHLY;BYDAY=2SU
+    location: glebe-park-centre
+  - eventname: Lang Toun Bluff
+    event_id: lang-toun-bluff-third-thursday
+    signup: https://www.kirkcaldygamingsociety.co.uk/event-list
+    cost: "£3/£5"
+    startdate: 2026-07-16
+    starttime: 1800
+    endtime: 2200
+    rrule: FREQ=MONTHLY;BYDAY=3TH
+    location: glebe-park-centre
   adhoc:
   - eventname: Blood on the Clocktower with Ben Burns
     signup: https://www.kirkcaldygamingsociety.co.uk/event-details/kgs-presents-blood-on-the-clocktower-with-ben-burns
