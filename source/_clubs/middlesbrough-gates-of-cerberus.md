@@ -11,7 +11,7 @@ bgg: ''
 description: |-
   Blood on the Clocktower at the Gates of Cerberus, Middlesbrough, TS1 1SA.
 
-  Usually the 1st Friday of every month, 6:30pm start time, £5 entry.
+  Fortnightly on Fridays, 6:30pm start time, £5 entry.
 locations:
   gates-of-cerberus:
     name: Gates of Cerberus
@@ -19,6 +19,16 @@ locations:
     lat: 54.5778956120704
     lng: -1.2368439033129772
 events:
+  recurring:
+  - eventname: Blood on the Clocktower
+    event_id: fortnightly-friday-gates-of-cerberus
+    signup: https://discord.com/channels/1247195779970498780/1314165871874408448
+    cost: "£5"
+    startdate: 2026-07-17
+    starttime: 1830
+    endtime: 2300
+    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=FR
+    location: gates-of-cerberus
   adhoc:
   - eventname: Blood on the Clocktower
     signup: https://discord.com/channels/1247195779970498780/1314165871874408448
@@ -52,44 +62,4 @@ events:
     endtime: 2300
     location: gates-of-cerberus
     special_event_id: blood-on-the-clocktower-20260703
-  - eventname: Blood on the Clocktower
-    signup: https://discord.com/channels/1247195779970498780/1314165871874408448
-    cost: "£5"
-    startdate: 2026-08-07
-    starttime: 1830
-    endtime: 2300
-    location: gates-of-cerberus
-    special_event_id: blood-on-the-clocktower-20260807
-  - eventname: Blood on the Clocktower
-    signup: https://discord.com/channels/1247195779970498780/1314165871874408448
-    cost: "£5"
-    startdate: 2026-09-04
-    starttime: 1830
-    endtime: 2300
-    location: gates-of-cerberus
-    special_event_id: blood-on-the-clocktower-20260904
-  - eventname: Blood on the Clocktower
-    signup: https://discord.com/channels/1247195779970498780/1314165871874408448
-    cost: "£5"
-    startdate: 2026-10-02
-    starttime: 1830
-    endtime: 2300
-    location: gates-of-cerberus
-    special_event_id: blood-on-the-clocktower-20261002
-  - eventname: Blood on the Clocktower
-    signup: https://discord.com/channels/1247195779970498780/1314165871874408448
-    cost: "£5"
-    startdate: 2026-11-06
-    starttime: 1830
-    endtime: 2300
-    location: gates-of-cerberus
-    special_event_id: blood-on-the-clocktower-20261106
-  - eventname: Blood on the Clocktower
-    signup: https://discord.com/channels/1247195779970498780/1314165871874408448
-    cost: "£5"
-    startdate: 2026-12-04
-    starttime: 1830
-    endtime: 2300
-    location: gates-of-cerberus
-    special_event_id: blood-on-the-clocktower-20261204
 ---
