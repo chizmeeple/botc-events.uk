@@ -30,8 +30,8 @@ events:
     signup: https://www.kirkcaldygamingsociety.co.uk/event-list
     cost: "£3/£5"
     startdate: 2026-08-02
-    starttime: 1800
-    endtime: 2200
+    starttime: 1200
+    endtime: 1800
     rrule: FREQ=MONTHLY;BYDAY=1SU
     location: glebe-park-centre
   - eventname: Lang Toun Bluff
@@ -39,8 +39,8 @@ events:
     signup: https://www.kirkcaldygamingsociety.co.uk/event-list
     cost: "£3/£5"
     startdate: 2026-08-09
-    starttime: 1800
-    endtime: 2200
+    starttime: 1200
+    endtime: 1800
     rrule: FREQ=MONTHLY;BYDAY=2SU
     location: glebe-park-centre
   - eventname: Lang Toun Bluff
