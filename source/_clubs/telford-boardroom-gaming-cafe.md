@@ -2,7 +2,7 @@
 name: Boardroom Gaming Cafe
 based_in: Telford
 group_id: telford-boardroom-gaming-cafe
-image: ''
+image: telford-boardroom-gaming-cafe.png
 website: https://boardroomgamingcafe.co.uk/
 meetup: ''
 facebook: https://www.facebook.com/boardroomgamingcafe
