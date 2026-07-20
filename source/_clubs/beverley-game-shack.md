@@ -145,7 +145,7 @@ events:
     endtime: 2100
     location: the-game-shack
     special_event_id: blood-on-the-clocktower-20260724
-  - eventname: Blood on the Clocktower
+  - eventname: Blood on the Clocktower - Star Wars themed
     signup: https://the-game-shack.sumupstore.com
     cost: "£3"
     startdate: 2026-07-31
@@ -153,4 +153,28 @@ events:
     endtime: 2100
     location: the-game-shack
     special_event_id: blood-on-the-clocktower-20260731
+  - eventname: Blood on the Clocktower
+    signup: https://the-game-shack.sumupstore.com
+    cost: "£3"
+    startdate: 2026-08-07
+    starttime: 1830
+    endtime: 2100
+    location: the-game-shack
+    special_event_id: blood-on-the-clocktower-20260807
+  - eventname: Blood on the Clocktower
+    signup: https://the-game-shack.sumupstore.com
+    cost: "£3"
+    startdate: 2026-08-14
+    starttime: 1830
+    endtime: 2100
+    location: the-game-shack
+    special_event_id: blood-on-the-clocktower-20260814
+  - eventname: Blood on the Clocktower
+    signup: https://the-game-shack.sumupstore.com
+    cost: "£3"
+    startdate: 2026-08-21
+    starttime: 1830
+    endtime: 2100
+    location: the-game-shack
+    special_event_id: blood-on-the-clocktower-20260821
 ---
