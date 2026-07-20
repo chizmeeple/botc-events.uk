@@ -36,4 +36,20 @@ events:
     endtime: 1730
     location: black-dragon-games
     special_event_id: full-day-event-20260419
+  - eventname: Full Day Event
+    signup: https://www.blackdragongames.co.uk/events.php#Clocktower
+    cost: "£14"
+    startdate: 2026-08-02
+    starttime: 1030
+    endtime: 1730
+    location: black-dragon-games
+    special_event_id: full-day-event-20260802
+  - eventname: Full Day Event
+    signup: https://www.blackdragongames.co.uk/events.php#Clocktower
+    cost: "£14"
+    startdate: 2026-09-13
+    starttime: 1030
+    endtime: 1730
+    location: black-dragon-games
+    special_event_id: full-day-event-20260913
 ---
