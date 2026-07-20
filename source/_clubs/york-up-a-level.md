@@ -27,5 +27,7 @@ events:
       starttime: 1830
       endtime: 2300
       rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=SA
+      exdate:
+        - 2026-08-29
       location: up-a-level
 ---
