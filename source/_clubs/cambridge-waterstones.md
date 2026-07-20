@@ -81,12 +81,52 @@ events:
     endtime: 2200
     location: waterstones-cambridge
     special_event_id: botc-at-cambridge-waterstones-20260725
+  - eventname: BotC at Cambridge Waterstones
+    signup: https://www.waterstones.com/events/games-night-in-cambridge/cambridge-170445
+    cost: Unknown
+    startdate: 2026-08-14
+    starttime: 1800
+    endtime: 2200
+    location: waterstones-cambridge
+    special_event_id: botc-at-cambridge-waterstones-20260814
   - eventname: Games Celebration Day
-    signup: https://www.waterstones.com/events/search/shop/cambridge-sidney-str/category/10
+    signup: https://www.waterstones.com/events/games-celebration-day-2026-at-waterstones-cambridge/cambridge
     cost: Unknown
     startdate: 2026-08-29
     starttime: 1400
     endtime: 2200
     location: waterstones-cambridge
     special_event_id: games-celebration-day-20260829
+  - eventname: BotC at Cambridge Waterstones
+    signup: https://www.waterstones.com/events/search/shop/cambridge-sidney-str/category/10
+    cost: Unknown
+    startdate: 2026-09-11
+    starttime: 1800
+    endtime: 2200
+    location: waterstones-cambridge
+    special_event_id: botc-at-cambridge-waterstones-20260911
+  - eventname: BotC at Cambridge Waterstones
+    signup: https://www.waterstones.com/events/search/shop/cambridge-sidney-str/category/10
+    cost: Unknown
+    startdate: 2026-09-26
+    starttime: 1800
+    endtime: 2200
+    location: waterstones-cambridge
+    special_event_id: botc-at-cambridge-waterstones-20260926
+  - eventname: BotC at Cambridge Waterstones
+    signup: https://www.waterstones.com/events/search/shop/cambridge-sidney-str/category/10
+    cost: Unknown
+    startdate: 2026-10-09
+    starttime: 1800
+    endtime: 2200
+    location: waterstones-cambridge
+    special_event_id: botc-at-cambridge-waterstones-20261009
+  - eventname: BotC at Cambridge Waterstones
+    signup: https://www.waterstones.com/events/search/shop/cambridge-sidney-str/category/10
+    cost: Unknown
+    startdate: 2026-10-24
+    starttime: 1800
+    endtime: 2200
+    location: waterstones-cambridge
+    special_event_id: botc-at-cambridge-waterstones-20261024
 ---
