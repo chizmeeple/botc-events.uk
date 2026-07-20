@@ -13,8 +13,8 @@ description: >-
   Tickets must be bought from the following link and are not available to buy
   in person on the day. Please try to buy ahead of the night so we can monitor
   numbers for game setup, and note that we frequently sell out by the Monday or
-  Tuesday each week. Note - you’ll need to filter this list to show only the
-  BoTC games:
+  Tuesday each week. Friendly and welcoming — suited to experienced and
+  beginning players alike.
 
   <a href="https://www.theludoquist.com/collections/blood-on-the-clocktower">https://www.theludoquist.com/collections/blood-on-the-clocktower</a>
 locations:
