@@ -68,4 +68,20 @@ events:
     endtime: 2300
     location: white-hart
     special_event_id: blood-on-the-clocktower-20260724
+  - eventname: Blood on the Clocktower
+    signup: https://www.meetup.com/exeter-board-gamers/events/315149995/
+    cost: Free
+    startdate: 2026-08-02
+    starttime: 1215
+    endtime: 1830
+    location: white-hart
+    special_event_id: blood-on-the-clocktower-20260802
+  - eventname: Blood on the Clocktower
+    signup: https://www.meetup.com/exeter-board-gamers/events/315150002/
+    cost: Free
+    startdate: 2026-08-14
+    starttime: 1700
+    endtime: 2300
+    location: white-hart
+    special_event_id: blood-on-the-clocktower-20260814
 ---
