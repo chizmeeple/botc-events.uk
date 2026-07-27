@@ -29,4 +29,12 @@ events:
     endtime: 2100
     location: barnwell-road-library
     special_event_id: barnwell-on-the-clocktower-march-20260319
+  - eventname: Barnwell on the clocktower August
+    signup: https://www.eventbrite.co.uk/e/barnwell-on-the-clocktower-august-tickets-1994910691580
+    cost: Free
+    startdate: 2026-08-05
+    starttime: 1730
+    endtime: 2100
+    location: barnwell-road-library
+    special_event_id: barnwell-on-the-clocktower-august-20260805
 ---
