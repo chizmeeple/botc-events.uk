@@ -38,6 +38,16 @@ locations:
     address: Magdalen Street, Oxford OX1 3AD
     lat: 51.7543664
     lng: -1.2591859
+  university-parks:
+    name: University Parks (Keble Road entrance)
+    address: University Parks, Parks Road, Oxford OX1 3RF (meet at Keble Road entrance)
+    lat: 51.7594
+    lng: -1.2588
+  chequers-pub:
+    name: The Chequers
+    address: 131 High Street, Oxford OX1 4DH
+    lat: 51.751815
+    lng: -1.2565728
 events:
   adhoc:
   - eventname: Westgate Social
@@ -209,34 +219,41 @@ events:
     starttime: 1900
     location: westgate-social
     special_event_id: custom-script-night-20260729
-  - eventname: Westgate Social - Base 3
+  - eventname: Westgate Social - Beginner Friendly
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
-    startdate: 2026-08-03
-    starttime: 1900
+    startdate: 2026-08-05
+    starttime: 1830
     location: westgate-social
-    special_event_id: blood-on-the-clocktower-westgate-social-base-3-20260803
-  - eventname: Westgate Social - Custom Scripts
+    special_event_id: beginner-friendly-20260805
+  - eventname: University Parks - Beginner Friendly & Customs
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
-    startdate: 2026-08-12
-    starttime: 1900
-    location: westgate-social
-    special_event_id: custom-script-night-20260812
-  - eventname: Westgate Social - Base 3
+    startdate: 2026-08-09
+    starttime: 1130
+    location: university-parks
+    special_event_id: university-parks-20260809
+  - eventname: Chequers Pub - Custom Scripts
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
-    startdate: 2026-08-17
+    startdate: 2026-08-10
     starttime: 1900
-    location: westgate-social
-    special_event_id: blood-on-the-clocktower-westgate-social-base-3-20260817
-  - eventname: Westgate Social - Custom Scripts
+    location: chequers-pub
+    special_event_id: custom-script-night-20260810
+  - eventname: Westgate Social - Beginner Friendly
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
-    startdate: 2026-08-26
-    starttime: 1900
+    startdate: 2026-08-19
+    starttime: 1830
     location: westgate-social
-    special_event_id: custom-script-night-20260826
+    special_event_id: beginner-friendly-20260819
+  - eventname: Chequers Pub - Custom Scripts
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-08-24
+    starttime: 1900
+    location: chequers-pub
+    special_event_id: custom-script-night-20260824
   - eventname: Sunday Special!
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: "£5"
