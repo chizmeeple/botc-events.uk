@@ -18,6 +18,25 @@ locations:
     lat: 55.859351
     lng: -4.248481
 events:
+  recurring:
+  - eventname: Blood on the Clocktower
+    event_id: four-weekly-tuesday-bacchus
+    signup: https://www.eventbrite.co.uk/o/blood-on-the-clocktower-glasgow-52202023043
+    cost: Free
+    startdate: 2026-08-04
+    starttime: 1830
+    endtime: 2230
+    rrule: FREQ=WEEKLY;INTERVAL=4;BYDAY=TU
+    location: bacchus
+  - eventname: Blood on the Clocktower
+    event_id: four-weekly-thursday-bacchus
+    signup: https://www.eventbrite.co.uk/o/blood-on-the-clocktower-glasgow-52202023043
+    cost: Free
+    startdate: 2026-08-20
+    starttime: 1830
+    endtime: 2230
+    rrule: FREQ=WEEKLY;INTERVAL=4;BYDAY=TH
+    location: bacchus
   adhoc:
   - eventname: Blood on the Clocktower
     signup: https://www.eventbrite.co.uk/e/blood-on-the-clocktower-bacchus-tuesday-7726-tickets-1992932999249
