@@ -36,4 +36,13 @@ events:
     rrule: FREQ=MONTHLY;BYDAY=1WE,3WE
     location: crookham-street-social-club
     event_id: crookham-street-social-club
+  adhoc:
+  - eventname: Crookham Street Social Club
+    signup: https://meetu.ps/e/Qb9g2/TljJZ/i
+    cost: "£1.50 (optional)"
+    startdate: 2026-07-29
+    starttime: 1915
+    endtime: 2230
+    location: crookham-street-social-club
+    special_event_id: blood-on-the-clocktower-20260729
 ---
