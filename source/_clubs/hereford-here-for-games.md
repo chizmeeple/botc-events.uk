@@ -1,22 +1,26 @@
 ---
-name: Here For Games
+name: Herefordshire Board Gamers
 based_in: Hereford
 group_id: hereford-here-for-games
 image: herefordshire-board-gamers.jpg
-website: https://herefor.games/events/
-meetup: ''
+website: https://herefor.games/
+meetup: https://www.meetup.com/herefordshire-board-gamers/
 facebook: https://www.facebook.com/HerefordshireBoardGamers
-discord: ''
-bgg: ''
+discord: https://herefor.games/discord
+bgg: https://boardgamegeek.com/guild/2606
 description: 'Volunteer run and led community which provides free friendly inclusive
   events in person and online. Free community lending library of over 600 games and
   event equipment. Over £30,000 raised for causes since 2017 #WeAreHereForGames'
 locations:
   the-core:
-    name: TheCore Skatehereford Cic
-    address: Hereford HR1 2SF
-    lat: 52.052676
-    lng: -2.699729
+    name: The Core CIC
+    address: The Core Skate, Hereford HR1 2SF
+    lat: 52.052789032559424
+    lng: -2.6997600386786957
+    parking:
+      - onsite: true
+        free: true
+        notes: Limited free parking onsite.
 events:
   adhoc:
   - eventname: Blood on the Clocktower
