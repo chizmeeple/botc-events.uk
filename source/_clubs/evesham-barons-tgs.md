@@ -39,70 +39,6 @@ events:
       endtime: 1600
       location: wallace-house
       special_event_id: blood-on-the-clocktower-ebtgs-20260614
-    - eventname: Blood on the Clocktower @ EBTGS
-      signup: https://eveshamclocktower.mezepheles.com/
-      cost: "£5 (18+), £2 (ages 15–17)"
-      startdate: 2026-07-26
-      starttime: 1030
-      endtime: 1530
-      location: wallace-house
-      special_event_id: blood-on-the-clocktower-ebtgs-20260726
-    - eventname: Blood on the Clocktower @ EBTGS
-      signup: https://eveshamclocktower.mezepheles.com/
-      cost: "£5 (18+), £2 (ages 15–17)"
-      startdate: 2026-08-09
-      starttime: 1030
-      endtime: 1530
-      location: wallace-house
-      special_event_id: blood-on-the-clocktower-ebtgs-20260809
-    - eventname: Blood on the Clocktower @ EBTGS
-      signup: https://eveshamclocktower.mezepheles.com/
-      cost: "£5 (18+), £2 (ages 15–17)"
-      startdate: 2026-08-23
-      starttime: 1030
-      endtime: 1530
-      location: wallace-house
-      special_event_id: blood-on-the-clocktower-ebtgs-20260823
-    - eventname: Blood on the Clocktower @ EBTGS
-      signup: https://eveshamclocktower.mezepheles.com/
-      cost: "£5 (18+), £2 (ages 15–17)"
-      startdate: 2026-09-06
-      starttime: 1030
-      endtime: 1530
-      location: wallace-house
-      special_event_id: blood-on-the-clocktower-ebtgs-20260906
-    - eventname: Blood on the Clocktower @ EBTGS
-      signup: https://eveshamclocktower.mezepheles.com/
-      cost: "£5 (18+), £2 (ages 15–17)"
-      startdate: 2026-10-04
-      starttime: 1030
-      endtime: 1530
-      location: wallace-house
-      special_event_id: blood-on-the-clocktower-ebtgs-20261004
-    - eventname: Blood on the Clocktower @ EBTGS
-      signup: https://eveshamclocktower.mezepheles.com/
-      cost: "£5 (18+), £2 (ages 15–17)"
-      startdate: 2026-11-01
-      starttime: 1030
-      endtime: 1530
-      location: wallace-house
-      special_event_id: blood-on-the-clocktower-ebtgs-20261101
-    - eventname: Blood on the Clocktower @ EBTGS
-      signup: https://eveshamclocktower.mezepheles.com/
-      cost: "£5 (18+), £2 (ages 15–17)"
-      startdate: 2026-11-29
-      starttime: 1030
-      endtime: 1530
-      location: wallace-house
-      special_event_id: blood-on-the-clocktower-ebtgs-20261129
-    - eventname: Blood on the Clocktower @ EBTGS
-      signup: https://eveshamclocktower.mezepheles.com/
-      cost: "£5 (18+), £2 (ages 15–17)"
-      startdate: 2026-12-13
-      starttime: 1030
-      endtime: 1530
-      location: wallace-house
-      special_event_id: blood-on-the-clocktower-ebtgs-20261213
 
   recurring:
     - eventname: "Blood on the Clocktower Evesham @ EBTGS"
@@ -113,5 +49,10 @@ events:
       starttime: 1030
       endtime: 1530
       rrule: "FREQ=WEEKLY;INTERVAL=2;BYDAY=SU"
+      exdate:
+        - 2026-09-20
+        - 2026-10-18
+        - 2026-11-15
+        - 2026-12-27
       location: "wallace-house"
 ---
