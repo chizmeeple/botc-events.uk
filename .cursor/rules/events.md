@@ -5,13 +5,13 @@ here is missing or ambiguous.
 
 ## Repo map
 
-| What | Path |
-|------|------|
-| Groups | `source/_clubs/{town}-{club-slug}.md` |
-| New group template | `_club-template.md` (repo root) |
-| Special events (cons, festivals) | `source/_special_events/{YYYY-MM-DD}-{slug}.md` |
-| Club logos | `source/assets/images/clubs/` |
-| Human docs | `source/add-group.md`, `source/add-event.md`, `CONTRIBUTING.md` |
+| What                             | Path                                                            |
+| -------------------------------- | --------------------------------------------------------------- |
+| Groups                           | `source/_clubs/{town}-{club-slug}.md`                           |
+| New group template               | `_club-template.md` (repo root)                                 |
+| Special events (cons, festivals) | `source/_special_events/{YYYY-MM-DD}-{slug}.md`                 |
+| Club logos                       | `source/assets/images/clubs/`                                   |
+| Human docs                       | `source/add-group.md`, `source/add-event.md`, `CONTRIBUTING.md` |
 
 Filename slug, `group_id`, and display `name` are different things. `group_id` is
 the stable calendar/API identity (usually matches the filename without `.md`).
@@ -34,8 +34,8 @@ shape — see `_club-template.md` for comments and optional fields (e.g. parking
 ---
 name: "Group Name"
 based_in: Town
-group_id: town-club-slug          # required when events exist; unique site-wide
-image: ""                         # filename in assets/images/clubs/ or a URL
+group_id: town-club-slug # required when events exist; unique site-wide
+image: "" # filename in assets/images/clubs/ or a URL
 website: ""
 meetup: ""
 facebook: ""
@@ -43,23 +43,23 @@ discord: ""
 bgg: ""
 description: >-
 locations:
-  venue-slug:                     # referenced by events[].location
+  venue-slug: # referenced by events[].location
     name: ""
     address: ""
     lat: 53.79
     lng: -1.54
 events:
-  recurring:                      # repeating series
+  recurring: # repeating series
     - eventname: ""
-      event_id: stable-series-id  # unique within group; never reuse
+      event_id: stable-series-id # unique within group; never reuse
       signup: ""
       cost: ""
       startdate: 2026-06-20
-      starttime: 1900             # 24hr HHMM, no colon
+      starttime: 1900 # 24hr HHMM, no colon
       endtime: 2200
       rrule: FREQ=WEEKLY;BYDAY=TU
       location: venue-slug
-  adhoc:                          # one-offs (Discord monthly dates go here)
+  adhoc: # one-offs (Discord monthly dates go here)
     - eventname: ""
       special_event_id: blood-on-the-clocktower-20260721
       signup: ""
@@ -176,3 +176,5 @@ Add Worthing Blood on the Clocktower group.
 EOF
 )"
 ```
+
+If the change is related to any issues add "This resolves #{number}" to the commit message description.
