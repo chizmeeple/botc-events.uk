@@ -49,4 +49,12 @@ events:
     endtime: 1700
     location: fairycroft-house-mac
     special_event_id: blood-on-the-clocktower-20260712
+  - eventname: Blood on the Clocktower
+    signup: https://www.eventbrite.co.uk/o/35095368863
+    cost: "£3"
+    startdate: 2026-08-23
+    starttime: 1600
+    endtime: 2000
+    location: fairycroft-house-mac
+    special_event_id: blood-on-the-clocktower-20260823
 ---

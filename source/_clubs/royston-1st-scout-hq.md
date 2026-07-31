@@ -71,4 +71,44 @@ events:
     endtime: 2200
     location: scout-hq
     special_event_id: blood-on-the-clocktower-20260731
+  - eventname: Blood on the Clocktower
+    signup: https://www.facebook.com/events/908047181762199/
+    cost: "£2"
+    startdate: 2026-08-22
+    starttime: 1830
+    endtime: 2200
+    location: scout-hq
+    special_event_id: blood-on-the-clocktower-20260822
+  - eventname: Blood on the Clocktower
+    signup: https://www.facebook.com/events/908047181762199/
+    cost: "£2"
+    startdate: 2026-09-25
+    starttime: 1830
+    endtime: 2200
+    location: scout-hq
+    special_event_id: blood-on-the-clocktower-20260925
+  - eventname: Blood on the Clocktower
+    signup: https://www.facebook.com/events/908047181762199/
+    cost: "£2"
+    startdate: 2026-10-23
+    starttime: 1830
+    endtime: 2200
+    location: scout-hq
+    special_event_id: blood-on-the-clocktower-20261023
+  - eventname: Blood on the Clocktower
+    signup: https://www.facebook.com/events/908047181762199/
+    cost: "£2"
+    startdate: 2026-11-20
+    starttime: 1830
+    endtime: 2200
+    location: scout-hq
+    special_event_id: blood-on-the-clocktower-20261120
+  - eventname: Blood on the Clocktower
+    signup: https://www.facebook.com/events/908047181762199/
+    cost: "£2"
+    startdate: 2026-12-11
+    starttime: 1830
+    endtime: 2200
+    location: scout-hq
+    special_event_id: blood-on-the-clocktower-20261211
 ---
