@@ -7,7 +7,7 @@ image: ""
 website: ""
 meetup: ""
 facebook: ""
-discord: "https://discord.gg/U7aaBNW6qp"
+discord: "https://discord.gg/wdVm6mb8GA"
 bgg: ""
 description: >-
   Blood on the Clocktower in Warrington
@@ -39,14 +39,14 @@ events:
     - eventname: "Blood on the Clocktower"
       # Stable ID for this one-off (unique within this group; used in calendar UIDs).
       special_event_id: "wolves-ravenswood-20260504"
-      signup: "https://discord.gg/U7aaBNW6qp"
+      signup: "https://discord.gg/wdVm6mb8GA"
       cost: "Unknown"
       startdate: 2026-05-04
       starttime: 1900
       location: "the-horseshoe-inn"
     - eventname: "Blood on the Clocktower"
       special_event_id: "wolves-ravenswood-20260608"
-      signup: "https://discord.gg/U7aaBNW6qp"
+      signup: "https://discord.gg/wdVm6mb8GA"
       cost: "Unknown"
       startdate: 2026-06-08
       starttime: 1900
@@ -55,7 +55,7 @@ events:
   recurring:
     - eventname: "Blood on the Clocktower"
       event_id: "wolves-ravenswood-first-monday"
-      signup: "https://discord.gg/U7aaBNW6qp"
+      signup: "https://discord.gg/wdVm6mb8GA"
       cost: "Unknown"
       startdate: 2026-07-06
       starttime: 1900
