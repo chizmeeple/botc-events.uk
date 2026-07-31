@@ -146,7 +146,7 @@ events:
     location: the-game-shack
     special_event_id: blood-on-the-clocktower-20260724
   - eventname: Blood on the Clocktower - Star Wars themed
-    signup: https://the-game-shack.sumupstore.com
+    signup: https://the-game-shack.sumupstore.com/product/star-wars-social-deduction-game-friday-31-jul-6-30-9pm
     cost: "£3"
     startdate: 2026-07-31
     starttime: 1830
