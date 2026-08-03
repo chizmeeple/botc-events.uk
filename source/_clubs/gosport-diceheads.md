@@ -18,6 +18,23 @@ locations:
     address: The Studio, Dove Court, 10 Coates Road, Gosport, PO12 1RY
     lat: 50.794891
     lng: -1.122202
+    parking:
+      - onsite: false
+        free: false
+        name: Coates Road Car Park
+        address: Coates Road, Gosport PO12 1JJ
+        website: https://www.gosport.gov.uk/coatesroadcarpark
+        lat: 50.794633824247605
+        lng: -1.1213149581784334
+        distance_from_venue_m: 70
+      - onsite: false
+        free: false
+        name: South Street Car Park
+        address: South Street, Gosport PO12 1EX
+        website: https://www.gosport.gov.uk/southstreetcarpark
+        lat: 50.79446089013647
+        lng: -1.1197753702118909
+        distance_from_venue_m: 180
 events:
   recurring:
     - eventname: Blood on the Clocktower
