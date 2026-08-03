@@ -30,9 +30,6 @@ LOOKAHEAD_DAYS = RecurrenceRules::LOOKAHEAD_DAYS
 UPCOMING_PER_CLUB = 6
 EARTH_RADIUS_M = 6_371_000
 
-DAY_ABBREV = { "MO" => "Monday", "TU" => "Tuesday", "WE" => "Wednesday",
-               "TH" => "Thursday", "FR" => "Friday", "SA" => "Saturday",
-               "SU" => "Sunday" }.freeze
 DAY_ORDER = %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday].freeze
 
 def haversine_distance_m(lat1, lng1, lat2, lng2)
@@ -49,30 +46,16 @@ def haversine_distance_m(lat1, lng1, lat2, lng2)
   EARTH_RADIUS_M * c
 end
 
-def days_from_rrule(rrule)
-  return [] unless rrule.is_a?(String) && !rrule.strip.empty?
-  match = rrule.match(/BYDAY=([A-Z0-9,-]+)/i)
-  return [] unless match
-  match[1].split(",").map do |part|
-    abbrev = part.gsub(/\A-?\d+/, "")
-    DAY_ABBREV[abbrev]
-  end.compact
-end
-
-def day_from_date(date)
-  return nil unless date
-  d = date.is_a?(Date) ? date : Date.parse(date.to_s)
-  d.strftime("%A")
-end
-
-def collect_event_days(recurring_list, adhoc_list)
+# Day-of-week pills for future occurrences only (Europe/London).
+# Empty when a club has no upcoming events in the lookahead window.
+def event_days_from_upcoming(occurrences)
   days = Set.new
-  (recurring_list || []).each do |ev|
-    days_from_rrule(ev["rrule"]).each { |d| days << d }
-  end
-  (adhoc_list || []).each do |ev|
-    d = day_from_date(ev["startdate"])
-    days << d if d
+  (occurrences || []).each do |occ|
+    t = occ["start_time"]
+    next unless t.is_a?(String) && !t.empty?
+
+    local = TZ.to_local(Time.iso8601(t))
+    days << local.strftime("%A")
   end
   days.to_a.sort_by { |d| DAY_ORDER.index(d) || 99 }
 end
@@ -352,7 +335,6 @@ def main
     if full_upcoming.empty?
       next if yaml_locs.empty?
 
-      event_days = collect_event_days(normalised_recurring, normalised_adhoc)
       by_slug[slug] = {
         "club_name" => club_name,
         "upcoming" => [],
@@ -362,7 +344,7 @@ def main
           "frequency" => [],
         },
         "locations" => yaml_locs,
-        "event_days" => event_days,
+        "event_days" => [],
       }
       next
     end
@@ -387,7 +369,7 @@ def main
     end
 
     frequency_pills = upcoming.map { |o| o["frequency"] }.compact.uniq
-    event_days = collect_event_days(normalised_recurring, normalised_adhoc)
+    event_days = event_days_from_upcoming(full_upcoming)
 
     event_unique_locations = upcoming
       .map { |o| o["location"] }
