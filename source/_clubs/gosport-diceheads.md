@@ -35,6 +35,37 @@ locations:
         lat: 50.79446089013647
         lng: -1.1197753702118909
         distance_from_venue_m: 180
+      - onsite: false
+        free: false
+        name: North Cross Street No 1 Car Park
+        address: North Cross Street, Gosport
+        website: https://www.gosport.gov.uk/northcrossstreetno1carpark
+        lat: 50.79611783831491
+        lng: -1.1230411641658433
+        distance_from_venue_m: 150
+      - onsite: false
+        free: false
+        name: North Cross Street No 2 Car Park
+        address: North Cross Street, Gosport
+        website: https://www.gosport.gov.uk/northcrossstreetno2carpark
+        lat: 50.79588048514323
+        lng: -1.123041164165844
+        distance_from_venue_m: 125
+      - onsite: false
+        free: false
+        name: Thorngate Way
+        address: Thorngate Way, Gosport
+        lat: 50.794422909651665
+        lng: -1.1241140477688678
+        distance_from_venue_m: 145
+      - onsite: false
+        free: false
+        name: Walpole Car Park
+        address: Walpole Park, Gosport
+        website: https://www.gosport.gov.uk/walpoleparkcarpark
+        lat: 50.79401259607819
+        lng: -1.1241165159054787
+        distance_from_venue_m: 165
 events:
   recurring:
     - eventname: Blood on the Clocktower
