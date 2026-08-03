@@ -1,6 +1,6 @@
 ---
-name: Diceheads
-based_in: Gosport (Hampshire)
+name: Gosport Clocktower @ Diceheads
+based_in: Gosport
 group_id: gosport-diceheads
 image: gosport-diceheads-uk.jpg
 website: http://diceheads.co.uk/
@@ -8,17 +8,10 @@ meetup: ''
 facebook: https://www.facebook.com/DiceheadsUK
 discord: ''
 bgg: ''
-description: |-
-  Blood on the Clocktower at Diceheads!
-
-  Think you can lie your way to victory… or uncover the truth before it’s too
-  late? Join us for an evening of mystery, bluffing, and deduction with Blood
-  on the Clocktower!
-
-  Whether you're a seasoned player or completely new, this is the perfect
-  chance to dive into one of the most thrilling social deduction games around!
-
-  Message Diceheads to book your place – spaces are limited!
+description: >-
+  We're a friendly group who meet fortnightly for Clocktower, we've been
+  running for a few months and are gradually trialling spicier scripts but
+  beginners are always welcome.
 locations:
   diceheads:
     name: Diceheads
@@ -26,6 +19,16 @@ locations:
     lat: 50.794891
     lng: -1.122202
 events:
+  recurring:
+    - eventname: Blood on the Clocktower
+      event_id: fortnightly-friday-diceheads
+      signup: https://www.facebook.com/profile.php?id=61576554272592
+      cost: "£5"
+      startdate: 2026-08-14
+      starttime: 1800
+      endtime: 2100
+      rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=FR
+      location: diceheads
   adhoc:
     - eventname: Blood on the Clocktower at Diceheads
       signup: https://www.facebook.com/events/s/blood-on-the-clocktower-at-dic/1984342378842476/
