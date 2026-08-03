@@ -51,4 +51,12 @@ events:
       starttime: 1800
       endtime: 2100
       location: boardroom-gaming-cafe
+    - eventname: Trouble Brewing, Bad Moon Rising and/or Sects & Violets
+      special_event_id: trouble-brewing-bad-moon-rising-or-sects-and-violets-20260810
+      signup: https://boardroomgamingcafe.co.uk/store/p/scbq4nkd8qtq2g9f6v946xz4rmqkcl-xs4sw
+      cost: "£5"
+      startdate: 2026-08-10
+      starttime: 1800
+      endtime: 2100
+      location: boardroom-gaming-cafe
 ---
