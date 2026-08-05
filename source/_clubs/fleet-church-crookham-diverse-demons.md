@@ -3,7 +3,7 @@ name: Diverse Demons
 based_in: Crookham Village (Fleet)
 group_id: fleet-church-crookham-diverse-demons
 image: diverse-demons.png
-website: https://aftergame.app/groups/diverse-demons-clocktower
+website: https://diversedemons.org/
 meetup: ''
 facebook: ''
 discord: ''
@@ -28,7 +28,7 @@ locations:
 events:
   recurring:
   - eventname: Crookham Street Social Club
-    signup: https://aftergame.app/groups/diverse-demons-clocktower
+    signup: https://diversedemons.org/
     cost: "£1.50 (optional)"
     startdate: 2026-03-04
     starttime: 1915
