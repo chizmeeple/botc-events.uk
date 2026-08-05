@@ -5,7 +5,7 @@ group_id: great-yarmouth-blood-on-the-clocktower
 image: ''
 website: ''
 meetup: ''
-facebook: ''
+facebook: https://www.facebook.com/events/s/blood-on-the-clock-tower-pride/2895172540824687/
 discord: https://discord.gg/PUTkJXwUJY
 bgg: ''
 description: >-
@@ -22,7 +22,7 @@ events:
   adhoc:
     - eventname: Blood on the Clocktower
       special_event_id: blood-on-the-clocktower-20260816
-      signup: https://discord.gg/PUTkJXwUJY
+      signup: https://www.facebook.com/events/s/blood-on-the-clock-tower-pride/2895172540824687/
       cost: Free
       startdate: 2026-08-16
       starttime: 1200
@@ -30,7 +30,7 @@ events:
       location: primeyarc
     - eventname: Blood on the Clocktower
       special_event_id: blood-on-the-clocktower-20260823
-      signup: https://discord.gg/PUTkJXwUJY
+      signup: https://www.facebook.com/events/s/blood-on-the-clock-tower-pride/2895172540824687/
       cost: Free
       startdate: 2026-08-23
       starttime: 1200
