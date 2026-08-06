@@ -1,5 +1,5 @@
 ---
-name: Milton Keynes Blood on the Clocktower
+name: Players Paradice
 based_in: Milton Keynes
 group_id: milton-keynes-players-paradice
 image: ''
