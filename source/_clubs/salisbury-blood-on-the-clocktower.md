@@ -27,14 +27,13 @@ locations:
         notes: >-
           Free parking after 6pm.
 events:
-  recurring:
+  adhoc:
     - eventname: 'Blood on the Clocktower: Trouble Brewing'
-      event_id: first-friday-monthly
+      special_event_id: first-friday-20260605
       signup: https://discord.gg/PUTkJXwUJY
       cost: "£5"
       startdate: 2026-06-05
       starttime: 1900
       endtime: 2300
-      rrule: FREQ=MONTHLY;BYDAY=1FR
       location: tabletop-tavern
 ---
