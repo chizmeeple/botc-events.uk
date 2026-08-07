@@ -31,13 +31,31 @@ events:
       starttime: 1900
       endtime: 2100
       rrule: FREQ=MONTHLY;BYDAY=1TH
+      exdate:
+        - 2026-09-03
       location: deck-and-dagger
   adhoc:
-    - eventname: Uncertain Death
-      special_event_id: uncertain-death-20260723
+    - eventname: Trouble Brewing
+      special_event_id: trouble-brewing-20260811
       signup: https://www.instagram.com/tableandtalegaming
       cost: Unknown
-      startdate: 2026-07-23
+      startdate: 2026-08-11
+      starttime: 1900
+      endtime: 2100
+      location: deck-and-dagger
+    - eventname: Uncertain Death
+      special_event_id: uncertain-death-20260903
+      signup: https://www.instagram.com/tableandtalegaming
+      cost: Unknown
+      startdate: 2026-09-03
+      starttime: 1900
+      endtime: 2100
+      location: deck-and-dagger
+    - eventname: Trouble Brewing
+      special_event_id: trouble-brewing-20260924
+      signup: https://www.instagram.com/tableandtalegaming
+      cost: Unknown
+      startdate: 2026-09-24
       starttime: 1900
       endtime: 2100
       location: deck-and-dagger
