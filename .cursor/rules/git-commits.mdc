@@ -1,0 +1,11 @@
+---
+description: Never run git commit; always give the user the command
+alwaysApply: true
+---
+
+# Git commits
+
+- **Never** create commits yourself (`git commit`, `git add` + commit, etc.).
+- When changes are ready to commit, **always** provide the exact command(s) for the user to run.
+- Do not ask whether to commit first — just supply the command after finishing the work.
+- Follow the repo’s existing commit-message style when drafting the message.
