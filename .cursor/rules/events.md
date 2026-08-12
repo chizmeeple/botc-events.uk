@@ -94,6 +94,7 @@ events:
 - **Never update an existing event entry to represent a new date.** Append a new
   adhoc or recurring entry unless explicitly fixing a mistake.
 - Keep adhoc entries in chronological order when appending.
+- Do not delete events that have already happened.
 - British spelling in commit messages.
 
 ## Workflows

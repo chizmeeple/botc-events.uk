@@ -35,7 +35,7 @@ events:
     startdate: 2026-03-25
     starttime: 1900
     endtime: 2300
-    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=WE
+    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=WE;UNTIL=20260812T230000
     location: playground
     event_id: blood-on-the-clocktower
   adhoc:
