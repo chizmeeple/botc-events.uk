@@ -160,4 +160,68 @@ events:
     endtime: 2300
     location: wsk-cafe
     special_event_id: blood-on-the-clocktower-20260821
+  - eventname: Blood on the Clocktower
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
+    startdate: 2026-09-04
+    starttime: 1900
+    endtime: 2300
+    location: wsk-cafe
+    special_event_id: blood-on-the-clocktower-20260904
+  - eventname: Blood on the Clocktower
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
+    startdate: 2026-09-12
+    starttime: 1800
+    endtime: 2200
+    location: g-zone
+    special_event_id: blood-on-the-clocktower-20260912
+  - eventname: Blood on the Clocktower
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
+    startdate: 2026-09-18
+    starttime: 1900
+    endtime: 2300
+    location: wsk-cafe
+    special_event_id: blood-on-the-clocktower-20260918
+  - eventname: Blood on the Clocktower
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
+    startdate: 2026-09-26
+    starttime: 1800
+    endtime: 2200
+    location: g-zone
+    special_event_id: blood-on-the-clocktower-20260926
+  - eventname: Blood on the Clocktower
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
+    startdate: 2026-10-09
+    starttime: 1900
+    endtime: 2300
+    location: wsk-cafe
+    special_event_id: blood-on-the-clocktower-20261009
+  - eventname: Blood on the Clocktower
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
+    startdate: 2026-10-17
+    starttime: 1800
+    endtime: 2200
+    location: g-zone
+    special_event_id: blood-on-the-clocktower-20261017
+  - eventname: Blood on the Clocktower
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
+    startdate: 2026-10-23
+    starttime: 1900
+    endtime: 2300
+    location: wsk-cafe
+    special_event_id: blood-on-the-clocktower-20261023
+  - eventname: Blood on the Clocktower
+    signup: https://buytickets.at/bloodontheclocktowerworthing
+    cost: Free
+    startdate: 2026-10-31
+    starttime: 1800
+    endtime: 2200
+    location: g-zone
+    special_event_id: blood-on-the-clocktower-20261031
 ---
