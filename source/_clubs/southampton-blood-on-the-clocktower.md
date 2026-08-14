@@ -18,6 +18,39 @@ locations:
     address: Palmerston Park, Above Bar, Southampton SO14 1LL (exact spot TBC on the day)
     lat: 50.906036
     lng: -1.402273
+    parking:
+      - onsite: false
+        free: false
+        name: Eastgate Street Multi-Storey Car Park
+        address: 7 Eastgate St, Southampton SO14 3HB
+        website: https://www.southampton.gov.uk/travel-transport/find-and-plan/find-parking/cruise-parking/
+        lat: 50.9008218
+        lng: -1.4023403
+        distance_from_venue_m: 580
+        notes: Height restriction 1.95 metres.
+      - onsite: false
+        free: false
+        name: Ascupart Street Car Park
+        address: Ascupart St, Southampton SO14 1LU
+        lat: 50.905822
+        lng: -1.396245
+        distance_from_venue_m: 420
+      - onsite: false
+        free: false
+        name: James Street Car Park
+        address: James St, Southampton SO14 1PH
+        website: https://www.parkme.com/en-gb/lot/133738/james-street-southampton-uk
+        lat: 50.905041
+        lng: -1.396095
+        distance_from_venue_m: 450
+      - onsite: false
+        free: false
+        name: Spa Road Car Park
+        address: 15 Above Bar St, Southampton SO14 7DX
+        website: https://www.southampton.gov.uk/travel-transport/find-and-plan/find-parking/
+        lat: 50.903302
+        lng: -1.405533
+        distance_from_venue_m: 380
 events:
   adhoc:
     - eventname: Clocktower in the Park
