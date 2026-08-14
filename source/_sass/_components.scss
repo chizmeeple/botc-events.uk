@@ -1480,8 +1480,8 @@
     color: var(--color-text-light);
   }
 
-  .club-upcoming-events-limit {
-    margin: 1rem 0 0;
+  .club-upcoming-events-limit,
+  .club-upcoming-events-disclaimer {
     padding: 0.75rem 1rem;
     font-size: 0.9rem;
     color: var(--color-text);
@@ -1490,6 +1490,14 @@
     border-left: 3px solid var(--color-accent);
     border-radius: $border-radius;
     font-style: normal;
+  }
+
+  .club-upcoming-events-limit {
+    margin: 1rem 0 0;
+  }
+
+  .club-upcoming-events-disclaimer {
+    margin: 0 0 1rem;
   }
 
   .upcoming-events-list {

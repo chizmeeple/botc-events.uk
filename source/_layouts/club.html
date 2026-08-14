@@ -134,6 +134,7 @@ layout: default
       </div>
       {% endif %}
     </header>
+    <p class="club-upcoming-events-disclaimer" role="note">Signup and ticket links go to other websites we don't control, and we aren't responsible for their content. Please confirm details with the organisers and buy any tickets <strong>before travelling</strong>.</p>
     {% if club_events and club_events.upcoming.size > 0 %}
     <script id="club-events-data" type="application/json">[{% for occ in club_events.upcoming %}{"eventname":{{ occ.eventname | jsonify }},"start_time":{{ occ.start_time | jsonify }},"end_time":{{ occ.end_time | jsonify }},"location":{{ occ.location | jsonify }},"frequency":{{ occ.frequency | jsonify }},"cost":{{ occ.cost | jsonify }},"signup":{{ occ.signup | jsonify }},"slug":{{ slug | jsonify }},"club_name":{{ event_data.club_name | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
     <ul class="upcoming-events-list">
