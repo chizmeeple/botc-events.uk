@@ -64,7 +64,7 @@ events:
       startdate: 2026-07-07
       starttime: 1800
       endtime: 2200
-      rrule: FREQ=WEEKLY;BYDAY=TU
+      rrule: FREQ=WEEKLY;BYDAY=TU;UNTIL=20260811T220000
       exdate:
         - 2026-07-07
       location: the-tavern-basingstoke
