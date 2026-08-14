@@ -44,6 +44,11 @@ events:
       starttime: 1800
       endtime: 2200
       rrule: "FREQ=MONTHLY;BYDAY=2TU"
+      # Optional: end the series (inclusive). Use last occurrence date + endtime.
+      # rrule: "FREQ=WEEKLY;BYDAY=TU;UNTIL=20260811T220000"
+      # Optional: skip specific dates (YYYY-MM-DD).
+      # exdate:
+      #   - 2026-08-29
       # Optional: exrule excludes matching recurrence (RFC 5545 EXRULE; emitted as EXDATE in ICS).
       # exrule: "FREQ=MONTHLY;BYDAY=WE;BYSETPOS=-1"
       location: "the-name"
