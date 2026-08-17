@@ -27,7 +27,34 @@ events:
       starttime: 1830
       endtime: 2300
       rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=SA
-      exdate:
-        - 2026-08-29
+      location: up-a-level
+  adhoc:
+    - eventname: Demons Wake adjacent
+      special_event_id: demons-wake-adjacent-20260827
+      signup: https://www.upalevelyork.co.uk/get-in-touch/
+      cost: Unknown
+      startdate: 2026-08-27
+      starttime: 1700
+      location: up-a-level
+    - eventname: Demons Wake adjacent
+      special_event_id: demons-wake-adjacent-20260828
+      signup: https://www.upalevelyork.co.uk/get-in-touch/
+      cost: Unknown
+      startdate: 2026-08-28
+      starttime: '0000'
+      location: up-a-level
+    - eventname: Demons Wake adjacent
+      special_event_id: demons-wake-adjacent-20260829
+      signup: https://www.upalevelyork.co.uk/get-in-touch/
+      cost: Unknown
+      startdate: 2026-08-29
+      starttime: '0000'
+      location: up-a-level
+    - eventname: Demons Wake adjacent
+      special_event_id: demons-wake-adjacent-20260830
+      signup: https://www.upalevelyork.co.uk/get-in-touch/
+      cost: Unknown
+      startdate: 2026-08-30
+      starttime: 1800
       location: up-a-level
 ---
