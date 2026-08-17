@@ -245,4 +245,60 @@ events:
       starttime: 1830
       endtime: 2230
       location: "clubhouse"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "botc-clubhouse-20260904"
+      signup: "https://aftergame.app/events/d3f70856-d826-4c61-855c-bd987e7ebbe5"
+      cost: "£5 non-members"
+      startdate: 2026-09-04
+      starttime: 1830
+      endtime: 2230
+      location: "clubhouse"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "botc-bay-20260905"
+      signup: "https://www.bay-games.co.uk/event-details/blood-on-the-clocktower-evening-2026-09-05-19-00"
+      cost: "£8"
+      startdate: 2026-09-05
+      starttime: 1900
+      endtime: 2200
+      location: "bay-games"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "botc-bridge-20260911"
+      signup: "https://aftergame.app/events/ff0fafd0-637e-413d-8b7a-f09bdffa34e4"
+      cost: "£5"
+      startdate: 2026-09-11
+      starttime: 1830
+      endtime: 2300
+      location: "bridge-hotel"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "botc-bridge-20260916"
+      signup: "https://aftergame.app/events/ff0fafd0-637e-413d-8b7a-f09bdffa34e4"
+      cost: "£5"
+      startdate: 2026-09-16
+      starttime: 1830
+      endtime: 2300
+      location: "bridge-hotel"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "botc-clubhouse-20260918"
+      signup: "https://aftergame.app/events/d3f70856-d826-4c61-855c-bd987e7ebbe5"
+      cost: "£5 non-members"
+      startdate: 2026-09-18
+      starttime: 1830
+      endtime: 2230
+      location: "clubhouse"
+    - eventname: "3rd Saturday Casual Clocktower"
+      special_event_id: "botc-bay-20260919"
+      signup: "https://www.bay-games.co.uk/event-details/3rd-saturday-casual-clocktower-2026-09-19-19-00"
+      cost: "£7"
+      startdate: 2026-09-19
+      starttime: 1900
+      endtime: 2200
+      location: "bay-games"
+    - eventname: "Blood on the Clocktower (Beginner Friendly)"
+      special_event_id: "botc-clubhouse-20260925"
+      signup: "https://aftergame.app/events/d3f70856-d826-4c61-855c-bd987e7ebbe5"
+      cost: "£5 non-members"
+      startdate: 2026-09-25
+      starttime: 1830
+      endtime: 2230
+      location: "clubhouse"
 ---
