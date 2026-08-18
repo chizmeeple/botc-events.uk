@@ -97,6 +97,26 @@ events:
 - Match the YAML indentation of the target file (some clubs use 2-space lists,
   others 4).
 
+### Common rrules
+
+Write the `rrule` from this table. Do not search the repo for examples.
+
+Weekday codes: `MO` `TU` `WE` `TH` `FR` `SA` `SU`. Omit `INTERVAL=1`. Quotes
+are optional.
+
+| When | rrule |
+| ---- | ----- |
+| Every Tuesday | `FREQ=WEEKLY;BYDAY=TU` |
+| Fortnightly Saturday | `FREQ=WEEKLY;INTERVAL=2;BYDAY=SA` |
+| Every 4 weeks Tuesday | `FREQ=WEEKLY;INTERVAL=4;BYDAY=TU` |
+| nth weekday of the month (`1`–`5`) | `FREQ=MONTHLY;BYDAY=2SA` (2nd Saturday) |
+| Last weekday of the month | `FREQ=MONTHLY;BYDAY=-1FR` (last Friday) |
+| Two weekdays a month | `FREQ=MONTHLY;BYDAY=1WE,3WE` or `2SA,4SA` |
+| End a series (inclusive; last occurrence + endtime) | `FREQ=WEEKLY;BYDAY=TU;UNTIL=20260811T220000` |
+
+To skip dates, use `exdate` (`YYYY-MM-DD` list). See `_club-template.md` for
+`exrule`.
+
 ### Reference examples
 
 - Monthly Discord adhoc dates: `source/_clubs/chester-botches.md`
@@ -122,7 +142,8 @@ events:
 ### Add a recurring series to an existing group
 
 1. Append to `events.recurring` with a new unique `event_id`.
-2. Set `startdate` to the first occurrence on or after today; set `rrule`.
+2. Set `startdate` to the first occurrence on or after today; set `rrule`
+   from Common rrules (do not grep the repo for rrule examples).
 3. Run `./script/cursor-check`.
 
 ### Add a new group

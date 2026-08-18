@@ -62,6 +62,16 @@ locations:
       lat: 51.524602103299614
       lng: -0.7181275266027124
 events:
+  recurring:
+  - eventname: Blood on the Clocktower
+    event_id: blood-on-the-clocktower-last-friday
+    signup: "https://www.designmynight.com/uk/restaurants/sip-conquer/blood-on-the-clocktower-1?t=tickets"
+    cost: "£20"
+    startdate: 2026-08-28
+    starttime: 1830
+    endtime: 2330
+    rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=-1FR
+    location: sip-and-conquer
   adhoc:
   - eventname: Blood on the Clocktower
     signup: https://www.designmynight.com/uk/restaurants/sip-conquer/blood-on-the-clocktower-1
