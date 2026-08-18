@@ -2,7 +2,7 @@
 name: Meeplefolk
 based_in: Basingstoke
 group_id: basingstoke-meeplefolk
-image: ""
+image: basingstoke-meeplefolk.png
 website: https://aftergame.app/groups/meeplefolk
 meetup: ""
 facebook: ""
