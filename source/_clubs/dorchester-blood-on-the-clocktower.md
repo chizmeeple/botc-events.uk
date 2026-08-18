@@ -28,6 +28,6 @@ events:
       startdate: 2026-04-30
       starttime: 1930
       endtime: 2230
-      rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=TH
+      rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=TH;UNTIL=20261029T223000
       location: junction-hotel
 ---

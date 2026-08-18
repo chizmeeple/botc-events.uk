@@ -22,7 +22,7 @@ events:
   adhoc:
     - eventname: Blood on the Clocktower
       special_event_id: blood-on-the-clocktower-20260816
-      signup: https://www.facebook.com/events/s/blood-on-the-clock-tower-pride/2895172540824687/
+      signup: https://www.eventbrite.com/e/blood-on-the-clocktower-great-yarmouth-tickets-1997985328903
       cost: Free
       startdate: 2026-08-16
       starttime: 1200

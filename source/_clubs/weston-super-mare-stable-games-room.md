@@ -10,7 +10,9 @@ facebook: ""
 discord: ""
 bgg: ""
 description: >-
-  Blood on the Clocktower at The Stable Games Room (6pm–10pm). Free to play.
+  Blood on the Clocktower at The Stable Games Room (6pm–10pm). Free to play;
+  everyone is welcome, including brand new players. Storytellers are welcome
+  too.
 locations:
   stable-games-room:
     name: "The Stable Games Room"
