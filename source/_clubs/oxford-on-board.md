@@ -48,6 +48,11 @@ locations:
     address: 131 High Street, Oxford OX1 4DH
     lat: 51.751815
     lng: -1.2565728
+  crown-pub:
+    name: The Crown
+    address: 59a Cornmarket Street, Oxford OX1 3HB
+    lat: 51.7522047
+    lng: -1.2583282
 events:
   adhoc:
   - eventname: Westgate Social
@@ -240,12 +245,12 @@ events:
     starttime: 1900
     location: chequers-pub
     special_event_id: custom-script-night-20260810
-  - eventname: Westgate Social - Beginner Friendly
+  - eventname: The Crown - Beginner Friendly
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
     startdate: 2026-08-19
-    starttime: 1830
-    location: westgate-social
+    starttime: 1900
+    location: crown-pub
     special_event_id: beginner-friendly-20260819
   - eventname: Chequers Pub - Custom Scripts
     signup: https://www.meetup.com/oxfordonboard/events/
