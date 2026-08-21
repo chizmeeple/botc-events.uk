@@ -31,5 +31,16 @@ events:
       endtime: 2200
       rrule: FREQ=WEEKLY;BYDAY=WE
       exrule: FREQ=MONTHLY;BYDAY=WE;BYSETPOS=-1
+      exdate:
+        - 2026-09-09
+      location: replay
+  adhoc:
+    - eventname: Blood on the Clocktower
+      special_event_id: blood-on-the-clocktower-20260911
+      signup: https://replaybristol.com/
+      cost: Unknown
+      startdate: 2026-09-11
+      starttime: 1800
+      endtime: 2200
       location: replay
 ---
