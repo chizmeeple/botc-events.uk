@@ -49,3 +49,54 @@ jobs:
 
       - name: Validate clubs.json
         run: ruby script/validate_clubs_json.rb
+
+  summarise-group-pages:
+    name: Summarise group page changes
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+
+      - name: Test changed group pages script
+        run: ruby script/test_changed_group_pages.rb
+
+      - name: List changed group pages
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.sha }}
+        run: ruby script/changed_group_pages.rb "$BASE_SHA" "$HEAD_SHA" | tee group-pages.md
+
+      - name: Write job summary
+        run: cat group-pages.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Comment on pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          {
+            printf '%s\n\n' '<!-- group-pages-preview -->'
+            cat group-pages.md
+          } > comment.md
+
+          COMMENT_ID="$(
+            gh api --paginate "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" \
+              --jq '.[] | select(.body | contains("<!-- group-pages-preview -->")) | .id' \
+              | tail -n 1
+          )"
+
+          if [ -n "$COMMENT_ID" ]; then
+            gh api --method PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}" \
+              -F body=@comment.md
+          else
+            gh api --method POST "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" \
+              -F body=@comment.md
+          fi
