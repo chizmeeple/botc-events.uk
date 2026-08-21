@@ -25,6 +25,11 @@ locations:
     address: 51-53 Merchant Street, Broadmead, Bristol, BS1 3EE
     lat: 51.458054
     lng: -2.589721
+  the-downs:
+    name: The Downs
+    address: Stoke Road, Bristol BS9 1FG (outdoors; nearby pub if rainy)
+    lat: 51.47338
+    lng: -2.61806
 events:
   adhoc:
   - eventname: Blood on the Clocktower
@@ -75,4 +80,28 @@ events:
     endtime: 1500
     location: commune-cafe
     special_event_id: blood-on-the-clocktower-20260831
+  - eventname: Blood on the Clocktower
+    signup: https://www.bristol.gov.uk/residents/museums-parks-sports-and-culture/parks-and-open-spaces/parks-and-estates/the-downs
+    cost: Unknown
+    startdate: 2026-09-05
+    starttime: 1200
+    endtime: 1800
+    location: the-downs
+    special_event_id: blood-on-the-clocktower-20260905
+  - eventname: Blood on the Clocktower
+    signup: https://excelsiorgamesandcomics.co.uk/pages/about-us
+    cost: Unknown
+    startdate: 2026-09-06
+    starttime: 1030
+    endtime: 1700
+    location: excelsior
+    special_event_id: blood-on-the-clocktower-20260906
+  - eventname: Blood on the Clocktower
+    signup: https://www.bristol.gov.uk/residents/museums-parks-sports-and-culture/parks-and-open-spaces/parks-and-estates/the-downs
+    cost: Unknown
+    startdate: 2026-10-03
+    starttime: 1200
+    endtime: 1800
+    location: the-downs
+    special_event_id: blood-on-the-clocktower-20261003
 ---

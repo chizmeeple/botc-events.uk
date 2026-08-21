@@ -166,11 +166,24 @@ unless assert(changes.find { |change| change.kind == :renamed }.old_slug == "old
 end
 
 name = ChangedGroupPages.name_from_content(club_file(name: "Meeplefolk", slug: "basingstoke-meeplefolk"), fallback: "fallback")
-unless assert(name == "Meeplefolk", "read name from frontmatter")
+unless assert(name == "Meeplefolk (Testville)", "read name and location from frontmatter")
   failures += 1
 end
 unless assert(ChangedGroupPages.name_from_content("not yaml", fallback: "fallback") == "fallback",
               "fallback when frontmatter missing")
+  failures += 1
+end
+unless assert(ChangedGroupPages.display_name("Replay", location: "Bristol", fallback: "slug") == "Replay (Bristol)",
+              "display name includes location")
+  failures += 1
+end
+unless assert(ChangedGroupPages.display_name(nil, location: "Halifax", fallback: "halifax-blood-on-the-clocktower") ==
+                "halifax-blood-on-the-clocktower (Halifax)",
+              "display name keeps location when name missing")
+  failures += 1
+end
+unless assert(ChangedGroupPages.display_name("On Board", location: "  ", fallback: "slug") == "On Board",
+              "display name omits empty location")
   failures += 1
 end
 
@@ -191,15 +204,15 @@ Dir.mktmpdir("changed-group-pages-") do |dir|
   head = git(dir, "rev-parse", "HEAD")
 
   output = ChangedGroupPages.run(repo: dir, base: base, head: head)
-  unless assert(output.include?("## New Groups") && output.include?("[V4GCL](https://botc-events.uk/clubs/ipswich-v4gcl/)"),
+  unless assert(output.include?("## New Groups") && output.include?("[V4GCL (Testville)](https://botc-events.uk/clubs/ipswich-v4gcl/)"),
                 "git: new group (got:\n#{output})")
     failures += 1
   end
-  unless assert(output.include?("## Updated Groups / Events") && output.include?("[On Board](https://botc-events.uk/clubs/oxford-on-board/)"),
+  unless assert(output.include?("## Updated Groups / Events") && output.include?("[On Board (Testville)](https://botc-events.uk/clubs/oxford-on-board/)"),
                 "git: updated group")
     failures += 1
   end
-  unless assert(output.include?("## New Special Events") && output.include?("[Test Con](https://botc-events.uk/special/2026-09-01-test-con/)"),
+  unless assert(output.include?("## New Special Events") && output.include?("[Test Con (Testville)](https://botc-events.uk/special/2026-09-01-test-con/)"),
                 "git: new special event")
     failures += 1
   end
@@ -220,7 +233,7 @@ Dir.mktmpdir("changed-group-pages-") do |dir|
   git(dir, "commit", "-m", "Remove Ipswich")
   delete_head = git(dir, "rev-parse", "HEAD")
   delete_output = ChangedGroupPages.run(repo: dir, base: delete_base, head: delete_head)
-  unless assert(delete_output.include?("## Removed Groups") && delete_output.include?("[V4GCL](https://botc-events.uk/clubs/ipswich-v4gcl/)"),
+  unless assert(delete_output.include?("## Removed Groups") && delete_output.include?("[V4GCL (Testville)](https://botc-events.uk/clubs/ipswich-v4gcl/)"),
                 "git: removed group keeps production URL and name (got:\n#{delete_output})")
     failures += 1
   end
