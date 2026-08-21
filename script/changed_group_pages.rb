@@ -83,6 +83,12 @@ module ChangedGroupPages
     end
   end
 
+  def display_name(name, location:, fallback:)
+    base = name.is_a?(String) && !name.strip.empty? ? name.strip : fallback
+    loc = location.is_a?(String) ? location.strip : ""
+    loc.empty? ? base : "#{base} (#{loc})"
+  end
+
   def name_from_content(content, fallback:)
     return fallback if content.nil? || content.empty?
     return fallback unless content.match?(/\A---\s*\n/)
@@ -91,8 +97,9 @@ module ChangedGroupPages
     return fallback if parts.length < 3
 
     data = YAML.safe_load(parts[1], permitted_classes: [Date])
-    name = data.is_a?(Hash) ? data["name"] : nil
-    name.is_a?(String) && !name.strip.empty? ? name.strip : fallback
+    return fallback unless data.is_a?(Hash)
+
+    display_name(data["name"], location: data["based_in"], fallback: fallback)
   rescue Psych::SyntaxError, Psych::DisallowedClass
     fallback
   end
