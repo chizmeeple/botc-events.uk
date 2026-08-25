@@ -293,6 +293,14 @@ events:
       starttime: 1900
       endtime: 2200
       location: "bay-games"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "botc-bridge-20260922"
+      signup: "https://aftergame.app/events/ff0fafd0-637e-413d-8b7a-f09bdffa34e4"
+      cost: "£5"
+      startdate: 2026-09-22
+      starttime: 1830
+      endtime: 2300
+      location: "bridge-hotel"
     - eventname: "Blood on the Clocktower (Beginner Friendly)"
       special_event_id: "botc-clubhouse-20260925"
       signup: "https://aftergame.app/events/d3f70856-d826-4c61-855c-bd987e7ebbe5"
