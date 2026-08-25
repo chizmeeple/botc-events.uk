@@ -6,7 +6,7 @@ image: ''
 website: ''
 meetup: ''
 facebook: ''
-discord: https://discord.gg/SqyEj99R
+discord: https://discord.gg/PUTkJXwUJY
 bgg: ''
 description: >-
   Blood on the Clocktower at the University of Lincoln. These sessions are not
@@ -23,7 +23,7 @@ events:
   adhoc:
     - eventname: Blood on the Clocktower
       special_event_id: lincoln-blood-on-the-clocktower-20260620
-      signup: https://discord.gg/SqyEj99R
+      signup: https://discord.gg/PUTkJXwUJY
       cost: Free
       startdate: 2026-06-20
       starttime: 1000
@@ -31,7 +31,7 @@ events:
       location: university-of-lincoln
     - eventname: Blood on the Clocktower
       special_event_id: lincoln-blood-on-the-clocktower-20260912
-      signup: https://discord.gg/SqyEj99R
+      signup: https://discord.gg/PUTkJXwUJY
       cost: Free
       startdate: 2026-09-12
       starttime: 1000
