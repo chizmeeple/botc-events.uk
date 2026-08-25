@@ -11,7 +11,8 @@ bgg: ''
 description: >-
   Lang Toun Bluff — regular Blood on the Clocktower with Kirkcaldy Gaming
   Society at Glebe Park Centre. Sessions on the 1st Sunday, 2nd Sunday, and 3rd
-  Thursday of each month.
+  Thursday of each month. Sundays: doors open at 12:00, games 13:00 to 18:00.
+  Third Thursday: doors open at 18:00, games 18:30 to 22:00.
 locations:
   the-hive:
     name: The Hive
@@ -30,7 +31,7 @@ events:
     signup: https://www.kirkcaldygamingsociety.co.uk/event-list
     cost: "£3/£5"
     startdate: 2026-08-02
-    starttime: 1200
+    starttime: 1300
     endtime: 1800
     rrule: FREQ=MONTHLY;BYDAY=1SU
     location: glebe-park-centre
@@ -39,7 +40,7 @@ events:
     signup: https://www.kirkcaldygamingsociety.co.uk/event-list
     cost: "£3/£5"
     startdate: 2026-08-09
-    starttime: 1200
+    starttime: 1300
     endtime: 1800
     rrule: FREQ=MONTHLY;BYDAY=2SU
     location: glebe-park-centre
@@ -48,7 +49,7 @@ events:
     signup: https://www.kirkcaldygamingsociety.co.uk/event-list
     cost: "£3/£5"
     startdate: 2026-07-16
-    starttime: 1800
+    starttime: 1830
     endtime: 2200
     rrule: FREQ=MONTHLY;BYDAY=3TH
     location: glebe-park-centre
