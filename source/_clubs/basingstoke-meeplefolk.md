@@ -14,9 +14,10 @@ description: >-
   fee may follow later); please support the venue with a drink if you can.
   Outside food is welcome; outside drinks are not permitted.
 
-  We run each Tuesday, 6pm–10pm. New players welcome — if beginners attend, one
-  town is typically Trouble Brewing. Two towns work well in the room. Sign up
-  on After Game; Discord is used for the social side and arranging extra games.
+  We run each Tuesday, 6pm–10pm. The first Tuesday of the month is beginner
+  friendly; other Tuesdays are regular games. Two towns work well in the room.
+  Sign up on After Game; Discord is used for the social side and arranging
+  extra games.
 locations:
   wote-street-club:
     name: The Wote Street Club
@@ -48,6 +49,15 @@ events:
       startdate: 2026-08-18
       starttime: 1800
       endtime: 2200
-      rrule: FREQ=WEEKLY;BYDAY=TU
+      rrule: FREQ=MONTHLY;BYDAY=2TU,3TU,4TU,5TU
+      location: wote-street-club
+    - eventname: Beginner Friendly
+      event_id: beginner-friendly-first-tuesday
+      signup: https://aftergame.app/groups/meeplefolk
+      cost: Free
+      startdate: 2026-10-06
+      starttime: 1800
+      endtime: 2200
+      rrule: FREQ=MONTHLY;BYDAY=1TU
       location: wote-street-club
 ---
