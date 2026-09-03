@@ -1,12 +1,12 @@
 ---
-name: Bloodfest
+name: Bloodfest 4
 based_in: Milton Keynes
 group_id: 2027-05-01-milton-keynes-bloodfest
 banner_image: 2027-05-01-milton-keynes-bloodfest-banner.png
-image: ''
+image: ""
 website: https://www.eventbrite.co.uk/e/bloodfest-2027-tickets-1990472763618
 discord: https://discord.gg/Y5yTzyVnEC
-clocktracker: ''
+clocktracker: ""
 description: |-
   A social deduction convention for outsiders.
 
@@ -23,13 +23,13 @@ description: |-
   - Monday 3rd May: 9am until 5pm
 events:
   special:
-  - startdate: 2027-05-01
-    starttime: '0900'
-    enddate: 2027-05-03
-    endtime: 1700
-    location: kents-hill-park-tcc
-    cost: "£50"
-    special_event_id: main
+    - startdate: 2027-05-01
+      starttime: "0900"
+      enddate: 2027-05-03
+      endtime: 1700
+      location: kents-hill-park-tcc
+      cost: "£50"
+      special_event_id: main
 locations:
   kents-hill-park-tcc:
     name: Kents Hill Park Training and Conference Centre
