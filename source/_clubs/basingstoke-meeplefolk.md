@@ -9,15 +9,19 @@ facebook: ""
 discord: https://discord.gg/qUSQeQv5bv
 bgg: ""
 description: >-
-  New Basingstoke board game community playing Blood on the Clocktower at The
-  Wote Street Club in the town centre. Games are currently free (a small room
-  fee may follow later); please support the venue with a drink if you can.
-  Outside food is welcome; outside drinks are not permitted.
+  Basingstoke board game community playing Blood on the Clocktower at The Wote
+  Street Club in the town centre. Sign up on After Game; Discord is used for
+  the social side and arranging extra games.
 
-  We run each Tuesday, 6pm–10pm. The first Tuesday of the month is beginner
-  friendly; other Tuesdays are regular games. Two towns work well in the room.
-  Sign up on After Game; Discord is used for the social side and arranging
-  extra games.
+  Clocktower every Tuesday, 6pm–10pm, £3.40 per person (new players free on
+  beginner-friendly nights). The first Tuesday of the month is beginner
+  friendly; other Tuesdays are regular games. Space for up to two towns.
+  Outside food is welcome; bar on site with reasonably priced drinks.
+
+  Clocktower and board games on the fourth Sunday of the month, 12pm–4:30pm
+  (sometimes until 5pm), £4.50. One town of Clocktower alongside a collection
+  of over 100 board games. Outside food is not permitted on Sundays as the
+  kitchen is open.
 locations:
   wote-street-club:
     name: The Wote Street Club
@@ -45,7 +49,7 @@ events:
     - eventname: Blood on the Clocktower
       event_id: blood-on-the-clocktower-tuesday
       signup: https://aftergame.app/groups/meeplefolk
-      cost: Free
+      cost: "£3.40"
       startdate: 2026-08-18
       starttime: 1800
       endtime: 2200
@@ -54,10 +58,19 @@ events:
     - eventname: Beginner Friendly
       event_id: beginner-friendly-first-tuesday
       signup: https://aftergame.app/groups/meeplefolk
-      cost: Free
+      cost: "£3.40 (new players free)"
       startdate: 2026-10-06
       starttime: 1800
       endtime: 2200
       rrule: FREQ=MONTHLY;BYDAY=1TU
+      location: wote-street-club
+    - eventname: Clocktower & Board Games
+      event_id: clocktower-and-board-games-fourth-sunday
+      signup: https://aftergame.app/groups/meeplefolk
+      cost: "£4.50"
+      startdate: 2026-09-27
+      starttime: 1200
+      endtime: 1630
+      rrule: FREQ=MONTHLY;BYDAY=4SU
       location: wote-street-club
 ---
