@@ -39,7 +39,7 @@ events:
     - eventname: "Blood on the Clocktower"
       event_id: "wolves-ravenswood-first-monday"
       signup: "https://discord.gg/wdVm6mb8GA"
-      cost: "Unknown"
+      cost: "Free"
       startdate: 2026-09-07
       starttime: 1900
       endtime: 2300
