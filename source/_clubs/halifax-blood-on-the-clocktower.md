@@ -9,13 +9,9 @@ facebook: ''
 discord: https://discord.gg/PUTkJXwUJY
 bgg: ''
 description: >-
-  Monthly Blood on the Clocktower at Vocation & Co, Halifax, with additional
-  sessions at Shadowdust Gaming Cafe. Vocation games start at 7pm; organisers
-  aim to be there from 6:30pm to set up, so you do not need to arrive early.
-  All sessions are free aside from drinks, food, or trading cards you wish to
-  buy.
-
-  Google Maps: https://maps.app.goo.gl/tQBPxvRGAu1zsN2m7
+  Weekly Blood on the Clocktower at Shadowdust Gaming Cafe, Halifax, every
+  Sunday 2–10pm. Monday sessions at Vocation & Co have ended. All sessions are
+  free aside from drinks, food, or trading cards you wish to buy.
 locations:
   vocation-and-co:
     name: Vocation & Co
@@ -38,8 +34,17 @@ events:
       startdate: 2026-04-20
       starttime: 1900
       endtime: 2230
-      rrule: FREQ=MONTHLY;BYDAY=3MO
+      rrule: FREQ=MONTHLY;BYDAY=3MO;UNTIL=20260817T223000
       location: vocation-and-co
+    - eventname: Blood on the Clocktower
+      event_id: weekly-sunday-shadowdust
+      signup: https://discord.gg/PUTkJXwUJY
+      cost: Free
+      startdate: 2026-09-13
+      starttime: 1400
+      endtime: 2200
+      rrule: FREQ=WEEKLY;BYDAY=SU
+      location: shadowdust
   adhoc:
     - eventname: Blood on the Clocktower
       special_event_id: blood-on-the-clocktower-20260823
