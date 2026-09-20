@@ -44,4 +44,28 @@ events:
       starttime: 1500
       endtime: 2200
       location: the-county-arms
+    - eventname: Blood on the Clocktower
+      special_event_id: blood-on-the-clocktower-20261003
+      signup: https://discord.gg/GqKBYT6WxU
+      cost: Free
+      startdate: 2026-10-03
+      starttime: 1500
+      endtime: 2200
+      location: the-county-arms
+    - eventname: Blood on the Clocktower
+      special_event_id: blood-on-the-clocktower-20261017
+      signup: https://discord.gg/GqKBYT6WxU
+      cost: Free
+      startdate: 2026-10-17
+      starttime: 1500
+      endtime: 2200
+      location: the-county-arms
+    - eventname: Blood on the Clocktower
+      special_event_id: blood-on-the-clocktower-20261031
+      signup: https://discord.gg/GqKBYT6WxU
+      cost: Free
+      startdate: 2026-10-31
+      starttime: 1500
+      endtime: 2200
+      location: the-county-arms
 ---
