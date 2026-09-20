@@ -75,4 +75,20 @@ events:
     endtime: 2300
     location: steam-crane
     special_event_id: games-night-20260924
+  - eventname: Games Night
+    signup: https://www.thesteamcrane.co.uk/events
+    cost: "£3"
+    startdate: 2026-10-29
+    starttime: 1900
+    endtime: 2300
+    location: steam-crane
+    special_event_id: games-night-20261029
+  - eventname: Games Night
+    signup: https://www.thesteamcrane.co.uk/events
+    cost: "£3"
+    startdate: 2026-11-26
+    starttime: 1900
+    endtime: 2300
+    location: steam-crane
+    special_event_id: games-night-20261126
 ---

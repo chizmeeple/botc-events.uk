@@ -43,4 +43,20 @@ events:
       starttime: 1930
       endtime: 2200
       location: colab-tavern
+    - eventname: Blood on the Clocktower
+      special_event_id: blood-on-the-clocktower-20261009
+      signup: https://www.rpgtaverns.com/ticketing
+      cost: "£16.50"
+      startdate: 2026-10-09
+      starttime: 1915
+      endtime: 2145
+      location: colab-tavern
+    - eventname: Blood on the Clocktower
+      special_event_id: blood-on-the-clocktower-20261023
+      signup: https://www.rpgtaverns.com/ticketing
+      cost: "£16.50"
+      startdate: 2026-10-23
+      starttime: 1915
+      endtime: 2145
+      location: colab-tavern
 ---

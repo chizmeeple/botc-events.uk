@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Fast check for Discord/adhoc club updates: validate clubs and regenerate
+# rendered_events.json. Does not build or serve the site.
+# Run from project root (where _config.yml and script/ live).
+cd "$(dirname "$0")/.."
+
+# do our best to source the correct chruby version
+if [[ -d "/opt/homebrew/opt/chruby/share/chruby/" ]]; then
+    # Ensure PROMPT_COMMAND is defined so chruby's hooks don't trip nounset
+    if [[ -z "${PROMPT_COMMAND+x}" ]]; then
+        PROMPT_COMMAND=""
+    fi
+
+    source "/opt/homebrew/opt/chruby/share/chruby/chruby.sh"
+    source "/opt/homebrew/opt/chruby/share/chruby/auto.sh"
+fi
+
+if [ -f .ruby-version ]; then
+    chruby "$(cat .ruby-version)"
+fi
+
+ruby script/validate_clubs.rb
+ruby script/generate_events.rb
+ruby script/validate_events.rb

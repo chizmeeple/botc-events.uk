@@ -13,6 +13,7 @@ layout: default
     </div>
     {% endif %}
   </header>
+  {% include events-disclaimer.html %}
   {% if all_events and all_events.size > 0 %}
   {% include calendar-subscribe.html %}
   {% include events-filters.html %}

@@ -136,9 +136,12 @@ To skip dates, use `exdate` (`YYYY-MM-DD` list). See `_club-template.md` for
 
 ### Add adhoc dates (e.g. from Discord)
 
+Follow `.cursor/skills/club-discord-update/SKILL.md`. In short:
+
 1. Find the group file under `source/_clubs/`.
 2. Append a new entry to `events.adhoc` with a fresh `special_event_id`.
-3. Run `./script/cursor-check` (see `validating.md`).
+3. Run `./script/cursor-events-check`. Do not restart `script/jekyll-serve`
+   or use the browser.
 
 ### Add a recurring series to an existing group
 
@@ -163,11 +166,21 @@ not club `events.adhoc`. See an existing file such as
 
 ## Validation
 
-After any change to group or special-event files, run from the repo root:
+For Discord/adhoc updates to an **existing** group, run
+`./script/cursor-events-check` only (see the `club-discord-update` skill).
+
+For new groups, special events, or when the user asks to preview the site,
+**kill** any running `script/jekyll-serve` (or Jekyll) process, then start a
+fresh one from the repo root. A live server does not regenerate event JSON —
+leftover `_site` or `rendered_events.json` will show stale titles and dates.
 
 ```bash
-PS1='> ' zsh --no-rcs -c './script/cursor-check'
+PS1='> ' zsh --no-rcs -c './script/jekyll-serve'
 ```
+
+This validates clubs, regenerates event/special-event data and the ICS feed,
+builds, and serves at http://127.0.0.1:4000/. Do not use `cursor-check` plus
+a static `_site` server for these updates.
 
 See `validating.md` for Ruby/Bundler environment details.
 

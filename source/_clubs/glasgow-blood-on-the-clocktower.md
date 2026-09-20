@@ -28,6 +28,8 @@ events:
     endtime: 2230
     rrule: FREQ=WEEKLY;INTERVAL=4;BYDAY=TU
     location: bacchus
+    exdate:
+      - 2026-10-27
   - eventname: Blood on the Clocktower
     event_id: four-weekly-thursday-bacchus
     signup: https://www.eventbrite.co.uk/o/blood-on-the-clocktower-glasgow-52202023043
@@ -37,6 +39,8 @@ events:
     endtime: 2230
     rrule: FREQ=WEEKLY;INTERVAL=4;BYDAY=TH
     location: bacchus
+    exdate:
+      - 2026-10-15
   adhoc:
   - eventname: Blood on the Clocktower
     signup: https://www.eventbrite.co.uk/e/blood-on-the-clocktower-bacchus-tuesday-7726-tickets-1992932999249
@@ -62,4 +66,28 @@ events:
     endtime: 1730
     location: bacchus
     special_event_id: blood-on-the-clocktower-20260726
+  - eventname: Blood on the Clocktower
+    signup: https://www.eventbrite.co.uk/o/blood-on-the-clocktower-glasgow-52202023043
+    cost: Free
+    startdate: 2026-10-15
+    starttime: 1830
+    endtime: 2230
+    location: bacchus
+    special_event_id: blood-on-the-clocktower-20261015
+  - eventname: Halloween party
+    signup: https://www.eventbrite.co.uk/o/blood-on-the-clocktower-glasgow-52202023043
+    cost: Free
+    startdate: 2026-10-25
+    starttime: 1430
+    endtime: 1830
+    location: bacchus
+    special_event_id: halloween-party-20261025
+  - eventname: Blood on the Clocktower
+    signup: https://www.eventbrite.co.uk/o/blood-on-the-clocktower-glasgow-52202023043
+    cost: Free
+    startdate: 2026-10-27
+    starttime: 1830
+    endtime: 2230
+    location: bacchus
+    special_event_id: blood-on-the-clocktower-20261027
 ---

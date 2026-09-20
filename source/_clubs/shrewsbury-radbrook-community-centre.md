@@ -45,5 +45,16 @@ events:
       starttime: 1830
       endtime: 2230
       rrule: "FREQ=WEEKLY;BYDAY=FR"
+      exdate:
+        - 2026-10-30
+      location: "radbrook-community-centre"
+  adhoc:
+    - eventname: "Halloween Special"
+      special_event_id: halloween-special-20261101
+      signup: "https://www.radbrookcc.org.uk/index.htm"
+      cost: "Unknown"
+      startdate: 2026-11-01
+      starttime: 1200
+      endtime: 2000
       location: "radbrook-community-centre"
 ---

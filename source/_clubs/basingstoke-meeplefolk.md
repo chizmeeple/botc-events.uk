@@ -3,8 +3,9 @@ name: Meeplefolk
 based_in: Basingstoke
 group_id: basingstoke-meeplefolk
 image: basingstoke-meeplefolk.png
-website: https://aftergame.app/groups/meeplefolk
+website: ""
 meetup: ""
+aftergame: https://aftergame.app/groups/meeplefolk
 facebook: ""
 discord: https://discord.gg/qUSQeQv5bv
 bgg: ""

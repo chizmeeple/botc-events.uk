@@ -12,13 +12,13 @@ bgg: ""
 description: >-
   Blood on the Clocktower - every Friday & Sunday
 
-  Held every Friday from 18:00 till 22:00 except the 3rd Friday of the month.
+  Held every Friday from 18:00 till 22:00.
 
   Held every Sunday from 14:00 till 18:00 except the 3rd Sunday of the month.
 
-  £6.00 per person, unless you have a membership. Blood on the Clocktower and
-  Annual+ Members pay no entrance fee. Student, Monthly and Annual members pay
-  a £2 reduced rate per session.
+  £6.00 per person if you pre-book or £7.50 for a walk-in, unless you have a
+  membership. Blood on the Clocktower and Annual+ Members pay no entrance fee.
+  Student, Monthly and Annual members pay a £2 reduced rate per session.
 locations:
   sliced-n-diced:
     name: "Sliced N Diced"
@@ -47,7 +47,7 @@ events:
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
       event_id: "sliced-diced-birmingham-weekly-first-friday"
-      signup: "https://slicedndiced.uk/WhatsOn.html"
+      signup: "https://slicedndiced.uk/BotC.html"
       cost: "£6"
       startdate: 2026-04-10
       starttime: 1800
@@ -57,7 +57,7 @@ events:
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
       event_id: "sliced-diced-birmingham-weekly-second-friday"
-      signup: "https://slicedndiced.uk/WhatsOn.html"
+      signup: "https://slicedndiced.uk/BotC.html"
       cost: "£6"
       startdate: 2026-04-10
       starttime: 1800
@@ -66,8 +66,18 @@ events:
       location: "sliced-n-diced"
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
+      event_id: "sliced-diced-birmingham-weekly-third-friday"
+      signup: "https://slicedndiced.uk/BotC.html"
+      cost: "£6"
+      startdate: 2026-10-16
+      starttime: 1800
+      endtime: 2200
+      rrule: "FREQ=MONTHLY;BYDAY=3FR"
+      location: "sliced-n-diced"
+    - eventname: "Blood on the Clocktower"
+      # Stable ID for this series (unique within this group; used in calendar UIDs).
       event_id: "sliced-diced-birmingham-weekly-fourth-friday"
-      signup: "https://slicedndiced.uk/WhatsOn.html"
+      signup: "https://slicedndiced.uk/BotC.html"
       cost: "£6"
       startdate: 2026-04-10
       starttime: 1800
@@ -77,7 +87,7 @@ events:
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
       event_id: "sliced-diced-birmingham-weekly-fifth-friday"
-      signup: "https://slicedndiced.uk/WhatsOn.html"
+      signup: "https://slicedndiced.uk/BotC.html"
       cost: "£6"
       startdate: 2026-04-10
       starttime: 1800
@@ -87,7 +97,7 @@ events:
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
       event_id: "sliced-diced-birmingham-weekly-first-sunday"
-      signup: "https://slicedndiced.uk/WhatsOn.html"
+      signup: "https://slicedndiced.uk/BotC.html"
       cost: "£6"
       startdate: 2026-04-10
       starttime: 1400
@@ -97,7 +107,7 @@ events:
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
       event_id: "sliced-diced-birmingham-weekly-second-sunday"
-      signup: "https://slicedndiced.uk/WhatsOn.html"
+      signup: "https://slicedndiced.uk/BotC.html"
       cost: "£6"
       startdate: 2026-04-10
       starttime: 1400
@@ -107,7 +117,7 @@ events:
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
       event_id: "sliced-diced-birmingham-weekly-fourth-sunday"
-      signup: "https://slicedndiced.uk/WhatsOn.html"
+      signup: "https://slicedndiced.uk/BotC.html"
       cost: "£6"
       startdate: 2026-04-10
       starttime: 1400
@@ -117,7 +127,7 @@ events:
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
       event_id: "sliced-diced-birmingham-weekly-fifth-sunday"
-      signup: "https://slicedndiced.uk/WhatsOn.html"
+      signup: "https://slicedndiced.uk/BotC.html"
       cost: "£6"
       startdate: 2026-04-10
       starttime: 1400
