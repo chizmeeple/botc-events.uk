@@ -28,6 +28,11 @@ events:
     starttime: 1830
     endtime: 2300
     rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=FR
+    exdate:
+      - 2026-10-09
+      - 2026-10-23
+      - 2026-11-06
+      - 2026-11-20
     location: gates-of-cerberus
   adhoc:
   - eventname: Blood on the Clocktower
@@ -62,4 +67,44 @@ events:
     endtime: 2300
     location: gates-of-cerberus
     special_event_id: blood-on-the-clocktower-20260703
+  - eventname: Blood on the Clocktower
+    signup: https://discord.com/channels/1247195779970498780/1314165871874408448
+    cost: "£5"
+    startdate: 2026-10-09
+    starttime: 1830
+    endtime: 2200
+    location: gates-of-cerberus
+    special_event_id: blood-on-the-clocktower-20261009
+  - eventname: Blood on the Clocktower
+    signup: https://discord.com/channels/1247195779970498780/1314165871874408448
+    cost: "£5"
+    startdate: 2026-10-23
+    starttime: 1830
+    endtime: 2200
+    location: gates-of-cerberus
+    special_event_id: blood-on-the-clocktower-20261023
+  - eventname: Super Spooky Blood on the Clocktower
+    signup: https://discord.com/channels/1247195779970498780/1314165871874408448
+    cost: "£5"
+    startdate: 2026-10-30
+    starttime: 1830
+    endtime: 2200
+    location: gates-of-cerberus
+    special_event_id: super-spooky-blood-on-the-clocktower-20261030
+  - eventname: Blood on the Clocktower
+    signup: https://discord.com/channels/1247195779970498780/1314165871874408448
+    cost: "£5"
+    startdate: 2026-11-06
+    starttime: 1830
+    endtime: 2200
+    location: gates-of-cerberus
+    special_event_id: blood-on-the-clocktower-20261106
+  - eventname: Blood on the Clocktower
+    signup: https://discord.com/channels/1247195779970498780/1314165871874408448
+    cost: "£5"
+    startdate: 2026-11-20
+    starttime: 1830
+    endtime: 2200
+    location: gates-of-cerberus
+    special_event_id: blood-on-the-clocktower-20261120
 ---
