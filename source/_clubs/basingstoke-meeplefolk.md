@@ -13,7 +13,7 @@ description: >-
   Street Club in the town centre. Sign up on After Game; Discord is used for
   the social side and arranging extra games.
 
-  Clocktower every Tuesday, 6pm–10pm, £3.40 per person (new players free on
+  Clocktower every Tuesday, 6pm–10pm, £4.00 per person (new players free on
   beginner-friendly nights). The first Tuesday of the month is beginner
   friendly; other Tuesdays are regular games. Space for up to two towns.
   Outside food is welcome; bar on site with reasonably priced drinks.
@@ -49,7 +49,7 @@ events:
     - eventname: Blood on the Clocktower
       event_id: blood-on-the-clocktower-tuesday
       signup: https://aftergame.app/groups/meeplefolk
-      cost: "£3.40"
+      cost: "£4.00"
       startdate: 2026-08-18
       starttime: 1800
       endtime: 2200
@@ -58,7 +58,7 @@ events:
     - eventname: Beginner Friendly
       event_id: beginner-friendly-first-tuesday
       signup: https://aftergame.app/groups/meeplefolk
-      cost: "£3.40 (new players free)"
+      cost: "£4.00 (new players free)"
       startdate: 2026-10-06
       starttime: 1800
       endtime: 2200
