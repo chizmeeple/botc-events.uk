@@ -10,8 +10,9 @@ discord: https://discord.gg/PUTkJXwUJY
 bgg: ''
 description: >-
   Weekly Blood on the Clocktower at Shadowdust Gaming Cafe, Halifax, every
-  Sunday 2–10pm. Monday sessions at Vocation & Co have ended. All sessions are
-  free aside from drinks, food, or trading cards you wish to buy.
+  Sunday 2–10pm. No sign-up required; just turn up. Monday sessions at
+  Vocation & Co have ended. All sessions are free aside from drinks, food, or
+  trading cards you wish to buy.
 locations:
   vocation-and-co:
     name: Vocation & Co
