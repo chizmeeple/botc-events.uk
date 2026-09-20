@@ -54,6 +54,14 @@ events:
       endtime: 2300
       location: anlaby-bar
       special_event_id: blood-on-the-clocktower-20260913
+    - eventname: Blood on the Clocktower
+      signup: https://www.facebook.com/share/1gq7FkUSbp/
+      cost: Free
+      startdate: 2026-10-11
+      starttime: 1800
+      endtime: 2300
+      location: anlaby-bar
+      special_event_id: blood-on-the-clocktower-20261011
   recurring:
     - eventname: Blood on the Clocktower
       signup: https://www.facebook.com/share/14VSN5of6GJ/
@@ -66,6 +74,7 @@ events:
         - 2026-07-12
         - 2026-08-09
         - 2026-09-13
+        - 2026-10-11
       location: anlaby-bar
       event_id: blood-on-the-clocktower
 ---
