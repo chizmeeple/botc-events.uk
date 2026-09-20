@@ -125,6 +125,18 @@ layout: default
     {% endif %}
   </div>
 
+  {% assign club_description = page.description | strip %}
+  {% assign club_body = content | strip %}
+  {% if club_description != "" or club_body != "" %}
+  <div class="club-description">
+    <h2>About this group</h2>
+    {% if club_description != "" %}
+    <p>{{ page.description }}</p>
+    {% endif %}
+    {{ content }}
+  </div>
+  {% endif %}
+
   {% assign club_events = event_data %}
   <div class="club-upcoming-events" id="club-upcoming-events">
     <header class="club-upcoming-events__header">
@@ -153,12 +165,6 @@ layout: default
     {% else %}
     <p class="upcoming-events-empty">No upcoming events scheduled.</p>
     {% endif %}
-  </div>
-
-  <div class="club-description">
-    <h2>About this group</h2>
-    <p>{{ page.description }}</p>
-    {{ content }}
   </div>
 
   {% assign locs = event_data.locations %}
