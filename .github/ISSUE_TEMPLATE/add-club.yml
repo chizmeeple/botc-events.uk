@@ -219,6 +219,12 @@ body:
       placeholder: https://www.meetup.com/...
 
   - type: input
+    id: aftergame
+    attributes:
+      label: Aftergame group
+      placeholder: https://aftergame.app/groups/...
+
+  - type: input
     id: facebook
     attributes:
       label: Facebook page or group

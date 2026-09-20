@@ -19,6 +19,7 @@ layout: null
     "age_restriction": {{ club.age_restriction | jsonify }},
     "website": {{ club.website | jsonify }},
     "meetup": {{ club.meetup | jsonify }},
+    "aftergame": {{ club.aftergame | jsonify }},
     "facebook": {{ club.facebook | jsonify }},
     "description": {{ club.description | jsonify }},
     "image": {{ club.image | jsonify }}
@@ -46,6 +47,7 @@ layout: null
     "age_restriction": null,
     "website": {{ se_data.website | jsonify }},
     "meetup": null,
+    "aftergame": null,
     "facebook": null,
     "description": {{ se_data.description | jsonify }},
     "image": {{ se_img | jsonify }}

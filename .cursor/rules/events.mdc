@@ -52,6 +52,7 @@ group_id: town-club-slug # required when events exist; unique site-wide
 image: "" # filename in assets/images/clubs/ or a URL
 website: ""
 meetup: ""
+aftergame: ""
 facebook: ""
 discord: ""
 bgg: ""

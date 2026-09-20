@@ -41,6 +41,7 @@ group_id: "unlucky-villagers"
 image: "unlucky-villagers.png"
 website: "https://example.com"
 meetup: "https://www.meetup.com/unlucky-villagers/"
+aftergame: "https://aftergame.app/groups/unlucky-villagers/"
 facebook: "https://facebook.com/unluckyvillagers"
 discord: "https://discord.gg/example"
 bgg: "https://boardgamegeek.com/guild/1234"
@@ -86,6 +87,7 @@ events:
 | `image`            | A URL or filename in `source/assets/images/clubs/` (see [step 5](#5-adding-a-logo) below)                                                             |
 | `website`          | Link to your group's website                                                                                                                          |
 | `meetup`           | Meetup group URL                                                                                                                                      |
+| `aftergame`        | Aftergame group URL                                                                                                                                   |
 | `facebook`         | Link to your groups's Facebook page or group                                                                                                          |
 | `discord`          | Discord invite link                                                                                                                                   |
 | `bgg`              | BoardGameGeek guild or group link                                                                                                                     |
