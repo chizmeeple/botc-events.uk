@@ -52,4 +52,12 @@ events:
       starttime: 1830
       endtime: 2200
       location: the-gregson
+    - eventname: Blood on the Clocktower
+      special_event_id: lancaster-gregson-20261014
+      signup: https://gregson.co.uk/series/blood-on-the-clocktower/
+      cost: "Free (optional donation)"
+      startdate: 2026-10-14
+      starttime: 1830
+      endtime: 2200
+      location: the-gregson
 ---
