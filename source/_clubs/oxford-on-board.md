@@ -347,7 +347,7 @@ events:
     starttime: 1900
     location: westgate-social
     special_event_id: custom-script-night-20260930
-  - eventname: Westgate Social - Base 3
+  - eventname: Westgate Social - Base 3 & Beginner Friendly
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
     startdate: 2026-10-05
@@ -377,7 +377,7 @@ events:
     starttime: 1900
     location: westgate-social
     special_event_id: custom-script-night-20261014
-  - eventname: Westgate Social - Base 3
+  - eventname: Westgate Social - Base 3 & Beginner Friendly
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
     startdate: 2026-10-19
@@ -392,7 +392,7 @@ events:
     endtime: 2300
     location: crown-pub
     special_event_id: beginner-friendly-20261021
-  - eventname: Sunday Special!
+  - eventname: Sunday Special! - Crazy Shenanigans
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: "£5"
     startdate: 2026-10-25
