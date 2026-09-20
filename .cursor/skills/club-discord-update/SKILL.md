@@ -43,7 +43,7 @@ clearly asked for a new group.
 
 ## Validate
 
-From the repo root, after the edit:
+From the repo root, after the edits (once at the end of a batch):
 
 ```bash
 PS1='> ' zsh --no-rcs -c './script/cursor-events-check'
@@ -54,7 +54,10 @@ Leave any running Jekyll server alone. Do not run `script/jekyll-serve`,
 
 ## Finish
 
-Do not commit. End with a commit command that stages **only** the club file.
+Do not commit. Give **one commit command per place/update**, even when several
+are in the same chat. Never combine club files into one commit.
+
+Each command stages **only** that club file:
 
 ```bash
 git add source/_clubs/{file}.md
