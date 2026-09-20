@@ -5,6 +5,7 @@ group_id: farnborough-board-games
 image: farnborough-board-games.png
 website: ''
 meetup: https://www.meetup.com/farnborough-board-games-club/
+aftergame: https://aftergame.app/groups/farnborough-board-games/
 facebook: https://www.facebook.com/groups/farnboroughboardgames/
 discord: ''
 bgg: ''
@@ -24,7 +25,7 @@ locations:
 events:
   recurring:
   - eventname: Blood on the Clocktower (Beginner Friendly)
-    signup: https://www.meetup.com/farnborough-board-games-club/
+    signup: https://aftergame.app/groups/farnborough-board-games/events
     cost: Free
     startdate: 2026-02-10
     starttime: 1850
@@ -33,7 +34,7 @@ events:
     location: new-inn
     event_id: blood-on-the-clocktower-beginner-friendly
   - eventname: Blood on the Clocktower (Intermediate+)
-    signup: https://www.meetup.com/farnborough-board-games-club/
+    signup: https://aftergame.app/groups/farnborough-board-games/events
     cost: Free
     startdate: 2026-02-10
     starttime: 1850

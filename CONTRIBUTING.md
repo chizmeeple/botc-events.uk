@@ -19,6 +19,7 @@ group_id: "unlucky-villagers"
 image: "unlucky-villagers.png"
 website: "https://example.com"
 meetup: "https://www.meetup.com/unlucky-villagers/"
+aftergame: "https://aftergame.app/groups/unlucky-villagers/"
 facebook: "https://facebook.com/unluckyvillagers"
 discord: "https://discord.gg/example"
 bgg: "https://boardgamegeek.com/guild/1234"
@@ -69,6 +70,7 @@ events:
 | `image` | No | Photo URL or filename in `source/assets/images/clubs/` |
 | `website` | No | Full URL |
 | `meetup` | No | Meetup group URL |
+| `aftergame` | No | Aftergame group URL |
 | `facebook` | No | Facebook page or group URL |
 | `discord` | No | Discord invite link |
 | `bgg` | No | BoardGameGeek guild or group link |
