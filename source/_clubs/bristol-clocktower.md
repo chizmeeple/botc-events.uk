@@ -30,6 +30,11 @@ locations:
     address: Stoke Road, Bristol BS9 1FG (outdoors; nearby pub if rainy)
     lat: 51.47338
     lng: -2.61806
+  chance-and-counters-gloucester-rd:
+    name: Chance & Counters Gloucester Road
+    address: 79-81 Gloucester Road, Bishopston, Bristol, BS7 8AS
+    lat: 51.472209
+    lng: -2.591469
 events:
   adhoc:
   - eventname: Blood on the Clocktower
@@ -97,6 +102,14 @@ events:
     location: excelsior
     special_event_id: blood-on-the-clocktower-20260906
   - eventname: Blood on the Clocktower
+    signup: https://www.chanceandcounters.com/bristol-gloucester-road/
+    cost: Unknown
+    startdate: 2026-09-28
+    starttime: 1800
+    endtime: 2300
+    location: chance-and-counters-gloucester-rd
+    special_event_id: blood-on-the-clocktower-20260928
+  - eventname: Blood on the Clocktower
     signup: https://www.bristol.gov.uk/residents/museums-parks-sports-and-culture/parks-and-open-spaces/parks-and-estates/the-downs
     cost: Unknown
     startdate: 2026-10-03
@@ -104,4 +117,28 @@ events:
     endtime: 1800
     location: the-downs
     special_event_id: blood-on-the-clocktower-20261003
+  - eventname: Blood on the Clocktower
+    signup: https://ratings.food.gov.uk/business/en-GB/1765529
+    cost: Unknown
+    startdate: 2026-10-10
+    starttime: 1030
+    endtime: 1500
+    location: commune-cafe
+    special_event_id: blood-on-the-clocktower-20261010
+  - eventname: Blood on the Clocktower
+    signup: https://www.chanceandcounters.com/bristol-gloucester-road/
+    cost: Unknown
+    startdate: 2026-10-26
+    starttime: 1800
+    endtime: 2300
+    location: chance-and-counters-gloucester-rd
+    special_event_id: blood-on-the-clocktower-20261026
+  - eventname: Blood on the Clocktower
+    signup: https://www.chanceandcounters.com/bristol-gloucester-road/
+    cost: Unknown
+    startdate: 2026-11-23
+    starttime: 1800
+    endtime: 2300
+    location: chance-and-counters-gloucester-rd
+    special_event_id: blood-on-the-clocktower-20261123
 ---
