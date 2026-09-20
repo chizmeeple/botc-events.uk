@@ -39,6 +39,11 @@ locations:
     #     notes: >-
     #       Any extra information about where to park, access restrictions,
     #       or how busy it gets.
+  titanic-hotel-belfast:
+    name: "Titanic Hotel Belfast"
+    address: "8 Queens Road, Titanic Quarter, Belfast BT3 9DT"
+    lat: 54.6077869
+    lng: -5.9089976
 events:
   recurring:
     - eventname: "Blood on the Clocktower"
@@ -51,4 +56,21 @@ events:
       endtime: 2359
       rrule: "FREQ=WEEKLY;BYDAY=FR"
       location: "battle-inc-gaming"
+  adhoc:
+    - eventname: "Robin Con"
+      special_event_id: "robin-con-20261031"
+      signup: "https://botc-events.uk/special/2026-10-31-belfast-robin-con/"
+      cost: "£25.75"
+      startdate: 2026-10-31
+      starttime: 1000
+      endtime: 2000
+      location: "titanic-hotel-belfast"
+    - eventname: "Robin Con"
+      special_event_id: "robin-con-20261101"
+      signup: "https://botc-events.uk/special/2026-10-31-belfast-robin-con/"
+      cost: "£25.75"
+      startdate: 2026-11-01
+      starttime: 1000
+      endtime: 1800
+      location: "titanic-hotel-belfast"
 ---
