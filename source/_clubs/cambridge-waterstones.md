@@ -121,12 +121,4 @@ events:
     endtime: 2130
     location: waterstones-cambridge
     special_event_id: botc-at-cambridge-waterstones-20261009
-  - eventname: BotC at Cambridge Waterstones
-    signup: https://www.waterstones.com/events/search/shop/cambridge-sidney-str/category/10
-    cost: Unknown
-    startdate: 2026-10-24
-    starttime: 1800
-    endtime: 2200
-    location: waterstones-cambridge
-    special_event_id: botc-at-cambridge-waterstones-20261024
 ---
