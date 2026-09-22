@@ -126,6 +126,14 @@ events:
     location: commune-cafe
     special_event_id: blood-on-the-clocktower-20261010
   - eventname: Blood on the Clocktower
+    signup: https://excelsiorgamesandcomics.co.uk/pages/about-us
+    cost: Unknown
+    startdate: 2026-10-24
+    starttime: 1030
+    endtime: 1700
+    location: excelsior
+    special_event_id: blood-on-the-clocktower-20261024
+  - eventname: Blood on the Clocktower
     signup: https://www.chanceandcounters.com/bristol-gloucester-road/
     cost: Unknown
     startdate: 2026-10-26
