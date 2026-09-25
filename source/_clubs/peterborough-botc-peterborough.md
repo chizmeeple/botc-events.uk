@@ -10,8 +10,8 @@ discord: ''
 bgg: ''
 description: |-
   Blood on the Clocktower in Peterborough. The group restarted recently after losing access to previous venues.
-  First Tuesday of each month at Bijou (free to attend; drinks and food available to support the venue; city-centre parking charges apply). Third Sunday of each month at Peterborough & District Bowls Centre from August (£3–5 depending on numbers to cover venue hire). A July Sunday session may be announced on WhatsApp when confirmed.
-  Events and sign-up are managed via the WhatsApp group — please join and RSVP there, especially for bowls sessions where someone needs to let you into the venue. Walk-ins at Bijou are usually fine. Donations towards tokens, scripts, name badges and running costs are welcome.
+  Bijou is no longer available, so there is no venue for the first-Tuesday session in October. The next planned session is Sunday 18 October at Peterborough & District Bowls Centre (£3–5 depending on numbers to cover venue hire). Third Sunday of each month continues at the bowls centre.
+  Events and sign-up are managed via the WhatsApp group — please join and RSVP there, especially for bowls sessions where someone needs to let you into the venue. Donations towards tokens, scripts, name badges and running costs are welcome.
   WhatsApp group: <a href="https://chat.whatsapp.com/F66Q1DLMbBeGS5sz4etjvr">https://chat.whatsapp.com/F66Q1DLMbBeGS5sz4etjvr</a>
 locations:
   bijou-peterborough:
@@ -32,7 +32,7 @@ events:
     startdate: 2026-07-07
     starttime: 1900
     endtime: 2200
-    rrule: FREQ=MONTHLY;BYDAY=1TU
+    rrule: FREQ=MONTHLY;BYDAY=1TU;UNTIL=20260901T220000
     location: bijou-peterborough
     event_id: blood-on-the-clocktower-bijou
   - eventname: Blood on the Clocktower
