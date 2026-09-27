@@ -58,4 +58,12 @@ events:
       startdate: 2026-08-30
       starttime: 1800
       location: up-a-level
+    - eventname: Halloween Special
+      special_event_id: blood-on-the-clocktower-20261031
+      signup: https://www.upalevelyork.co.uk/get-in-touch/
+      cost: "£5"
+      startdate: 2026-10-31
+      starttime: 1830
+      endtime: 2300
+      location: up-a-level
 ---

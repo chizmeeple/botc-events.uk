@@ -21,6 +21,11 @@ locations:
       - onsite: true
         free: true
         notes: Limited free parking onsite.
+  the-core-berrington:
+    name: The Core CIC
+    address: 44 Berrington Street, Hereford HR4 0BJ
+    lat: 52.0556811
+    lng: -2.7193710
 events:
   adhoc:
   - eventname: Blood on the Clocktower
@@ -55,4 +60,12 @@ events:
     endtime: 2359
     location: the-core
     special_event_id: blood-on-the-clocktower-20260821
+  - eventname: Blood on the Clocktower
+    signup: https://herefor.games/events/
+    cost: Free
+    startdate: 2026-10-23
+    starttime: 1830
+    endtime: 2359
+    location: the-core-berrington
+    special_event_id: blood-on-the-clocktower-20261023
 ---
