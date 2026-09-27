@@ -80,10 +80,39 @@ def rrule_for_frequency(rrule, hide_cleanup_until:)
   rule.gsub(/;UNTIL=\d{8}T\d{6}/, "").sub(/\AUNTIL=\d{8}T\d{6};?/, "")
 end
 
+ORDINAL_WEEKDAY = /
+  (?:\d+(?:st|nd|rd|th)|last)
+  \s
+  (?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)
+/x
+
+def join_ordinals(ordinals)
+  return ordinals[0] if ordinals.length == 1
+  return "#{ordinals[0]} and #{ordinals[1]}" if ordinals.length == 2
+
+  "#{ordinals[0..-2].join(", ")}, and #{ordinals[-1]}"
+end
+
+# "2nd Tuesday and 3rd Tuesday and 4th Tuesday" -> "2nd, 3rd, and 4th Tuesday".
+# Different weekdays stay separate.
+def compact_same_weekday(frequency)
+  frequency.gsub(/on the (#{ORDINAL_WEEKDAY}(?: and #{ORDINAL_WEEKDAY})+)/) do
+    pairs = Regexp.last_match(1).scan(/((?:\d+(?:st|nd|rd|th)|last)) (Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)/)
+    grouped = {}
+    order = []
+    pairs.each do |ordinal, day|
+      order << day unless grouped.key?(day)
+      (grouped[day] ||= []) << ordinal
+    end
+    phrases = order.map { |day| "#{join_ordinals(grouped[day])} #{day}" }
+    "on the #{phrases.join(" and ")}"
+  end
+end
+
 def rrule_to_frequency(rrule)
   return nil unless rrule.is_a?(String) && !rrule.strip.empty?
 
-  IceCube::Rule.from_ical(rrule).to_s
+  compact_same_weekday(IceCube::Rule.from_ical(rrule).to_s)
 rescue ArgumentError, StandardError
   nil
 end
