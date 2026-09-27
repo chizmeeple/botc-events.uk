@@ -71,8 +71,8 @@ def cleanup_until_2026?(rrule)
 end
 
 # The 31 December 2026 cutoff is a listing reset, not a group closing.
-# Drop that UNTIL when building the displayed frequency so IceCube does not
-# say "until December 31, 2026".
+# Drop that UNTIL from the displayed frequency whenever the group has
+# display_2026_cleanup_message, whether it is true or false.
 def rrule_for_frequency(rrule, hide_cleanup_until:)
   rule = rrule.to_s.strip
   return rule unless hide_cleanup_until && cleanup_until_2026?(rule)
@@ -92,7 +92,7 @@ def parse_hhmm(val)
   RecurrenceRules.parse_hhmm(val)
 end
 
-def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, group_id: nil, cleanup_message: false)
+def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, group_id: nil, cleanup_key: false, cleanup_message: false)
   all = []
 
   recurring_list.each do |ev|
@@ -100,7 +100,7 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, grou
     rrule = ev["rrule"]
     next unless eventname.is_a?(String) && rrule.is_a?(String) && !rrule.strip.empty?
 
-    hide_cleanup_until = cleanup_message && cleanup_until_2026?(rrule)
+    hide_cleanup_until = cleanup_key && cleanup_until_2026?(rrule)
     frequency = rrule_to_frequency(rrule_for_frequency(rrule, hide_cleanup_until: hide_cleanup_until))
     if frequency.nil?
       context = slug ? " (#{slug}, event: #{eventname})" : " (event: #{eventname})"
@@ -159,7 +159,7 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, grou
       occ["exrule"] = exrule if exrule
       occ["exdate"] = exdates if exdates
       occ["frequency"] = frequency if frequency
-      occ["labels"] = [CLEANUP_LABEL] if hide_cleanup_until
+      occ["labels"] = [CLEANUP_LABEL] if cleanup_message && cleanup_until_2026?(rrule)
       occ["signup"] = signup if signup
       occ["cost"] = cost if cost
       all << occ
@@ -348,10 +348,11 @@ def main
     group_id = data["group_id"].to_s.strip
     group_id = slug if group_id.empty?
 
+    cleanup_key = data.key?("display_2026_cleanup_message")
     cleanup_message = data["display_2026_cleanup_message"] == true
     upcoming_recurring = collect_upcoming(
       normalised_recurring, now, range_end,
-      slug: slug, group_id: group_id, cleanup_message: cleanup_message
+      slug: slug, group_id: group_id, cleanup_key: cleanup_key, cleanup_message: cleanup_message
     )
     upcoming_adhoc = collect_adhoc(normalised_adhoc, now, slug: slug, group_id: group_id)
     full_upcoming = (upcoming_recurring + upcoming_adhoc).sort_by { |o| o["start_time"] }
