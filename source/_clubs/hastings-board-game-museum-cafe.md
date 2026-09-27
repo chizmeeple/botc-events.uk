@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Board Game Museum & Cafe
 based_in: Hastings
 group_id: hastings-board-game-museum-cafe
@@ -26,7 +27,7 @@ events:
     startdate: 2026-07-02
     starttime: 1930
     endtime: 2230
-    rrule: FREQ=WEEKLY;BYDAY=WE
+    rrule: FREQ=WEEKLY;BYDAY=WE;UNTIL=20261231T223000
     location: board-game-museum
     event_id: tratior-social-deduction-games-murder-mystery-styled-games-night-beginner-learn-to-play-werewolf-blood-on-the-clocktower-etc
 ---

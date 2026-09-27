@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Blood on the Clocktower @Lantern Centre
 based_in: London
 group_id: london-lantern-arts-centre
@@ -19,7 +20,7 @@ events:
     startdate: 2026-03-13
     starttime: 1915
     endtime: 2115
-    rrule: FREQ=WEEKLY;BYDAY=FR
+    rrule: FREQ=WEEKLY;BYDAY=FR;UNTIL=20261231T211500
     location:
       name: Lantern Arts Centre
       address: Tolverne Rd, Raynes Park, London SW20 8RA

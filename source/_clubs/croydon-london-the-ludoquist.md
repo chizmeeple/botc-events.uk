@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: "The Ludoquist"
 based_in: "Croydon (London)"
 # Optional: group_id — omit when the stable id matches this file's slug (without .md).
@@ -49,6 +50,6 @@ events:
       cost: "£8"
       startdate: 2026-04-10
       starttime: 1900
-      rrule: "FREQ=WEEKLY;BYDAY=FR"
+      rrule: "FREQ=WEEKLY;BYDAY=FR;UNTIL=20261231T235900"
       location: "the-ludoquist"
 ---

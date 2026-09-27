@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Gosport Clocktower @ Diceheads
 based_in: Gosport
 group_id: gosport-diceheads
@@ -75,7 +76,7 @@ events:
       startdate: 2026-08-14
       starttime: 1800
       endtime: 2100
-      rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=FR
+      rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=FR;UNTIL=20261231T210000
       location: diceheads
   adhoc:
     - eventname: Blood on the Clocktower at Diceheads

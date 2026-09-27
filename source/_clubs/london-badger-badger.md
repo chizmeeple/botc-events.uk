@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Badger Badger
 based_in: Deptford (London)
 group_id: london-badger-badger
@@ -19,7 +20,7 @@ events:
     startdate: 2026-03-01
     starttime: 1700
     endtime: 2130
-    rrule: FREQ=WEEKLY;INTERVAL=1;BYDAY=SU
+    rrule: FREQ=WEEKLY;INTERVAL=1;BYDAY=SU;UNTIL=20261231T213000
     location:
       name: Badger Badger
       address: 139-145 Deptford High Street, London, United Kingdom

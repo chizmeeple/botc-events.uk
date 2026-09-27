@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Blessings on the Clocktower
 based_in: Derby
 group_id: derby-blessings-on-the-clocktower
@@ -29,6 +30,6 @@ events:
       startdate: 2026-09-29
       starttime: 1800
       endtime: 2230
-      rrule: FREQ=MONTHLY;BYDAY=-1TU
+      rrule: FREQ=MONTHLY;BYDAY=-1TU;UNTIL=20261231T223000
       location: the-bless
 ---

@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Nerdvana Livingston
 based_in: Livingston
 group_id: livingston-nerdvana
@@ -30,7 +31,7 @@ events:
       startdate: 2026-08-02
       starttime: 1700
       endtime: 2100
-      rrule: FREQ=WEEKLY;BYDAY=SU
+      rrule: FREQ=WEEKLY;BYDAY=SU;UNTIL=20261231T210000
       exrule: FREQ=MONTHLY;BYDAY=SU;BYSETPOS=-1
       location: nerdvana-livingston
 ---

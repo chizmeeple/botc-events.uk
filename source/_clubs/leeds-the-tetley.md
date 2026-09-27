@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Leeds Nerds
 based_in: Leeds
 group_id: leeds-the-tetley
@@ -56,7 +57,7 @@ events:
     startdate: 2026-03-18
     starttime: 1800
     endtime: 2200
-    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=WE
+    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=WE;UNTIL=20261231T220000
     exdate:
       - 2026-06-24
     location: the-tetley

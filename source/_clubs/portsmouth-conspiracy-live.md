@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Conspiracy LIVE
 based_in: Portsmouth
 group_id: portsmouth-conspiracy-live
@@ -50,7 +51,7 @@ events:
     startdate: 2026-10-14
     starttime: 1900
     endtime: 2230
-    rrule: FREQ=MONTHLY;BYDAY=2WE,4WE
+    rrule: FREQ=MONTHLY;BYDAY=2WE,4WE;UNTIL=20261231T223000
     location: made-by-me-crafts
     event_id: blood-on-the-clocktower-made-by-me-crafts
   adhoc:

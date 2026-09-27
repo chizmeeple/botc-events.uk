@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Replay
 based_in: Bristol
 group_id: bristol-replay
@@ -29,7 +30,7 @@ events:
       startdate: 2026-04-01
       starttime: 1800
       endtime: 2200
-      rrule: FREQ=WEEKLY;BYDAY=WE
+      rrule: FREQ=WEEKLY;BYDAY=WE;UNTIL=20261231T220000
       exrule: FREQ=MONTHLY;BYDAY=WE;BYSETPOS=-1
       exdate:
         - 2026-09-09

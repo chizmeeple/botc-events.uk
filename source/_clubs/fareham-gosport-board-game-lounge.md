@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Fareham & Gosport Board Game Lounge
 based_in: Fareham
 group_id: fareham-gosport-board-game-lounge
@@ -16,7 +17,7 @@ events:
     cost: Free
     startdate: 2026-03-01
     starttime: 1915
-    rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=3FR
+    rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=3FR;UNTIL=20261231T235900
     location:
       name: Catisfield Memorial Hall
       address: 22 Catisfield Ln, Catisfield, Fareham PO15 5NN

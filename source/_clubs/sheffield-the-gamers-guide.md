@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: The Gamers Guide
 based_in: Sheffield
 group_id: sheffield-the-gamers-guide
@@ -20,7 +21,7 @@ events:
     startdate: 2026-03-01
     starttime: 1800
     endtime: 2200
-    rrule: FREQ=WEEKLY;INTERVAL=1;BYDAY=SU
+    rrule: FREQ=WEEKLY;INTERVAL=1;BYDAY=SU;UNTIL=20261231T220000
     location:
       name: Gamer Guide Cafe
       address: 8 E Parade, Sheffield City Centre, Sheffield S1 2ET

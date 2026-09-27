@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Blood on the Clocktower, Colchester
 based_in: Colchester
 group_id: colchester-blood-on-the-clocktower
@@ -36,6 +37,6 @@ events:
       startdate: 2026-06-28
       starttime: 1400
       endtime: 1800
-      rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=SU
+      rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=SU;UNTIL=20261231T180000
       location: red-lion-hotel
 ---

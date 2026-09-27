@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Townsfolk Make Glasgow
 based_in: Glasgow
 group_id: glasgow-blood-on-the-clocktower
@@ -26,7 +27,7 @@ events:
     startdate: 2026-08-04
     starttime: 1830
     endtime: 2230
-    rrule: FREQ=WEEKLY;INTERVAL=4;BYDAY=TU
+    rrule: FREQ=WEEKLY;INTERVAL=4;BYDAY=TU;UNTIL=20261231T223000
     location: bacchus
     exdate:
       - 2026-10-27
@@ -37,7 +38,7 @@ events:
     startdate: 2026-08-20
     starttime: 1830
     endtime: 2230
-    rrule: FREQ=WEEKLY;INTERVAL=4;BYDAY=TH
+    rrule: FREQ=WEEKLY;INTERVAL=4;BYDAY=TH;UNTIL=20261231T223000
     location: bacchus
     exdate:
       - 2026-10-15

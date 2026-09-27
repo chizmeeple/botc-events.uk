@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Reading Pentahotel
 based_in: Reading
 group_id: reading-pentahotel
@@ -19,7 +20,7 @@ events:
       startdate: 2026-02-21
       starttime: 1700
       endtime: 2200
-      rrule: FREQ=MONTHLY;BYDAY=2SA,4SA
+      rrule: FREQ=MONTHLY;BYDAY=2SA,4SA;UNTIL=20261231T220000
       location:
         name: Pentahotel Reading
         address: Oxford Rd, Reading RG1 7RH

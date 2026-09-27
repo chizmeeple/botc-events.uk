@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Gates of Cerberus (Middlesbrough)
 based_in: Middlesbrough
 group_id: middlesbrough-gates-of-cerberus
@@ -27,7 +28,7 @@ events:
     startdate: 2026-07-17
     starttime: 1830
     endtime: 2300
-    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=FR
+    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=FR;UNTIL=20261231T230000
     exdate:
       - 2026-10-09
       - 2026-10-23

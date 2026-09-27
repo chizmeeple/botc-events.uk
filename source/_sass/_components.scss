@@ -1015,6 +1015,38 @@
   padding: 2.5rem 1.25rem;
   animation: fadeSlideIn 0.5s ease both;
 
+  .club-2026-cleanup {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin: 0 0 1.75rem;
+    padding: 1rem 1.1rem;
+    background: rgba(13, 148, 136, 0.14);
+    border: 1px solid rgba(13, 148, 136, 0.45);
+    border-left: 4px solid var(--color-accent-alt);
+    border-radius: $border-radius;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: var(--color-accent-alt-light);
+      font-weight: 600;
+    }
+  }
+
+  .club-2026-cleanup__icon {
+    flex-shrink: 0;
+    width: 1.35rem;
+    height: 1.35rem;
+    margin-top: 0.1rem;
+    color: var(--color-accent-alt-light);
+  }
+
   .special-event-banner {
     width: 100%;
     margin-bottom: 2rem;

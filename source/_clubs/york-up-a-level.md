@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Up A Level
 based_in: York
 group_id: york-up-a-level
@@ -26,7 +27,7 @@ events:
       startdate: 2026-06-20
       starttime: 1830
       endtime: 2300
-      rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=SA
+      rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=SA;UNTIL=20261231T230000
       location: up-a-level
   adhoc:
     - eventname: Demons Wake adjacent

@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: BotC Peterborough
 based_in: Peterborough
 group_id: peterborough-botc-peterborough
@@ -41,7 +42,7 @@ events:
     startdate: 2026-08-16
     starttime: 1200
     endtime: 1600
-    rrule: FREQ=MONTHLY;BYDAY=3SU
+    rrule: FREQ=MONTHLY;BYDAY=3SU;UNTIL=20261231T160000
     location: peterborough-district-bowls-centre
     event_id: blood-on-the-clocktower-bowls
 ---

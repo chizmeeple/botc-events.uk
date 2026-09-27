@@ -28,6 +28,14 @@ layout: default
 </script>
 
 <div class="club-detail">
+  {% if page.display_2026_cleanup_message == true %}
+  <aside class="club-2026-cleanup" role="note">
+    <span class="iconify club-2026-cleanup__icon" data-icon="lucide:calendar-clock" aria-hidden="true"></span>
+    <p>
+      To align with the <a href="{{ site.discord_link }}" target="_blank" rel="noopener">Botc Events UK Discord server</a> all recurring events are set to end on 31st December 2026. If you wish for events to be listed in 2027 please ensure you share your event information in the Discord server.
+    </p>
+  </aside>
+  {% endif %}
   <div class="club-detail-heading">
     {% if page.image and page.image != "" %}
     <div class="club-detail-icon">

@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Evesham Barons TGS
 based_in: Evesham
 group_id: evesham-barons-tgs
@@ -48,7 +49,7 @@ events:
       startdate: 2026-06-28
       starttime: 1030
       endtime: 1530
-      rrule: "FREQ=WEEKLY;INTERVAL=2;BYDAY=SU"
+      rrule: "FREQ=WEEKLY;INTERVAL=2;BYDAY=SU;UNTIL=20261231T153000"
       exdate:
         - 2026-09-20
         - 2026-10-18

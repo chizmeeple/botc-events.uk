@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: "The Wolves of Ravenswood"
 based_in: "Warrington"
 # Optional: group_id — omit when the stable id matches this file's slug (without .md).
@@ -43,6 +44,6 @@ events:
       startdate: 2026-09-07
       starttime: 1900
       endtime: 2300
-      rrule: "FREQ=MONTHLY;BYDAY=1MO"
+      rrule: "FREQ=MONTHLY;BYDAY=1MO;UNTIL=20261231T230000"
       location: "the-horseshoe-inn"
 ---

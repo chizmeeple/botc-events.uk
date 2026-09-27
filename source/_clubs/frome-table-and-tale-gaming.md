@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Table and Tale Gaming
 based_in: Frome
 group_id: frome-table-and-tale-gaming
@@ -30,7 +31,7 @@ events:
       startdate: 2026-07-02
       starttime: 1900
       endtime: 2100
-      rrule: FREQ=MONTHLY;BYDAY=1TH
+      rrule: FREQ=MONTHLY;BYDAY=1TH;UNTIL=20261231T210000
       exdate:
         - 2026-09-03
       location: deck-and-dagger

@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Devizes Blood on the Clocktower
 based_in: Devizes
 group_id: devizes-devizes-blood-on-the-clocktower
@@ -30,7 +31,7 @@ events:
     startdate: 2026-03-26
     starttime: 1900
     endtime: 2300
-    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=TH
+    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=TH;UNTIL=20261231T230000
     location: st-andrews-church
     event_id: fortnightly-session
   adhoc:
