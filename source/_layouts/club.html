@@ -28,14 +28,7 @@ layout: default
 </script>
 
 <div class="club-detail">
-  {% if page.display_2026_cleanup_message == true %}
-  <aside class="club-2026-cleanup" role="note">
-    <span class="iconify club-2026-cleanup__icon" data-icon="lucide:calendar-clock" aria-hidden="true"></span>
-    <p>
-      To align with the <a href="{{ site.discord_link }}" target="_blank" rel="noopener">Botc Events UK Discord server</a> all recurring events are set to end on 31st December 2026. If you wish for events to be listed in 2027 please ensure you share your event information in the Discord server.
-    </p>
-  </aside>
-  {% endif %}
+  {% include club-2026-cleanup.html %}
   <div class="club-detail-heading">
     {% if page.image and page.image != "" %}
     <div class="club-detail-icon">
@@ -159,6 +152,7 @@ layout: default
       </div>
       {% endif %}
     </header>
+    {% include club-2026-cleanup.html %}
     {% include events-disclaimer.html %}
     {% if club_events and club_events.upcoming.size > 0 %}
     <script id="club-events-data" type="application/json">[{% for occ in club_events.upcoming %}{"eventname":{{ occ.eventname | jsonify }},"start_time":{{ occ.start_time | jsonify }},"end_time":{{ occ.end_time | jsonify }},"location":{{ occ.location | jsonify }},"frequency":{{ occ.frequency | jsonify }},"cost":{{ occ.cost | jsonify }},"signup":{{ occ.signup | jsonify }},"slug":{{ slug | jsonify }},"club_name":{{ event_data.club_name | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
