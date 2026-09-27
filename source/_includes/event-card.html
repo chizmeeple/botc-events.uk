@@ -77,6 +77,10 @@ page) {% endcomment %}
       <span class="tag tag-day">{{ include.occ.frequency }}</span>
       {% else %}
       <span class="tag tag-day">{{ include.occ.start_time | date: "%A" }}</span>
+      {% endif %} {% if include.occ.labels %}
+      {% for label in include.occ.labels %}
+      <span class="tag tag--{{ label.slug }}">{{ label.label }}</span>
+      {% endfor %}
       {% endif %} {% if include.occ.cost %}
       <span class="upcoming-event-card__cost">{{ include.occ.cost }}</span>
       {% endif %}

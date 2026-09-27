@@ -120,6 +120,12 @@
     }
 
     var freq = occ.frequency || dayOfWeek(occ.start_time);
+    var labels = "";
+    if (occ.labels && occ.labels.length) {
+      labels = occ.labels.map(function (label) {
+        return '<span class="tag tag--' + escapeHtml(label.slug) + '">' + escapeHtml(label.label) + "</span>";
+      }).join("");
+    }
     var cost = occ.cost ? '<span class="upcoming-event-card__cost">' + escapeHtml(occ.cost) + "</span>" : "";
     var signup = occ.signup ? '<a href="' + escapeHtml(occ.signup) + '" target="_blank" rel="noopener" class="upcoming-event-card__signup">Signup</a>' : "";
 
@@ -184,6 +190,7 @@
       '<span class="tag tag-day">' +
       escapeHtml(freq) +
       "</span>" +
+      labels +
       cost +
       distBadge +
       "</span></div>" +

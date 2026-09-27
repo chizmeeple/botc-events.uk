@@ -1008,6 +1008,15 @@
   flex-shrink: 0;
 }
 
+.tag--2026-discord-cleanup {
+  font-size: 0.62rem;
+  font-weight: 600;
+  background: rgba(13, 148, 136, 0.18);
+  color: var(--color-accent-alt-light);
+  border: 1px solid rgba(13, 148, 136, 0.45);
+  flex-shrink: 0;
+}
+
 // ─── Club detail page ───
 .club-detail {
   max-width: 720px;
@@ -1682,6 +1691,7 @@
 
   .upcoming-event-card__footer-pills {
     display: inline-flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 0.4rem;
   }

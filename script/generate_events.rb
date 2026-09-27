@@ -60,6 +60,26 @@ def event_days_from_upcoming(occurrences)
   days.to_a.sort_by { |d| DAY_ORDER.index(d) || 99 }
 end
 
+CLEANUP_UNTIL_DATE = Date.new(2026, 12, 31)
+CLEANUP_LABEL = { "slug" => "2026-discord-cleanup", "label" => "2026 Discord Cleanup" }.freeze
+
+def cleanup_until_2026?(rrule)
+  match = rrule.to_s.match(/UNTIL=(\d{8})T\d{6}/)
+  return false unless match
+
+  Date.strptime(match[1], "%Y%m%d") == CLEANUP_UNTIL_DATE
+end
+
+# The 31 December 2026 cutoff is a listing reset, not a group closing.
+# Drop that UNTIL when building the displayed frequency so IceCube does not
+# say "until December 31, 2026".
+def rrule_for_frequency(rrule, hide_cleanup_until:)
+  rule = rrule.to_s.strip
+  return rule unless hide_cleanup_until && cleanup_until_2026?(rule)
+
+  rule.gsub(/;UNTIL=\d{8}T\d{6}/, "").sub(/\AUNTIL=\d{8}T\d{6};?/, "")
+end
+
 def rrule_to_frequency(rrule)
   return nil unless rrule.is_a?(String) && !rrule.strip.empty?
 
@@ -72,7 +92,7 @@ def parse_hhmm(val)
   RecurrenceRules.parse_hhmm(val)
 end
 
-def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, group_id: nil)
+def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, group_id: nil, cleanup_message: false)
   all = []
 
   recurring_list.each do |ev|
@@ -80,7 +100,8 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, grou
     rrule = ev["rrule"]
     next unless eventname.is_a?(String) && rrule.is_a?(String) && !rrule.strip.empty?
 
-    frequency = rrule_to_frequency(rrule)
+    hide_cleanup_until = cleanup_message && cleanup_until_2026?(rrule)
+    frequency = rrule_to_frequency(rrule_for_frequency(rrule, hide_cleanup_until: hide_cleanup_until))
     if frequency.nil?
       context = slug ? " (#{slug}, event: #{eventname})" : " (event: #{eventname})"
       warn "Could not generate user-friendly frequency for RRULE#{context}: #{rrule}"
@@ -138,6 +159,7 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, grou
       occ["exrule"] = exrule if exrule
       occ["exdate"] = exdates if exdates
       occ["frequency"] = frequency if frequency
+      occ["labels"] = [CLEANUP_LABEL] if hide_cleanup_until
       occ["signup"] = signup if signup
       occ["cost"] = cost if cost
       all << occ
@@ -326,7 +348,11 @@ def main
     group_id = data["group_id"].to_s.strip
     group_id = slug if group_id.empty?
 
-    upcoming_recurring = collect_upcoming(normalised_recurring, now, range_end, slug: slug, group_id: group_id)
+    cleanup_message = data["display_2026_cleanup_message"] == true
+    upcoming_recurring = collect_upcoming(
+      normalised_recurring, now, range_end,
+      slug: slug, group_id: group_id, cleanup_message: cleanup_message
+    )
     upcoming_adhoc = collect_adhoc(normalised_adhoc, now, slug: slug, group_id: group_id)
     full_upcoming = (upcoming_recurring + upcoming_adhoc).sort_by { |o| o["start_time"] }
     upcoming = full_upcoming.take(UPCOMING_PER_CLUB)
@@ -422,6 +448,7 @@ def main
       }
       row["event_id"] = occ["event_id"] if occ["event_id"]
       row["special_event_id"] = occ["special_event_id"] if occ["special_event_id"]
+      row["labels"] = occ["labels"] if occ["labels"]
       row["rrule"] = occ["rrule"] if occ["rrule"]
       row["exrule"] = occ["exrule"] if occ["exrule"]
       row["exdate"] = occ["exdate"] if occ["exdate"]
