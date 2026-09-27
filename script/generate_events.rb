@@ -32,6 +32,18 @@ EARTH_RADIUS_M = 6_371_000
 
 DAY_ORDER = %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday].freeze
 
+def parking_distance_rank(pv)
+  return Float::INFINITY unless pv.is_a?(Hash)
+  return pv["distance_from_venue_m"].to_i unless pv["distance_from_venue_m"].nil?
+  return 0 if pv["onsite"] == true
+
+  Float::INFINITY
+end
+
+def sort_parking_closest_first(parking)
+  parking.each_with_index.sort_by { |pv, index| [parking_distance_rank(pv), index] }.map(&:first)
+end
+
 def haversine_distance_m(lat1, lng1, lat2, lng2)
   lat1_rad = lat1.to_f * Math::PI / 180.0
   lng1_rad = lng1.to_f * Math::PI / 180.0
@@ -416,12 +428,12 @@ def main
       venue_lat = loc["lat"].to_f
       venue_lng = loc["lng"].to_f
 
-      loc["parking"] = loc["parking"].map do |pv|
+      loc["parking"] = sort_parking_closest_first(loc["parking"].map do |pv|
         next pv unless pv.is_a?(Hash) && pv["lat"] && pv["lng"]
         dist_m = haversine_distance_m(venue_lat, venue_lng, pv["lat"], pv["lng"])
         rounded_5m = (dist_m.to_f / 5).round * 5
         pv.merge("distance_from_venue_m" => rounded_5m.to_i)
-      end
+      end)
     end
 
     frequency_pills = upcoming.map { |o| o["frequency"] }.compact.uniq
