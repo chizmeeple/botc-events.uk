@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Kino Clocktower
 based_in: Norwich
 group_id: norwich-kino-clocktower
@@ -29,6 +30,6 @@ events:
       startdate: 2026-09-03
       starttime: 1900
       endtime: 2300
-      rrule: FREQ=MONTHLY;BYDAY=1TH
+      rrule: FREQ=MONTHLY;BYDAY=1TH;UNTIL=20261231T230000
       location: cinema-city
 ---

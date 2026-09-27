@@ -1008,12 +1008,53 @@
   flex-shrink: 0;
 }
 
+.tag--2026-discord-cleanup {
+  font-size: 0.62rem;
+  font-weight: 600;
+  background: rgba(13, 148, 136, 0.18);
+  color: var(--color-accent-alt-light);
+  border: 1px solid rgba(13, 148, 136, 0.45);
+  flex-shrink: 0;
+}
+
 // ─── Club detail page ───
 .club-detail {
   max-width: 720px;
   margin: 0 auto;
   padding: 2.5rem 1.25rem;
   animation: fadeSlideIn 0.5s ease both;
+
+  .club-2026-cleanup {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin: 0 0 1.75rem;
+    padding: 1rem 1.1rem;
+    background: rgba(13, 148, 136, 0.14);
+    border: 1px solid rgba(13, 148, 136, 0.45);
+    border-left: 4px solid var(--color-accent-alt);
+    border-radius: $border-radius;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: var(--color-accent-alt-light);
+      font-weight: 600;
+    }
+  }
+
+  .club-2026-cleanup__icon {
+    flex-shrink: 0;
+    width: 1.35rem;
+    height: 1.35rem;
+    margin-top: 0.1rem;
+    color: var(--color-accent-alt-light);
+  }
 
   .special-event-banner {
     width: 100%;
@@ -1374,6 +1415,10 @@
   .club-upcoming-events {
     margin-bottom: 2rem;
 
+    .club-2026-cleanup {
+      margin: 0 0 1rem;
+    }
+
     .club-upcoming-events__header {
       display: flex;
       align-items: center;
@@ -1650,6 +1695,7 @@
 
   .upcoming-event-card__footer-pills {
     display: inline-flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 0.4rem;
   }

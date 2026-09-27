@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Fun & Games
 based_in: Trowbridge
 group_id: trowbridge-fun-and-games
@@ -35,7 +36,7 @@ events:
     startdate: 2026-04-05
     starttime: 1400
     endtime: 1800
-    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=SU
+    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=SU;UNTIL=20261231T180000
     location: fun-and-games
     event_id: blood-on-the-clocktower
   adhoc:

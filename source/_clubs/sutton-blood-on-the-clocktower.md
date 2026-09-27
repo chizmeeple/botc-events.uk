@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Sutton Blood on the Clocktower
 based_in: Sutton (London)
 group_id: sutton-blood-on-the-clocktower
@@ -50,7 +51,7 @@ events:
       startdate: 2026-10-31
       starttime: 1245
       endtime: 1800
-      rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=-1SA
+      rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=-1SA;UNTIL=20261231T180000
       location: holiday-inn-sutton
       event_id: blood-on-the-clocktower-holiday-inn-sutton
 ---

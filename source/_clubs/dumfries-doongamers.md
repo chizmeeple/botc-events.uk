@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Doongamers
 based_in: Dumfries
 group_id: dumfries-doongamers
@@ -26,6 +27,6 @@ events:
       startdate: 2026-07-01
       starttime: 1800
       endtime: 2130
-      rrule: FREQ=MONTHLY;BYDAY=1WE
+      rrule: FREQ=MONTHLY;BYDAY=1WE;UNTIL=20261231T213000
       location: the-stove-cafe
 ---

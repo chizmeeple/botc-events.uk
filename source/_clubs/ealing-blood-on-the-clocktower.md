@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Blood on the Clocktower -- Ealing
 based_in: Ealing (London)
 group_id: ealing-blood-on-the-clocktower
@@ -26,7 +27,7 @@ events:
       startdate: 2026-09-03
       starttime: 1830
       endtime: 2300
-      rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=TH
+      rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=TH;UNTIL=20261231T230000
       exdate:
         - 2026-10-01
       location: the-forester

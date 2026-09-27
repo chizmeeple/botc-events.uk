@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Anlaby Bar
 based_in: Hull
 group_id: hull-anlaby-bar
@@ -69,7 +70,7 @@ events:
       startdate: 2026-07-12
       starttime: 1800
       endtime: 2300
-      rrule: FREQ=MONTHLY;BYDAY=2SU
+      rrule: FREQ=MONTHLY;BYDAY=2SU;UNTIL=20261231T230000
       exdate:
         - 2026-07-12
         - 2026-08-09

@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Shakes and Ladders
 based_in: Surbiton (London)
 group_id: surbiton-shakes-and-ladders
@@ -44,7 +45,7 @@ events:
     startdate: 2026-03-01
     starttime: 1200
     endtime: 1700
-    rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=2SA
+    rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=2SA;UNTIL=20261231T170000
     location:
       name: The Waggon & Horses
       address: 1 Surbiton Hill Rd, Surbiton KT6 4TW

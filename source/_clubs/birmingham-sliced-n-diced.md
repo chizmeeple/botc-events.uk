@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: "Sliced N Diced"
 based_in: "Birmingham"
 # Optional: group_id — omit when the stable id matches this file's slug (without .md).
@@ -52,7 +53,7 @@ events:
       startdate: 2026-04-10
       starttime: 1800
       endtime: 2200
-      rrule: "FREQ=MONTHLY;BYDAY=1FR"
+      rrule: "FREQ=MONTHLY;BYDAY=1FR;UNTIL=20261231T220000"
       location: "sliced-n-diced"
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
@@ -62,7 +63,7 @@ events:
       startdate: 2026-04-10
       starttime: 1800
       endtime: 2200
-      rrule: "FREQ=MONTHLY;BYDAY=2FR"
+      rrule: "FREQ=MONTHLY;BYDAY=2FR;UNTIL=20261231T220000"
       location: "sliced-n-diced"
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
@@ -72,7 +73,7 @@ events:
       startdate: 2026-10-16
       starttime: 1800
       endtime: 2200
-      rrule: "FREQ=MONTHLY;BYDAY=3FR"
+      rrule: "FREQ=MONTHLY;BYDAY=3FR;UNTIL=20261231T220000"
       location: "sliced-n-diced"
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
@@ -82,7 +83,7 @@ events:
       startdate: 2026-04-10
       starttime: 1800
       endtime: 2200
-      rrule: "FREQ=MONTHLY;BYDAY=4FR"
+      rrule: "FREQ=MONTHLY;BYDAY=4FR;UNTIL=20261231T220000"
       location: "sliced-n-diced"
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
@@ -92,7 +93,7 @@ events:
       startdate: 2026-04-10
       starttime: 1800
       endtime: 2200
-      rrule: "FREQ=MONTHLY;BYDAY=5FR"
+      rrule: "FREQ=MONTHLY;BYDAY=5FR;UNTIL=20261231T220000"
       location: "sliced-n-diced"
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
@@ -102,7 +103,7 @@ events:
       startdate: 2026-04-10
       starttime: 1400
       endtime: 1800
-      rrule: "FREQ=MONTHLY;BYDAY=1SU"
+      rrule: "FREQ=MONTHLY;BYDAY=1SU;UNTIL=20261231T180000"
       location: "sliced-n-diced"
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
@@ -112,7 +113,7 @@ events:
       startdate: 2026-04-10
       starttime: 1400
       endtime: 1800
-      rrule: "FREQ=MONTHLY;BYDAY=2SU"
+      rrule: "FREQ=MONTHLY;BYDAY=2SU;UNTIL=20261231T180000"
       location: "sliced-n-diced"
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
@@ -122,7 +123,7 @@ events:
       startdate: 2026-04-10
       starttime: 1400
       endtime: 1800
-      rrule: "FREQ=MONTHLY;BYDAY=4SU"
+      rrule: "FREQ=MONTHLY;BYDAY=4SU;UNTIL=20261231T180000"
       location: "sliced-n-diced"
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
@@ -132,6 +133,6 @@ events:
       startdate: 2026-04-10
       starttime: 1400
       endtime: 1800
-      rrule: "FREQ=MONTHLY;BYDAY=5SU"
+      rrule: "FREQ=MONTHLY;BYDAY=5SU;UNTIL=20261231T180000"
       location: "sliced-n-diced"
 ---

@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Diverse Demons
 based_in: Crookham Village (Fleet)
 group_id: fleet-church-crookham-diverse-demons
@@ -33,7 +34,7 @@ events:
     startdate: 2026-03-04
     starttime: 1915
     endtime: 2230
-    rrule: FREQ=MONTHLY;BYDAY=1WE,3WE
+    rrule: FREQ=MONTHLY;BYDAY=1WE,3WE;UNTIL=20261231T223000
     location: crookham-street-social-club
     event_id: crookham-street-social-club
   adhoc:

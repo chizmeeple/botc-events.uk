@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: The Escape Rooms Newport
 based_in: Newport
 group_id: newport-escape-rooms
@@ -28,7 +29,7 @@ events:
       startdate: 2026-08-18
       starttime: 1930
       endtime: 2130
-      rrule: FREQ=WEEKLY;BYDAY=TU
+      rrule: FREQ=WEEKLY;BYDAY=TU;UNTIL=20261231T213000
       location: red-rooms
     - eventname: Blood on the Clocktower
       event_id: weekly-sunday
@@ -37,6 +38,6 @@ events:
       startdate: 2026-08-23
       starttime: 1400
       endtime: 1600
-      rrule: FREQ=WEEKLY;BYDAY=SU
+      rrule: FREQ=WEEKLY;BYDAY=SU;UNTIL=20261231T160000
       location: red-rooms
 ---

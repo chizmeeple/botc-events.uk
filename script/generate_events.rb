@@ -32,6 +32,18 @@ EARTH_RADIUS_M = 6_371_000
 
 DAY_ORDER = %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday].freeze
 
+def parking_distance_rank(pv)
+  return Float::INFINITY unless pv.is_a?(Hash)
+  return pv["distance_from_venue_m"].to_i unless pv["distance_from_venue_m"].nil?
+  return 0 if pv["onsite"] == true
+
+  Float::INFINITY
+end
+
+def sort_parking_closest_first(parking)
+  parking.each_with_index.sort_by { |pv, index| [parking_distance_rank(pv), index] }.map(&:first)
+end
+
 def haversine_distance_m(lat1, lng1, lat2, lng2)
   lat1_rad = lat1.to_f * Math::PI / 180.0
   lng1_rad = lng1.to_f * Math::PI / 180.0
@@ -60,10 +72,59 @@ def event_days_from_upcoming(occurrences)
   days.to_a.sort_by { |d| DAY_ORDER.index(d) || 99 }
 end
 
+CLEANUP_UNTIL_DATE = Date.new(2026, 12, 31)
+CLEANUP_LABEL = { "slug" => "2026-discord-cleanup", "label" => "2026 Discord Cleanup" }.freeze
+
+def cleanup_until_2026?(rrule)
+  match = rrule.to_s.match(/UNTIL=(\d{8})T\d{6}/)
+  return false unless match
+
+  Date.strptime(match[1], "%Y%m%d") == CLEANUP_UNTIL_DATE
+end
+
+# The 31 December 2026 cutoff is a listing reset, not a group closing.
+# Drop that UNTIL from the displayed frequency whenever the group has
+# display_2026_cleanup_message, whether it is true or false.
+def rrule_for_frequency(rrule, hide_cleanup_until:)
+  rule = rrule.to_s.strip
+  return rule unless hide_cleanup_until && cleanup_until_2026?(rule)
+
+  rule.gsub(/;UNTIL=\d{8}T\d{6}/, "").sub(/\AUNTIL=\d{8}T\d{6};?/, "")
+end
+
+ORDINAL_WEEKDAY = /
+  (?:\d+(?:st|nd|rd|th)|last)
+  \s
+  (?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)
+/x
+
+def join_ordinals(ordinals)
+  return ordinals[0] if ordinals.length == 1
+  return "#{ordinals[0]} and #{ordinals[1]}" if ordinals.length == 2
+
+  "#{ordinals[0..-2].join(", ")}, and #{ordinals[-1]}"
+end
+
+# "2nd Tuesday and 3rd Tuesday and 4th Tuesday" -> "2nd, 3rd, and 4th Tuesday".
+# Different weekdays stay separate.
+def compact_same_weekday(frequency)
+  frequency.gsub(/on the (#{ORDINAL_WEEKDAY}(?: and #{ORDINAL_WEEKDAY})+)/) do
+    pairs = Regexp.last_match(1).scan(/((?:\d+(?:st|nd|rd|th)|last)) (Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)/)
+    grouped = {}
+    order = []
+    pairs.each do |ordinal, day|
+      order << day unless grouped.key?(day)
+      (grouped[day] ||= []) << ordinal
+    end
+    phrases = order.map { |day| "#{join_ordinals(grouped[day])} #{day}" }
+    "on the #{phrases.join(" and ")}"
+  end
+end
+
 def rrule_to_frequency(rrule)
   return nil unless rrule.is_a?(String) && !rrule.strip.empty?
 
-  IceCube::Rule.from_ical(rrule).to_s
+  compact_same_weekday(IceCube::Rule.from_ical(rrule).to_s)
 rescue ArgumentError, StandardError
   nil
 end
@@ -72,7 +133,7 @@ def parse_hhmm(val)
   RecurrenceRules.parse_hhmm(val)
 end
 
-def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, group_id: nil)
+def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, group_id: nil, cleanup_key: false, cleanup_message: false)
   all = []
 
   recurring_list.each do |ev|
@@ -80,7 +141,8 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, grou
     rrule = ev["rrule"]
     next unless eventname.is_a?(String) && rrule.is_a?(String) && !rrule.strip.empty?
 
-    frequency = rrule_to_frequency(rrule)
+    hide_cleanup_until = cleanup_key && cleanup_until_2026?(rrule)
+    frequency = rrule_to_frequency(rrule_for_frequency(rrule, hide_cleanup_until: hide_cleanup_until))
     if frequency.nil?
       context = slug ? " (#{slug}, event: #{eventname})" : " (event: #{eventname})"
       warn "Could not generate user-friendly frequency for RRULE#{context}: #{rrule}"
@@ -138,6 +200,7 @@ def collect_upcoming(recurring_list, now, range_end, limit: nil, slug: nil, grou
       occ["exrule"] = exrule if exrule
       occ["exdate"] = exdates if exdates
       occ["frequency"] = frequency if frequency
+      occ["labels"] = [CLEANUP_LABEL] if cleanup_message && cleanup_until_2026?(rrule)
       occ["signup"] = signup if signup
       occ["cost"] = cost if cost
       all << occ
@@ -326,7 +389,12 @@ def main
     group_id = data["group_id"].to_s.strip
     group_id = slug if group_id.empty?
 
-    upcoming_recurring = collect_upcoming(normalised_recurring, now, range_end, slug: slug, group_id: group_id)
+    cleanup_key = data.key?("display_2026_cleanup_message")
+    cleanup_message = data["display_2026_cleanup_message"] == true
+    upcoming_recurring = collect_upcoming(
+      normalised_recurring, now, range_end,
+      slug: slug, group_id: group_id, cleanup_key: cleanup_key, cleanup_message: cleanup_message
+    )
     upcoming_adhoc = collect_adhoc(normalised_adhoc, now, slug: slug, group_id: group_id)
     full_upcoming = (upcoming_recurring + upcoming_adhoc).sort_by { |o| o["start_time"] }
     upcoming = full_upcoming.take(UPCOMING_PER_CLUB)
@@ -360,12 +428,12 @@ def main
       venue_lat = loc["lat"].to_f
       venue_lng = loc["lng"].to_f
 
-      loc["parking"] = loc["parking"].map do |pv|
+      loc["parking"] = sort_parking_closest_first(loc["parking"].map do |pv|
         next pv unless pv.is_a?(Hash) && pv["lat"] && pv["lng"]
         dist_m = haversine_distance_m(venue_lat, venue_lng, pv["lat"], pv["lng"])
         rounded_5m = (dist_m.to_f / 5).round * 5
         pv.merge("distance_from_venue_m" => rounded_5m.to_i)
-      end
+      end)
     end
 
     frequency_pills = upcoming.map { |o| o["frequency"] }.compact.uniq
@@ -422,6 +490,7 @@ def main
       }
       row["event_id"] = occ["event_id"] if occ["event_id"]
       row["special_event_id"] = occ["special_event_id"] if occ["special_event_id"]
+      row["labels"] = occ["labels"] if occ["labels"]
       row["rrule"] = occ["rrule"] if occ["rrule"]
       row["exrule"] = occ["exrule"] if occ["exrule"]
       row["exdate"] = occ["exdate"] if occ["exdate"]

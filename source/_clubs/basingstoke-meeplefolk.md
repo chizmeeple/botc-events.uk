@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Meeplefolk
 based_in: Basingstoke
 group_id: basingstoke-meeplefolk
@@ -54,7 +55,7 @@ events:
       startdate: 2026-08-18
       starttime: 1800
       endtime: 2200
-      rrule: FREQ=MONTHLY;BYDAY=2TU,3TU,4TU,5TU
+      rrule: FREQ=MONTHLY;BYDAY=2TU,3TU,4TU,5TU;UNTIL=20261231T220000
       location: wote-street-club
     - eventname: Beginner Friendly
       event_id: beginner-friendly-first-tuesday
@@ -63,7 +64,7 @@ events:
       startdate: 2026-10-06
       starttime: 1800
       endtime: 2200
-      rrule: FREQ=MONTHLY;BYDAY=1TU
+      rrule: FREQ=MONTHLY;BYDAY=1TU;UNTIL=20261231T220000
       location: wote-street-club
     - eventname: Clocktower & Board Games
       event_id: clocktower-and-board-games-fourth-sunday
@@ -72,6 +73,6 @@ events:
       startdate: 2026-09-27
       starttime: 1200
       endtime: 1630
-      rrule: FREQ=MONTHLY;BYDAY=4SU
+      rrule: FREQ=MONTHLY;BYDAY=4SU;UNTIL=20261231T163000
       location: wote-street-club
 ---

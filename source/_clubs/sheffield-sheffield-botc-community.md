@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: "Sheffield BotC Community"
 based_in: "Sheffield"
 # Optional: group_id — omit when the stable id matches this file's slug (without .md).
@@ -49,7 +50,7 @@ events:
       startdate: 2026-04-10
       starttime: 1730
       endtime: 2200
-      rrule: "FREQ=WEEKLY;INTERVAL=2;BYDAY=FR"
+      rrule: "FREQ=WEEKLY;INTERVAL=2;BYDAY=FR;UNTIL=20261231T220000"
       location: "rutland-arms"
     - eventname: "Blood on the Clocktower"
       # Stable ID for this series (unique within this group; used in calendar UIDs).
@@ -59,6 +60,6 @@ events:
       startdate: 2026-04-10
       starttime: 1730
       endtime: 2200
-      rrule: "FREQ=WEEKLY;BYDAY=MO"
+      rrule: "FREQ=WEEKLY;BYDAY=MO;UNTIL=20261231T220000"
       location: "the-harlequin"
 ---

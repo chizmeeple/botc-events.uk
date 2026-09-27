@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Dice & Destiny Blood on the Clocktower
 based_in: Canterbury
 group_id: canterbury-dice-and-destiny
@@ -28,7 +29,7 @@ events:
       startdate: 2026-05-02
       starttime: 1700
       endtime: 2130
-      rrule: FREQ=MONTHLY;BYDAY=1SA
+      rrule: FREQ=MONTHLY;BYDAY=1SA;UNTIL=20261231T213000
       location: dice-and-destiny-canterbury
       event_id: blood-on-the-clocktower-monthly
 ---

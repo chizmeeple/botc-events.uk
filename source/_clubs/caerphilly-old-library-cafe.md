@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Caerphilly - The Old Library Cafe
 based_in: Caerphilly
 group_id: caerphilly-old-library-cafe
@@ -23,7 +24,7 @@ events:
     cost: "£2.50"
     startdate: 2026-03-13
     starttime: 1800
-    rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=3WE
+    rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=3WE;UNTIL=20261231T235900
     location:
       name: The Old Library Cafe
       address: The Old Library, Nantgarw Rd, Caerphilly CF83 1AP

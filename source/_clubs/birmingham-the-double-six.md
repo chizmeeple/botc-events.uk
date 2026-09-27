@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: The Double Six
 based_in: Birmingham
 group_id: birmingham-the-double-six
@@ -28,7 +29,7 @@ events:
       startdate: 2026-03-04
       starttime: 1800
       endtime: 2230
-      rrule: FREQ=WEEKLY;BYDAY=WE
+      rrule: FREQ=WEEKLY;BYDAY=WE;UNTIL=20261231T223000
       location: the-double-six
       event_id: blood-on-the-clocktower
 ---

@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Geek Retreat Cardiff
 based_in: Cardiff
 group_id: cardiff-geek-retreat
@@ -24,7 +25,7 @@ events:
     startdate: 2026-03-01
     starttime: 1800
     endtime: 2200
-    rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=2TU
+    rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=2TU;UNTIL=20261231T220000
     location: geek-retreat-cardiff
     event_id: geek-retreat-cardiff
 ---

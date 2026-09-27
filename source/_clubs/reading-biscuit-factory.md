@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Reading Biscuit Factory
 based_in: Reading
 group_id: reading-biscuit-factory
@@ -19,7 +20,7 @@ events:
     startdate: 2026-02-28
     starttime: 1700
     endtime: 2200
-    rrule: FREQ=MONTHLY;BYDAY=1SA,3SA
+    rrule: FREQ=MONTHLY;BYDAY=1SA,3SA;UNTIL=20261231T220000
     exdate:
       - 2026-07-04
     location:

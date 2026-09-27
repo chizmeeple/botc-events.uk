@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: "Radbrook Community Centre"
 based_in: "Shrewsbury"
 # Optional: group_id — omit when the stable id matches this file's slug (without .md).
@@ -44,7 +45,7 @@ events:
       startdate: 2026-04-10
       starttime: 1830
       endtime: 2230
-      rrule: "FREQ=WEEKLY;BYDAY=FR"
+      rrule: "FREQ=WEEKLY;BYDAY=FR;UNTIL=20261231T223000"
       exdate:
         - 2026-10-30
       location: "radbrook-community-centre"

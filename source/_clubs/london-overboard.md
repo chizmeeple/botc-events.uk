@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: OverBoard London
 based_in: London
 group_id: london-overboard
@@ -27,6 +28,6 @@ events:
       startdate: 2026-09-02
       starttime: 1900
       endtime: 2230
-      rrule: FREQ=WEEKLY;BYDAY=WE
+      rrule: FREQ=WEEKLY;BYDAY=WE;UNTIL=20261231T223000
       location: otter-chaos
 ---

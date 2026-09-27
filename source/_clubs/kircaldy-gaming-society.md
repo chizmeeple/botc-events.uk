@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Kircaldy Gaming Society
 based_in: Kircaldy
 group_id: kircaldy-gaming-society
@@ -33,7 +34,7 @@ events:
     startdate: 2026-08-02
     starttime: 1300
     endtime: 1800
-    rrule: FREQ=MONTHLY;BYDAY=1SU
+    rrule: FREQ=MONTHLY;BYDAY=1SU;UNTIL=20261231T180000
     location: glebe-park-centre
   - eventname: Lang Toun Bluff
     event_id: lang-toun-bluff-second-sunday
@@ -42,7 +43,7 @@ events:
     startdate: 2026-08-09
     starttime: 1300
     endtime: 1800
-    rrule: FREQ=MONTHLY;BYDAY=2SU
+    rrule: FREQ=MONTHLY;BYDAY=2SU;UNTIL=20261231T180000
     location: glebe-park-centre
   - eventname: Lang Toun Bluff
     event_id: lang-toun-bluff-third-thursday
@@ -51,7 +52,7 @@ events:
     startdate: 2026-07-16
     starttime: 1830
     endtime: 2200
-    rrule: FREQ=MONTHLY;BYDAY=3TH
+    rrule: FREQ=MONTHLY;BYDAY=3TH;UNTIL=20261231T220000
     location: glebe-park-centre
   adhoc:
   - eventname: Blood on the Clocktower with Ben Burns

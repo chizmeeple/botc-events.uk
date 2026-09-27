@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Sip & Conquer
 based_in: Maidenhead
 group_id: maidenhead-sip-and-conquer
@@ -70,7 +71,7 @@ events:
     startdate: 2026-08-28
     starttime: 1830
     endtime: 2330
-    rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=-1FR
+    rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=-1FR;UNTIL=20261231T233000
     location: sip-and-conquer
   adhoc:
   - eventname: Blood on the Clocktower

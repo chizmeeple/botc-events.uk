@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: "Kings Meadow Primary School"
 based_in: "Bicester"
 # Optional: group_id — omit when the stable id matches this file's slug (without .md).
@@ -45,6 +46,6 @@ events:
       startdate: 2026-04-09
       starttime: 2230
       endtime: 2359
-      rrule: "FREQ=WEEKLY;BYDAY=TH"
+      rrule: "FREQ=WEEKLY;BYDAY=TH;UNTIL=20261231T235900"
       location: "kings-meadow-primary-school"
 ---

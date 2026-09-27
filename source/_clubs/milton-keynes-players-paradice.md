@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Players Paradice
 based_in: Milton Keynes
 group_id: milton-keynes-players-paradice
@@ -29,6 +30,6 @@ events:
     startdate: 2026-09-06
     starttime: 1200
     endtime: 2200
-    rrule: FREQ=MONTHLY;BYDAY=1SU
+    rrule: FREQ=MONTHLY;BYDAY=1SU;UNTIL=20261231T220000
     location: players-paradice
 ---

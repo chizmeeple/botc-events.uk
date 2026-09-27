@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: "Great Baddow Barn"
 based_in: "Chelmsford"
 # Optional: group_id — omit when the stable id matches this file's slug (without .md).
@@ -44,6 +45,6 @@ events:
       startdate: 2026-04-09
       starttime: 1900
       endtime: 2300
-      rrule: "FREQ=WEEKLY;BYDAY=TH"
+      rrule: "FREQ=WEEKLY;BYDAY=TH;UNTIL=20261231T230000"
       location: "great-baddow-barn"
 ---

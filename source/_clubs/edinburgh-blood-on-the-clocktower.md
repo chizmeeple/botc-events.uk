@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Blood on the Clocktower - Edinburgh
 based_in: Edinburgh
 group_id: edinburgh-blood-on-the-clocktower
@@ -19,7 +20,7 @@ events:
     startdate: 2026-03-13
     starttime: 1800
     endtime: 2055
-    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=FR
+    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=FR;UNTIL=20261231T205500
     location:
       name: Lister Learning and Teaching Centre
       address: 5 Roxburgh Place, Edinburgh EH8 9SU

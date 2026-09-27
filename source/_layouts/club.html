@@ -28,6 +28,7 @@ layout: default
 </script>
 
 <div class="club-detail">
+  {% include club-2026-cleanup.html %}
   <div class="club-detail-heading">
     {% if page.image and page.image != "" %}
     <div class="club-detail-icon">
@@ -151,6 +152,7 @@ layout: default
       </div>
       {% endif %}
     </header>
+    {% include club-2026-cleanup.html %}
     {% include events-disclaimer.html %}
     {% if club_events and club_events.upcoming.size > 0 %}
     <script id="club-events-data" type="application/json">[{% for occ in club_events.upcoming %}{"eventname":{{ occ.eventname | jsonify }},"start_time":{{ occ.start_time | jsonify }},"end_time":{{ occ.end_time | jsonify }},"location":{{ occ.location | jsonify }},"frequency":{{ occ.frequency | jsonify }},"cost":{{ occ.cost | jsonify }},"signup":{{ occ.signup | jsonify }},"slug":{{ slug | jsonify }},"club_name":{{ event_data.club_name | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>

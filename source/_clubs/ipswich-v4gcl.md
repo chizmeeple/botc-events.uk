@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: V4GCL
 based_in: Ipswich
 group_id: ipswich-v4gcl
@@ -26,6 +27,6 @@ events:
       startdate: 2026-09-11
       starttime: 1830
       endtime: 2230
-      rrule: FREQ=MONTHLY;BYDAY=2FR,4FR
+      rrule: FREQ=MONTHLY;BYDAY=2FR,4FR;UNTIL=20261231T223000
       location: gainsborough-community-library
 ---

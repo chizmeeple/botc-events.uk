@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Bristol Independent Gaming
 based_in: Bristol
 group_id: bristol-bristol-independent-gaming
@@ -27,7 +28,7 @@ events:
     startdate: 2026-02-10
     starttime: 1900
     endtime: 2200
-    rrule: FREQ=WEEKLY;BYDAY=FR
+    rrule: FREQ=WEEKLY;BYDAY=FR;UNTIL=20261231T220000
     location: bristol-independent-gaming
     event_id: blood-on-the-clocktower-weekly-game
   adhoc:

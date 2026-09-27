@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Games Night At The Anchor
 based_in: Faversham
 group_id: faversham-games-night-anchor
@@ -17,7 +18,7 @@ events:
     startdate: 2026-03-01
     starttime: 1800
     endtime: 2100
-    rrule: FREQ=MONTHLY;BYDAY=2SU,4SU
+    rrule: FREQ=MONTHLY;BYDAY=2SU,4SU;UNTIL=20261231T210000
     location:
       name: The Anchor Pub
       address: 52 Abbey St, Faversham ME13 7BP

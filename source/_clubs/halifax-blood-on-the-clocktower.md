@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Blood on the Clocktower
 based_in: Halifax
 group_id: halifax-blood-on-the-clocktower
@@ -44,7 +45,7 @@ events:
       startdate: 2026-09-13
       starttime: 1400
       endtime: 2200
-      rrule: FREQ=WEEKLY;BYDAY=SU
+      rrule: FREQ=WEEKLY;BYDAY=SU;UNTIL=20261231T220000
       location: shadowdust
   adhoc:
     - eventname: Blood on the Clocktower

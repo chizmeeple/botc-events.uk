@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Board On The Waterside
 based_in: Dibden Purlieu
 group_id: dibden-purlieu-board-on-the-waterside
@@ -36,7 +37,7 @@ events:
     startdate: 2026-03-17
     starttime: 1900
     endtime: 2200
-    rrule: FREQ=MONTHLY;BYDAY=3WE
+    rrule: FREQ=MONTHLY;BYDAY=3WE;UNTIL=20261231T220000
     location: board-on-the-waterside
     event_id: blood-on-the-clock-tower
 ---

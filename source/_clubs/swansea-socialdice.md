@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Socialdice
 based_in: Swansea
 group_id: swansea-socialdice
@@ -25,7 +26,7 @@ events:
     startdate: 2026-03-19
     starttime: 1800
     endtime: 2200
-    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=TH
+    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=TH;UNTIL=20261231T220000
     location: social-dice
     event_id: blood-on-the-clocktower-edinburgh
 ---

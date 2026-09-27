@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Board Games Repackaged
 based_in: Elephant and Castle (London)
 group_id: london-board-games-repackaged
@@ -27,7 +28,7 @@ events:
       startdate: 2026-09-06
       starttime: 1300
       endtime: 2000
-      rrule: FREQ=MONTHLY;BYDAY=1SU
+      rrule: FREQ=MONTHLY;BYDAY=1SU;UNTIL=20261231T200000
       location: the-ministry
   adhoc:
     - eventname: Blood on the Clocktower

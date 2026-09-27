@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: false
 name: Farnborough Board Games
 based_in: Farnborough (Hampshire)
 group_id: farnborough-board-games
@@ -30,7 +31,7 @@ events:
     startdate: 2026-02-10
     starttime: 1850
     endtime: 2200
-    rrule: FREQ=MONTHLY;BYDAY=2TU
+    rrule: FREQ=MONTHLY;BYDAY=2TU;UNTIL=20261231T220000
     location: new-inn
     event_id: blood-on-the-clocktower-beginner-friendly
   - eventname: Blood on the Clocktower (Intermediate+)
@@ -39,7 +40,25 @@ events:
     startdate: 2026-02-10
     starttime: 1850
     endtime: 2200
-    rrule: FREQ=MONTHLY;BYDAY=4TU
+    rrule: FREQ=MONTHLY;BYDAY=4TU;UNTIL=20261231T220000
     location: new-inn
     event_id: blood-on-the-clocktower-intermediate
+  - eventname: Blood on the Clocktower (Beginner Friendly)
+    signup: https://aftergame.app/groups/farnborough-board-games/events
+    cost: Free
+    startdate: 2027-01-12
+    starttime: 1850
+    endtime: 2200
+    rrule: FREQ=MONTHLY;BYDAY=2TU
+    location: new-inn
+    event_id: blood-on-the-clocktower-beginner-friendly-2027
+  - eventname: Blood on the Clocktower (Intermediate+)
+    signup: https://aftergame.app/groups/farnborough-board-games/events
+    cost: Free
+    startdate: 2027-01-26
+    starttime: 1850
+    endtime: 2200
+    rrule: FREQ=MONTHLY;BYDAY=4TU
+    location: new-inn
+    event_id: blood-on-the-clocktower-intermediate-2027
 ---

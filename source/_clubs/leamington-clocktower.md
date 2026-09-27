@@ -1,4 +1,5 @@
 ---
+display_2026_cleanup_message: true
 name: Clocktower Leamington
 based_in: Leamington Spa
 group_id: leamington-clocktower
@@ -26,7 +27,7 @@ events:
     startdate: 2026-04-01
     starttime: 1900
     endtime: 2200
-    rrule: FREQ=MONTHLY;BYDAY=1TH,3TU
+    rrule: FREQ=MONTHLY;BYDAY=1TH,3TU;UNTIL=20261231T220000
     location: royal-pug
     event_id: clocktower-leamington
   adhoc: []
