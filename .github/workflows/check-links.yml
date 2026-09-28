@@ -55,6 +55,27 @@ jobs:
             const MARKER = '<!-- linkcheck-tracking-issue -->';
             const title = '🔗 Dead / stale links';
             const label = 'link-report';
+            const assignee = 'chizmeeple';
+
+            // Remove everyone first, then assign. GitHub only notifies when
+            // someone is newly assigned, so a re-assign has to be two calls.
+            async function reassign(issueNumber, currentAssignees) {
+              const logins = (currentAssignees || []).map(user => user.login);
+              if (logins.length > 0) {
+                await github.rest.issues.removeAssignees({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  assignees: logins,
+                });
+              }
+              await github.rest.issues.addAssignees({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                assignees: [assignee],
+              });
+            }
 
             // GitHub issue bodies cap at 65536 chars; trim defensively.
             let body = MARKER + '\n\n' + report;
@@ -111,9 +132,10 @@ jobs:
                 owner: context.repo.owner, repo: context.repo.repo,
                 issue_number: issue.number, title, body, state: 'open',
               });
+              await reassign(issue.number, issue.assignees);
             } else {
               await github.rest.issues.create({
                 owner: context.repo.owner, repo: context.repo.repo,
-                title, body, labels: [label],
+                title, body, labels: [label], assignees: [assignee],
               });
             }
