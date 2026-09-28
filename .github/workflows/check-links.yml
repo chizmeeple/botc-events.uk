@@ -35,7 +35,7 @@ jobs:
           echo "$line" | sed 's/LINKCHECK_RESULT //; s/ /\n/g' >> "$GITHUB_OUTPUT"
 
       - name: Upload report artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dead-links-report
           path: |
@@ -44,7 +44,7 @@ jobs:
           if-no-files-found: warn
 
       - name: Update tracking issue
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
