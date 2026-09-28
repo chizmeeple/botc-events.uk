@@ -13,6 +13,10 @@
 # What it skips (too noisy to check from a bot):
 #   - facebook / discord links. These return 403/429 to non-browser clients
 #     whether or not the group exists, so checking them tells us nothing.
+#   - signup links for events that have already finished, because those are
+#     not shown on the site. An adhoc or special event is finished when its
+#     start date is before today in Europe/London. A recurring series is
+#     finished when its RRULE UNTIL date is before today.
 #
 # Usage:
 #   ruby script/check_links.rb              # check everything, write reports/dead_links.md
@@ -65,6 +69,7 @@ module LinkCheck
 
         list.each_with_index do |event, index|
           next unless event.is_a?(Hash)
+          next if past_event?(event, kind)
 
           append_target(targets, rel, name, "events.#{kind}[#{index}].signup", event["signup"])
         end
@@ -74,6 +79,66 @@ module LinkCheck
     [targets, nil]
   rescue Psych::SyntaxError => e
     [[], "#{rel}: #{e.message}"]
+  end
+
+  # UK civil time: BST from 01:00 UTC on the last Sunday of March until 01:00 UTC
+  # on the last Sunday of October.
+  def british_summer_time?(utc)
+    year = utc.year
+    start_t = Time.utc(year, 3, last_sunday(year, 3).day, 1, 0, 0)
+    end_t = Time.utc(year, 10, last_sunday(year, 10).day, 1, 0, 0)
+    utc >= start_t && utc < end_t
+  end
+
+  def last_sunday(year, month)
+    date = Date.new(year, month, -1)
+    date - date.wday
+  end
+
+  def london_today(now = Time.now)
+    utc = now.utc
+    offset = british_summer_time?(utc) ? 3600 : 0
+    local = utc.getlocal(offset)
+    Date.new(local.year, local.month, local.day)
+  end
+
+  def event_date(value)
+    return value if value.is_a?(Date)
+    return nil if value.nil? || value.to_s.strip.empty?
+
+    Date.parse(value.to_s)
+  rescue ArgumentError
+    nil
+  end
+
+  def until_date(rrule)
+    match = rrule.to_s.match(/UNTIL=(\d{8})/)
+    return nil unless match
+
+    Date.strptime(match[1], "%Y%m%d")
+  rescue ArgumentError
+    nil
+  end
+
+  # True when this event would not be listed. Compared by date in Europe/London,
+  # so an event happening today is still checked.
+  def past_event?(event, kind, today: london_today)
+    case kind
+    when "adhoc", "special"
+      date = event_date(event["startdate"])
+      date && date < today
+    when "recurring"
+      finished = until_date(event["rrule"])
+      if finished
+        finished < today
+      else
+        rrule = event["rrule"].to_s.strip
+        date = event_date(event["startdate"])
+        rrule.empty? && date && date < today
+      end
+    else
+      false
+    end
   end
 
   def append_target(targets, rel, name, field, url)
@@ -251,7 +316,7 @@ module LinkCheck
     lines << "_Generated #{generated} by `script/check_links.rb`._"
     lines << ""
     lines << "Checked **#{summary[:targets].map { |target| target.url }.uniq.length}** unique links (`website`, `meetup`, `aftergame`, `bgg`, event `signup`) across **#{summary[:files].length}** group and special-event files."
-    lines << "Facebook/Discord links are not auto-checked (they block bots)."
+    lines << "Facebook/Discord links are not auto-checked (they block bots). Signup links for events that have already finished are not checked."
     lines << ""
     lines << "- 🔴 **#{dead.length}** likely dead (DNS failure, connection refused, 404/410)"
     lines << "- 🟡 **#{suspect.length}** suspect (timeout, server error, SSL — may be transient, re-check before acting)"

@@ -69,6 +69,52 @@ Dir.mktmpdir do |dir|
   check(error&.include?("source/_clubs/broken.md"), "broken YAML is reported, got #{error.inspect}")
 end
 
+today = Date.new(2026, 9, 28)
+check(!LinkCheck.past_event?({ "startdate" => Date.new(2026, 9, 28) }, "adhoc", today: today), "an event today is still listed")
+check(LinkCheck.past_event?({ "startdate" => Date.new(2026, 9, 27) }, "adhoc", today: today), "an event yesterday is past")
+check(!LinkCheck.past_event?({ "startdate" => Date.new(2026, 9, 29) }, "adhoc", today: today), "an event tomorrow is listed")
+check(
+  LinkCheck.past_event?({ "rrule" => "FREQ=WEEKLY;BYDAY=TU;UNTIL=20260901T220000" }, "recurring", today: today),
+  "a recurring series whose UNTIL date has passed is past"
+)
+check(
+  !LinkCheck.past_event?({ "rrule" => "FREQ=WEEKLY;BYDAY=TU" }, "recurring", today: today),
+  "an open-ended recurring series is listed"
+)
+check(
+  !LinkCheck.past_event?({ "rrule" => "FREQ=WEEKLY;BYDAY=TU;UNTIL=20261231T220000" }, "recurring", today: today),
+  "a recurring series that ends later is listed"
+)
+check(LinkCheck.british_summer_time?(Time.utc(2026, 7, 1, 12)), "July is British Summer Time")
+check(!LinkCheck.british_summer_time?(Time.utc(2026, 1, 15, 12)), "January is GMT")
+check(!LinkCheck.british_summer_time?(Time.utc(2026, 3, 29, 0, 30)), "the hour before the March clock change is GMT")
+check(LinkCheck.british_summer_time?(Time.utc(2026, 3, 29, 1, 0)), "01:00 UTC on the March clock change is British Summer Time")
+
+dated = <<~YAML
+  ---
+  name: "Dated Group"
+  events:
+    adhoc:
+      - signup: "https://example.test/old"
+        startdate: 2000-01-01
+      - signup: "https://example.test/soon"
+        startdate: 2999-01-01
+    recurring:
+      - signup: "https://example.test/ended"
+        rrule: "FREQ=WEEKLY;BYDAY=TU;UNTIL=20000101T220000"
+      - signup: "https://example.test/weekly"
+        rrule: "FREQ=WEEKLY;BYDAY=TU"
+  ---
+YAML
+
+Dir.mktmpdir do |dir|
+  path = File.join(dir, "dated.md")
+  File.write(path, dated)
+  targets, error = LinkCheck.collect_file(path, "source/_clubs/dated.md")
+  check(error.nil?, "dated club should parse")
+  check(targets.map(&:url) == ["https://example.test/weekly", "https://example.test/soon"], "skips signup links for finished events, got #{targets.map(&:url).inspect}")
+end
+
 compact = LinkCheck.compact_targets([
   LinkCheck::Target.new(rel: "source/_clubs/example.md", name: "Example Group", field: "website", url: "https://example.test/book"),
   LinkCheck::Target.new(rel: "source/_clubs/example.md", name: "Example Group", field: "events.adhoc[0].signup", url: "https://example.test/book"),
