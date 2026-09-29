@@ -17,6 +17,8 @@ require_relative "recurrence_rules"
 SITE_URL = "https://botc-events.uk"
 CALENDAR_PREFIX = "🕯️🎭"
 LONDON_TZID = "Europe/London"
+# Plain-text version of source/_includes/events-disclaimer.html for calendar clients.
+EXTERNAL_CONTENT_NOTICE = "Signup and ticket links go to other websites we don't control, and we aren't responsible for their content. Please confirm details with the organisers and buy any tickets before travelling."
 
 def calendar_summary(text)
   t = text.to_s.strip
@@ -44,6 +46,10 @@ def row_uid(row)
   eid = row["event_id"]
   sid = row["special_event_id"]
   CalendarUid.ical_uid(group_id: gid, event_id: eid, special_event_id: sid)
+end
+
+def assign_description(event, parts)
+  event.description = (parts + [EXTERNAL_CONTENT_NOTICE]).join("\n\n")
 end
 
 def ical_london_datetime(time)
@@ -83,7 +89,7 @@ def build_club_oneoff_event(row, feed_updated)
   slug = row["slug"].to_s.strip
   desc_parts << "#{SITE_URL}/clubs/#{slug}/" if slug != ""
   desc_parts << "End time estimated" if end_time_missing
-  event.description = desc_parts.join("\n\n") if desc_parts.any?
+  assign_description(event, desc_parts)
 
   if row["signup"].to_s.strip != ""
     event.url = row["signup"]
@@ -162,7 +168,7 @@ def build_recurring_series_event(rows, feed_updated)
   slug = first["slug"].to_s.strip
   desc_parts << "#{SITE_URL}/clubs/#{slug}/" if slug != ""
   desc_parts << "End time estimated" if end_time_missing
-  event.description = desc_parts.join("\n\n") if desc_parts.any?
+  assign_description(event, desc_parts)
 
   if first["signup"].to_s.strip != ""
     event.url = first["signup"]
@@ -204,7 +210,7 @@ def build_special_ics_event(row, feed_updated)
   slug = row["slug"].to_s.strip
   desc_parts << "#{SITE_URL}/special/#{slug}/" if slug != ""
   desc_parts << "End time estimated" if end_time_missing
-  event.description = desc_parts.join("\n\n") if desc_parts.any?
+  assign_description(event, desc_parts)
 
   event.url = "#{SITE_URL}/special/#{slug}/" if slug != ""
 
