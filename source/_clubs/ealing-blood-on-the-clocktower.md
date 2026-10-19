@@ -30,6 +30,7 @@ events:
       rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=TH;UNTIL=20261231T230000
       exdate:
         - 2026-10-01
+        - 2026-10-15
       location: the-forester
   adhoc:
     - eventname: Blood on the Clocktower -- Ealing
@@ -37,6 +38,14 @@ events:
       signup: https://www.eventbrite.co.uk/e/blood-on-the-clocktower-ealing-tickets-2001872096329
       cost: Free
       startdate: 2026-10-01
+      starttime: 1830
+      endtime: 2300
+      location: the-forester
+    - eventname: Blood on the Clocktower -- Ealing
+      special_event_id: blood-on-the-clocktower-20261015
+      signup: https://www.eventbrite.co.uk/e/blood-on-the-clocktower-ealing-tickets-2003195728348
+      cost: Free
+      startdate: 2026-10-15
       starttime: 1830
       endtime: 2300
       location: the-forester
