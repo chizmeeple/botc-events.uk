@@ -121,4 +121,12 @@ events:
     endtime: 2130
     location: waterstones-cambridge
     special_event_id: botc-at-cambridge-waterstones-20261009
+  - eventname: BotC at Cambridge Waterstones
+    signup: https://www.waterstones.com/events/games-night-in-cambridge-new-time/cambridge-177822
+    cost: Unknown
+    startdate: 2026-11-13
+    starttime: 1730
+    endtime: 2130
+    location: waterstones-cambridge
+    special_event_id: botc-at-cambridge-waterstones-20261113
 ---
