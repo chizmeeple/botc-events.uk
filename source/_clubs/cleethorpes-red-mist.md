@@ -161,4 +161,28 @@ events:
     endtime: 2030
     location: roll-the-dice-cafe
     special_event_id: standard-session-20261004-2
+  - eventname: Beginner Session
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-11-07
+    starttime: 1100
+    endtime: 1400
+    location: roll-the-dice-cafe
+    special_event_id: beginner-session-20261107
+  - eventname: Standard Session
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-11-07
+    starttime: 1430
+    endtime: 1700
+    location: roll-the-dice-cafe
+    special_event_id: standard-session-20261107
+  - eventname: Standard Session
+    signup: https://www.eventbrite.co.uk/o/red-mist-89845223753
+    cost: "£3"
+    startdate: 2026-11-07
+    starttime: 1800
+    endtime: 2030
+    location: roll-the-dice-cafe
+    special_event_id: standard-session-20261107-2
 ---
