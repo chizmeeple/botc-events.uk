@@ -19,6 +19,16 @@ locations:
     lat: 52.407085
     lng: -1.506963
 events:
+  recurring:
+    - eventname: "Covtower"
+      event_id: "covtower"
+      signup: "https://bloodonthecovtower.co.uk/"
+      cost: "Unknown"
+      startdate: 2026-11-11
+      starttime: 1900
+      endtime: 2300
+      rrule: "FREQ=MONTHLY;BYDAY=2WE;UNTIL=20261231T230000"
+      location: "the-yard"
   adhoc:
     - eventname: "October Covtower"
       special_event_id: "blood-on-the-clocktower-20261014"
