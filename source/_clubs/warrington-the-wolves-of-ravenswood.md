@@ -36,6 +36,14 @@ events:
       starttime: 1900
       endtime: 2300
       location: "the-horseshoe-inn"
+    - eventname: "Blood on the Clocktower (Halloween)"
+      special_event_id: "wolves-ravenswood-20261102"
+      signup: "https://discord.gg/wdVm6mb8GA"
+      cost: "Free"
+      startdate: 2026-11-02
+      starttime: 1900
+      endtime: 2300
+      location: "the-horseshoe-inn"
   recurring:
     - eventname: "Blood on the Clocktower"
       event_id: "wolves-ravenswood-first-monday"
@@ -45,5 +53,7 @@ events:
       starttime: 1900
       endtime: 2300
       rrule: "FREQ=MONTHLY;BYDAY=1MO;UNTIL=20261231T230000"
+      exdate:
+        - 2026-11-02
       location: "the-horseshoe-inn"
 ---

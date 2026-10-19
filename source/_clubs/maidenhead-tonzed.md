@@ -26,4 +26,12 @@ events:
     endtime: 1700
     location: maidenhead-high-street-27
     special_event_id: tonzed-maidenhead-next-game-20260503
+  - eventname: "Tonzed (Maidenhead): Next game in Maidenhead"
+    signup: https://discord.com/channels/1247195779970498780/1357448674317434900
+    cost: Free
+    startdate: 2026-11-14
+    starttime: 1100
+    endtime: 1700
+    location: maidenhead-high-street-27
+    special_event_id: tonzed-maidenhead-next-game-20261114
 ---
