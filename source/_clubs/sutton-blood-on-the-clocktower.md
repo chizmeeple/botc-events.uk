@@ -44,6 +44,30 @@ events:
       endtime: 1800
       location: holiday-inn-sutton
       special_event_id: blood-on-the-clocktower-sutton-20260926
+    - eventname: Blood on the Clocktower - Holiday Inn, Sutton
+      signup: https://www.tickettailor.com/events/suttonbloodontheclocktower
+      cost: Free
+      startdate: 2026-10-17
+      starttime: 1245
+      endtime: 1800
+      location: holiday-inn-sutton
+      special_event_id: blood-on-the-clocktower-sutton-20261017
+    - eventname: Blood on the Clocktower - Holiday Inn, Sutton
+      signup: https://www.tickettailor.com/events/suttonbloodontheclocktower
+      cost: Free
+      startdate: 2026-11-14
+      starttime: 1245
+      endtime: 1800
+      location: holiday-inn-sutton
+      special_event_id: blood-on-the-clocktower-sutton-20261114
+    - eventname: Blood on the Clocktower - Holiday Inn, Sutton
+      signup: https://www.tickettailor.com/events/suttonbloodontheclocktower
+      cost: Free
+      startdate: 2026-12-06
+      starttime: 1245
+      endtime: 1800
+      location: holiday-inn-sutton
+      special_event_id: blood-on-the-clocktower-sutton-20261206
   recurring:
     - eventname: Blood on the Clocktower - Holiday Inn, Sutton
       signup: https://www.tickettailor.com/events/suttonbloodontheclocktower
