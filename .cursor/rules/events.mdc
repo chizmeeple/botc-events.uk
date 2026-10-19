@@ -131,12 +131,13 @@ To skip dates, use `exdate` (`YYYY-MM-DD` list). See `_club-template.md` for
 - Keep adhoc entries in chronological order when appending.
 - Do not delete events that have already happened.
 - British spelling in commit messages.
-- If you add an event that occurs after 31 December 2026, set
-  `display_2026_cleanup_message: false` on that group. This covers an adhoc
-  `startdate` after that day, and a recurring series that still has occurrences
-  after it (no `UNTIL`, or an `UNTIL` later than `20261231`). Set it when the
-  field is missing or `true`. The group-page banner is shown only when the
-  field exists and is `true`.
+- Leave `display_2026_cleanup_message: true` unless the update confirms dates
+  in 2027. An open-ended monthly series is not that confirmation: cap it with
+  `UNTIL=20261231T{endtime}00` (the listing reset, not a closing date) and
+  leave the flag `true`. Set the flag `false` only for a confirmed 2027 date:
+  an adhoc `startdate` after 31 December 2026, or a recurring series explicitly
+  confirmed past that day. The group-page banner is shown only when the field
+  exists and is `true`.
 
 ## Workflows
 
@@ -146,7 +147,7 @@ Follow `.cursor/skills/club-discord-update/SKILL.md`. In short:
 
 1. Find the group file under `source/_clubs/`.
 2. Append a new entry to `events.adhoc` with a fresh `special_event_id`.
-3. If that date is after 31 December 2026, set `display_2026_cleanup_message: false`.
+3. If that date is a confirmed date after 31 December 2026, set `display_2026_cleanup_message: false`. Otherwise leave the flag as it is.
 4. Run `./script/cursor-events-check`. Do not restart `script/jekyll-serve`
    or use the browser.
 
@@ -155,8 +156,9 @@ Follow `.cursor/skills/club-discord-update/SKILL.md`. In short:
 1. Append to `events.recurring` with a new unique `event_id`.
 2. Set `startdate` to the first occurrence on or after today; set `rrule`
    from Common rrules (do not grep the repo for rrule examples).
-3. If the series has occurrences after 31 December 2026, set
-   `display_2026_cleanup_message: false`.
+3. Cap an ongoing series at the 2026 listing reset with
+   `UNTIL=20261231T{endtime}00` and leave `display_2026_cleanup_message: true`.
+   Set the flag `false` only when 2027 dates are explicitly confirmed.
 4. Run `./script/cursor-check`.
 
 ### Add a new group
@@ -165,8 +167,9 @@ Follow `.cursor/skills/club-discord-update/SKILL.md`. In short:
 2. Fill `locations` and at least one event under `events.recurring` or
    `events.adhoc`.
 3. Optionally add a logo to `source/assets/images/clubs/` and set `image`.
-4. If any event occurs after 31 December 2026, set
-   `display_2026_cleanup_message: false`.
+4. Cap ongoing series at `UNTIL=20261231T{endtime}00` and leave
+   `display_2026_cleanup_message: true`. Set the flag `false` only when a
+   confirmed date falls after 31 December 2026.
 5. Run `./script/cursor-check`.
 
 ### Add a special event (con, festival)
