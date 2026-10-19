@@ -421,6 +421,22 @@ events:
     starttime: 1900
     location: westgate-social
     special_event_id: blood-on-the-clocktower-westgate-social-base-3-20261102
+  - eventname: The Crown - Beginner Friendly
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-11-04
+    starttime: 1900
+    endtime: 2300
+    location: crown-pub
+    special_event_id: beginner-friendly-20261104
+  - eventname: Chequers Pub - Custom Scripts
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-11-09
+    starttime: 1900
+    endtime: 2300
+    location: chequers-pub
+    special_event_id: custom-script-night-20261109
   - eventname: Westgate Social - Custom Scripts
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
@@ -435,6 +451,22 @@ events:
     starttime: 1900
     location: westgate-social
     special_event_id: blood-on-the-clocktower-westgate-social-base-3-20261116
+  - eventname: The Crown - Beginner Friendly
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-11-18
+    starttime: 1900
+    endtime: 2300
+    location: crown-pub
+    special_event_id: beginner-friendly-20261118
+  - eventname: Chequers Pub - Custom Scripts
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-11-23
+    starttime: 1900
+    endtime: 2300
+    location: chequers-pub
+    special_event_id: custom-script-night-20261123
   - eventname: Westgate Social - Custom Scripts
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
