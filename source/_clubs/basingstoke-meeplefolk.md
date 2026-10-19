@@ -56,6 +56,8 @@ events:
       starttime: 1800
       endtime: 2200
       rrule: FREQ=MONTHLY;BYDAY=2TU,3TU,4TU,5TU;UNTIL=20261231T220000
+      exdate:
+        - 2026-10-27
       location: wote-street-club
     - eventname: Beginner Friendly
       event_id: beginner-friendly-first-tuesday
@@ -74,5 +76,14 @@ events:
       starttime: 1200
       endtime: 1630
       rrule: FREQ=MONTHLY;BYDAY=4SU;UNTIL=20261231T163000
+      location: wote-street-club
+  adhoc:
+    - eventname: Halloween Games
+      special_event_id: blood-on-the-clocktower-20261027
+      signup: https://aftergame.app/events/5fd11c69-5dc7-4bf5-bfea-9628546d6834
+      cost: "£4.00"
+      startdate: 2026-10-27
+      starttime: 1800
+      endtime: 2300
       location: wote-street-club
 ---
