@@ -32,6 +32,11 @@ locations:
     address: "83 Percy Street, Newcastle Upon Tyne, NE1 7RW"
     lat: 54.976280157919795
     lng: -1.6159360304774015
+  toastielabs:
+    name: "ToastieLabs"
+    address: "30 Half Moon Lane, Gateshead, NE8 2AN"
+    lat: 54.965454
+    lng: -1.604928
 events:
   adhoc:
     - eventname: "Blood on the Clocktower"
@@ -333,6 +338,14 @@ events:
       starttime: 1900
       endtime: 2200
       location: "bay-games"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "botc-toastielabs-20261112"
+      signup: "https://toastielabs.simplybook.it/v2/#book-class/service/13/count/1/"
+      cost: "£5"
+      startdate: 2026-11-12
+      starttime: 1830
+      endtime: 2200
+      location: "toastielabs"
     - eventname: "Blood on the Clocktower"
       special_event_id: "botc-bridge-20261113"
       signup: "https://aftergame.app/events/ff0fafd0-637e-413d-8b7a-f09bdffa34e4"
