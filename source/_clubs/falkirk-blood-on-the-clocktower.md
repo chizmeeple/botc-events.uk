@@ -42,4 +42,20 @@ events:
       starttime: 1800
       endtime: 2200
       location: enable-scotland-centre
+    - eventname: Blood on the Clocktower
+      special_event_id: falkirk-blood-on-the-clocktower-20261105
+      signup: https://discord.gg/PUTkJXwUJY
+      cost: Free
+      startdate: 2026-11-05
+      starttime: 1800
+      endtime: 2200
+      location: enable-scotland-centre
+    - eventname: Blood on the Clocktower
+      special_event_id: falkirk-blood-on-the-clocktower-20261217
+      signup: https://discord.gg/PUTkJXwUJY
+      cost: Free
+      startdate: 2026-12-17
+      starttime: 1800
+      endtime: 2200
+      location: enable-scotland-centre
 ---
