@@ -30,4 +30,21 @@ events:
       endtime: 2230
       rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=TH;UNTIL=20261029T223000
       location: junction-hotel
+  adhoc:
+    - eventname: Blood on the Clocktower
+      special_event_id: blood-on-the-clocktower-20261112
+      signup: https://www.facebook.com/events/1609485029885330/
+      cost: Free
+      startdate: 2026-11-12
+      starttime: 1930
+      endtime: 2230
+      location: junction-hotel
+    - eventname: Blood on the Clocktower
+      special_event_id: blood-on-the-clocktower-20261126
+      signup: https://www.facebook.com/events/1609485029885330/
+      cost: Free
+      startdate: 2026-11-26
+      starttime: 1930
+      endtime: 2230
+      location: junction-hotel
 ---
