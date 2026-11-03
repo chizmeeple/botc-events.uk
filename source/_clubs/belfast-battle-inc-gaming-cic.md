@@ -56,6 +56,11 @@ events:
       starttime: 1900
       endtime: 2359
       rrule: "FREQ=WEEKLY;BYDAY=FR;UNTIL=20261231T235900"
+      exdate:
+        - 2026-11-06
+        - 2026-11-13
+        - 2026-11-20
+        - 2026-11-27
       location: "battle-inc-gaming"
   adhoc:
     - eventname: "Robin Con"
@@ -74,4 +79,36 @@ events:
       starttime: 1000
       endtime: 1800
       location: "titanic-hotel-belfast"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "blood-on-the-clocktower-20261106"
+      signup: "https://www.battleinc.co.uk/blogs/events"
+      cost: "£6 (free for BIG members)"
+      startdate: 2026-11-06
+      starttime: 1700
+      endtime: 2359
+      location: "battle-inc-gaming"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "blood-on-the-clocktower-20261113"
+      signup: "https://www.battleinc.co.uk/blogs/events"
+      cost: "£6 (free for BIG members)"
+      startdate: 2026-11-13
+      starttime: 1700
+      endtime: 2359
+      location: "battle-inc-gaming"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "blood-on-the-clocktower-20261120"
+      signup: "https://www.battleinc.co.uk/blogs/events"
+      cost: "£6 (free for BIG members)"
+      startdate: 2026-11-20
+      starttime: 1700
+      endtime: 2359
+      location: "battle-inc-gaming"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "blood-on-the-clocktower-20261127"
+      signup: "https://www.battleinc.co.uk/blogs/events"
+      cost: "£6 (free for BIG members)"
+      startdate: 2026-11-27
+      starttime: 1700
+      endtime: 2359
+      location: "battle-inc-gaming"
 ---
