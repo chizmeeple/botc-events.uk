@@ -72,6 +72,8 @@ events:
     starttime: 1830
     endtime: 2330
     rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=-1FR;UNTIL=20261231T233000
+    exdate:
+    - 2026-11-27
     location: sip-and-conquer
   adhoc:
   - eventname: Blood on the Clocktower
@@ -98,4 +100,12 @@ events:
     endtime: 2330
     location: sip-and-conquer
     special_event_id: blood-on-the-clocktower-20260626
+  - eventname: Blood on the Clocktower
+    signup: "https://www.designmynight.com/uk/restaurants/sip-conquer/blood-on-the-clocktower-1?t=tickets"
+    cost: "£22"
+    startdate: 2026-11-28
+    starttime: 1830
+    endtime: 2330
+    location: sip-and-conquer
+    special_event_id: blood-on-the-clocktower-20261128
 ---
