@@ -414,7 +414,7 @@ events:
     starttime: 1900
     location: westgate-social
     special_event_id: custom-script-night-20261028
-  - eventname: Westgate Social - Base 3
+  - eventname: Westgate Social - Base 3 & Beginner Friendly
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
     startdate: 2026-11-02
@@ -444,7 +444,7 @@ events:
     starttime: 1900
     location: westgate-social
     special_event_id: custom-script-night-20261111
-  - eventname: Westgate Social - Base 3
+  - eventname: Westgate Social - Base 3 & Beginner Friendly
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
     startdate: 2026-11-16
@@ -474,14 +474,14 @@ events:
     starttime: 1900
     location: westgate-social
     special_event_id: custom-script-night-20261125
-  - eventname: Sunday Special!
+  - eventname: Sunday Special! - Crazy Shenanigans, Customs, Base 3 & Beginner Friendly
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: "£5"
     startdate: 2026-11-29
     starttime: 1130
     location: wig-and-pen
     special_event_id: blood-on-the-clocktower-sunday-special-20261129
-  - eventname: Westgate Social - Base 3
+  - eventname: Westgate Social - Base 3 & Beginner Friendly
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
     startdate: 2026-11-30
