@@ -18,6 +18,11 @@ locations:
     address: 100 High St, Dumfries DG1 2BJ
     lat: 55.06818530741589
     lng: -3.6099918334595222
+  cresswell-community-centre:
+    name: Cresswell Community Centre
+    address: Cresswell Hill, Dumfries DG1 2EU
+    lat: 55.0656565
+    lng: -3.6002190
 events:
   recurring:
     - eventname: 'Doongamers presents: Blood on the Clocktower'
@@ -29,4 +34,12 @@ events:
       endtime: 2130
       rrule: FREQ=MONTHLY;BYDAY=1WE;UNTIL=20261231T213000
       location: the-stove-cafe
+  adhoc:
+    - eventname: 'Doongamers presents: Blood on the Clocktower'
+      special_event_id: blood-on-the-clocktower-20261129
+      signup: https://www.facebook.com/groups/989391580302000
+      cost: Free
+      startdate: 2026-11-29
+      starttime: 1200
+      location: cresswell-community-centre
 ---
