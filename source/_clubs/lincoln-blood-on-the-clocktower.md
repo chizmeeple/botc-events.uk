@@ -53,4 +53,12 @@ events:
       starttime: 1000
       endtime: 1600
       location: university-of-lincoln
+    - eventname: Blood on the Clocktower
+      special_event_id: lincoln-blood-on-the-clocktower-20261114
+      signup: https://discord.gg/PUTkJXwUJY
+      cost: Free
+      startdate: 2026-11-14
+      starttime: 1000
+      endtime: 1700
+      location: university-of-lincoln
 ---
