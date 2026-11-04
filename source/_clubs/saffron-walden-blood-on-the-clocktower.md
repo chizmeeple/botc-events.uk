@@ -73,4 +73,12 @@ events:
     endtime: 2200
     location: fairycroft-house-mac
     special_event_id: blood-on-the-clocktower-20261030
+  - eventname: Blood on the Clocktower
+    signup: https://flowto.it/e3xARbq3JR?fc=0
+    cost: "£3"
+    startdate: 2026-11-22
+    starttime: 1600
+    endtime: 1900
+    location: fairycroft-house-mac
+    special_event_id: blood-on-the-clocktower-20261122
 ---

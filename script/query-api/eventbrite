@@ -1,0 +1,277 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Look up Eventbrite event details from a public event or organiser URL (or a
+# numeric id). Uses the unauthenticated Eventbrite v3 API.
+#
+# Usage:
+#   script/query-api/eventbrite URL_OR_ID [URL_OR_ID ...]
+#   script/query-api/eventbrite --json URL_OR_ID
+#   script/query-api/eventbrite --status live,started,ended ORGANISER_URL
+#
+# An event URL prints that event. An organiser URL prints their events
+# (default statuses: live,started). A bare id is tried as an event first.
+
+require "json"
+require "net/http"
+require "optparse"
+require "uri"
+
+API_ROOT = "https://www.eventbrite.com/api/v3"
+EXPAND = "venue,ticket_availability,organizer"
+USER_AGENT = "botc-events.uk eventbrite query"
+MAX_PAGES = 20
+
+class EventbriteError < StandardError
+  attr_reader :code
+
+  def initialize(message, code)
+    super(message)
+    @code = code
+  end
+end
+
+def eventbrite_host?(uri)
+  uri.host.to_s.downcase.include?("eventbrite")
+end
+
+def http_request(uri, method)
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = uri.scheme == "https"
+  http.open_timeout = 15
+  http.read_timeout = 30
+  request = method == :head ? Net::HTTP::Head.new(uri) : Net::HTTP::Get.new(uri)
+  request["User-Agent"] = USER_AGENT
+  request["Accept"] = "application/json"
+  http.request(request)
+end
+
+def follow(uri, limit = 5)
+  raise EventbriteError.new("Too many redirects for #{uri}", 0) if limit <= 0
+
+  response = http_request(uri, :head)
+  if response.is_a?(Net::HTTPRedirection) && response["location"]
+    return follow(URI.join(uri.to_s, response["location"]), limit - 1)
+  end
+
+  uri
+end
+
+def classify(uri)
+  parts = uri.path.to_s.split("/").reject(&:empty?)
+  return nil if parts.length < 2
+
+  kind, slug = parts[-2], parts[-1]
+  id = slug[/\d+\z/]
+  return nil unless id
+
+  case kind
+  when "e" then [:event, id]
+  when "o" then [:organiser, id]
+  end
+end
+
+def identify(input)
+  raw = input.strip
+  return [:unknown, raw] if raw.match?(/\A\d+\z/)
+
+  raw = "https://#{raw}" unless raw.match?(%r{\Ahttps?://}i)
+  uri = URI(raw)
+  unless eventbrite_host?(uri)
+    raise EventbriteError.new("Not an Eventbrite URL: #{input}", 0)
+  end
+
+  classify(uri) || classify(follow(uri)) ||
+    raise(EventbriteError.new("Could not find an Eventbrite event or organiser id in #{input}", 0))
+end
+
+def get_json(path, params)
+  uri = URI("#{API_ROOT}#{path}")
+  uri.query = URI.encode_www_form(params) unless params.empty?
+  response = http_request(uri, :get)
+  data = begin
+    JSON.parse(response.body.to_s)
+  rescue JSON::ParserError
+    {}
+  end
+  return data if response.is_a?(Net::HTTPSuccess)
+
+  message = data["error_description"] || response.message
+  raise EventbriteError.new("Eventbrite #{response.code}: #{message}", response.code.to_i)
+end
+
+def fetch_event(id)
+  get_json("/events/#{id}/", "expand" => EXPAND)
+end
+
+def fetch_organiser_events(id, status)
+  events = []
+  params = {
+    "status" => status,
+    "order_by" => "start_asc",
+    "expand" => EXPAND
+  }
+
+  MAX_PAGES.times do
+    data = get_json("/organizers/#{id}/events/", params)
+    events.concat(Array(data["events"]))
+    page = data["pagination"] || {}
+    break unless page["has_more_items"]
+
+    params = if page["continuation"]
+      params.reject { |key, _| key == "page" }.merge("continuation" => page["continuation"])
+    else
+      params.reject { |key, _| key == "continuation" }.merge("page" => page["page_number"].to_i + 1)
+    end
+  end
+
+  events
+end
+
+def fetch_target(input, status)
+  kind, id = identify(input)
+  case kind
+  when :event
+    [fetch_event(id)]
+  when :organiser
+    fetch_organiser_events(id, status)
+  else
+    begin
+      [fetch_event(id)]
+    rescue EventbriteError => error
+      raise unless error.code == 404
+
+      begin
+        fetch_organiser_events(id, status)
+      rescue EventbriteError => organiser_error
+        raise unless organiser_error.code == 404
+
+        raise EventbriteError.new("No event or organiser found for #{id}", 404)
+      end
+    end
+  end
+end
+
+def price_label(event)
+  return "Free" if event["is_free"]
+
+  availability = event["ticket_availability"] || {}
+  minimum = availability.dig("minimum_ticket_price", "display")
+  maximum = availability.dig("maximum_ticket_price", "display")
+  return if minimum.nil? && maximum.nil?
+  return minimum if maximum.nil? || minimum == maximum
+  return maximum if minimum.nil?
+
+  "#{minimum}–#{maximum}"
+end
+
+def collapsed(text)
+  text.to_s.gsub(/\s+/, " ").strip
+end
+
+def normalise(event, full:)
+  start = event["start"] || {}
+  finish = event["end"] || {}
+  venue = event["venue"] || {}
+  description = collapsed(event.dig("description", "text"))
+  description = nil if description.empty?
+  summary = collapsed(event["summary"])
+  summary = description && description.length > 240 ? "#{description[0, 239]}…" : description if summary.empty?
+
+  row = {
+    "id" => event["id"],
+    "name" => event.dig("name", "text"),
+    "status" => event["status"],
+    "start" => start["local"],
+    "end" => finish["local"],
+    "timezone" => start["timezone"],
+    "venue" => venue["name"],
+    "address" => venue.dig("address", "localized_address_display"),
+    "price" => price_label(event),
+    "is_free" => event["is_free"],
+    "url" => event["url"],
+    "organiser" => event.dig("organizer", "name"),
+    "organiser_url" => event.dig("organizer", "url"),
+    "summary" => summary
+  }
+  row["description"] = description if full
+  row
+end
+
+def clock(value)
+  text = value.to_s
+  return text if text.length < 16
+
+  "#{text[0, 10]} #{text[11, 5]}"
+end
+
+def when_label(row)
+  start = row["start"].to_s
+  finish = row["end"].to_s
+  label = if start.length >= 16 && finish.length >= 16 && start[0, 10] == finish[0, 10]
+    "#{start[0, 10]} #{start[11, 5]}–#{finish[11, 5]}"
+  else
+    "#{clock(start)} – #{clock(finish)}"
+  end
+  timezone = row["timezone"].to_s
+  timezone.empty? ? label : "#{label} (#{timezone})"
+end
+
+def format_event(row, full:)
+  lines = [row["name"].to_s]
+  lines << "  when: #{when_label(row)}"
+  venue = [row["venue"], row["address"]].compact.reject(&:empty?).join(", ")
+  lines << "  venue: #{venue}" unless venue.empty?
+  lines << "  price: #{row["price"]}" if row["price"]
+  lines << "  status: #{row["status"]}" if row["status"]
+  lines << "  organiser: #{row["organiser"]}" if row["organiser"]
+  lines << "  url: #{row["url"]}" if row["url"]
+  text = full ? (row["description"] || row["summary"]) : row["summary"]
+  lines << "  #{text}" if text && !text.empty?
+  lines.join("\n")
+end
+
+options = { json: false, full: false, status: "live,started" }
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: script/query-api/eventbrite [options] URL_OR_ID..."
+  opts.on("--json", "Print normalised JSON instead of text") { options[:json] = true }
+  opts.on("--full", "Include the full event description") { options[:full] = true }
+  opts.on("--status STATUS", "Organiser statuses to include (default: #{options[:status]})") do |status|
+    options[:status] = status
+  end
+  opts.on("-h", "--help", "Show this help") do
+    puts opts
+    exit 0
+  end
+end
+
+begin
+  parser.parse!(ARGV)
+rescue OptionParser::ParseError => error
+  warn error.message
+  warn parser
+  exit 1
+end
+
+if ARGV.empty?
+  warn parser
+  exit 1
+end
+
+rows = []
+ARGV.each do |input|
+  events = fetch_target(input, options[:status])
+  if events.empty?
+    warn "No events for #{input}"
+  end
+  rows.concat(events.map { |event| normalise(event, full: options[:full]) })
+rescue EventbriteError => error
+  warn "#{input}: #{error.message}"
+  exit 1
+end
+
+if options[:json]
+  puts JSON.pretty_generate(rows)
+else
+  puts rows.map { |row| format_event(row, full: options[:full]) }.join("\n\n")
+end

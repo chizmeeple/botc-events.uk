@@ -55,6 +55,7 @@ events:
     rrule: FREQ=MONTHLY;BYDAY=3SU;UNTIL=20261231T160000
     exdate:
     - 2026-10-18
+    - 2026-11-15
     location: peterborough-district-bowls-centre
     event_id: blood-on-the-clocktower-bowls
   adhoc:
@@ -74,4 +75,12 @@ events:
     starttime: 1900
     endtime: 2200
     location: the-falcon-huntingdon
+  - eventname: Blood on the Clocktower
+    special_event_id: blood-on-the-clocktower-20261115
+    signup: https://chat.whatsapp.com/F66Q1DLMbBeGS5sz4etjvr
+    cost: Free
+    startdate: 2026-11-15
+    starttime: 1200
+    endtime: 1600
+    location: angle-gaming-lounge
 ---

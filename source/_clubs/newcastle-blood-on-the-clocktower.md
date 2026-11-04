@@ -378,6 +378,14 @@ events:
       starttime: 1900
       endtime: 2200
       location: "bay-games"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "botc-bridge-20261125"
+      signup: "https://aftergame.app/events/ff071fbe-2dcd-4af5-85f3-3dbf701a00e9"
+      cost: "£5"
+      startdate: 2026-11-25
+      starttime: 1830
+      endtime: 2200
+      location: "bridge-hotel"
     - eventname: "Blood on the Clocktower (Advanced Game) - It's Cold Outside (Red Dwarf Homebrew)"
       special_event_id: "botc-clubhouse-20261127-advanced"
       signup: "https://aftergame.app/events/d3f70856-d826-4c61-855c-bd987e7ebbe5"

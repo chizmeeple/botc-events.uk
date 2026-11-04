@@ -142,6 +142,14 @@ events:
     location: chance-and-counters-gloucester-rd
     special_event_id: blood-on-the-clocktower-20261026
   - eventname: Blood on the Clocktower
+    signup: https://ratings.food.gov.uk/business/en-GB/1765529
+    cost: Unknown
+    startdate: 2026-11-07
+    starttime: 1030
+    endtime: 1500
+    location: commune-cafe
+    special_event_id: blood-on-the-clocktower-20261107
+  - eventname: Blood on the Clocktower
     signup: https://www.chanceandcounters.com/bristol-gloucester-road/
     cost: Unknown
     startdate: 2026-11-23
@@ -149,4 +157,12 @@ events:
     endtime: 2300
     location: chance-and-counters-gloucester-rd
     special_event_id: blood-on-the-clocktower-20261123
+  - eventname: Blood on the Clocktower
+    signup: https://excelsiorgamesandcomics.co.uk/pages/about-us
+    cost: Unknown
+    startdate: 2026-11-29
+    starttime: 1130
+    endtime: 1600
+    location: excelsior
+    special_event_id: blood-on-the-clocktower-20261129
 ---

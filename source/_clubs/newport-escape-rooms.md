@@ -29,7 +29,7 @@ events:
       startdate: 2026-08-18
       starttime: 1930
       endtime: 2130
-      rrule: FREQ=WEEKLY;BYDAY=TU;UNTIL=20261231T213000
+      rrule: FREQ=WEEKLY;BYDAY=TU;UNTIL=20261103T213000
       location: red-rooms
     - eventname: Blood on the Clocktower
       event_id: weekly-sunday
@@ -38,6 +38,15 @@ events:
       startdate: 2026-08-23
       starttime: 1400
       endtime: 1600
-      rrule: FREQ=WEEKLY;BYDAY=SU;UNTIL=20261231T160000
+      rrule: FREQ=WEEKLY;BYDAY=SU;UNTIL=20261101T160000
+      location: red-rooms
+    - eventname: Blood on the Clocktower
+      event_id: monthly-third-saturday
+      signup: https://offthecouch.io/book/EscapeNewport
+      cost: "£15"
+      startdate: 2026-11-21
+      starttime: 1600
+      endtime: 1800
+      rrule: FREQ=MONTHLY;BYDAY=3SA;UNTIL=20261231T180000
       location: red-rooms
 ---
