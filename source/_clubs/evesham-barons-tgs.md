@@ -6,7 +6,6 @@ group_id: evesham-barons-tgs
 image: "evesham-barons-tgs.jpg"
 website: https://eveshamclocktower.mezepheles.com/
 meetup: ""
-aftergame: https://aftergame.app/groups/evesham-clocktower
 facebook: ""
 discord: ""
 bgg: ""
