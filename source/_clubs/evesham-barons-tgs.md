@@ -6,13 +6,19 @@ group_id: evesham-barons-tgs
 image: "evesham-barons-tgs.jpg"
 website: https://eveshamclocktower.mezepheles.com/
 meetup: ""
-facebook: https://www.facebook.com/groups/967986768837750
+facebook: ""
 discord: ""
 bgg: ""
-description:
-  Evesham Clocktower hosts regular Blood on the Clocktower games with the
-  Evesham Barons Tabletop Gaming Society. A social deduction game of lies, logic,
-  and laughter in Evesham, Worcestershire.
+description: >-
+  Evesham Clocktower is a fan-run Blood on the Clocktower group in the Vale of
+  Evesham, Worcestershire, kindly hosted by the Evesham Barons Tabletop Gaming
+  Society at Wallace House Community Centre. We play on selected Sundays from 10:30am
+  to 3:30pm, with at least two games a day and scripts matched to the group,
+  from the base editions to custom ones. Newcomers are welcome and the rules are
+  taught on the day. Book on
+  [our website](https://eveshamclocktower.mezepheles.com/book), which also shows
+  who's coming, and follow us on
+  [Instagram](https://www.instagram.com/clocktower.evesham/) for news.
 locations:
   wallace-house:
     name: Wallace House Community Centre
@@ -41,11 +47,20 @@ events:
       location: wallace-house
       special_event_id: blood-on-the-clocktower-ebtgs-20260614
 
+    - eventname: Blood on the Clocktower Evesham @ EBTGS
+      signup: https://eveshamclocktower.mezepheles.com/book?event=2004008466269
+      cost: "£5 (18+), £2 (under 18) venue entry"
+      startdate: 2026-11-15
+      starttime: 1030
+      endtime: 1530
+      location: wallace-house
+      special_event_id: blood-on-the-clocktower-ebtgs-20261115
+
   recurring:
     - eventname: "Blood on the Clocktower Evesham @ EBTGS"
       event_id: "sunday-evesham-games"
-      signup: "https://eveshamclocktower.mezepheles.com/"
-      cost: "£5 (18+), £2 (ages 15–17)"
+      signup: "https://eveshamclocktower.mezepheles.com/book"
+      cost: "£5 (18+), £2 (under 18) venue entry"
       startdate: 2026-06-28
       starttime: 1030
       endtime: 1530
