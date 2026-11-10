@@ -21,6 +21,7 @@ website: "https://example.com"
 meetup: "https://www.meetup.com/unlucky-villagers/"
 aftergame: "https://aftergame.app/groups/unlucky-villagers/"
 facebook: "https://facebook.com/unluckyvillagers"
+instagram: "https://www.instagram.com/unluckyvillagers/"
 discord: "https://discord.gg/example"
 bgg: "https://boardgamegeek.com/guild/1234"
 description: >-
@@ -72,6 +73,7 @@ events:
 | `meetup` | No | Meetup group URL |
 | `aftergame` | No | Aftergame group URL |
 | `facebook` | No | Facebook page or group URL |
+| `instagram` | No | Instagram profile URL |
 | `discord` | No | Discord invite link |
 | `bgg` | No | BoardGameGeek guild or group link |
 

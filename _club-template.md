@@ -8,6 +8,7 @@ website: ""
 meetup: ""
 aftergame: ""
 facebook: ""
+instagram: ""
 discord: ""
 bgg: ""
 description: >-
