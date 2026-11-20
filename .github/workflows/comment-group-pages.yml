@@ -1,0 +1,50 @@
+name: Comment group pages
+
+# Posts the summary uploaded by "Validate PR".
+# This file only runs from the default branch, using the base repository token,
+# so it can comment on pull requests from forks. It never checks out the
+# contributor's branch, and it treats the artifact as data.
+on:
+  workflow_run:
+    workflows: ["Validate PR"]
+    types: [completed]
+
+permissions:
+  actions: read
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: comment-group-pages-${{ github.event.workflow_run.head_repository.id }}-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: false
+
+jobs:
+  comment:
+    name: Comment on pull request
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out default branch
+        uses: actions/checkout@v7
+        with:
+          repository: ${{ github.repository }}
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - name: Download group pages artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: group-pages
+          path: ${{ runner.temp }}/group-pages-artifact
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+
+      - name: Post or update pull request comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          WORKFLOW_RUN_ID: ${{ github.event.workflow_run.id }}
+          ARTIFACT_DIR: ${{ runner.temp }}/group-pages-artifact
+        run: ruby script/comment_group_pages.rb
