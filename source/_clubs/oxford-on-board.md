@@ -488,13 +488,36 @@ events:
     starttime: 1900
     location: westgate-social
     special_event_id: blood-on-the-clocktower-westgate-social-base-3-20261130
-  - eventname: Westgate Social - Base 3
+  - eventname: The Crown - Beginner Friendly
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-12-02
+    starttime: 1900
+    endtime: 2300
+    location: crown-pub
+    special_event_id: beginner-friendly-20261202
+  - eventname: Westgate Social - Base 3 & Beginner Friendly
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
     startdate: 2026-12-07
     starttime: 1900
     location: westgate-social
     special_event_id: blood-on-the-clocktower-westgate-social-base-3-20261207
+  - eventname: The Crown - Beginner Friendly
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: Unknown
+    startdate: 2026-12-09
+    starttime: 1900
+    endtime: 2300
+    location: crown-pub
+    special_event_id: beginner-friendly-20261209
+  - eventname: Sunday Special! - Christmas Session (Mainly Customs)
+    signup: https://www.meetup.com/oxfordonboard/events/
+    cost: "£5"
+    startdate: 2026-12-13
+    starttime: 1130
+    location: wig-and-pen
+    special_event_id: blood-on-the-clocktower-sunday-special-20261213
   - eventname: Christmas dinner at Cosmo (no Clocktower)
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
@@ -509,14 +532,14 @@ events:
     starttime: 1900
     location: westgate-social
     special_event_id: custom-script-night-20261216
-  - eventname: Sunday Special!
+  - eventname: Sunday Special! - Crazy Shenanigans, Customs, Base 3 & Beginner Friendly
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: "£5"
     startdate: 2026-12-20
     starttime: 1130
     location: wig-and-pen
     special_event_id: blood-on-the-clocktower-sunday-special-20261220
-  - eventname: Westgate Social - Base 3
+  - eventname: Westgate Social - Base 3 & Beginner Friendly
     signup: https://www.meetup.com/oxfordonboard/events/
     cost: Unknown
     startdate: 2026-12-21

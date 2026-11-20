@@ -80,4 +80,20 @@ events:
       starttime: 1300
       endtime: 1700
       location: board-and-sword
+    - eventname: Blood on the Clocktower
+      special_event_id: lancaster-board-and-sword-20261206
+      signup: https://www.facebook.com/LancsBoardandSword
+      cost: Unknown
+      startdate: 2026-12-06
+      starttime: 1300
+      endtime: 1700
+      location: board-and-sword
+    - eventname: Blood on the Clocktower
+      special_event_id: lancaster-board-and-sword-20261220
+      signup: https://www.facebook.com/LancsBoardandSword
+      cost: Unknown
+      startdate: 2026-12-20
+      starttime: 1300
+      endtime: 1700
+      location: board-and-sword
 ---

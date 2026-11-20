@@ -1,5 +1,5 @@
 ---
-display_2026_cleanup_message: true
+display_2026_cleanup_message: false
 name: Evesham Barons TGS
 based_in: Evesham
 group_id: evesham-barons-tgs
@@ -70,5 +70,14 @@ events:
         - 2026-10-18
         - 2026-11-15
         - 2026-12-27
+      location: "wallace-house"
+    - eventname: "Blood on the Clocktower Evesham @ EBTGS"
+      event_id: "sunday-evesham-games-2027"
+      signup: "https://eveshamclocktower.mezepheles.com/book"
+      cost: "£5 (18+), £2 (under 18) venue entry"
+      startdate: 2027-01-10
+      starttime: 1030
+      endtime: 1530
+      rrule: "FREQ=WEEKLY;INTERVAL=2;BYDAY=SU"
       location: "wallace-house"
 ---

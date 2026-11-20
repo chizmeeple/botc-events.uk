@@ -63,4 +63,12 @@ events:
     endtime: 1800
     location: the-hive
     special_event_id: blood-on-the-clocktower-with-ben-burns-20260315
+  - eventname: KGS 2026 XMAS-travaganza
+    signup: https://www.kirkcaldygamingsociety.co.uk/event-list
+    cost: Unknown
+    startdate: 2026-12-19
+    starttime: 1100
+    endtime: 1600
+    location: glebe-park-centre
+    special_event_id: kgs-2026-xmas-travaganza-20261219
 ---

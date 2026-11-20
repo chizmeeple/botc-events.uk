@@ -48,4 +48,11 @@ events:
     starttime: 1900
     location: social-club
     special_event_id: blood-on-the-clocktower-beginner-friendly-20260726
+  - eventname: Blood on the Clocktower (Shaftesbury)
+    signup: https://www.ticketsource.com/blood-on-the-clocktower-north-dorset/blood-on-the-clocktower-shaftesbury-dorset/e-kmlagqr
+    cost: "£4"
+    startdate: 2026-11-29
+    starttime: 1900
+    location: social-club
+    special_event_id: blood-on-the-clocktower-20261129
 ---

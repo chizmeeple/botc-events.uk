@@ -402,4 +402,68 @@ events:
       starttime: 1830
       endtime: 2230
       location: "clubhouse"
+    - eventname: "Blood on the Clocktower (Beginner Friendly)"
+      special_event_id: "botc-clubhouse-20261204"
+      signup: "https://aftergame.app/events/fba09718-bcbc-4ea6-8431-2fd21952ea9a"
+      cost: "£5 non-members"
+      startdate: 2026-12-04
+      starttime: 1830
+      endtime: 2230
+      location: "clubhouse"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "botc-bay-20261205"
+      signup: "https://www.bay-games.co.uk/event-details/blood-on-the-clocktower-evening-2026-12-05-19-00"
+      cost: "£8"
+      startdate: 2026-12-05
+      starttime: 1900
+      endtime: 2200
+      location: "bay-games"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "botc-toastielabs-20261210"
+      signup: "https://toastielabs.simplybook.it/v2/#book-class/service/13/count/1/"
+      cost: "£5"
+      startdate: 2026-12-10
+      starttime: 1830
+      endtime: 2200
+      location: "toastielabs"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "botc-bridge-20261211"
+      signup: "https://aftergame.app/events/ff071fbe-2dcd-4af5-85f3-3dbf701a00e9"
+      cost: "£5"
+      startdate: 2026-12-11
+      starttime: 1830
+      endtime: 2300
+      location: "bridge-hotel"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "botc-bridge-20261215"
+      signup: "https://aftergame.app/events/ff071fbe-2dcd-4af5-85f3-3dbf701a00e9"
+      cost: "£5"
+      startdate: 2026-12-15
+      starttime: 1830
+      endtime: 2300
+      location: "bridge-hotel"
+    - eventname: "Blood on the Clocktower (Sushi Buffet)"
+      special_event_id: "botc-clubhouse-20261218"
+      signup: "https://aftergame.app/events/8e45c972-80a7-40df-ab25-c93e5d3f0264"
+      cost: "£5 non-members"
+      startdate: 2026-12-18
+      starttime: 1830
+      endtime: 2230
+      location: "clubhouse"
+    - eventname: "3rd Saturday Casual Clocktower"
+      special_event_id: "botc-bay-20261219"
+      signup: "https://www.bay-games.co.uk/event-details/3rd-saturday-casual-clocktower-2026-12-19-19-00"
+      cost: "£7"
+      startdate: 2026-12-19
+      starttime: 1900
+      endtime: 2200
+      location: "bay-games"
+    - eventname: "Blood on the Clocktower"
+      special_event_id: "botc-bridge-20261228"
+      signup: "https://aftergame.app/events/ff071fbe-2dcd-4af5-85f3-3dbf701a00e9"
+      cost: "£5"
+      startdate: 2026-12-28
+      starttime: 1830
+      endtime: 2300
+      location: "bridge-hotel"
 ---
