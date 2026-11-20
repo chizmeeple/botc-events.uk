@@ -29,6 +29,8 @@ locations:
   new-realities-gaming:
     name: New Realities Gaming
     address: 28 Market Place, Salisbury SP1 1TL
+    lat: 51.0695731
+    lng: -1.7965839
 events:
   adhoc:
     - eventname: 'Blood on the Clocktower: Trouble Brewing'
