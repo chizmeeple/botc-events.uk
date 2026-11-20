@@ -18,6 +18,11 @@ locations:
     address: 2 Leighton Road, Ealing, London, W13 9EP
     lat: 51.50608
     lng: -0.32046
+  the-drayton-court:
+    name: The Drayton Court Hotel
+    address: 2 The Avenue, Ealing, London, W13 8PH
+    lat: 51.51424
+    lng: -0.31923
 events:
   recurring:
     - eventname: Blood on the Clocktower -- Ealing
@@ -32,6 +37,9 @@ events:
         - 2026-10-01
         - 2026-10-15
         - 2026-11-12
+        - 2026-11-26
+        - 2026-12-10
+        - 2026-12-24
       location: the-forester
   adhoc:
     - eventname: Blood on the Clocktower -- Ealing
@@ -58,4 +66,20 @@ events:
       starttime: 1830
       endtime: 2300
       location: the-forester
+    - eventname: Blood on the Clocktower -- Ealing
+      special_event_id: blood-on-the-clocktower-20261126
+      signup: https://www.eventbrite.co.uk/e/blood-on-the-clocktower-ealing-tickets-2004824422817
+      cost: Free
+      startdate: 2026-11-26
+      starttime: 1830
+      endtime: 2300
+      location: the-drayton-court
+    - eventname: Blood on the Clocktower -- Ealing
+      special_event_id: blood-on-the-clocktower-20261210
+      signup: https://www.eventbrite.co.uk/e/blood-on-the-clocktower-ealing-tickets-1998748955932
+      cost: Free
+      startdate: 2026-12-10
+      starttime: 1830
+      endtime: 2300
+      location: the-drayton-court
 ---
