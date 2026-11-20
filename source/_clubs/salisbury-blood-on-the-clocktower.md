@@ -26,6 +26,11 @@ locations:
         address: Brown Street, Salisbury SP1 1HE (adjacent to The Red Lion Hotel)
         notes: >-
           Free parking after 6pm.
+  new-realities-gaming:
+    name: New Realities Gaming
+    address: 28 Market Place, Salisbury SP1 1TL
+    lat: 51.0695731
+    lng: -1.7965839
 events:
   adhoc:
     - eventname: 'Blood on the Clocktower: Trouble Brewing'
@@ -36,4 +41,12 @@ events:
       starttime: 1900
       endtime: 2300
       location: tabletop-tavern
+    - eventname: 'Blood on the Clocktower: Trouble Brewing'
+      special_event_id: blood-on-the-clocktower-20261203
+      signup: https://forms.gle/NwsZbAXCswZDqQ1R8
+      cost: "£5"
+      startdate: 2026-12-03
+      starttime: 1800
+      endtime: 2100
+      location: new-realities-gaming
 ---

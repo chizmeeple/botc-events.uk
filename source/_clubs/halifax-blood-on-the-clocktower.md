@@ -54,6 +54,15 @@ events:
       startdate: 2026-11-15
       starttime: 1400
       endtime: 2200
+      rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=SU;UNTIL=20261115T220000
+      location: shadowdust
+    - eventname: Blood on the Clocktower
+      event_id: fortnightly-sunday-shadowdust-from-20261122
+      signup: https://discord.gg/PUTkJXwUJY
+      cost: Free
+      startdate: 2026-11-22
+      starttime: 1400
+      endtime: 2200
       rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=SU;UNTIL=20261231T220000
       location: shadowdust
   adhoc:

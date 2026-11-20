@@ -32,6 +32,11 @@ locations:
     address: Leeds University Union, Lifton Place, Leeds, LS2 9JZ
     lat: 53.8065325
     lng: -1.5561705
+  city-tap:
+    name: City Tap Taproom
+    address: 3 Sovereign Street, Leeds LS1 4AB
+    lat: 53.7939789
+    lng: -1.5437371
 events:
   adhoc:
     - eventname: Blood on the Clocktower - Ireland Wood Games
@@ -50,6 +55,14 @@ events:
       endtime: 2200
       location: the-terrace-luu
       special_event_id: blood-on-the-clocktower-20260624
+    - eventname: Blood on the Clocktower
+      signup: https://www.meetup.com/leeds-nerds/events/
+      cost: Free
+      startdate: 2026-11-25
+      starttime: 1800
+      endtime: 2200
+      location: city-tap
+      special_event_id: blood-on-the-clocktower-20261125
   recurring:
   - eventname: Blood on the Clocktower
     signup: https://www.meetup.com/leeds-nerds/events/
@@ -60,6 +73,7 @@ events:
     rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=WE;UNTIL=20261231T220000
     exdate:
       - 2026-06-24
+      - 2026-11-25
     location: the-tetley
     event_id: blood-on-the-clocktower
 ---
