@@ -34,7 +34,7 @@ jobs:
           persist-credentials: false
 
       - name: Download group pages artifact
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: group-pages
           path: ${{ runner.temp }}/group-pages-artifact
