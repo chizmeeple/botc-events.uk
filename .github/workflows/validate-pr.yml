@@ -53,9 +53,10 @@ jobs:
   summarise-group-pages:
     name: Summarise group page changes
     runs-on: ubuntu-latest
+    # This job checks out the pull request. Keep the token read-only.
+    # comment-group-pages.yml posts the comment from the base repository.
     permissions:
       contents: read
-      pull-requests: write
     steps:
       - uses: actions/checkout@v7
         with:
@@ -68,6 +69,9 @@ jobs:
       - name: Test changed group pages script
         run: ruby script/test_changed_group_pages.rb
 
+      - name: Test group page comment script
+        run: ruby script/test_comment_group_pages.rb
+
       - name: List changed group pages
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
@@ -77,26 +81,20 @@ jobs:
       - name: Write job summary
         run: cat group-pages.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Comment on pull request
+      - name: Record pull request number
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          {
-            printf '%s\n\n' '<!-- group-pages-preview -->'
-            cat group-pages.md
-          } > comment.md
+          mkdir -p group-pages-artifact
+          mv group-pages.md group-pages-artifact/group-pages.md
+          ruby -rjson -e 'pr = Integer(ENV.fetch("PR_NUMBER"), 10); abort("invalid pull request number") unless pr.positive?; File.write("group-pages-artifact/group-pages-meta.json", JSON.generate({"pr_number" => pr}) + "\n")'
 
-          COMMENT_ID="$(
-            gh api --paginate "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" \
-              --jq '.[] | select(.body | contains("<!-- group-pages-preview -->")) | .id' \
-              | tail -n 1
-          )"
-
-          if [ -n "$COMMENT_ID" ]; then
-            gh api --method PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}" \
-              -F body=@comment.md
-          else
-            gh api --method POST "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" \
-              -F body=@comment.md
-          fi
+      - name: Upload group pages summary
+        if: success()
+        uses: actions/upload-artifact@v7
+        with:
+          name: group-pages
+          path: group-pages-artifact/
+          if-no-files-found: error
+          retention-days: 5
+          overwrite: true
