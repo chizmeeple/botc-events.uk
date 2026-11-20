@@ -21,6 +21,11 @@ locations:
     address: Wilson St, Anlaby, Hull, HU10 7AN
     lat: 53.74569662764313
     lng: -0.4334223932535258
+  beal-homes:
+    name: Beal Homes
+    address: Bridgehead Business Park, Hessle HU13 0GW
+    lat: 53.7245469
+    lng: -0.4611667
 events:
   adhoc:
     - eventname: Blood on the Clocktower
@@ -71,6 +76,14 @@ events:
       endtime: 2300
       location: anlaby-bar
       special_event_id: blood-on-the-clocktower-20261108
+    - eventname: Blood on the Clocktower
+      signup: https://facebook.com/events/s/board-games-and-blood-on-the-c/1407449054428999/
+      cost: Free
+      startdate: 2026-12-13
+      starttime: 1800
+      endtime: 2300
+      location: beal-homes
+      special_event_id: blood-on-the-clocktower-20261213
   recurring:
     - eventname: Blood on the Clocktower
       signup: https://www.facebook.com/share/14VSN5of6GJ/
@@ -85,6 +98,7 @@ events:
         - 2026-09-13
         - 2026-10-11
         - 2026-11-08
+        - 2026-12-13
       location: anlaby-bar
       event_id: blood-on-the-clocktower
 ---
