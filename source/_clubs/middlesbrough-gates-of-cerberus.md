@@ -1,5 +1,5 @@
 ---
-display_2026_cleanup_message: true
+display_2026_cleanup_message: false
 name: Gates of Cerberus (Middlesbrough)
 based_in: Middlesbrough
 group_id: middlesbrough-gates-of-cerberus
@@ -34,6 +34,15 @@ events:
       - 2026-10-23
       - 2026-11-06
       - 2026-11-20
+    location: gates-of-cerberus
+  - eventname: Blood on the Clocktower
+    event_id: fortnightly-friday-gates-of-cerberus-2027
+    signup: https://discord.com/channels/1247195779970498780/1314165871874408448
+    cost: "£5"
+    startdate: 2027-01-08
+    starttime: 1830
+    endtime: 2300
+    rrule: FREQ=WEEKLY;INTERVAL=2;BYDAY=FR
     location: gates-of-cerberus
   adhoc:
   - eventname: Blood on the Clocktower
