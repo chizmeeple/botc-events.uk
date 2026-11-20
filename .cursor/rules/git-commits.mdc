@@ -17,3 +17,10 @@ alwaysApply: true
 - Create commits yourself as you go, using the repo’s existing commit-message style.
 - After completing a task, **push** any new branches and commits to the remote so progress is visible to the developer working on the updates (`git push -u origin <branch>` for a new branch).
 - Do not leave completed work only on the local checkout.
+
+## Pull request descriptions
+
+- Write PR titles and bodies in the **present tense imperative**, matching commit style: “Add …”, “Update …”, “Correct …”.
+- Prefer “Add Discord schedule updates for …” over “Adds Discord schedule updates for …”.
+- Prefer “Update …”, “Correct …”, “Document …” over “Also updates …”.
+- Bullet lists of included changes should also use present tense where they start with a verb.

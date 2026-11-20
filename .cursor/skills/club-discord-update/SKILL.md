@@ -88,6 +88,10 @@ Leave any running Jekyll server alone. Do not run `script/jekyll-serve`,
 Do not commit. Give **one commit command per place/update**, even when several
 are in the same chat. Never combine club files into one commit.
 
+When a Cloud Agent opens or updates a PR for these commits, write the PR
+title and body in present tense imperative (“Add …”, “Update …”, “Correct …”),
+as in `.cursor/rules/git-commits.mdc`.
+
 Each command stages **only** that club file:
 
 ```bash
