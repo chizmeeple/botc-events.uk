@@ -99,4 +99,12 @@ events:
     endtime: 2200
     location: tm-leeds
     special_event_id: blood-on-the-clocktower-20261202
+  - eventname: Blood on the Clocktower
+    signup: https://www.eventbrite.co.uk/o/chance-clockers-90867087073
+    cost: "£3"
+    startdate: 2026-12-16
+    starttime: 1800
+    endtime: 2200
+    location: tm-leeds
+    special_event_id: blood-on-the-clocktower-20261216
 ---
