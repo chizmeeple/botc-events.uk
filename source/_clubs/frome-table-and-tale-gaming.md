@@ -7,14 +7,13 @@ image: frome-table-and-tale-gaming.png
 website: ''
 meetup: ''
 facebook: ''
+instagram: https://www.instagram.com/tableandtalegaming
 discord: ''
 bgg: ''
 description: >-
   Monthly Blood on the Clocktower at Deck & Dagger, Frome. Sessions run on the
   first Thursday of each month, 7–9pm, with occasional extra dates for custom
-  scripts. Follow
-  [Table and Tale Gaming on Instagram](https://www.instagram.com/tableandtalegaming)
-  for dates and sign-up.
+  scripts. Dates and sign-up are via Instagram.
 locations:
   deck-and-dagger:
     name: Deck & Dagger

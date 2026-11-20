@@ -6,15 +6,14 @@ image: ''
 website: https://www.boardandsword.co.uk/
 meetup: ''
 facebook: https://www.facebook.com/LancsBoardandSword
+instagram: https://www.instagram.com/lancasterboardandsword/
 discord: ''
 bgg: ''
 description: >-
   Blood on the Clocktower at Board & Sword, Lancaster. Sessions are typically
   on the second-to-last Sunday of each month but dates vary and are confirmed
-  quite late — check
-  [Board & Sword on Facebook](https://www.facebook.com/LancsBoardandSword) or
-  [Instagram](https://www.instagram.com/lancasterboardandsword/) for the latest.
-  No sign-up required; just turn up.
+  quite late — check Facebook or Instagram for the latest. No sign-up required;
+  just turn up.
 locations:
   board-and-sword:
     name: Board & Sword

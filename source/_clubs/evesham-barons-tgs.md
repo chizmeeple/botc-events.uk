@@ -7,6 +7,7 @@ image: "evesham-barons-tgs.jpg"
 website: https://eveshamclocktower.mezepheles.com/
 meetup: ""
 facebook: ""
+instagram: https://www.instagram.com/clocktower.evesham/
 discord: ""
 bgg: ""
 description: >-
@@ -17,8 +18,7 @@ description: >-
   from the base editions to custom ones. Newcomers are welcome and the rules are
   taught on the day. Book on
   [our website](https://eveshamclocktower.mezepheles.com/book), which also shows
-  who's coming, and follow us on
-  [Instagram](https://www.instagram.com/clocktower.evesham/) for news.
+  who's coming.
 locations:
   wallace-house:
     name: Wallace House Community Centre

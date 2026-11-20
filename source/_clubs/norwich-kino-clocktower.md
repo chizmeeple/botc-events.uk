@@ -7,14 +7,13 @@ image: ''
 website: ''
 meetup: ''
 facebook: ''
+instagram: https://www.instagram.com/kinoclocktower/
 discord: ''
 bgg: ''
 description: >-
   Monthly Blood on the Clocktower upstairs at Cinema City, Norwich. Sessions run
   on the first Thursday of each month, 7–11pm, free and beginner-friendly.
-  Follow
-  [Kino Clocktower on Instagram](https://www.instagram.com/kinoclocktower/)
-  for dates and sign-up.
+  Dates and sign-up are via Instagram.
 locations:
   cinema-city:
     name: Cinema City (upstairs)
