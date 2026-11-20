@@ -97,4 +97,12 @@ events:
       endtime: 2200
       location: vernon-institute
       special_event_id: blood-on-the-clocktower-20261117
+    - eventname: "BOTChes December: Blood on the Clocktower Chester"
+      signup: https://bit.ly/BOTChesDiscord
+      cost: "£10"
+      startdate: 2026-12-08
+      starttime: 1800
+      endtime: 2200
+      location: vernon-institute
+      special_event_id: blood-on-the-clocktower-20261208
 ---
