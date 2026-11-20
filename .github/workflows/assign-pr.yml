@@ -2,15 +2,22 @@
 name: Assign PR Owner
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, reopened]
 
 permissions:
   pull-requests: write
-  issues: write
 
 jobs:
-  assign-author:
+  assign-owner:
     runs-on: ubuntu-latest
     steps:
-      - uses: toshimaru/auto-author-assign@v3.1.0
+      - name: Assign PR to chizmeeple
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          gh api \
+            --method POST \
+            "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/assignees" \
+            -f "assignees[]=chizmeeple"
