@@ -24,3 +24,9 @@ alwaysApply: true
 - Prefer “Add Discord schedule updates for …” over “Adds Discord schedule updates for …”.
 - Prefer “Update …”, “Correct …”, “Document …” over “Also updates …”.
 - Bullet lists of included changes should also use present tense where they start with a verb.
+- In Discord schedule-update PR bodies, **markdown-link the club/group name** (not the whole bullet) to the live group page:
+  `https://botc-events.uk/clubs/{group_id}/`.
+  - `{group_id}` is the club file’s `group_id`, or the filename without `.md` when `group_id` is omitted.
+  - Example: `[Gillingham Social Club](https://botc-events.uk/clubs/gillingham-gillingham-social-club/)`.
+  - When the bullet uses a place or venue phrase instead of `name:` (e.g. “Saffron Walden”, “Halifax Shadowdust”), link that phrase to the same club URL.
+  - Still link newly created groups; the page may 404 until the change is deployed.

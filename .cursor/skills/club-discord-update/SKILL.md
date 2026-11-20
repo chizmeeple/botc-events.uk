@@ -90,7 +90,8 @@ are in the same chat. Never combine club files into one commit.
 
 When a Cloud Agent opens or updates a PR for these commits, write the PR
 title and body in present tense imperative (“Add …”, “Update …”, “Correct …”),
-as in `.cursor/rules/git-commits.mdc`.
+as in `.cursor/rules/git-commits.mdc`. Link each club/group name in the PR
+bullet list to `https://botc-events.uk/clubs/{group_id}/` (see that rule).
 
 Each command stages **only** that club file:
 
