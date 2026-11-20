@@ -43,6 +43,7 @@ website: "https://example.com"
 meetup: "https://www.meetup.com/unlucky-villagers/"
 aftergame: "https://aftergame.app/groups/unlucky-villagers/"
 facebook: "https://facebook.com/unluckyvillagers"
+instagram: "https://www.instagram.com/unluckyvillagers/"
 discord: "https://discord.gg/example"
 bgg: "https://boardgamegeek.com/guild/1234"
 description: >-
@@ -89,6 +90,7 @@ events:
 | `meetup`           | Meetup group URL                                                                                                                                      |
 | `aftergame`        | Aftergame group URL                                                                                                                                   |
 | `facebook`         | Link to your groups's Facebook page or group                                                                                                          |
+| `instagram`        | Link to your group's Instagram profile                                                                                                                |
 | `discord`          | Discord invite link                                                                                                                                   |
 | `bgg`              | BoardGameGeek guild or group link                                                                                                                     |
 | `description`      | A short description. What games do you play? Are newcomers welcome?                                                                                   |

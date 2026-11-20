@@ -21,6 +21,7 @@ layout: null
     "meetup": {{ club.meetup | jsonify }},
     "aftergame": {{ club.aftergame | jsonify }},
     "facebook": {{ club.facebook | jsonify }},
+    "instagram": {{ club.instagram | jsonify }},
     "description": {{ club.description | jsonify }},
     "image": {{ club.image | jsonify }}
   }
@@ -49,6 +50,7 @@ layout: null
     "meetup": null,
     "aftergame": null,
     "facebook": null,
+    "instagram": null,
     "description": {{ se_data.description | jsonify }},
     "image": {{ se_img | jsonify }}
   }

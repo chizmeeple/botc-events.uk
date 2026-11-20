@@ -231,6 +231,12 @@ body:
       placeholder: https://facebook.com/...
 
   - type: input
+    id: instagram
+    attributes:
+      label: Instagram profile
+      placeholder: https://www.instagram.com/...
+
+  - type: input
     id: discord
     attributes:
       label: Discord invite link

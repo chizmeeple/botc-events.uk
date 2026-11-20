@@ -11,7 +11,7 @@
 #   - 404 / 410 (page removed)
 #   - 5xx (server broken)
 # What it skips (too noisy to check from a bot):
-#   - facebook / discord links. These return 403/429 to non-browser clients
+#   - facebook / instagram / discord links. These return 403/429 to non-browser clients
 #     whether or not the group exists, so checking them tells us nothing.
 #   - signup links for events that have already finished, because those are
 #     not shown on the site. An adhoc or special event is finished when its
@@ -34,7 +34,7 @@ require "uri"
 require "yaml"
 
 module LinkCheck
-  # Links we actually check. facebook/discord deliberately excluded (see header).
+  # Links we actually check. facebook/instagram/discord deliberately excluded (see header).
   CHECKABLE = %w[website meetup aftergame bgg].freeze
   EVENT_LISTS = %w[recurring adhoc special].freeze
 
@@ -316,7 +316,7 @@ module LinkCheck
     lines << "_Generated #{generated} by `script/check_links.rb`._"
     lines << ""
     lines << "Checked **#{summary[:targets].map { |target| target.url }.uniq.length}** unique links (`website`, `meetup`, `aftergame`, `bgg`, event `signup`) across **#{summary[:files].length}** group and special-event files."
-    lines << "Facebook/Discord links are not auto-checked (they block bots). Signup links for events that have already finished are not checked."
+    lines << "Facebook/Instagram/Discord links are not auto-checked (they block bots). Signup links for events that have already finished are not checked."
     lines << ""
     lines << "- 🔴 **#{dead.length}** likely dead (DNS failure, connection refused, 404/410)"
     lines << "- 🟡 **#{suspect.length}** suspect (timeout, server error, SSL — may be transient, re-check before acting)"
