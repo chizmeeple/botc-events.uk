@@ -43,8 +43,8 @@ events:
       signup: "https://discord.gg/PUTkJXwUJY"
       cost: "Free"
       startdate: 2026-04-09
-      starttime: 1900
-      endtime: 2300
-      rrule: "FREQ=WEEKLY;BYDAY=TH;UNTIL=20261231T230000"
+      starttime: 1830
+      endtime: 2230
+      rrule: "FREQ=WEEKLY;BYDAY=TH;UNTIL=20261231T223000"
       location: "great-baddow-barn"
 ---
