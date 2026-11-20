@@ -1,11 +1,19 @@
 ---
-description: Never run git commit; always give the user the command
+description: Local agents give commit commands; Cloud Agents commit and push
 alwaysApply: true
 ---
 
 # Git commits
 
+## Local Cursor (interactive)
+
 - **Never** create commits yourself (`git commit`, `git add` + commit, etc.).
 - When changes are ready to commit, **always** provide the exact command(s) for the user to run.
 - Do not ask whether to commit first — just supply the command after finishing the work.
 - Follow the repo’s existing commit-message style when drafting the message.
+
+## Cloud Agent
+
+- Create commits yourself as you go, using the repo’s existing commit-message style.
+- After completing a task, **push** any new branches and commits to the remote so progress is visible to the developer working on the updates (`git push -u origin <branch>` for a new branch).
+- Do not leave completed work only on the local checkout.
